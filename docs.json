@@ -1,97 +1,514 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "almond",
-  "name": "Product Guide",
-  "description": "Step-by-step guides for every product—platform setup, analytics, and integrations in one place.",
+  "name": "CCTools",
+  "description": "Documentation for CCTools - the multi-tool platform for the Canton Network ecosystem.",
   "colors": {
-    "primary": "#166E3F",
-    "light": "#26BD6C",
-    "dark": "#166E3F"
+    "primary": "#e6ff6a",
+    "light": "#5b6e00",
+    "dark": "#e6ff6a"
   },
-  "favicon": "/favicon.ico",
+  "appearance": {
+    "default": "dark"
+  },
+  "favicon": "/favicon.png",
   "icons": {
     "library": "lucide"
   },
   "styling": {
     "eyebrows": "breadcrumbs"
   },
-  "contextual": {
-    "options": ["copy", "view", "assistant", "mcp", "add-mcp"]
-  },
   "navigation": {
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Home",
-          "icon": "house",
-          "href": "/"
-        },
-        {
-          "anchor": "Changelog",
-          "icon": "scroll-text",
-          "href": "https://www.mintlify.com/docs/changelog"
-        },
-        {
-          "anchor": "Help",
-          "icon": "life-buoy",
-          "href": "https://www.mintlify.com/docs/contact-support"
-        }
-      ]
-    },
-    "directory": "card",
-    "groups": [
+    "languages": [
       {
-        "group": "Platform",
-        "icon": "layers",
-        "expanded": true,
-        "pages": [
-          "platform/quickstart",
-          "platform/key-concepts",
-          "platform/configuration/settings",
-          "platform/configuration/user-management",
-          "platform/administration/roles-permissions"
+        "language": "en",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "icon": "book-open",
+            "pages": [
+              "getting-started/what-is-cctools",
+              "getting-started/create-account",
+              "getting-started/navigating-the-platform"
+            ]
+          },
+          {
+            "group": "Portfolio",
+            "icon": "wallet",
+            "pages": [
+              "portfolio/adding-wallets",
+              "portfolio/understanding-pnl",
+              "portfolio/rewards-tracking"
+            ]
+          },
+          {
+            "group": "Ecosystem",
+            "icon": "globe",
+            "pages": [
+              "ecosystem/browsing-projects",
+              "ecosystem/compare",
+              "ecosystem/explore-hub",
+              "ecosystem/sponsored-listings"
+            ]
+          },
+          {
+            "group": "Earn & XP",
+            "icon": "zap",
+            "pages": [
+              "earn/earn-opportunities",
+              "earn/xp-system",
+              "earn/badges",
+              "earn/referral-program",
+              "earn/leaderboard",
+              "earn/learn-paths"
+            ]
+          },
+          {
+            "group": "Academy",
+            "icon": "graduation-cap",
+            "pages": [
+              "academy/academy-overview",
+              "academy/reading-upvoting-posts",
+              "academy/writing-posts"
+            ]
+          },
+          {
+            "group": "News & Feed",
+            "icon": "newspaper",
+            "pages": [
+              "news/news-overview",
+              "news/news-search-filter",
+              "news/new-content-notifications"
+            ]
+          },
+          {
+            "group": "Account & Settings",
+            "icon": "settings",
+            "pages": [
+              "account/profile-settings",
+              "account/security",
+              "account/notifications",
+              "account/pro-subscription"
+            ]
+          },
+          {
+            "group": "Canton Network",
+            "icon": "box",
+            "pages": [
+              "canton-network/what-is-canton",
+              "canton-network/cc-token",
+              "canton-network/rewards-calculator",
+              "canton-network/validators-governance"
+            ]
+          },
+          {
+            "group": "Campaigns",
+            "icon": "megaphone",
+            "pages": [
+              "campaigns/how-campaigns-work",
+              "campaigns/how-winners-are-chosen",
+              "campaigns/sponsored-campaigns"
+            ]
+          },
+          {
+            "group": "Network & Data",
+            "icon": "chart-column",
+            "pages": [
+              "network/network-stats",
+              "network/data-sources"
+            ]
+          },
+          {
+            "group": "Community",
+            "icon": "users",
+            "pages": [
+              "community/community-rules",
+              "community/contribute",
+              "community/faq"
+            ]
+          },
+          {
+            "group": "Troubleshooting",
+            "icon": "life-buoy",
+            "pages": [
+              "troubleshooting/login-issues",
+              "troubleshooting/portfolio-issues",
+              "troubleshooting/contact-support"
+            ]
+          }
+        ],
+        "default": true
+      },
+      {
+        "language": "es",
+        "groups": [
+          {
+            "group": "Empezando",
+            "icon": "book-open",
+            "pages": [
+              "es/getting-started/what-is-cctools",
+              "es/getting-started/create-account",
+              "es/getting-started/navigating-the-platform"
+            ]
+          },
+          {
+            "group": "Cartera",
+            "icon": "wallet",
+            "pages": [
+              "es/portfolio/adding-wallets",
+              "es/portfolio/understanding-pnl",
+              "es/portfolio/rewards-tracking"
+            ]
+          },
+          {
+            "group": "Ecosistema",
+            "icon": "globe",
+            "pages": [
+              "es/ecosystem/browsing-projects",
+              "es/ecosystem/compare",
+              "es/ecosystem/explore-hub",
+              "es/ecosystem/sponsored-listings"
+            ]
+          },
+          {
+            "group": "Gana y XP",
+            "icon": "zap",
+            "pages": [
+              "es/earn/earn-opportunities",
+              "es/earn/xp-system",
+              "es/earn/badges",
+              "es/earn/referral-program",
+              "es/earn/leaderboard",
+              "es/earn/learn-paths"
+            ]
+          },
+          {
+            "group": "Academia",
+            "icon": "graduation-cap",
+            "pages": [
+              "es/academy/academy-overview",
+              "es/academy/reading-upvoting-posts",
+              "es/academy/writing-posts"
+            ]
+          },
+          {
+            "group": "Noticias y feeds",
+            "icon": "newspaper",
+            "pages": [
+              "es/news/news-overview",
+              "es/news/news-search-filter",
+              "es/news/new-content-notifications"
+            ]
+          },
+          {
+            "group": "Configuraciones de la cuenta",
+            "icon": "settings",
+            "pages": [
+              "es/account/profile-settings",
+              "es/account/security",
+              "es/account/notifications",
+              "es/account/pro-subscription"
+            ]
+          },
+          {
+            "group": "Red Cantonal",
+            "icon": "box",
+            "pages": [
+              "es/canton-network/what-is-canton",
+              "es/canton-network/cc-token",
+              "es/canton-network/rewards-calculator",
+              "es/canton-network/validators-governance"
+            ]
+          },
+          {
+            "group": "Campañas",
+            "icon": "megaphone",
+            "pages": [
+              "es/campaigns/how-campaigns-work",
+              "es/campaigns/how-winners-are-chosen",
+              "es/campaigns/sponsored-campaigns"
+            ]
+          },
+          {
+            "group": "Red y datos",
+            "icon": "chart-column",
+            "pages": [
+              "es/network/network-stats",
+              "es/network/data-sources"
+            ]
+          },
+          {
+            "group": "Comunidad",
+            "icon": "users",
+            "pages": [
+              "es/community/community-rules",
+              "es/community/contribute",
+              "es/community/faq"
+            ]
+          },
+          {
+            "group": "Solución de problemas",
+            "icon": "life-buoy",
+            "pages": [
+              "es/troubleshooting/login-issues",
+              "es/troubleshooting/portfolio-issues",
+              "es/troubleshooting/contact-support"
+            ]
+          }
         ]
       },
       {
-        "group": "Analytics",
-        "icon": "chart-bar",
-        "expanded": true,
-        "pages": [
-          "analytics/quickstart",
-          "analytics/connect-data",
-          "analytics/dashboards/create-dashboard",
-          "analytics/reports/scheduled-reports"
+        "language": "pt",
+        "groups": [
+          {
+            "group": "Começando",
+            "icon": "book-open",
+            "pages": [
+              "pt/getting-started/what-is-cctools",
+              "pt/getting-started/create-account",
+              "pt/getting-started/navigating-the-platform"
+            ]
+          },
+          {
+            "group": "Portfólio",
+            "icon": "wallet",
+            "pages": [
+              "pt/portfolio/adding-wallets",
+              "pt/portfolio/understanding-pnl",
+              "pt/portfolio/rewards-tracking"
+            ]
+          },
+          {
+            "group": "Ecossistema",
+            "icon": "globe",
+            "pages": [
+              "pt/ecosystem/browsing-projects",
+              "pt/ecosystem/compare",
+              "pt/ecosystem/explore-hub",
+              "pt/ecosystem/sponsored-listings"
+            ]
+          },
+          {
+            "group": "Ganhe e XP",
+            "icon": "zap",
+            "pages": [
+              "pt/earn/earn-opportunities",
+              "pt/earn/xp-system",
+              "pt/earn/badges",
+              "pt/earn/referral-program",
+              "pt/earn/leaderboard",
+              "pt/earn/learn-paths"
+            ]
+          },
+          {
+            "group": "Academia",
+            "icon": "graduation-cap",
+            "pages": [
+              "pt/academy/academy-overview",
+              "pt/academy/reading-upvoting-posts",
+              "pt/academy/writing-posts"
+            ]
+          },
+          {
+            "group": "Notícias e feed",
+            "icon": "newspaper",
+            "pages": [
+              "pt/news/news-overview",
+              "pt/news/news-search-filter",
+              "pt/news/new-content-notifications"
+            ]
+          },
+          {
+            "group": "Configurações de Conta",
+            "icon": "settings",
+            "pages": [
+              "pt/account/profile-settings",
+              "pt/account/security",
+              "pt/account/notifications",
+              "pt/account/pro-subscription"
+            ]
+          },
+          {
+            "group": "Rede Cantão",
+            "icon": "box",
+            "pages": [
+              "pt/canton-network/what-is-canton",
+              "pt/canton-network/cc-token",
+              "pt/canton-network/rewards-calculator",
+              "pt/canton-network/validators-governance"
+            ]
+          },
+          {
+            "group": "Campanhas",
+            "icon": "megaphone",
+            "pages": [
+              "pt/campaigns/how-campaigns-work",
+              "pt/campaigns/how-winners-are-chosen",
+              "pt/campaigns/sponsored-campaigns"
+            ]
+          },
+          {
+            "group": "Rede e dados",
+            "icon": "chart-column",
+            "pages": [
+              "pt/network/network-stats",
+              "pt/network/data-sources"
+            ]
+          },
+          {
+            "group": "Comunidade",
+            "icon": "users",
+            "pages": [
+              "pt/community/community-rules",
+              "pt/community/contribute",
+              "pt/community/faq"
+            ]
+          },
+          {
+            "group": "Solução de problemas",
+            "icon": "life-buoy",
+            "pages": [
+              "pt/troubleshooting/login-issues",
+              "pt/troubleshooting/portfolio-issues",
+              "pt/troubleshooting/contact-support"
+            ]
+          }
         ]
       },
       {
-        "group": "Integrations",
-        "icon": "plug",
-        "expanded": true,
-        "pages": [
-          "integrations/quickstart",
-          "integrations/authentication",
-          "integrations/connectors/crm",
-          "integrations/webhooks/configure"
+        "language": "zh",
+        "groups": [
+          {
+            "group": "入门",
+            "icon": "book-open",
+            "pages": [
+              "zh/getting-started/what-is-cctools",
+              "zh/getting-started/create-account",
+              "zh/getting-started/navigating-the-platform"
+            ]
+          },
+          {
+            "group": "文件夹",
+            "icon": "wallet",
+            "pages": [
+              "zh/portfolio/adding-wallets",
+              "zh/portfolio/understanding-pnl",
+              "zh/portfolio/rewards-tracking"
+            ]
+          },
+          {
+            "group": "生态系统",
+            "icon": "globe",
+            "pages": [
+              "zh/ecosystem/browsing-projects",
+              "zh/ecosystem/compare",
+              "zh/ecosystem/explore-hub",
+              "zh/ecosystem/sponsored-listings"
+            ]
+          },
+          {
+            "group": "赚取和经验值",
+            "icon": "zap",
+            "pages": [
+              "zh/earn/earn-opportunities",
+              "zh/earn/xp-system",
+              "zh/earn/badges",
+              "zh/earn/referral-program",
+              "zh/earn/leaderboard",
+              "zh/earn/learn-paths"
+            ]
+          },
+          {
+            "group": "学院",
+            "icon": "graduation-cap",
+            "pages": [
+              "zh/academy/academy-overview",
+              "zh/academy/reading-upvoting-posts",
+              "zh/academy/writing-posts"
+            ]
+          },
+          {
+            "group": "新闻与动态",
+            "icon": "newspaper",
+            "pages": [
+              "zh/news/news-overview",
+              "zh/news/news-search-filter",
+              "zh/news/new-content-notifications"
+            ]
+          },
+          {
+            "group": "账户与设置",
+            "icon": "settings",
+            "pages": [
+              "zh/account/profile-settings",
+              "zh/account/security",
+              "zh/account/notifications",
+              "zh/account/pro-subscription"
+            ]
+          },
+          {
+            "group": "广州网",
+            "icon": "box",
+            "pages": [
+              "zh/canton-network/what-is-canton",
+              "zh/canton-network/cc-token",
+              "zh/canton-network/rewards-calculator",
+              "zh/canton-network/validators-governance"
+            ]
+          },
+          {
+            "group": "活动",
+            "icon": "megaphone",
+            "pages": [
+              "zh/campaigns/how-campaigns-work",
+              "zh/campaigns/how-winners-are-chosen",
+              "zh/campaigns/sponsored-campaigns"
+            ]
+          },
+          {
+            "group": "网络与数据",
+            "icon": "chart-column",
+            "pages": [
+              "zh/network/network-stats",
+              "zh/network/data-sources"
+            ]
+          },
+          {
+            "group": "社区",
+            "icon": "users",
+            "pages": [
+              "zh/community/community-rules",
+              "zh/community/contribute",
+              "zh/community/faq"
+            ]
+          },
+          {
+            "group": "故障排除",
+            "icon": "life-buoy",
+            "pages": [
+              "zh/troubleshooting/login-issues",
+              "zh/troubleshooting/portfolio-issues",
+              "zh/troubleshooting/contact-support"
+            ]
+          }
         ]
       }
     ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/cctools-light.png",
+    "dark": "/logo/cctools.png"
   },
   "navbar": {
-    "links": [],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Open CCTools",
+      "href": "https://cctools.network"
     }
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/yourcompany",
-      "linkedin": "https://linkedin.com/company/yourcompany"
+      "website": "https://cctools.network"
     }
   }
 }

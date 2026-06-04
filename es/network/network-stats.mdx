@@ -1,0 +1,27 @@
+---
+title: "Estadísticas de red"
+description: "Qué datos se muestran en la página de Estadísticas de red y cómo se recopilan."
+---
+
+## Descripción general
+
+La página **Estadísticas de la red** muestra datos históricos y en tiempo real sobre Canton Network:
+
+- **Precio CC**: precio actual, cambio de 24 horas, capitalización de mercado y volumen
+- **Validadores**: número total de supervalidadores y validadores regulares
+- **Ratio Burn/Mint**: si la red es actualmente deflacionaria (más quemaduras que acuñaciones)
+- **Transacciones diarias** - Volumen de transacciones en la red
+- **Gobernanza** - Propuestas totales, tasa de aprobación, ejecutadas versus rechazadas
+- **Tasas de emisión**: tasas de cupón por supervalidador, validador y aplicación
+- **Gráfico de TradingView** - Gráfico de precios de KRAKEN:CCUSD en vivo con integración completa de TradingView
+
+## Quemar vs menta
+
+CCTools rastrea los datos de grabación y acuñación por hora para el token CC:
+
+- **Burns** - Tokens CC quemados como tarifas de transacción
+- **Mints**: tokens CC acuñados como recompensas del validador
+- **Proporción**: cuando la proporción es superior a 1,0, se queman más CC de los que se acuñan (deflacionario).
+
+Estos datos se muestran en un gráfico de barras dual que cubre las últimas 24 a 72 horas, lo que le ayuda a comprender la dinámica de suministro del token en tiempo real.
+

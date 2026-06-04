@@ -1,0 +1,30 @@
+---
+title: "Notícias e feed da comunidade"
+description: "Dois feeds paralelos: notícias selecionadas de Canton e postagens enviadas pela comunidade, atualizadas a cada 10 minutos."
+---
+
+## Dois feeds em uma página
+
+A página **Notícias** tem dois canais atrás de um alternador de guias na parte superior:
+
+- **Notícias** - Cobertura selecionada da Canton Network na web. Os itens são extraídos de fontes do Google News e RSS e, em seguida, resumidos por um LLM para que você possa obter o essencial em uma ou duas frases sem clicar.
+- **Comunidade** - Postagens enviadas por membros: anúncios, tomadas, tópicos, artigos e atualizações compartilhadas por outros usuários do CCTools.
+
+Cada guia mostra uma contagem ao vivo de quantos itens existem naquele canal para que você sempre saiba quanto há para ler.
+
+## Com que frequência é atualizado
+
+A ingestão de notícias ocorre **a cada 10 minutos**. O gasoduto:
+
+1. Consulta o Google News (via Serper) para palavras-chave relacionadas a Cantão
+2. Mescla itens de feeds RSS selecionados
+3. **Desduplicações** entre editores usando uma chave de título normalizada - a mesma história de dois veículos aparece apenas uma vez
+4. Executa um resumo LLM sobre cada novo artigo
+5. Publica no feed
+
+O feed da comunidade é atualizado em tempo real à medida que novas postagens são enviadas e aprovadas.
+
+## Lendo um item
+
+Clique em qualquer item para abrir sua página de detalhes, que mostra o resumo completo, link da fonte, data de publicação e quaisquer projetos relacionados em Cantão mencionados. Nas postagens da comunidade, você também vê o nível do autor - o mesmo cartão do autor mostrado nas postagens da Academia.
+

@@ -1,0 +1,57 @@
+---
+title: "Fontes de dados e APIs"
+description: "De onde o CCTools obtém seus dados, as categorias de provedores por trás disso e com que frequência cada área é atualizada."
+---
+
+## Como o CCTools obtém os dados
+
+O CCTools reúne diversas classes diferentes de dados para que tudo o que você vê - preços, atividade on-chain, métricas de DeFi e sinais do ecossistema - fique em um só lugar. Em vez de depender de uma única fonte, combinamos várias categorias de provedores e as reconciliamos, de modo que uma falha ou lacuna em um feed não deixe a página vazia ou desatualizada.
+
+As principais categorias das quais nos baseamos são:
+
+- **Indexadores on-chain** - Serviços que leem e indexam o ledger da Canton Network para que possamos exibir dados de validadores, transações, queimas/emissões, apps em destaque e saldos de carteiras sem que cada usuário precise rodar seu próprio nó.
+- **Oráculos de preço** - Provedores de dados de mercado que fornecem preço do token CC, capitalização de mercado, volume em 24h e oferta circulante.
+- **Agregadores de TVL e DeFi** - Fontes que acompanham o valor total bloqueado, a liquidez e métricas em nível de protocolo nos apps de DeFi da Canton.
+- **APIs sociais e de comunidade** - APIs públicas usadas para sinais de engajamento e verificação de tarefas de campanha (por exemplo, confirmar um follow ou retweet no X).
+
+Descrevemos essas fontes por categoria de forma intencional. A combinação exata de provedores por trás de cada uma evolui conforme o ecossistema e nossa infraestrutura amadurecem.
+
+## Dados de preço
+
+O preço do token CC, a capitalização de mercado, o volume em 24h e a oferta circulante vêm de provedores de dados de mercado estabelecidos (oráculos de preço). Quando há mais de uma fonte disponível, fazemos a verificação cruzada entre elas para reduzir o impacto de um feed estar atrasado ou incorreto.
+
+Os dados de preço são atualizados com frequência - na ordem de poucos minutos - para que os números que você vê fiquem próximos das condições de mercado em tempo real.
+
+## Dados de rede
+
+Os dados on-chain da rede são lidos da Canton Network por meio de indexadores on-chain:
+
+- Contagem de validadores e Super Validadores
+- Volume diário de transações
+- Quantidades de queima e emissão por rodada
+- Contagem de apps em destaque
+- Total de parties da rede
+
+As estatísticas da rede são sincronizadas regularmente para que a página Estatísticas de rede reflita a atividade atual da cadeia. O hub Explorar, que classifica projetos e validadores lado a lado, é servido a partir de um cache quente reconstruído aproximadamente a cada 5 minutos - assim ele carrega instantaneamente e se mantém atualizado.
+
+## Dados do portfólio
+
+Os saldos e recompensas das carteiras são obtidos da Canton Network por meio de indexadores on-chain. Quando você adiciona uma carteira, o CCTools consulta suas participações para exibir:
+
+- Saldos de tokens
+- Histórico de recompensas
+- Registros de transferência
+
+Isso é **somente leitura** - o CCTools só precisa do endereço público da sua carteira e nunca tem acesso para movimentar seus fundos.
+
+## Frequência de atualização
+
+Diferentes áreas são atualizadas em horários diferentes, ajustados à rapidez com que cada tipo de dado realmente muda:
+
+- **Preços** - atualizados a cada poucos minutos
+- **Gráfico do Explorar (classificação de projetos + validadores)** - cache quente reconstruído cerca de a cada 5 minutos
+- **Feed de notícias** - novos itens ingeridos e resumidos a cada 10 minutos
+- **Varredura de novo conteúdo (novos projetos, oportunidades, campanhas, postagens, trilhas de aprendizado)** - a cada 30 minutos
+
+Se algum número parecer momentaneamente desatualizado, uma atualização logo em seguida normalmente trará os valores mais recentes.
+

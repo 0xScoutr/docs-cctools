@@ -1,0 +1,57 @@
+---
+title: "Data Sources & APIs"
+description: "Where CCTools gets its data, the categories of providers behind it, and how often each surface is refreshed."
+---
+
+## How CCTools Sources Data
+
+CCTools brings together several different classes of data so that everything you see - prices, on-chain activity, DeFi metrics, and ecosystem signals - lives in one place. Rather than relying on any single source, we combine multiple provider categories and reconcile them, so a hiccup or gap in one feed doesn't leave a page blank or stale.
+
+The main categories we draw from are:
+
+- **On-chain indexers** - Services that read and index the Canton Network ledger so we can surface validator data, transactions, burns/mints, featured apps, and wallet balances without each user having to run their own node.
+- **Price oracles** - Market-data providers that supply CC token price, market cap, 24h volume, and circulating supply.
+- **TVL & DeFi aggregators** - Sources that track total value locked, liquidity, and protocol-level metrics across Canton DeFi apps.
+- **Social & community APIs** - Public APIs used for engagement signals and campaign task verification (for example, confirming an X follow or retweet).
+
+We intentionally describe these by category. The exact mix of providers behind each one evolves as the ecosystem and our infrastructure mature.
+
+## Price Data
+
+CC token price, market cap, 24h volume, and circulating supply come from established market-data providers (price oracles). Where more than one source is available, we cross-check them to reduce the impact of any single feed being delayed or off.
+
+Price data is refreshed frequently - on the order of every few minutes - so the numbers you see stay close to live market conditions.
+
+## Network Data
+
+On-chain network data is read from the Canton Network through on-chain indexers:
+
+- Validator and Super Validator counts
+- Daily transaction volume
+- Burn and mint amounts per round
+- Featured app count
+- Total network parties
+
+Network stats are synced regularly so the Network Stats page reflects current chain activity. The Explore hub, which ranks projects and validators side by side, is served from a warm cache that rebuilds roughly every 5 minutes - so it loads instantly while staying fresh.
+
+## Portfolio Data
+
+Wallet balances and rewards are fetched from the Canton Network via on-chain indexers. When you add a wallet, CCTools queries your holdings to display:
+
+- Token balances
+- Rewards history
+- Transfer records
+
+This is **read-only** - CCTools only ever needs your public wallet address and never has access to move your funds.
+
+## Refresh Cadence
+
+Different surfaces update on different schedules, tuned to how fast each kind of data actually changes:
+
+- **Prices** - refreshed every few minutes
+- **Explore graph (projects + validators ranking)** - warm cache rebuilt about every 5 minutes
+- **News feed** - new items ingested and summarized every 10 minutes
+- **New-content scan (new projects, opportunities, campaigns, posts, learn paths)** - every 30 minutes
+
+If a number ever looks momentarily out of date, a refresh shortly after will usually pick up the latest values.
+
