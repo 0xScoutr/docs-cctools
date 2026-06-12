@@ -18,6 +18,264 @@
   "styling": {
     "eyebrows": "breadcrumbs"
   },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "mcp",
+      "add-mcp"
+    ]
+  },
+  "redirects": [
+    {
+      "source": "/en",
+      "destination": "/"
+    },
+    {
+      "source": "/en/getting-started",
+      "destination": "/getting-started/what-is-cctools"
+    },
+    {
+      "source": "/en/portfolio",
+      "destination": "/portfolio/adding-wallets"
+    },
+    {
+      "source": "/en/ecosystem",
+      "destination": "/ecosystem/browsing-projects"
+    },
+    {
+      "source": "/en/earn",
+      "destination": "/earn/earn-opportunities"
+    },
+    {
+      "source": "/en/academy",
+      "destination": "/academy/academy-overview"
+    },
+    {
+      "source": "/en/news",
+      "destination": "/news/news-overview"
+    },
+    {
+      "source": "/en/account",
+      "destination": "/account/profile-settings"
+    },
+    {
+      "source": "/en/canton-network",
+      "destination": "/canton-network/what-is-canton"
+    },
+    {
+      "source": "/en/campaigns",
+      "destination": "/campaigns/how-campaigns-work"
+    },
+    {
+      "source": "/en/network",
+      "destination": "/network/network-stats"
+    },
+    {
+      "source": "/en/community",
+      "destination": "/community/community-rules"
+    },
+    {
+      "source": "/en/troubleshooting",
+      "destination": "/troubleshooting/login-issues"
+    },
+    {
+      "source": "/en/:slug*",
+      "destination": "/:slug*"
+    },
+    {
+      "source": "/getting-started",
+      "destination": "/getting-started/what-is-cctools"
+    },
+    {
+      "source": "/es/getting-started",
+      "destination": "/es/getting-started/what-is-cctools"
+    },
+    {
+      "source": "/pt/getting-started",
+      "destination": "/pt/getting-started/what-is-cctools"
+    },
+    {
+      "source": "/zh/getting-started",
+      "destination": "/zh/getting-started/what-is-cctools"
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/portfolio/adding-wallets"
+    },
+    {
+      "source": "/es/portfolio",
+      "destination": "/es/portfolio/adding-wallets"
+    },
+    {
+      "source": "/pt/portfolio",
+      "destination": "/pt/portfolio/adding-wallets"
+    },
+    {
+      "source": "/zh/portfolio",
+      "destination": "/zh/portfolio/adding-wallets"
+    },
+    {
+      "source": "/ecosystem",
+      "destination": "/ecosystem/browsing-projects"
+    },
+    {
+      "source": "/es/ecosystem",
+      "destination": "/es/ecosystem/browsing-projects"
+    },
+    {
+      "source": "/pt/ecosystem",
+      "destination": "/pt/ecosystem/browsing-projects"
+    },
+    {
+      "source": "/zh/ecosystem",
+      "destination": "/zh/ecosystem/browsing-projects"
+    },
+    {
+      "source": "/earn",
+      "destination": "/earn/earn-opportunities"
+    },
+    {
+      "source": "/es/earn",
+      "destination": "/es/earn/earn-opportunities"
+    },
+    {
+      "source": "/pt/earn",
+      "destination": "/pt/earn/earn-opportunities"
+    },
+    {
+      "source": "/zh/earn",
+      "destination": "/zh/earn/earn-opportunities"
+    },
+    {
+      "source": "/academy",
+      "destination": "/academy/academy-overview"
+    },
+    {
+      "source": "/es/academy",
+      "destination": "/es/academy/academy-overview"
+    },
+    {
+      "source": "/pt/academy",
+      "destination": "/pt/academy/academy-overview"
+    },
+    {
+      "source": "/zh/academy",
+      "destination": "/zh/academy/academy-overview"
+    },
+    {
+      "source": "/news",
+      "destination": "/news/news-overview"
+    },
+    {
+      "source": "/es/news",
+      "destination": "/es/news/news-overview"
+    },
+    {
+      "source": "/pt/news",
+      "destination": "/pt/news/news-overview"
+    },
+    {
+      "source": "/zh/news",
+      "destination": "/zh/news/news-overview"
+    },
+    {
+      "source": "/account",
+      "destination": "/account/profile-settings"
+    },
+    {
+      "source": "/es/account",
+      "destination": "/es/account/profile-settings"
+    },
+    {
+      "source": "/pt/account",
+      "destination": "/pt/account/profile-settings"
+    },
+    {
+      "source": "/zh/account",
+      "destination": "/zh/account/profile-settings"
+    },
+    {
+      "source": "/canton-network",
+      "destination": "/canton-network/what-is-canton"
+    },
+    {
+      "source": "/es/canton-network",
+      "destination": "/es/canton-network/what-is-canton"
+    },
+    {
+      "source": "/pt/canton-network",
+      "destination": "/pt/canton-network/what-is-canton"
+    },
+    {
+      "source": "/zh/canton-network",
+      "destination": "/zh/canton-network/what-is-canton"
+    },
+    {
+      "source": "/campaigns",
+      "destination": "/campaigns/how-campaigns-work"
+    },
+    {
+      "source": "/es/campaigns",
+      "destination": "/es/campaigns/how-campaigns-work"
+    },
+    {
+      "source": "/pt/campaigns",
+      "destination": "/pt/campaigns/how-campaigns-work"
+    },
+    {
+      "source": "/zh/campaigns",
+      "destination": "/zh/campaigns/how-campaigns-work"
+    },
+    {
+      "source": "/network",
+      "destination": "/network/network-stats"
+    },
+    {
+      "source": "/es/network",
+      "destination": "/es/network/network-stats"
+    },
+    {
+      "source": "/pt/network",
+      "destination": "/pt/network/network-stats"
+    },
+    {
+      "source": "/zh/network",
+      "destination": "/zh/network/network-stats"
+    },
+    {
+      "source": "/community",
+      "destination": "/community/community-rules"
+    },
+    {
+      "source": "/es/community",
+      "destination": "/es/community/community-rules"
+    },
+    {
+      "source": "/pt/community",
+      "destination": "/pt/community/community-rules"
+    },
+    {
+      "source": "/zh/community",
+      "destination": "/zh/community/community-rules"
+    },
+    {
+      "source": "/troubleshooting",
+      "destination": "/troubleshooting/login-issues"
+    },
+    {
+      "source": "/es/troubleshooting",
+      "destination": "/es/troubleshooting/login-issues"
+    },
+    {
+      "source": "/pt/troubleshooting",
+      "destination": "/pt/troubleshooting/login-issues"
+    },
+    {
+      "source": "/zh/troubleshooting",
+      "destination": "/zh/troubleshooting/login-issues"
+    }
+  ],
   "navigation": {
     "languages": [
       {
