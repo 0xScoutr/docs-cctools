@@ -147,3 +147,25 @@ img.nav-logo {
   max-width: 40px;
   height: auto;
 }
+
+/* CCTools brand CTA: lime fill + dark text (Mintlify defaults button text to white,
+   which is unreadable on lime). Scoped to the navbar link only. */
+#navbar a[href^="https://cctools.network"],
+#topbar a[href^="https://cctools.network"],
+header a[href^="https://cctools.network"] {
+  background: #e6ff6a !important;
+  border-color: #e6ff6a !important;
+}
+#navbar a[href^="https://cctools.network"],
+#navbar a[href^="https://cctools.network"] *,
+#topbar a[href^="https://cctools.network"],
+#topbar a[href^="https://cctools.network"] *,
+header a[href^="https://cctools.network"],
+header a[href^="https://cctools.network"] * {
+  color: #0c0e14 !important;
+}
+#navbar a[href^="https://cctools.network"]:hover,
+#topbar a[href^="https://cctools.network"]:hover,
+header a[href^="https://cctools.network"]:hover {
+  background: #d4f050 !important;
+}
