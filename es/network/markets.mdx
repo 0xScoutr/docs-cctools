@@ -1,0 +1,188 @@
+---
+title: Centro de Mercados
+description: Explora pools de DeFi de Canton, RWA, stablecoins, tokens, y cómo adquirir Canton Coin a través de exchanges, on-ramps, bridges y wallets.
+---
+
+Markets es tu centro integral para explorar el ecosistema de Canton. Cambia entre ocho pestañas para descubrir oportunidades de DeFi en vivo, activos tokenizados, tokens con datos de precios, y cómo adquirir Canton Coin (CC).
+
+## Pools de DeFi
+
+Pools de liquidez en vivo de los protocolos DEX nativos de Canton: Tradecraft, Send, Cantex, OneSwap y Silvana.
+
+**Lo que ves**
+- Par del pool (p. ej., CC/USDT) y nombre del protocolo
+- Valor Total Bloqueado (TVL) del protocolo
+- Volumen de 14 días
+- Tasa de Porcentaje Anual (APR) o rango de APY (en vivo desde Tradecraft/Send, fijo para los demás hasta que sus APIs estén disponibles)
+
+**Filtros**
+- **Protocolo**: Limita a Tradecraft, Cantex, OneSwap o Send. Por defecto, todos.
+- **Búsqueda**: Escribe el nombre de un par de pool o el slug de un protocolo.
+
+**Opciones de ordenación**
+- Mayor APR (por defecto)
+- Mayor TVL
+- Mayor volumen de 14 días
+
+Todos los datos de los pools se actualizan en vivo a través de los endpoints de Tradecraft y Send (caché de 5 minutos). Haz clic en la fila del pool para ver la página del ecosistema del protocolo, o pulsa Abrir para depositar directamente en la interfaz de ese protocolo.
+
+## RWA (Activos del Mundo Real)
+
+Activos del mundo real tokenizados en Canton: materias primas, BTC, índices y más. Los mercados de libro de órdenes de Temple aparecen aquí como el lugar canónico de RWA.
+
+**Lo que ves**
+- Emisor del activo y nombre del proyecto
+- Categoría: Materias primas, BTC, Índice
+- Descripción de cobertura (p. ej., "Lingotes de oro, almacenamiento físico")
+- Estado: En vivo o En preparación (próximamente)
+
+**Filtros**
+- **Categoría**: Materias primas, BTC, Índice, o todos
+- **Búsqueda**: Escribe el nombre de un emisor o un activo
+
+**Opciones de ordenación**
+- En vivo primero (por defecto, los activos en preparación se atenúan)
+- Nombre A-Z
+
+Cada emisor de RWA muestra un botón Abrir para operar en Temple, o Detalles para leer el perfil completo del proyecto.
+
+## Stablecoins
+
+Stablecoins en vivo o ancladas en Canton, divididas en las secciones En vivo y Próximamente.
+
+**Lo que ves**
+- Nombre de la stablecoin, ticker y emisor
+- Tipo: Respaldada por fiat, Generadora de rendimiento, Respaldada por cripto, MMF
+- Objetivo de anclaje (p. ej., USD, EUR)
+- Estado: En vivo o Pronto
+
+**Filtros**
+- **Tipo**: Respaldada por fiat, Generadora de rendimiento, Respaldada por cripto, MMF
+- **Búsqueda**: Nombre, ticker o emisor
+
+**Opciones de ordenación**
+- Nombre A-Z (por defecto)
+- Por tipo
+- Multicadena primero
+
+Las stablecoins multicadena están etiquetadas para que sepas cuáles son nativas de Canton frente a las traídas mediante bridge desde otras cadenas.
+
+## Tokens
+
+Proyectos del ecosistema de Canton con un token, combinados de dos fuentes:
+- Proyectos del ecosistema de Canton en la base de datos (proyectos reales con páginas de perfil)
+- Datos de mercado en vivo de CoinGecko (precio, capitalización de mercado, cambio en 24h)
+
+**Lo que ves**
+- Nombre del token y ticker
+- Proyecto (emisor)
+- Dirección del contrato inteligente (copiable, o vacía para entradas solo de CoinGecko aún no indexadas localmente)
+- Precio actual
+- Capitalización de mercado (con insignia de rareza: Común, Poco común, Raro, Épico, Legendario)
+- Cambio de precio en 24 horas (verde para subida, gris atenuado para bajada)
+
+**Filtros**
+- **Cadena**: Canton, Base, BSC, Ethereum, o todas
+- **Búsqueda**: Nombre del token, nombre del proyecto o ticker
+
+**Opciones de ordenación**
+- Mayor capitalización de mercado (por defecto)
+- Mayor precio
+- Mayor cambio en 24h
+- Nombre A-Z
+
+Haz clic en la fila de un token para ver su perfil del ecosistema o su sitio web. Los datos se actualizan desde CoinGecko en tiempo real; los tokens que están en la base de datos pero aún no en CoinGecko muestran el precio vacío.
+
+## Obtener CC
+
+Cómo adquirir Canton Coin (CC). Encuentra la ruta que mejor funcione para tu región, tipo de exchange y preferencia de KYC.
+
+**Lo que ves**
+- Precio de CC y cambio en 24h (tarjeta destacada en la parte superior)
+- Capitalización de mercado y volumen de negociación en 24h
+- Todos los lugares clasificados por volumen de negociación de CC
+
+**Para cada lugar**
+- Tipo: DEX o CEX
+- Comisión del maker (si está listada)
+- Requisito de KYC: Ninguno (escudo verde), Opcional (ámbar) o Requerido (gris)
+- Precio de CC en vivo en ese lugar
+- Volumen de CC en 24h
+
+**Filtros**
+- **País**: Cualquiera, EE. UU., UE, Reino Unido, Brasil, Vietnam, Indonesia, Nigeria
+- **Tipo**: Todos los lugares, solo DEX, solo CEX
+- **KYC**: Cualquier nivel o Ninguno / Opcional
+- **Búsqueda**: Nombre del lugar
+
+**Opciones de ordenación**
+- Mayor volumen en 24h (por defecto, solo CEX)
+- Comisiones de maker más bajas
+- Sin KYC primero
+- Más pares con fiat
+
+Los lugares CEX sin volumen de CC en vivo se ocultan (sin ruido). Las rutas DEX siempre se muestran independientemente del volumen. Haz clic en Abrir para operar en ese lugar, o Detalles para ver el perfil completo del exchange. Un aviso en la parte inferior explica que las rutas de bridge hacia Canton desde otras cadenas estarán disponibles próximamente.
+
+## Bridges
+
+Rutas entre cadenas hacia Canton. Qué activos entran mediante bridge, desde qué cadenas de origen, a través de qué protocolos.
+
+**Lo que ves**
+- Nombre del bridge y protocolo
+- Ruta: Desde Bitcoin, Ethereum, Base o Multicadena hacia Canton
+- Activo trasladado mediante bridge (p. ej., BTC, ETH, USDC)
+- Tipo o estándar de atestación (p. ej., "Cliente ligero", "MPC")
+- Estado: En vivo o Pronto
+
+**Filtros**
+- **Ruta**: Todas, Desde Bitcoin, Desde Ethereum, Desde Base, Multicadena
+- **Búsqueda**: Nombre del bridge o del activo
+
+**Opciones de ordenación**
+- En vivo primero (por defecto, los bridges en preparación se atenúan)
+- Nombre A-Z
+
+Haz clic en Abrir para acceder a la interfaz del bridge, o Detalles para el perfil del ecosistema del protocolo del bridge.
+
+## Wallets
+
+Wallets de autocustodia, wallets de hardware y soluciones institucionales/OTC. Organizadas en tres niveles: Minorista, Hardware (almacenamiento en frío) e Institucional y OTC (custodia + creadores de mercado).
+
+**Lo que ves**
+- Nombre de la wallet
+- Plataformas: Navegador, Web, Móvil, Hardware, Custodial o Múltiple
+- Tipo de custodia: Autocustodia o Custodial
+- Requisito de KYC: Ninguno (verde) o Requerido (gris)
+
+**Filtros**
+- **Custodia**: Todas, Solo autocustodia, Solo custodial
+- **KYC**: Cualquier nivel o Sin KYC
+- **Búsqueda**: Nombre de la wallet
+
+Sin opciones de ordenación (ordenadas por nivel: minorista, hardware, luego institucional/OTC). Haz clic en Abrir para acceder a la wallet, o Detalles para su página del ecosistema.
+
+## Filtros y Búsqueda
+
+Cada pestaña incluye una barra de filtros en la parte superior.
+
+**La búsqueda** coincide con pares de pools, nombres de protocolos, nombres de emisores, nombres de activos, tickers de tokens, nombres de proyectos y nombres de lugares según la pestaña.
+
+**Restablece los filtros** haciendo clic en el botón del estado vacío si tu búsqueda no devuelve resultados.
+
+**Escritorio vs. Móvil**: En escritorio, todos los filtros y controles de ordenación aparecen en una sola barra horizontal. En móvil, la búsqueda aparece primero; los filtros y la ordenación se apilan en una cuadrícula de 2 columnas debajo.
+
+## Datos en Vivo
+
+La mayoría de los datos se actualizan en vivo:
+- **Pools de DeFi**: el volumen/APR de Tradecraft y Send se actualiza vía API (caché de 5 minutos)
+- **Tokens**: precio, capitalización de mercado y cambio en 24h desde CoinGecko (en tiempo real)
+- **Obtener CC**: tarjeta destacada del precio de CC y precios por lugar desde el endpoint de tickers de CoinGecko (en vivo)
+- **RWA, Stablecoins, Bridges, Wallets**: listas estáticas curadas actualizadas manualmente
+
+## Recorrido de Primer Uso
+
+En tu primera visita a Markets (o si borras el localStorage), un recorrido con coachmarks resalta la franja de pestañas, la barra de filtros y la tabla de pools. Se muestra una vez por usuario y se puede descartar.
+
+## Misión de Onboarding
+
+Ver la pestaña DeFi de Markets por primera vez mientras has iniciado sesión registra la finalización de la misión de onboarding "view_markets".

@@ -1,0 +1,188 @@
+---
+title: Markets Hub
+description: Browse Canton DeFi pools, RWA, stablecoins, tokens, and how to acquire Canton Coin across exchanges, on-ramps, bridges, and wallets.
+---
+
+Markets is your one-stop hub for exploring Canton's ecosystem. Switch between eight tabs to discover live DeFi opportunities, tokenized assets, tokens with pricing data, and how to acquire Canton Coin (CC).
+
+## DeFi Pools
+
+Live liquidity pools from Canton's native DEX protocols: Tradecraft, Send, Cantex, OneSwap, and Silvana.
+
+**What you see**
+- Pool pair (e.g., CC/USDT) and protocol name
+- Total Value Locked (TVL) from the protocol
+- 14-day volume
+- Annual Percentage Rate (APR) or APY range (live from Tradecraft/Send, hardcoded for others until their APIs ship)
+
+**Filters**
+- **Protocol**: Narrow to Tradecraft, Cantex, OneSwap, or Send. Defaults to all.
+- **Search**: Type a pool pair name or protocol slug.
+
+**Sort options**
+- Highest APR (default)
+- Highest TVL
+- Highest 14-day volume
+
+All pool data updates live via the Tradecraft and Send endpoints (5-minute cache). Click the pool row to see the protocol's ecosystem page, or hit Open to deposit directly on that protocol's interface.
+
+## RWA (Real-World Assets)
+
+Tokenized real-world assets on Canton: commodities, BTC, indices, and more. Temple's orderbook markets surface here as the canonical RWA venue.
+
+**What you see**
+- Asset issuer and project name
+- Category: Commodities, BTC, Index
+- Coverage description (e.g., "Gold bars, physical storage")
+- Status: Live or Pipeline (coming soon)
+
+**Filters**
+- **Category**: Commodities, BTC, Index, or all
+- **Search**: Type an issuer or asset name
+
+**Sort options**
+- Live first (default, pipeline assets fade)
+- Name A-Z
+
+Each RWA issuer shows an Open button to trade on Temple, or Details to read the full project profile.
+
+## Stablecoins
+
+Stablecoins live or pegged on Canton, split into Live and Coming Soon sections.
+
+**What you see**
+- Stablecoin name, ticker, and issuer
+- Type: Fiat-backed, Yield-bearing, Crypto-backed, MMF
+- Peg target (e.g., USD, EUR)
+- Status: Live or Soon
+
+**Filters**
+- **Type**: Fiat-backed, Yield-bearing, Crypto-backed, MMF
+- **Search**: Name, ticker, or issuer
+
+**Sort options**
+- Name A-Z (default)
+- By type
+- Multi-chain first
+
+Multi-chain stablecoins are tagged so you know which are Canton-native vs. bridged from other chains.
+
+## Tokens
+
+Canton ecosystem projects with a token, merged from two sources:
+- Canton ecosystem projects in the database (real projects with profile pages)
+- CoinGecko live market data (price, market cap, 24h change)
+
+**What you see**
+- Token name and ticker
+- Project (issuer)
+- Smart contract address (copyable, or empty for CoinGecko-only entries not yet indexed locally)
+- Current price
+- Market cap (with rarity badge: Common, Uncommon, Rare, Epic, Legendary)
+- 24-hour price change (green for up, muted gray for down)
+
+**Filters**
+- **Chain**: Canton, Base, BSC, Ethereum, or all
+- **Search**: Token name, project name, or ticker
+
+**Sort options**
+- Highest market cap (default)
+- Highest price
+- Biggest 24h change
+- Name A-Z
+
+Click a token row for its ecosystem profile or website. Data refreshes from CoinGecko in real time; tokens in the database but not yet on CoinGecko show price as empty.
+
+## Get CC
+
+How to acquire Canton Coin (CC). Find the route that works best for your region, exchange type, and KYC preference.
+
+**What you see**
+- CC price and 24h change (hero card at top)
+- Market cap and 24h trading volume
+- All venues ranked by CC trading volume
+
+**For each venue**
+- Type: DEX or CEX
+- Maker fee (if listed)
+- KYC requirement: None (green shield), Optional (amber), or Required (gray)
+- Live CC price on that venue
+- 24h CC volume
+
+**Filters**
+- **Country**: Anywhere, US, EU, UK, Brazil, Vietnam, Indonesia, Nigeria
+- **Type**: All venues, DEX only, CEX only
+- **KYC**: Any level or None / Optional
+- **Search**: Venue name
+
+**Sort options**
+- Highest 24h volume (default, CEX-only)
+- Lowest maker fees
+- No KYC first
+- Most fiat pairs
+
+CEX venues without live CC volume are hidden (no noise). DEX routes always show regardless of volume. Click Open to trade on that venue, or Details to see the full exchange profile. A prompt at the bottom explains that bridge routes to Canton from other chains are coming soon.
+
+## Bridges
+
+Cross-chain routes into Canton. Which assets bridge in, from which source chains, via which protocols.
+
+**What you see**
+- Bridge name and protocol
+- Route: From Bitcoin, Ethereum, Base, or Multi-chain to Canton
+- Asset bridged (e.g., BTC, ETH, USDC)
+- Attestation type or standard (e.g., "Light-client", "MPC")
+- Status: Live or Soon
+
+**Filters**
+- **Route**: All, From Bitcoin, From Ethereum, From Base, Multi-chain
+- **Search**: Bridge or asset name
+
+**Sort options**
+- Live first (default, pipeline bridges fade)
+- Name A-Z
+
+Click Open to access the bridge interface, or Details for the bridge protocol's ecosystem profile.
+
+## Wallets
+
+Self-custody wallets, hardware wallets, and institutional/OTC solutions. Organized into three tiers: Retail, Hardware (cold storage), and Institutional & OTC (custody + market makers).
+
+**What you see**
+- Wallet name
+- Platforms: Browser, Web, Mobile, Hardware, Custodial, or Multi
+- Custody type: Self-custody or Custodial
+- KYC requirement: None (green) or Required (gray)
+
+**Filters**
+- **Custody**: All, Self-custody only, Custodial only
+- **KYC**: Any level or No KYC
+- **Search**: Wallet name
+
+No sort options (sorted by tier: retail, hardware, then institutional/OTC). Click Open to access the wallet, or Details for its ecosystem page.
+
+## Filters and Search
+
+Every tab includes a filter bar at the top.
+
+**Search** matches against pool pairs, protocol names, issuer names, asset names, token tickers, project names, and venue names depending on the tab.
+
+**Reset filters** by clicking the empty state button if your search returns no results.
+
+**Desktop vs. Mobile**: On desktop, all filters and sort controls appear in one horizontal bar. On mobile, search appears first; filters and sort are stacked in a 2-column grid below.
+
+## Live Data
+
+Most data updates live:
+- **DeFi pools**: Tradecraft and Send volume/APR refreshes via API (5-minute cache)
+- **Tokens**: Price, market cap, and 24h change from CoinGecko (real-time)
+- **Get CC**: CC price hero card and per-venue prices from CoinGecko tickers endpoint (live)
+- **RWA, Stablecoins, Bridges, Wallets**: Curated static lists updated manually
+
+## First-Use Tour
+
+On your first visit to Markets (or if you clear localStorage), a coachmark tour highlights the tab strip, filter bar, and pool table. It shows once per user and can be dismissed.
+
+## Onboarding Quest
+
+Viewing the Markets DeFi tab for the first time while logged in tracks the "view_markets" onboarding quest completion.

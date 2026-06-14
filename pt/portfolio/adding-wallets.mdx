@@ -1,29 +1,69 @@
 ---
-title: "Adicionando carteiras"
-description: "Como adicionar e gerenciar vários endereços de carteira em seu portfólio."
+title: "Adicionando Wallets"
+description: "Conecte wallets da Canton e de outras chains para acompanhar seu portfólio unificado."
 ---
 
-## Adicionar uma carteira
+## Adicionar uma wallet da Canton
 
-Navegue até **Portfólio** e clique no botão **Adicionar carteira**. Cole o endereço da sua carteira Canton e coloque um rótulo (por exemplo, "Carteira Principal", "Carteira DeFi").
+Vá até **Portfolio** e clique no botão **My Wallets**. Selecione **Connect Canton wallet** e siga o seletor de wallets para vincular sua wallet (Send ou 5N Loop).
 
-O CCTools verificará automaticamente sua carteira e exibirá:
+Depois de vinculada, o CCTools escaneia automaticamente sua wallet e exibe:
 
-- Saldos de tokens
-- Valor atual em USD
-- mudança de 24h
-- Desempenho histórico
+- Saldo em CC e USD
+- Valores desbloqueados e bloqueados
+- Variação de preço de 7 dias
+- Estimativa de recompensas de 30 dias
 
-## Várias carteiras
+## Conectar wallets de outras chains
 
-Você pode adicionar vários endereços de carteira para rastrear seu portfólio completo:
+Você também pode conectar wallets de EVM (Ethereum, Base, Polygon, etc.) e Solana ao seu portfólio. No modal **My Wallets**, adicione uma wallet de EVM ou Solana clicando em **+ Connect** na seção da chain correspondente.
 
-- **Plano grátis**: Até 3 carteiras
-- **Plano Pro**: até 10 carteiras
+Cada wallet que você conecta:
 
-A visualização do portfólio agrega todas as carteiras em uma única visualização, para que você possa ver o total de ativos em todas as carteiras. Cada carteira pode ser etiquetada individualmente (até 50 caracteres) e suporta nomes CNS.
+- É vinculada por verificação de assinatura (nenhuma frase semente é compartilhada)
+- Mostra as posições e o saldo em tempo real
+- Contribui para o patrimônio líquido do seu portfólio unificado
+- Adiciona um bônus de pontuação de outras chains ao seu perfil da Canton
 
-## Removendo uma carteira
+## Limites de wallets por plano
 
-Para remover uma carteira, vá para **Portfólio > Configurações** (ícone de engrenagem) e clique no botão remover ao lado da carteira que você deseja excluir. Isso apenas remove o rastreamento – não afeta sua carteira real.
+Usuários Free e Pro têm limites diferentes de wallets por chain:
 
+- **Plano Free**: 1 wallet por chain (Canton, EVM, Solana)
+- **Plano Pro**: Até 5 wallets por chain
+
+Se você atingir o limite do plano Free, faça upgrade para o Pro para adicionar mais wallets.
+
+## Gerencie suas wallets
+
+No modal **My Wallets**, você pode:
+
+- **Renomear** uma wallet (até 40 caracteres) - clique no ícone de lápis
+- **Definir como principal** - marque uma wallet como a sua principal com o ícone de estrela
+- **Desconectar** - remova o acompanhamento de qualquer wallet com o ícone de desvincular
+
+Desconectar apenas remove o acompanhamento no CCTools e não afeta sua wallet real.
+
+## O que seu portfólio mostra
+
+Seu portfólio unificado exibe:
+
+**Patrimônio líquido total**
+- Todas as wallets de Canton, EVM e Solana somadas em USD
+- Barra de alocação por chain mostrando a distribuição do saldo
+- Estimativa de recompensas em CC de 30 dias (apenas wallets da Canton)
+- Marca de data/hora da última atualização
+
+**Páginas de detalhes por wallet**
+Clique em qualquer cartão de wallet para ver:
+- Detalhamento de CC bloqueado e desbloqueado
+- Taxas de manutenção pagas
+- Gráfico do histórico de recompensas diárias (se você executa um validador ou uma Featured App)
+- Transferências recentes e contrapartes
+- Estatísticas da wallet (relação recompensa/queima, principais parceiros de negociação)
+
+**Nota:** Gráficos detalhados de lucros e perdas estão disponíveis apenas para usuários Pro. Usuários Free veem saldos, recompensas e métricas de atividade de todas as wallets conectadas.
+
+## Só dando uma olhada?
+
+Se você ainda não quer conectar uma wallet, use o **Tracker** para inspecionar qualquer party ID da Canton ou endereço de wallet em modo somente leitura. Clique no link **Track any Party ID** em My Wallets ou vá até o **Tracker** para começar.

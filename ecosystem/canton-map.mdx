@@ -1,0 +1,107 @@
+---
+title: The Canton Map
+description: Navigate the Canton network ecosystem with an interactive force-directed graph of projects, validators, apps, and campaigns.
+---
+
+An interactive network visualization that maps Canton ecosystem participants in real time. The Canton Map shows projects, validators, featured apps, and campaigns as interconnected nodes, with edges representing their relationships.
+
+## Opening the map
+
+Visit the Canton Map page and select a category (Finance, Infrastructure, Social, etc.) from the grid. The map loads only that category's subgraph, keeping performance fast regardless of network size.
+
+Each category shows:
+- **Projects** - solid colored circles, grouped by category color (blue for DeFi, amber for Trading, etc.)
+- **Validators & Super Validators** - ring nodes that secure projects on-chain
+- **Featured Apps** - apps built on top of selected projects
+- **Earn Listings** - opportunities available within the category
+- **Campaigns** - active promotions and events
+
+## Reading the graph
+
+**Node types** (shown in the legend):
+
+- **Project** - solid circle with your category color
+- **Category Hub** - hollow gray ring (shows projects within a category)
+- **Validator** - hollow blue ring (validates one or more projects)
+- **Super Validator** - hollow amber ring (higher on-chain stake)
+- **Featured App** - solid purple circle (app built on a project)
+- **Earn Listing** - solid green circle (paid opportunity)
+- **Campaign** - solid purple circle (limited-time promotion)
+
+**Visual overlays** on project nodes:
+- Small **featured app badge** (purple sparkle) - has featured apps
+- **Sponsored badge** (amber bolt) - is sponsored
+- **Validator badge** (green hexagon) - has at least one validator
+- **SV badge** (amber hexagon) - has at least one super validator
+
+**Connections** show relationships:
+- Projects belong to categories (upward edges)
+- Validators and super validators secure projects (inbound edges)
+- Featured apps are powered by projects (outbound edges)
+- Projects host earn listings and campaigns
+
+## Interacting with the map
+
+**Pan** - click and drag to move around the graph.
+
+**Zoom** - scroll up to zoom in, scroll down to zoom out. Use the zoom buttons in the bottom-right corner for finer control.
+
+**Search** - the search bar at the top finds any project, validator, or app by name or ID. Results populate in a dropdown with keyboard navigation:
+- Arrow Up / Down to change selection
+- Enter to jump to a node
+- Escape to close
+
+When you search for a node in another category, the map automatically switches to that category and focuses the node.
+
+**Click a node** - opens its detail panel on the right (desktop) or as a bottom sheet (mobile). The panel shows:
+- Name, logo, and category
+- Related nodes (connected projects, validators, apps, opportunities, campaigns)
+- Scores and metrics (if available)
+- Links to external resources
+
+**Filter node types** - toggle validators, super validators, featured apps, earn listings, or campaigns on and off using the filters button. A badge on the button shows how many filters are active.
+
+**Zoom controls** (bottom right):
+- Zoom In / Zoom Out - adjust scale in steps
+- Reset View - return to the default zoom and position
+- Reheat Simulation - restart the force physics, useful if nodes pile up in a corner
+
+## Desktop vs. mobile
+
+**Desktop**: The legend sidebar (220px) appears on the left with node-type key, visual overlays, and category buttons. Hide it to expand the canvas. The node detail panel docks to the right side.
+
+**Mobile**: Tap the filters button (left of the search bar) to open the legend and category picker in a bottom sheet. The detail panel slides up from the bottom when you select a node.
+
+## Understanding the layout
+
+The graph uses a force-directed simulation that:
+- Repels overlapping nodes (collision)
+- Attracts connected nodes toward each other
+- Clusters nodes by their relationships
+
+Nodes settle into a stable arrangement over 60-120 ticks. If the layout feels cluttered, tap Reheat Simulation to restart the physics from scratch. Dragging any node temporarily pins it in place; release to unpin.
+
+The background includes a subtle dot grid and radial gradient to keep the canvas readable at any zoom level.
+
+## Performance
+
+Each category loads only its subgraph (typically 30-80 nodes), not the entire network. The map uses a Canvas renderer and Web Workers for simulation, keeping 60 FPS even on older devices.
+
+- **Category picker** loads graph metadata in ~100ms
+- **Map rendering** completes in ~200-500ms depending on subgraph size
+- **Simulation** runs in the browser; no server round-trips during interaction
+
+## Tips
+
+- **Start with a small category** if you are new to the map. Finance (DeFi) is the largest; Services or DAO are more compact.
+- **Use the legend** to understand what each color and shape means. The visual grammar is consistent across all categories.
+- **Search by project name** to jump straight to a specific ecosystem player, then explore outbound edges to discover validators and apps.
+- **Hover over a node** to see its name in a tooltip. Click to open the full detail panel.
+- **Open multiple detail panels** by searching and clicking nodes across different categories. Each panel replaces the previous one.
+
+## Next steps
+
+From the detail panel, navigate to:
+- The project's full profile page (if it is a project)
+- Related projects, validators, or campaigns on the same map
+- Earn opportunities to participate in the ecosystem

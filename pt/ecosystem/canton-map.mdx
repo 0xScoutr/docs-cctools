@@ -1,0 +1,107 @@
+---
+title: O Mapa da Canton
+description: Navegue pelo ecossistema da rede Canton com um grafo interativo dirigido por forças de projetos, validadores, apps e campanhas.
+---
+
+Uma visualização de rede interativa que mapeia os participantes do ecossistema Canton em tempo real. O Mapa da Canton mostra projetos, validadores, apps em destaque e campanhas como nós interconectados, com arestas representando suas relações.
+
+## Abrindo o mapa
+
+Acesse a página do Mapa da Canton e selecione uma categoria (Finanças, Infraestrutura, Social, etc.) na grade. O mapa carrega apenas o subgrafo daquela categoria, mantendo o desempenho rápido independentemente do tamanho da rede.
+
+Cada categoria mostra:
+- **Projetos** - círculos de cor sólida, agrupados pela cor da categoria (azul para DeFi, âmbar para Trading, etc.)
+- **Validadores e Super Validadores** - nós em anel que protegem projetos na cadeia
+- **Apps em destaque** - apps construídas sobre projetos selecionados
+- **Listagens de Earn** - oportunidades disponíveis dentro da categoria
+- **Campanhas** - promoções e eventos ativos
+
+## Lendo o grafo
+
+**Tipos de nó** (mostrados na legenda):
+
+- **Projeto** - círculo sólido com a cor da sua categoria
+- **Hub de Categoria** - anel cinza vazado (mostra os projetos dentro de uma categoria)
+- **Validador** - anel azul vazado (valida um ou mais projetos)
+- **Super Validador** - anel âmbar vazado (maior stake na cadeia)
+- **App em destaque** - círculo roxo sólido (app construída sobre um projeto)
+- **Listagem de Earn** - círculo verde sólido (oportunidade paga)
+- **Campanha** - círculo roxo sólido (promoção por tempo limitado)
+
+**Sobreposições visuais** nos nós de projeto:
+- Pequena **insígnia de app em destaque** (brilho roxo) - tem apps em destaque
+- **Insígnia de patrocinado** (raio âmbar) - é patrocinado
+- **Insígnia de validador** (hexágono verde) - tem pelo menos um validador
+- **Insígnia de SV** (hexágono âmbar) - tem pelo menos um super validador
+
+**Conexões** mostram relações:
+- Projetos pertencem a categorias (arestas para cima)
+- Validadores e super validadores protegem projetos (arestas de entrada)
+- Apps em destaque são impulsionadas por projetos (arestas de saída)
+- Projetos hospedam listagens de Earn e campanhas
+
+## Interagindo com o mapa
+
+**Mover** - clique e arraste para se deslocar pelo grafo.
+
+**Zoom** - role para cima para aproximar, role para baixo para afastar. Use os botões de zoom no canto inferior direito para um controle mais fino.
+
+**Buscar** - a barra de busca no topo encontra qualquer projeto, validador ou app por nome ou ID. Os resultados aparecem em um menu suspenso com navegação por teclado:
+- Seta para cima / para baixo para mudar a seleção
+- Enter para pular para um nó
+- Escape para fechar
+
+Quando você busca um nó em outra categoria, o mapa muda automaticamente para essa categoria e foca no nó.
+
+**Clique em um nó** - abre seu painel de detalhes à direita (desktop) ou como uma folha inferior (mobile). O painel mostra:
+- Nome, logo e categoria
+- Nós relacionados (projetos, validadores, apps, oportunidades e campanhas conectados)
+- Pontuações e métricas (se disponíveis)
+- Links para recursos externos
+
+**Filtrar tipos de nó** - ative e desative validadores, super validadores, apps em destaque, listagens de Earn ou campanhas usando o botão de filtros. Uma insígnia no botão mostra quantos filtros estão ativos.
+
+**Controles de zoom** (canto inferior direito):
+- Aproximar / Afastar - ajusta a escala em etapas
+- Redefinir visualização - retorna ao zoom e à posição padrão
+- Reaquecer simulação - reinicia a física de forças, útil se os nós se amontoarem em um canto
+
+## Desktop vs. mobile
+
+**Desktop**: A barra lateral da legenda (220px) aparece à esquerda com a chave de tipos de nó, as sobreposições visuais e os botões de categoria. Oculte-a para expandir a tela. O painel de detalhes do nó se acopla ao lado direito.
+
+**Mobile**: Toque no botão de filtros (à esquerda da barra de busca) para abrir a legenda e o seletor de categorias em uma folha inferior. O painel de detalhes desliza para cima a partir da base quando você seleciona um nó.
+
+## Entendendo o layout
+
+O grafo usa uma simulação dirigida por forças que:
+- Repele nós sobrepostos (colisão)
+- Atrai nós conectados entre si
+- Agrupa nós conforme suas relações
+
+Os nós se assentam em um arranjo estável ao longo de 60-120 ticks. Se o layout parecer bagunçado, toque em Reaquecer simulação para reiniciar a física do zero. Arrastar qualquer nó o fixa temporariamente no lugar; solte para liberar.
+
+O fundo inclui uma sutil grade de pontos e um gradiente radial para manter a tela legível em qualquer nível de zoom.
+
+## Desempenho
+
+Cada categoria carrega apenas seu subgrafo (normalmente 30-80 nós), não a rede inteira. O mapa usa um renderizador Canvas e Web Workers para a simulação, mantendo 60 FPS mesmo em dispositivos mais antigos.
+
+- **O seletor de categorias** carrega os metadados do grafo em ~100ms
+- **A renderização do mapa** é concluída em ~200-500ms dependendo do tamanho do subgrafo
+- **A simulação** roda no navegador; sem idas e vindas ao servidor durante a interação
+
+## Dicas
+
+- **Comece com uma categoria pequena** se você é novo no mapa. Finanças (DeFi) é a maior; Serviços ou DAO são mais compactas.
+- **Use a legenda** para entender o que cada cor e forma significam. A gramática visual é consistente em todas as categorias.
+- **Busque pelo nome do projeto** para pular direto para um participante específico do ecossistema, depois explore as arestas de saída para descobrir validadores e apps.
+- **Passe o cursor sobre um nó** para ver seu nome em uma dica de ferramenta. Clique para abrir o painel de detalhes completo.
+- **Abra vários painéis de detalhes** buscando e clicando em nós de diferentes categorias. Cada painel substitui o anterior.
+
+## Próximos passos
+
+A partir do painel de detalhes, navegue para:
+- A página de perfil completa do projeto (se for um projeto)
+- Projetos, validadores ou campanhas relacionados no mesmo mapa
+- Oportunidades de Earn para participar do ecossistema

@@ -274,6 +274,22 @@
     {
       "source": "/zh/troubleshooting",
       "destination": "/zh/troubleshooting/login-issues"
+    },
+    {
+      "source": "/ecosystem/explore-hub",
+      "destination": "/ecosystem/canton-map"
+    },
+    {
+      "source": "/es/ecosystem/explore-hub",
+      "destination": "/es/ecosystem/canton-map"
+    },
+    {
+      "source": "/pt/ecosystem/explore-hub",
+      "destination": "/pt/ecosystem/canton-map"
+    },
+    {
+      "source": "/zh/ecosystem/explore-hub",
+      "destination": "/zh/ecosystem/canton-map"
     }
   ],
   "navigation": {
@@ -304,8 +320,9 @@
             "icon": "globe",
             "pages": [
               "ecosystem/browsing-projects",
+              "ecosystem/tracker",
               "ecosystem/compare",
-              "ecosystem/explore-hub",
+              "ecosystem/canton-map",
               "ecosystem/sponsored-listings"
             ]
           },
@@ -373,6 +390,7 @@
             "icon": "chart-column",
             "pages": [
               "network/network-stats",
+              "network/markets",
               "network/data-sources"
             ]
           },
@@ -423,8 +441,9 @@
             "icon": "globe",
             "pages": [
               "es/ecosystem/browsing-projects",
+              "es/ecosystem/tracker",
               "es/ecosystem/compare",
-              "es/ecosystem/explore-hub",
+              "es/ecosystem/canton-map",
               "es/ecosystem/sponsored-listings"
             ]
           },
@@ -492,6 +511,7 @@
             "icon": "chart-column",
             "pages": [
               "es/network/network-stats",
+              "es/network/markets",
               "es/network/data-sources"
             ]
           },
@@ -541,8 +561,9 @@
             "icon": "globe",
             "pages": [
               "pt/ecosystem/browsing-projects",
+              "pt/ecosystem/tracker",
               "pt/ecosystem/compare",
-              "pt/ecosystem/explore-hub",
+              "pt/ecosystem/canton-map",
               "pt/ecosystem/sponsored-listings"
             ]
           },
@@ -610,6 +631,7 @@
             "icon": "chart-column",
             "pages": [
               "pt/network/network-stats",
+              "pt/network/markets",
               "pt/network/data-sources"
             ]
           },
@@ -659,8 +681,9 @@
             "icon": "globe",
             "pages": [
               "zh/ecosystem/browsing-projects",
+              "zh/ecosystem/tracker",
               "zh/ecosystem/compare",
-              "zh/ecosystem/explore-hub",
+              "zh/ecosystem/canton-map",
               "zh/ecosystem/sponsored-listings"
             ]
           },
@@ -728,6 +751,7 @@
             "icon": "chart-column",
             "pages": [
               "zh/network/network-stats",
+              "zh/network/markets",
               "zh/network/data-sources"
             ]
           },

@@ -1,29 +1,69 @@
 ---
 title: "Adding Wallets"
-description: "How to add and manage multiple wallet addresses in your portfolio."
+description: "Connect Canton and cross-chain wallets to track your unified portfolio."
 ---
 
-## Add a Wallet
+## Add a Canton Wallet
 
-Navigate to **Portfolio** and click the **Add Wallet** button. Paste your Canton wallet address and give it a label (e.g., "Main Wallet", "DeFi Wallet").
+Navigate to **Portfolio** and click the **My Wallets** button. Select **Connect Canton wallet** and follow the wallet picker to link your wallet (Send or 5N Loop).
 
-CCTools will automatically scan your wallet and display:
+Once linked, CCTools automatically scans your wallet and displays:
 
-- Token balances
-- Current value in USD
-- 24h change
-- Historical performance
+- Balance in CC and USD
+- Unlocked and locked amounts
+- 7-day price change
+- 30-day reward estimate
 
-## Multiple Wallets
+## Connect Cross-Chain Wallets
 
-You can add multiple wallet addresses to track your full portfolio:
+You can also connect EVM (Ethereum, Base, Polygon, etc.) and Solana wallets to your portfolio. In the **My Wallets** modal, add an EVM or Solana wallet by clicking **+ Connect** under the corresponding chain section.
 
-- **Free plan**: Up to 3 wallets
-- **Pro plan**: Up to 10 wallets
+Each wallet you connect:
 
-The portfolio view aggregates all wallets into a single view, so you can see your total holdings across all wallets. Each wallet can be individually labeled (up to 50 characters) and supports CNS names.
+- Is linked via signature verification (no seed phrases shared)
+- Shows holdings and real-time balance
+- Contributes to your unified portfolio net worth
+- Adds a cross-chain score bonus to your Canton profile
 
-## Removing a Wallet
+## Wallet Limits by Plan
 
-To remove a wallet, go to **Portfolio > Settings** (gear icon) and click the remove button next to the wallet you want to delete. This only removes tracking - it does not affect your actual wallet.
+Free and Pro users have different wallet caps per chain:
 
+- **Free plan**: 1 wallet per chain (Canton, EVM, Solana)
+- **Pro plan**: Up to 5 wallets per chain
+
+If you hit the free limit, upgrade to Pro to add more wallets.
+
+## Manage Your Wallets
+
+In the **My Wallets** modal, you can:
+
+- **Rename** a wallet (up to 40 characters) - click the pencil icon
+- **Set as primary** - mark a wallet as your main one with the star icon
+- **Disconnect** - remove tracking from any wallet with the link-off icon
+
+Disconnecting only removes tracking in CCTools and does not affect your actual wallet.
+
+## What Your Portfolio Shows
+
+Your unified portfolio displays:
+
+**Total net worth**
+- All Canton, EVM, and Solana wallets summed in USD
+- Per-chain allocation bar showing balance distribution
+- 30-day CC rewards estimate (Canton wallets only)
+- Last updated timestamp
+
+**Per-wallet detail pages**
+Click any wallet card to see:
+- Locked and unlocked CC breakdown
+- Holding fees paid
+- Daily rewards history chart (if you're running a validator or Featured App)
+- Recent transfers and counterparties
+- Wallet stats (reward/burn ratio, top trading partners)
+
+**Note:** Detailed profit and loss charts are available to Pro users only. Free users see balances, rewards, and activity metrics for all connected wallets.
+
+## Just Exploring?
+
+If you don't want to connect a wallet yet, use the **Tracker** to inspect any Canton party ID or wallet address read-only. Click the **Track any Party ID** link in My Wallets or go to **Tracker** to get started.

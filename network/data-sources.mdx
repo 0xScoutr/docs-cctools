@@ -32,7 +32,7 @@ On-chain network data is read from the Canton Network through on-chain indexers:
 - Featured app count
 - Total network parties
 
-Network stats are synced regularly so the Network Stats page reflects current chain activity. The Explore hub, which ranks projects and validators side by side, is served from a warm cache that rebuilds roughly every 5 minutes - so it loads instantly while staying fresh.
+Network stats are synced regularly so the Network Stats page reflects current chain activity.
 
 ## Portfolio Data
 
@@ -49,9 +49,7 @@ This is **read-only** - CCTools only ever needs your public wallet address and n
 Different surfaces update on different schedules, tuned to how fast each kind of data actually changes:
 
 - **Prices** - refreshed every few minutes
-- **Explore graph (projects + validators ranking)** - warm cache rebuilt about every 5 minutes
 - **News feed** - new items ingested and summarized every 10 minutes
 - **New-content scan (new projects, opportunities, campaigns, posts, learn paths)** - every 30 minutes
 
 If a number ever looks momentarily out of date, a refresh shortly after will usually pick up the latest values.
-

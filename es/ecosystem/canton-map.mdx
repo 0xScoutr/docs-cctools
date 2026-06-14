@@ -1,0 +1,107 @@
+---
+title: El Mapa de Canton
+description: Navega por el ecosistema de la red Canton con un grafo interactivo dirigido por fuerzas de proyectos, validadores, apps y campañas.
+---
+
+Una visualización de red interactiva que mapea a los participantes del ecosistema de Canton en tiempo real. El Mapa de Canton muestra proyectos, validadores, apps destacadas y campañas como nodos interconectados, con aristas que representan sus relaciones.
+
+## Abrir el mapa
+
+Visita la página del Mapa de Canton y selecciona una categoría (Finanzas, Infraestructura, Social, etc.) en la cuadrícula. El mapa carga solo el subgrafo de esa categoría, manteniendo un rendimiento rápido sin importar el tamaño de la red.
+
+Cada categoría muestra:
+- **Proyectos** - círculos de color sólido, agrupados por el color de la categoría (azul para DeFi, ámbar para Trading, etc.)
+- **Validadores y Super Validadores** - nodos en anillo que aseguran proyectos en la cadena
+- **Apps destacadas** - apps construidas sobre proyectos seleccionados
+- **Listados de Earn** - oportunidades disponibles dentro de la categoría
+- **Campañas** - promociones y eventos activos
+
+## Leer el grafo
+
+**Tipos de nodo** (mostrados en la leyenda):
+
+- **Proyecto** - círculo sólido con el color de tu categoría
+- **Hub de Categoría** - anillo gris hueco (muestra los proyectos dentro de una categoría)
+- **Validador** - anillo azul hueco (valida uno o más proyectos)
+- **Super Validador** - anillo ámbar hueco (mayor stake en la cadena)
+- **App destacada** - círculo morado sólido (app construida sobre un proyecto)
+- **Listado de Earn** - círculo verde sólido (oportunidad pagada)
+- **Campaña** - círculo morado sólido (promoción por tiempo limitado)
+
+**Superposiciones visuales** en los nodos de proyecto:
+- Pequeña **insignia de app destacada** (destello morado) - tiene apps destacadas
+- **Insignia de patrocinado** (rayo ámbar) - está patrocinado
+- **Insignia de validador** (hexágono verde) - tiene al menos un validador
+- **Insignia de SV** (hexágono ámbar) - tiene al menos un super validador
+
+**Conexiones** que muestran relaciones:
+- Los proyectos pertenecen a categorías (aristas hacia arriba)
+- Los validadores y super validadores aseguran proyectos (aristas entrantes)
+- Las apps destacadas están impulsadas por proyectos (aristas salientes)
+- Los proyectos alojan listados de Earn y campañas
+
+## Interactuar con el mapa
+
+**Desplazar** - haz clic y arrastra para moverte por el grafo.
+
+**Zoom** - desplaza hacia arriba para acercar, hacia abajo para alejar. Usa los botones de zoom en la esquina inferior derecha para un control más fino.
+
+**Buscar** - la barra de búsqueda en la parte superior encuentra cualquier proyecto, validador o app por nombre o ID. Los resultados aparecen en un menú desplegable con navegación por teclado:
+- Flecha arriba / abajo para cambiar la selección
+- Enter para saltar a un nodo
+- Escape para cerrar
+
+Cuando buscas un nodo en otra categoría, el mapa cambia automáticamente a esa categoría y enfoca el nodo.
+
+**Haz clic en un nodo** - abre su panel de detalles a la derecha (escritorio) o como una hoja inferior (móvil). El panel muestra:
+- Nombre, logo y categoría
+- Nodos relacionados (proyectos, validadores, apps, oportunidades y campañas conectados)
+- Puntuaciones y métricas (si están disponibles)
+- Enlaces a recursos externos
+
+**Filtrar tipos de nodo** - activa y desactiva validadores, super validadores, apps destacadas, listados de Earn o campañas usando el botón de filtros. Una insignia en el botón muestra cuántos filtros están activos.
+
+**Controles de zoom** (abajo a la derecha):
+- Acercar / Alejar - ajusta la escala por pasos
+- Restablecer vista - vuelve al zoom y la posición predeterminados
+- Recalentar simulación - reinicia la física de fuerzas, útil si los nodos se amontonan en una esquina
+
+## Escritorio vs. móvil
+
+**Escritorio**: La barra lateral de la leyenda (220px) aparece a la izquierda con la clave de tipos de nodo, las superposiciones visuales y los botones de categoría. Ocúltala para ampliar el lienzo. El panel de detalles del nodo se acopla al lado derecho.
+
+**Móvil**: Toca el botón de filtros (a la izquierda de la barra de búsqueda) para abrir la leyenda y el selector de categorías en una hoja inferior. El panel de detalles se desliza desde abajo cuando seleccionas un nodo.
+
+## Entender la disposición
+
+El grafo usa una simulación dirigida por fuerzas que:
+- Repele los nodos superpuestos (colisión)
+- Atrae los nodos conectados entre sí
+- Agrupa los nodos según sus relaciones
+
+Los nodos se asientan en una disposición estable a lo largo de 60-120 tics. Si la disposición se ve desordenada, toca Recalentar simulación para reiniciar la física desde cero. Arrastrar cualquier nodo lo fija temporalmente en su lugar; suéltalo para liberarlo.
+
+El fondo incluye una sutil cuadrícula de puntos y un degradado radial para mantener el lienzo legible en cualquier nivel de zoom.
+
+## Rendimiento
+
+Cada categoría carga solo su subgrafo (normalmente 30-80 nodos), no toda la red. El mapa usa un renderizador Canvas y Web Workers para la simulación, manteniendo 60 FPS incluso en dispositivos más antiguos.
+
+- **El selector de categorías** carga los metadatos del grafo en ~100ms
+- **El renderizado del mapa** se completa en ~200-500ms según el tamaño del subgrafo
+- **La simulación** se ejecuta en el navegador; sin viajes de ida y vuelta al servidor durante la interacción
+
+## Consejos
+
+- **Empieza con una categoría pequeña** si eres nuevo en el mapa. Finanzas (DeFi) es la más grande; Servicios o DAO son más compactas.
+- **Usa la leyenda** para entender qué significa cada color y forma. La gramática visual es consistente en todas las categorías.
+- **Busca por nombre de proyecto** para saltar directamente a un actor específico del ecosistema, luego explora las aristas salientes para descubrir validadores y apps.
+- **Pasa el cursor sobre un nodo** para ver su nombre en una información sobre herramientas. Haz clic para abrir el panel de detalles completo.
+- **Abre varios paneles de detalles** buscando y haciendo clic en nodos de distintas categorías. Cada panel reemplaza al anterior.
+
+## Próximos pasos
+
+Desde el panel de detalles, navega a:
+- La página de perfil completa del proyecto (si es un proyecto)
+- Proyectos, validadores o campañas relacionados en el mismo mapa
+- Oportunidades de Earn para participar en el ecosistema

@@ -1,57 +1,55 @@
 ---
-title: "Fuentes de datos y API"
-description: "De dónde obtiene CCTools sus datos, las categorías de proveedores detrás de ellos y con qué frecuencia se actualiza cada área."
+title: "Fuentes de datos y APIs"
+description: "De dónde obtiene CCTools sus datos, las categorías de proveedores que hay detrás y con qué frecuencia se actualiza cada superficie."
 ---
 
-## Cómo obtiene CCTools los datos
+## Cómo CCTools obtiene sus datos
 
-CCTools reúne varias clases diferentes de datos para que todo lo que ves - precios, actividad on-chain, métricas de DeFi y señales del ecosistema - esté en un solo lugar. En lugar de depender de una única fuente, combinamos varias categorías de proveedores y las reconciliamos, de modo que un fallo o una laguna en un feed no deje una página en blanco o desactualizada.
+CCTools reúne varias clases distintas de datos para que todo lo que ves - precios, actividad on-chain, métricas de DeFi y señales del ecosistema - viva en un solo lugar. En lugar de depender de una única fuente, combinamos múltiples categorías de proveedores y las reconciliamos, de modo que un fallo o un hueco en una fuente no deje una página en blanco o desactualizada.
 
 Las principales categorías de las que nos nutrimos son:
 
-- **Indexadores on-chain** - Servicios que leen e indexan el libro mayor de Canton Network para que podamos mostrar datos de validadores, transacciones, quemas/emisiones, apps destacadas y saldos de carteras sin que cada usuario tenga que ejecutar su propio nodo.
-- **Oráculos de precios** - Proveedores de datos de mercado que aportan el precio del token CC, la capitalización de mercado, el volumen en 24h y el suministro circulante.
+- **Indexadores on-chain** - Servicios que leen e indexan el ledger de Canton Network para que podamos mostrar datos de validadores, transacciones, quemas/acuñaciones, featured apps y saldos de billeteras sin que cada usuario tenga que ejecutar su propio nodo.
+- **Oráculos de precios** - Proveedores de datos de mercado que aportan el precio del token CC, la capitalización de mercado, el volumen de 24h y el suministro circulante.
 - **Agregadores de TVL y DeFi** - Fuentes que rastrean el valor total bloqueado, la liquidez y las métricas a nivel de protocolo en las apps de DeFi de Canton.
-- **APIs sociales y de comunidad** - APIs públicas usadas para señales de participación y verificación de tareas de campaña (por ejemplo, confirmar un follow o retweet en X).
+- **APIs sociales y de comunidad** - APIs públicas usadas para señales de interacción y verificación de tareas de campañas (por ejemplo, confirmar un seguimiento o un retweet en X).
 
-Describimos estas fuentes por categoría de forma intencional. La combinación exacta de proveedores detrás de cada una evoluciona a medida que el ecosistema y nuestra infraestructura maduran.
+Las describimos a propósito por categoría. La combinación exacta de proveedores detrás de cada una evoluciona a medida que el ecosistema y nuestra infraestructura maduran.
 
 ## Datos de precios
 
-El precio del token CC, la capitalización de mercado, el volumen en 24h y el suministro circulante provienen de proveedores de datos de mercado establecidos (oráculos de precios). Cuando hay más de una fuente disponible, las contrastamos entre sí para reducir el impacto de que un feed esté retrasado o incorrecto.
+El precio del token CC, la capitalización de mercado, el volumen de 24h y el suministro circulante provienen de proveedores de datos de mercado consolidados (oráculos de precios). Cuando hay más de una fuente disponible, las contrastamos entre sí para reducir el impacto de que una fuente concreta llegue con retraso o esté desviada.
 
-Los datos de precios se actualizan con frecuencia - del orden de cada pocos minutos - para que las cifras que ves se mantengan cerca de las condiciones del mercado en tiempo real.
+Los datos de precios se actualizan con frecuencia - del orden de cada pocos minutos - para que las cifras que ves se mantengan cercanas a las condiciones de mercado en vivo.
 
-## Datos de red
+## Datos de la red
 
-Los datos on-chain de la red se leen de Canton Network mediante indexadores on-chain:
+Los datos on-chain de la red se leen de Canton Network a través de indexadores on-chain:
 
-- Recuento de validadores y Super Validadores
+- Recuentos de validadores y Super Validators
 - Volumen diario de transacciones
-- Cantidades de quema y emisión por ronda
-- Recuento de apps destacadas
+- Montos de quema y acuñación por ronda
+- Recuento de featured apps
 - Total de parties de la red
 
-Las estadísticas de la red se sincronizan con regularidad para que la página Estadísticas de red refleje la actividad actual de la cadena. El hub Explorar, que clasifica proyectos y validadores en paralelo, se sirve desde una caché caliente que se reconstruye aproximadamente cada 5 minutos, por lo que carga al instante y se mantiene actualizado.
+Las estadísticas de la red se sincronizan con regularidad para que la página de Network Stats refleje la actividad actual de la cadena.
 
-## Datos de la cartera
+## Datos del portafolio
 
-Los saldos y las recompensas de las carteras se obtienen de Canton Network mediante indexadores on-chain. Cuando agregas una cartera, CCTools consulta tus tenencias para mostrar:
+Los saldos de billeteras y las recompensas se obtienen de Canton Network mediante indexadores on-chain. Cuando agregas una billetera, CCTools consulta tus tenencias para mostrar:
 
 - Saldos de tokens
 - Historial de recompensas
 - Registros de transferencias
 
-Esto es **solo lectura**: CCTools solo necesita la dirección pública de tu cartera y nunca tiene acceso para mover tus fondos.
+Esto es de **solo lectura** - CCTools solo necesita tu dirección pública de billetera y nunca tiene acceso para mover tus fondos.
 
-## Frecuencia de actualización
+## Cadencia de actualización
 
-Las distintas áreas se actualizan según diferentes horarios, ajustados a la rapidez con la que cada tipo de dato cambia realmente:
+Las distintas superficies se actualizan en horarios diferentes, ajustados a la rapidez con la que cambia realmente cada tipo de dato:
 
 - **Precios** - actualizados cada pocos minutos
-- **Gráfico de Explorar (clasificación de proyectos + validadores)** - caché caliente reconstruida aproximadamente cada 5 minutos
-- **Feed de noticias** - nuevos elementos ingeridos y resumidos cada 10 minutos
+- **Feed de noticias** - los nuevos elementos se ingieren y se resumen cada 10 minutos
 - **Escaneo de contenido nuevo (nuevos proyectos, oportunidades, campañas, publicaciones, rutas de aprendizaje)** - cada 30 minutos
 
-Si alguna cifra parece momentáneamente desactualizada, una actualización poco después suele recoger los valores más recientes.
-
+Si alguna cifra parece desactualizada por un momento, una actualización poco después suele recoger los valores más recientes.
