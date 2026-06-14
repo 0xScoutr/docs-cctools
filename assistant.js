@@ -33,13 +33,22 @@
   function opaque(c) { return c && c !== "transparent" && c.indexOf("rgba(0, 0, 0, 0") === -1; }
   function luminance(c) { var m = (c || "").match(/\d+(\.\d+)?/g); if (!m) return 0; return (0.299 * +m[0] + 0.587 * +m[1] + 0.114 * +m[2]) / 255; }
 
+  function isDark() {
+    var de = document.documentElement;
+    if (de.classList.contains("dark")) return true;
+    if (de.classList.contains("light")) return false;
+    var dt = de.getAttribute("data-theme") || de.style.colorScheme || "";
+    if (dt) return dt.indexOf("light") === -1;
+    var b = rgb(document.body, "backgroundColor");
+    return opaque(b) ? luminance(b) < 0.5 : true;
+  }
   function themeVars() {
-    var bg = opaque(rgb(document.body, "backgroundColor")) ? rgb(document.body, "backgroundColor")
-      : opaque(rgb(document.documentElement, "backgroundColor")) ? rgb(document.documentElement, "backgroundColor")
-      : "#0a0c10";
-    var text = rgb(document.body, "color") || "#e8eaed";
+    var dark = isDark();
+    var bgRead = rgb(document.body, "backgroundColor");
+    if (!opaque(bgRead)) bgRead = rgb(document.documentElement, "backgroundColor");
+    var bg = opaque(bgRead) ? bgRead : (dark ? "#0b0d12" : "#ffffff");
+    var text = rgb(document.body, "color") || (dark ? "#e6e8ec" : "#1c1e26");
     var font = rgb(document.body, "fontFamily") || "inherit";
-    var dark = luminance(bg) < 0.5;
     var o = dark ? "255,255,255" : "17,20,28";
     return {
       "--bg": bg,
@@ -91,6 +100,8 @@
     ".ccai-row.u{justify-content:flex-end}",
     ".ccai-u-b{max-width:84%;background:var(--cta);color:var(--oncta);font-size:13.5px;line-height:1.5;padding:9px 13px;border-radius:14px 14px 4px 14px;font-weight:550}",
     ".ccai-a{max-width:100%;color:var(--t1);font-size:13.5px;line-height:1.62}",
+    ".ccai-body.typing::after{content:'';display:inline-block;width:2px;height:1em;background:var(--accent);margin-left:2px;vertical-align:text-bottom;animation:ccai-cur .9s steps(1) infinite}",
+    "@keyframes ccai-cur{50%{opacity:0}}",
     ".ccai-a>.lbl{display:flex;align-items:center;gap:6px;color:var(--t2);font-size:11px;font-weight:600;margin-bottom:7px}",
     ".ccai-a>.lbl img{width:15px;height:15px;border-radius:4px}",
     ".ccai-a p{margin:0 0 9px}.ccai-a p:last-child{margin-bottom:0}",
@@ -159,6 +170,30 @@
       out.push("<p>" + inlineMd(p.join(" ")) + "</p>");
     }
     return out.join("");
+  }
+
+  // Fast typewriter: reveal the already-rendered (formatted) text node by node,
+  // capped to ~550ms total so long answers never feel slow.
+  function typeIn(container, onDone) {
+    var nodes = [];
+    (function walk(n) { for (var c = n.firstChild; c; c = c.nextSibling) { if (c.nodeType === 3) nodes.push(c); else if (c.nodeType === 1) walk(c); } })(container);
+    var full = nodes.map(function (n) { return n.nodeValue; });
+    var total = 0; full.forEach(function (s) { total += s.length; });
+    if (total === 0) { onDone && onDone(); return; }
+    nodes.forEach(function (n) { n.nodeValue = ""; });
+    var TARGET = 550, TICK = 16, per = Math.max(3, Math.ceil(total / (TARGET / TICK)));
+    var ni = 0, ci = 0;
+    var timer = setInterval(function () {
+      var budget = per;
+      while (budget > 0 && ni < nodes.length) {
+        var s = full[ni], take = Math.min(budget, s.length - ci);
+        nodes[ni].nodeValue = s.slice(0, ci + take);
+        ci += take; budget -= take;
+        if (ci >= s.length) { ni++; ci = 0; }
+      }
+      msgs.scrollTop = msgs.scrollHeight;
+      if (ni >= nodes.length) { clearInterval(timer); onDone && onDone(); }
+    }, TICK);
   }
 
   var root, panel, msgs, input, sendBtn, fab;
@@ -241,13 +276,15 @@
       .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
       .then(function (res) {
         if (!res.ok) { ans.innerHTML = aiLabel() + "<p>" + esc((res.d && res.d.error) || "Something went wrong. Please try again.") + "</p>"; return; }
-        var d = res.d, html = aiLabel() + renderMd(d.answer || "");
+        var d = res.d;
+        ans.innerHTML = aiLabel() + '<div class="ccai-body typing">' + renderMd(d.answer || "") + "</div>";
+        var body = ans.querySelector(".ccai-body");
+        var srcHtml = "";
         if (d.sources && d.sources.length) {
-          html += '<div class="ccai-src"><div class="lbl">Sources</div>' + d.sources.map(function (s) { return '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + I_DOC + "<span>" + esc(s.title) + "</span></a>"; }).join("") + "</div>";
+          srcHtml = '<div class="ccai-src"><div class="lbl">Sources</div>' + d.sources.map(function (s) { return '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + I_DOC + "<span>" + esc(s.title) + "</span></a>"; }).join("") + "</div>";
         }
-        ans.innerHTML = html;
+        typeIn(body, function () { body.classList.remove("typing"); if (srcHtml) { var t = E("div", null, srcHtml); ans.appendChild(t.firstChild); } msgs.scrollTop = msgs.scrollHeight; });
         history.push({ role: "user", content: q }); history.push({ role: "assistant", content: d.answer || "" });
-        msgs.scrollTop = msgs.scrollHeight;
       })
       .catch(function () { ans.innerHTML = aiLabel() + "<p>Network error. Please try again.</p>"; })
       .finally(function () { busy = false; sendBtn.disabled = false; input.focus(); });
