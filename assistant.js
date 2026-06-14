@@ -1,4 +1,4 @@
-/* CCTools AI - docs assistant widget. Vanilla, self-contained.
+/* Synchro - docs assistant widget. Vanilla, self-contained.
    Visually blends into the Mintlify docs theme: it READS the page's real
    background/text/font at runtime and derives soft, rounded surfaces from them,
    so it matches the docs in both dark and light mode instead of guessing hexes.
@@ -204,12 +204,12 @@
     document.head.appendChild(E("style", null, CSS));
     root = E("div", { id: "ccai" });
 
-    fab = E("button", { id: "ccai-fab", "aria-label": "Ask CCTools AI" }, '<img src="' + MARK + '" alt=""><span>Ask AI</span>');
+    fab = E("button", { id: "ccai-fab", "aria-label": "Ask Synchro" }, '<img src="' + MARK + '" alt=""><span>Ask Synchro</span>');
     fab.onclick = openPanel;
     root.appendChild(fab);
 
-    panel = E("div", { id: "ccai-panel", role: "dialog", "aria-label": "CCTools AI" });
-    var hd = E("div", { id: "ccai-hd" }, '<img src="' + MARK + '" alt=""><div class="tt"><b>CCTools AI</b><span>Docs assistant</span></div>');
+    panel = E("div", { id: "ccai-panel", role: "dialog", "aria-label": "Synchro" });
+    var hd = E("div", { id: "ccai-hd" }, '<img src="' + MARK + '" alt=""><div class="tt"><b>Synchro</b><span>CCTools docs assistant</span></div>');
     var x = E("button", { id: "ccai-x", "aria-label": "Close" }, I_CLOSE); x.onclick = closePanel; hd.appendChild(x);
     panel.appendChild(hd);
 
@@ -241,8 +241,8 @@
     msgs.innerHTML = "";
     var w = E("div", { class: "ccai-empty" },
       '<img src="' + MARK + '" alt="">' +
-      "<h4>Ask the CCTools docs</h4>" +
-      "<p>Answers on wallets, XP, campaigns, the ecosystem, and more, drawn straight from the docs.</p>");
+      "<h4>Ask Synchro</h4>" +
+      "<p>Your CCTools docs guide. Wallets, XP, campaigns, the ecosystem, and more.</p>");
     var sg = E("div", { class: "ccai-sg" });
     SUGGESTIONS.forEach(function (q) {
       var c = E("button", { class: "ccai-chip", type: "button" }, "<span>" + esc(q) + "</span>" + I_ARR);
@@ -261,7 +261,7 @@
     var b = E("div", { class: role === "u" ? "ccai-u-b" : "ccai-a" });
     r.appendChild(b); msgs.appendChild(r); msgs.scrollTop = msgs.scrollHeight; return b;
   }
-  function aiLabel() { return '<div class="lbl"><img src="' + MARK + '" alt="">CCTools AI</div>'; }
+  function aiLabel() { return '<div class="lbl"><img src="' + MARK + '" alt="">Synchro</div>'; }
 
   function send(text) {
     if (busy) return;
