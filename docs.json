@@ -754,7 +754,7 @@
     ]
   },
   "logo": {
-    "light": "/logo/cctools-light.png",
+    "light": "/logo/cctools.png",
     "dark": "/logo/cctools.png"
   },
   "navbar": {
