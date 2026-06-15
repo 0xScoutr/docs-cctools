@@ -1,0 +1,128 @@
+---
+title: "Perfil Público"
+description: "Comparte tus contribuciones a Canton Network con un perfil público y compartible que muestra tu nivel, XP, insignias, actividad y reputación."
+---
+
+## Resumen
+
+Cada usuario de CCTools tiene un perfil público en `cctools.network/u/{slug}`. Tu perfil es visible públicamente y compartible, incluso sin iniciar sesión. De forma predeterminada, tu perfil está configurado como público, pero tú controlas lo que aparece en él mediante los interruptores de privacidad en la página **Privacy**.
+
+Tu perfil público funciona como tu tarjeta de identidad de Canton Network, mostrando tu nivel, logros, racha de actividad, insignias, proyectos favoritos y puntuación de reputación.
+
+## Qué Aparece en tu Perfil
+
+### Sección del Encabezado
+
+El encabezado de tu perfil muestra:
+
+- **Nombre visible** - El nombre que estableces en **Settings > Profile**
+- **Avatar** - Tu foto de perfil
+- **Burbuja de nivel** - Tu nivel actual (0-50+) mostrado como un número en la parte superior derecha del anillo de tu avatar
+- **Nombre y color del nivel** - Tu tier (por ejemplo, "Validator", "Architect", "Canton OG") representado con el color de tu nivel
+- **Miembro desde** - El mes y el año en que te uniste a CCTools
+- **Insignia de era** - Insignia de la era Genesis o Discovery, mostrada en la parte superior derecha del banner
+- **Insignia de Human Score** - Una insignia de señal de confianza (Verified, Trusted o Elite) aparece debajo de tu nombre si tienes un Score verificado y no lo has ocultado (consulta los controles de Privacy más abajo)
+
+### Cuadrícula de Estadísticas de Actividad
+
+Cuando **Show activity stats** está habilitado, tu perfil muestra 8 tarjetas:
+
+- **Total XP** - XP acumulada ganada (con formato 1.2k para 1200+)
+- **Racha** - Días activos diarios consecutivos actuales, o "-" si no hay racha activa
+- **Insignias** - Cantidad de insignias ganadas (excluyendo las insignias de era)
+- **Rango de XP** - Tu rango global por XP total, o "-" si no tienes rango
+- **Acciones** - Total de envíos, votos positivos, intereses y referencias completadas
+- **Referencias** - Cantidad de referencias confirmadas
+- **Votos positivos dados** - Total de votos positivos a proyectos que has emitido
+- **Intereses** - Total de intereses en oportunidades que has marcado
+
+### Tarjetas de Nivel y Reputación
+
+Debajo de las estadísticas del encabezado, dos tarjetas muestran tu progresión:
+
+- **Level Crest** - Muestra tu XP actual, la barra de progreso hacia el siguiente nivel y el indicador de hito
+- **Tarjeta de Reputación** - Muestra tu tier de Reputación (New, Rising, Established, etc.) cuando **Show Reputation score** está habilitado
+
+### Galería de Insignias
+
+Tus insignias ganadas aparecen en dos secciones:
+
+- **Mejores Insignias** - Tus 3 insignias más raras (ordenadas por rareza: Legendary, Epic, Rare, Uncommon, Common), mostradas en grande con nombre y nivel de rareza
+- **Todas las Insignias** - Todas las insignias restantes en una cuadrícula compacta, con hasta 12 visibles. Aparece un botón de "más insignias" si has ganado más de 15
+- **Insignia de era** - Una sección independiente para tu tier de era Genesis o Discovery
+
+Haz clic en cualquier insignia para ver su nombre completo, descripción, rareza y la fecha exacta en que la ganaste.
+
+### Calendario de Actividad
+
+Un calendario de check-in de 90 días muestra tu actividad diaria a lo largo de 3 meses. Este calendario:
+
+- Muestra los últimos 90 días de tus check-ins
+- Muestra tu racha actual y tu mejor racha (de por vida)
+- Usa celdas codificadas por color: el color del nivel para los días activos, ámbar para hoy y gris claro para los días inactivos
+- Lista la cantidad de días activos por mes
+
+### Proyectos Favoritos
+
+Tus 3 proyectos principales por frecuencia de votos positivos aparecen como tarjetas enlazadas, cada una mostrando:
+
+- **Rango** (1.°, 2.°, 3.°) en una píldora de color
+- **Logo y nombre del proyecto**
+- Etiqueta de **Categoría**
+- **Total de votos** que este proyecto ha recibido de todos los usuarios
+- **Tus votos** (×N votados) si lo has votado positivamente varias veces
+- Una barra de color que muestra el peso relativo del voto
+
+Al hacer clic en un proyecto favorito accedes a su perfil de ecosistema.
+
+### Insignia de Human Score
+
+Para los usuarios verificados y superiores, una insignia de Human Score aparece debajo de tu nombre visible en el encabezado (cuando está habilitada mediante los controles de privacidad). La insignia muestra:
+
+- **Icono de escudo y nombre del tier** (Verified, Trusted o Elite) en verde
+- Un botón en el que se puede hacer clic que abre una explicación que muestra qué mide la puntuación y cómo se calcula
+
+La insignia es una señal pública de confianza. Si tu puntuación está por debajo del umbral de verificación (35 points), o si no has conectado una billetera de Canton, la insignia no aparece. Si tu cuenta está restringida (baneada), aparece en su lugar una insignia roja de "Restricted".
+
+Para más detalles sobre cómo funciona el Human Score, consulta la página Human Score.
+
+## Qué Está Oculto
+
+Lo siguiente nunca aparece en tu perfil público:
+
+- **Dirección de correo electrónico** - Solo tú puedes verla
+- **ID de usuario** - El UUID interno no se expone
+- **Configuración de la cuenta** - Contraseña, 2FA, datos de sesión
+- **Secciones desactivadas** - Cualquier sección que desactives en Privacy permanece oculta
+- **Cuentas de administrador y operador** - El perfil devuelve "User not found"
+- **Perfiles privados** - Devuelve "This profile does not exist or is private"
+
+## Obtener y Compartir tu URL
+
+### Copiar tu URL
+
+En la página del perfil público, haz clic en el botón **Share** en la parte superior derecha para abrir el Share Modal. Usa los tres botones de acción:
+
+1. **Copy URL** - Copia la URL completa de tu perfil al portapapeles (por ejemplo, `https://cctools.network/u/yourusername`)
+2. **Post on X** - Abre un tweet predefinido con tu nombre visible, nivel, tier, rango y XP, con un enlace a tu perfil
+3. **Save Image** - Descarga un PNG de tarjeta de perfil con tu avatar, nombre, nivel, tier y estadísticas principales
+
+### Personalizar el Slug de tu URL
+
+El slug de tu URL es de forma predeterminada tu nombre de usuario. Puedes personalizarlo en **Settings > Identity** para hacerlo más corto o más memorable (por ejemplo, `/u/alice` en lugar de `/u/alice.smith`). Al cambiar tu slug, la URL antigua se redirige automáticamente.
+
+## Controles de Privacidad
+
+Visita **Settings > Privacy** para gestionar lo que otros ven en tu perfil público. Todos los interruptores están activados (**ON**) de forma predeterminada. Desactivar un ajuste elimina de inmediato esa sección de la vista de tu perfil público:
+
+- **Public profile** (interruptor maestro) - Cuando está en OFF, tu perfil devuelve "This profile is private" a todos los visitantes. Tú siempre ves tu perfil completo. Esta es la principal barrera de privacidad.
+- **Show activity stats** - Controla la visibilidad del nivel, XP, racha, insignias, calendario y estadísticas (Rango, Acciones, Referencias, Votos positivos, Intereses)
+- **Show Reputation score** - Controla la visibilidad de la tarjeta de tier de Reputación
+- **Show Score** - Controla si la insignia de Human Score aparece en tu encabezado (nota: requiere tier Verified+ y una puntuación activa; los usuarios Newcomer no ven ninguna insignia de todos modos)
+
+**Nota:** Tú siempre ves tu propio perfil completo. Los interruptores de privacidad solo afectan lo que ven los demás visitantes.
+
+## Relacionado
+
+- Para información sobre qué mide el Human Score y cómo mejorar tu puntuación, consulta la página Human Score.
+- Para compartir una tarjeta de perfil o gestionar la identidad de tu perfil, consulta Profile Settings.

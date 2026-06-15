@@ -361,6 +361,9 @@
             "icon": "settings",
             "pages": [
               "account/profile-settings",
+              "account/public-profile",
+              "account/human-score",
+              "account/activity-and-connections",
               "account/security",
               "account/notifications",
               "account/pro-subscription"
@@ -400,7 +403,9 @@
             "pages": [
               "community/community-rules",
               "community/contribute",
-              "community/faq"
+              "community/discord",
+              "community/faq",
+              "community/service-status"
             ]
           },
           {
@@ -482,6 +487,9 @@
             "icon": "settings",
             "pages": [
               "es/account/profile-settings",
+              "es/account/public-profile",
+              "es/account/human-score",
+              "es/account/activity-and-connections",
               "es/account/security",
               "es/account/notifications",
               "es/account/pro-subscription"
@@ -521,7 +529,9 @@
             "pages": [
               "es/community/community-rules",
               "es/community/contribute",
-              "es/community/faq"
+              "es/community/discord",
+              "es/community/faq",
+              "es/community/service-status"
             ]
           },
           {
@@ -602,6 +612,9 @@
             "icon": "settings",
             "pages": [
               "pt/account/profile-settings",
+              "pt/account/public-profile",
+              "pt/account/human-score",
+              "pt/account/activity-and-connections",
               "pt/account/security",
               "pt/account/notifications",
               "pt/account/pro-subscription"
@@ -641,7 +654,9 @@
             "pages": [
               "pt/community/community-rules",
               "pt/community/contribute",
-              "pt/community/faq"
+              "pt/community/discord",
+              "pt/community/faq",
+              "pt/community/service-status"
             ]
           },
           {
@@ -722,6 +737,9 @@
             "icon": "settings",
             "pages": [
               "zh/account/profile-settings",
+              "zh/account/public-profile",
+              "zh/account/human-score",
+              "zh/account/activity-and-connections",
               "zh/account/security",
               "zh/account/notifications",
               "zh/account/pro-subscription"
@@ -761,7 +779,9 @@
             "pages": [
               "zh/community/community-rules",
               "zh/community/contribute",
-              "zh/community/faq"
+              "zh/community/discord",
+              "zh/community/faq",
+              "zh/community/service-status"
             ]
           },
           {

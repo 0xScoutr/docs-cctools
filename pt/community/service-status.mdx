@@ -1,0 +1,95 @@
+---
+title: "Status do Serviço"
+description: "Monitoramento em tempo real de disponibilidade e desempenho da API pública do CCTools."
+---
+
+A API pública do CCTools oferece um painel de status em tempo real em **status.cctools.network** onde você pode monitorar a saúde e o desempenho de todos os endpoints principais.
+
+## Sobre a página de status
+
+A página de status é um painel público e ao vivo para a API pública do CCTools. Ela coleta dados de saúde continuamente e se atualiza automaticamente:
+
+- A página é atualizada a cada 30 segundos
+- Cada endpoint é verificado aproximadamente a cada 2 minutos
+- Os dados históricos cobrem a última hora
+- Os incidentes recentes são exibidos dos últimos 30 dias
+
+## O que você vê na página de status
+
+### Status geral
+
+No topo da página, você verá o status geral do sistema exibido como um de três estados:
+
+- **Todos os sistemas operacionais**: cada endpoint monitorado está saudável
+- **Desempenho degradado**: alguns endpoints não estão totalmente saudáveis ou há incidentes ativos
+- **Interrupção grave**: a maioria dos endpoints está fora do ar ou há um incidente crítico
+
+### Saúde por endpoint
+
+A página de status exibe uma tabela de endpoints monitorados agrupados por categoria. Para cada endpoint você pode ver:
+
+- Indicador de status (verde para operacional, vermelho para fora do ar)
+- Horário da última verificação (por exemplo, "há 47 segundos")
+- Código de status HTTP da resposta mais recente
+- Latência da verificação mais recente em milissegundos
+- Percentual de disponibilidade de 1 hora
+- Latência média na última hora
+- Minigráfico de latência (gráfico visual que mostra a última hora de verificações usando uma escala logarítmica)
+
+### Incidentes ativos
+
+Se houver algum problema em andamento, a seção **Incidentes ativos** aparece perto do topo. Cada cartão de incidente exibe:
+
+- Título do incidente e nível de gravidade (menor, maior, crítico ou manutenção)
+- Status atual (investigando, identificado, monitorando ou resolvido)
+- Descrição do problema, se disponível
+- Quais endpoint(s) estão afetados
+- Quando o incidente começou
+
+### Histórico recente de incidentes
+
+Abaixo dos endpoints, você encontrará **Atualizações recentes (últimos 30 dias)**, mostrando incidentes resolvidos e mudanças de status passadas. Isso ajuda você a entender o que foi corrigido ou alterado recentemente.
+
+## Endpoints monitorados
+
+A página de status acompanha 11 endpoints principais em toda a API pública do CCTools:
+
+**Meta**
+- Especificação OpenAPI (documento de especificação da API)
+
+**Ecosystem**
+- Listar projetos
+- Projetos em alta
+- Categorias de projetos
+- Classificações de projetos
+
+**Users**
+- Obter perfil do usuário (usando uma conta de usuário de teste)
+- Insígnias do usuário
+- Contribuições do usuário
+- Atividade do usuário
+
+**Earn**
+- Listar oportunidades
+
+**Leaderboard**
+- Classificações do Leaderboard
+
+Cada endpoint é testado individualmente para garantir que você tenha uma visão granular de quais serviços estão saudáveis e quais podem ter problemas.
+
+## Solução de problemas
+
+Se você encontrar problemas com a API do CCTools:
+
+1. **Verifique primeiro a página de status**: acesse **status.cctools.network** para ver se há um incidente conhecido afetando seu endpoint
+2. **Revise os incidentes ativos**: se houver um incidente ativo, verifique seu status e descrição para entender o problema e quaisquer soluções alternativas
+3. **Verifique os endpoints afetados**: o cartão de incidente mostra quais endpoint(s) estão impactados, para que você possa identificar se sua chamada está afetada
+4. **Reporte o problema**: se a página de status mostrar tudo verde mas você ainda estiver enfrentando problemas, reporte através do link **Report an issue** ou entre em contato conosco em **/contact**
+
+## Links úteis
+
+- **Base da API**: https://api.cctools.network
+- **Especificação OpenAPI**: https://api.cctools.network/api/v1/openapi.json
+- **Documentação da API**: https://docs.cctools.network/api
+- **Obter uma chave de API**: acesse **/profile/api** para gerar sua chave de API
+- **Reportar um problema**: use **/contact** para reportar problemas que não estejam listados na página de status

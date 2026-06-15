@@ -1,0 +1,95 @@
+---
+title: "Service Status"
+description: "Real-time uptime and performance monitoring for the CCTools public API."
+---
+
+The CCTools public API provides a real-time status dashboard at **status.cctools.network** where you can monitor the health and performance of all core endpoints.
+
+## About the status page
+
+The status page is a public, live dashboard for the CCTools public API. It collects health data continuously and updates automatically:
+
+- Page refreshes every 30 seconds
+- Each endpoint is checked approximately every 2 minutes
+- Historical data covers the last hour
+- Recent incidents are shown from the past 30 days
+
+## What you see on the status page
+
+### Overall status
+
+At the top of the page, you'll see the overall system status displayed as one of three states:
+
+- **All systems operational**: Every monitored endpoint is healthy
+- **Degraded performance**: Some endpoints are not fully healthy or there are active incidents
+- **Major outage**: Most endpoints are down or there is a critical incident
+
+### Per-endpoint health
+
+The status page displays a table of monitored endpoints grouped by category. For each endpoint you can see:
+
+- Status indicator (green for operational, red for down)
+- Last check time (e.g., "47 seconds ago")
+- HTTP status code of the most recent response
+- Latency of the most recent check in milliseconds
+- 1-hour uptime percentage
+- Average latency over the last hour
+- Latency sparkline (visual chart showing the last hour of checks using a logarithmic scale)
+
+### Active incidents
+
+If there are any ongoing issues, the **Active incidents** section appears near the top. Each incident card displays:
+
+- Incident title and severity level (minor, major, critical, or maintenance)
+- Current status (investigating, identified, monitoring, or resolved)
+- Description of the issue, if available
+- Which endpoint(s) are affected
+- When the incident started
+
+### Recent incident history
+
+Below the endpoints, you'll find **Recent updates (last 30 days)**, showing resolved incidents and past status changes. This helps you understand what was recently fixed or changed.
+
+## Monitored endpoints
+
+The status page watches 11 core endpoints across the CCTools public API:
+
+**Meta**
+- OpenAPI spec (API specification document)
+
+**Ecosystem**
+- List projects
+- Trending projects
+- Project categories
+- Project rankings
+
+**Users**
+- Get user profile (using a test user account)
+- User badges
+- User contributions
+- User activity
+
+**Earn**
+- List opportunities
+
+**Leaderboard**
+- Leaderboard rankings
+
+Each endpoint is probed individually to ensure you get a granular view of which services are healthy and which may have issues.
+
+## Troubleshooting
+
+If you encounter issues with the CCTools API:
+
+1. **Check the status page first**: Visit **status.cctools.network** to see if there is a known incident affecting your endpoint
+2. **Review active incidents**: If there is an active incident, check its status and description to understand the issue and any workarounds
+3. **Check the affected endpoints**: The incident card shows which endpoint(s) are impacted, so you can identify if your call is affected
+4. **Report the issue**: If the status page shows everything green but you are still experiencing problems, report it via the **Report an issue** link or contact us at **/contact**
+
+## Useful links
+
+- **API base**: https://api.cctools.network
+- **OpenAPI specification**: https://api.cctools.network/api/v1/openapi.json
+- **API documentation**: https://docs.cctools.network/api
+- **Get an API key**: Visit **/profile/api** to generate your API key
+- **Report an issue**: Use **/contact** to report problems not listed on the status page

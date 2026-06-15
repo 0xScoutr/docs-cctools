@@ -1,0 +1,128 @@
+---
+title: "Perfil Público"
+description: "Compartilhe suas contribuições para a Canton Network com um perfil público e compartilhável que exibe seu nível, XP, emblemas, atividade e reputação."
+---
+
+## Visão Geral
+
+Todo usuário do CCTools tem um perfil público em `cctools.network/u/{slug}`. Seu perfil é visível publicamente e compartilhável, mesmo sem login. Por padrão, seu perfil está configurado como público, mas você controla o que aparece nele por meio dos botões de privacidade na página **Privacy**.
+
+Seu perfil público funciona como sua carteira de identidade da Canton Network, exibindo seu nível, conquistas, sequência de atividade, emblemas, projetos favoritos e pontuação de reputação.
+
+## O Que Aparece no Seu Perfil
+
+### Seção de Cabeçalho
+
+O cabeçalho do seu perfil mostra:
+
+- **Nome de exibição** - O nome que você define em **Settings > Profile**
+- **Avatar** - Sua foto de perfil
+- **Bolha de nível** - Seu nível atual (0-50+) exibido como um número no canto superior direito do anel do seu avatar
+- **Nome e cor do nível** - Seu tier (por exemplo, "Validator", "Architect", "Canton OG") renderizado na cor do seu nível
+- **Membro desde** - O mês e o ano em que você entrou no CCTools
+- **Emblema de era** - Emblema da era Genesis ou Discovery, exibido no canto superior direito do banner
+- **Emblema de Human Score** - Um emblema de sinal de confiança (Verified, Trusted ou Elite) aparece abaixo do seu nome se você tiver um Score verificado e não o tiver ocultado (consulte os controles de Privacy abaixo)
+
+### Grade de Estatísticas de Atividade
+
+Quando **Show activity stats** está habilitado, seu perfil exibe 8 cartões:
+
+- **Total XP** - XP cumulativo ganho (formatado como 1.2k para 1200+)
+- **Sequência** - Dias ativos diários consecutivos atuais, ou "-" se não houver sequência ativa
+- **Emblemas** - Quantidade de emblemas ganhos (excluindo emblemas de era)
+- **Rank de XP** - Seu rank global por XP total, ou "-" se sem classificação
+- **Ações** - Total de envios, votos positivos, interesses e indicações concluídas
+- **Indicações** - Quantidade de indicações confirmadas
+- **Votos positivos dados** - Total de votos positivos em projetos que você deu
+- **Interesses** - Total de interesses em oportunidades que você marcou
+
+### Cartões de Nível e Reputação
+
+Abaixo das estatísticas do cabeçalho, dois cartões exibem sua progressão:
+
+- **Level Crest** - Mostra seu XP atual, a barra de progresso rumo ao próximo nível e o indicador de marco
+- **Cartão de Reputação** - Mostra seu tier de Reputação (New, Rising, Established, etc.) quando **Show Reputation score** está habilitado
+
+### Galeria de Emblemas
+
+Seus emblemas ganhos aparecem em duas seções:
+
+- **Melhores Emblemas** - Seus 3 emblemas mais raros (ordenados por raridade: Legendary, Epic, Rare, Uncommon, Common), exibidos em tamanho grande com nome e nível de raridade
+- **Todos os Emblemas** - Todos os emblemas restantes em uma grade compacta, com até 12 visíveis. Um botão de "mais emblemas" aparece se você tiver ganho mais de 15
+- **Emblema de era** - Uma seção independente para seu tier de era Genesis ou Discovery
+
+Clique em qualquer emblema para ver seu nome completo, descrição, raridade e a data exata em que você o ganhou.
+
+### Calendário de Atividade
+
+Um calendário de check-in de 90 dias mostra sua atividade diária ao longo de 3 meses. Este calendário:
+
+- Exibe os últimos 90 dias dos seus check-ins
+- Mostra sua sequência atual e sua melhor sequência (de todos os tempos)
+- Usa células codificadas por cor: cor do nível para dias ativos, âmbar para hoje e cinza claro para dias inativos
+- Lista a quantidade de dias ativos por mês
+
+### Projetos Favoritos
+
+Seus 3 principais projetos por frequência de votos positivos aparecem como cartões com link, cada um mostrando:
+
+- **Rank** (1.º, 2.º, 3.º) em uma pílula colorida
+- **Logo e nome do projeto**
+- Marcador de **Categoria**
+- **Total de votos** que este projeto recebeu de todos os usuários
+- **Seus votos** (×N votados) se você o tiver votado positivamente várias vezes
+- Uma barra colorida mostrando o peso relativo do voto
+
+Clicar em um projeto favorito leva você ao perfil dele no ecossistema.
+
+### Emblema de Human Score
+
+Para usuários verificados e acima, um emblema de Human Score aparece abaixo do seu nome de exibição no cabeçalho (quando habilitado pelos controles de privacidade). O emblema mostra:
+
+- **Ícone de escudo e nome do tier** (Verified, Trusted ou Elite) em verde
+- Um botão clicável que abre uma explicação mostrando o que a pontuação mede e como ela é calculada
+
+O emblema é um sinal público de confiança. Se sua pontuação estiver abaixo do limite de verificação (35 points), ou se você não tiver conectado uma carteira da Canton, o emblema não aparece. Se sua conta estiver restrita (banida), um emblema vermelho de "Restricted" aparece em seu lugar.
+
+Para mais detalhes sobre como o Human Score funciona, consulte a página Human Score.
+
+## O Que Fica Oculto
+
+O seguinte nunca aparece no seu perfil público:
+
+- **Endereço de e-mail** - Apenas você pode vê-lo
+- **ID de usuário** - O UUID interno não é exposto
+- **Configurações da conta** - Senha, 2FA, dados de sessão
+- **Seções desativadas** - Qualquer seção que você desative em Privacy permanece oculta
+- **Contas de administrador e operador** - O perfil retorna "User not found"
+- **Perfis privados** - Retorna "This profile does not exist or is private"
+
+## Obter e Compartilhar Sua URL
+
+### Copiar Sua URL
+
+Na página do perfil público, clique no botão **Share** no canto superior direito para abrir o Share Modal. Use os três botões de ação:
+
+1. **Copy URL** - Copia a URL completa do seu perfil para a área de transferência (por exemplo, `https://cctools.network/u/yourusername`)
+2. **Post on X** - Abre um tweet pré-preenchido com seu nome de exibição, nível, tier, rank e XP, com um link para o seu perfil
+3. **Save Image** - Baixa um PNG de cartão de perfil com seu avatar, nome, nível, tier e principais estatísticas
+
+### Personalizar o Slug da Sua URL
+
+O slug da sua URL assume por padrão o seu nome de usuário. Você pode personalizá-lo em **Settings > Identity** para torná-lo mais curto ou mais memorável (por exemplo, `/u/alice` em vez de `/u/alice.smith`). Alterar seu slug redireciona a URL antiga automaticamente.
+
+## Controles de Privacidade
+
+Acesse **Settings > Privacy** para gerenciar o que os outros veem no seu perfil público. Todos os botões vêm ativados (**ON**) por padrão. Desativar uma configuração remove imediatamente aquela seção da visualização do seu perfil público:
+
+- **Public profile** (botão mestre) - Quando em OFF, seu perfil retorna "This profile is private" a todos os visitantes. Você sempre vê seu perfil completo. Esta é a barreira de privacidade principal.
+- **Show activity stats** - Controla a visibilidade do nível, XP, sequência, emblemas, calendário e estatísticas (Rank, Ações, Indicações, Votos positivos, Interesses)
+- **Show Reputation score** - Controla a visibilidade do cartão de tier de Reputação
+- **Show Score** - Controla se o emblema de Human Score aparece no seu cabeçalho (nota: requer tier Verified+ e uma pontuação ativa; usuários Newcomer não veem nenhum emblema de qualquer forma)
+
+**Nota:** Você sempre vê seu próprio perfil completo. Os botões de privacidade afetam apenas o que os outros visitantes veem.
+
+## Relacionado
+
+- Para informações sobre o que o Human Score mede e como melhorar sua pontuação, consulte a página Human Score.
+- Para compartilhar um cartão de perfil ou gerenciar a identidade do seu perfil, consulte Profile Settings.

@@ -1,0 +1,110 @@
+---
+title: Human Score e verificação
+description: Pontuação de credibilidade anti-sybil que sinaliza o quão real e consolidada está a sua conta no CCTools.
+---
+
+Seu Human Score é um sinal de credibilidade de 0 a 100 que ajuda a comunidade da Canton Network a identificar humanos verificados e filtrar bots e sybils. Em vez de um número bruto, você o vê como um nível descritivo que corresponde à forma como outras plataformas de identidade (Worldcoin, BrightID, Galxe) comunicam confiança.
+
+## O que ele mede
+
+O Human Score combina vários sinais de corroboração para responder a uma única pergunta: "Este é um humano único?". Ele se baseia em três categorias principais.
+
+- **Identidade e segurança**: verificação de e-mail, autenticação de dois fatores, completude do perfil (nome de exibição, slug personalizado, avatar)
+- **Prova on-chain e social**: conexão de uma carteira Canton, contas sociais vinculadas (X, Discord, Telegram), idade da conta e padrões de atividade
+- **Sinais da comunidade**: consistência de engajamento (sequências diárias de 7 dias ou mais, ou 10 ações ou mais em 30 dias), ter sido indicado por um usuário de confiança
+
+A pontuação é calculada por uma visão materializada que é atualizada a cada quatro horas e sob demanda quando você adiciona ou remove um selo. Contas banidas têm teto rígido de 0 e nunca são Verified, independentemente dos demais sinais.
+
+## Níveis de pontuação
+
+Sua pontuação corresponde a um de seis níveis.
+
+| Nível | Faixa | Verified? | Significado |
+|------|-------|-----------|---------|
+| Restricted | 0 | Não | Conta banida (contate o suporte se achar que é um engano) |
+| Unverified | 0-34 | Não | Nenhuma carteira Canton conectada ainda |
+| Newcomer | 0-34 | Não | Carteira conectada, mas pontuação abaixo do limite |
+| Verified | 35-59 | Sim | Carteira Canton conectada E pontuação igual ou superior a 35 |
+| Trusted | 60-84 | Sim | Pontuação de 60 ou mais |
+| Elite | 85-100 | Sim | Pontuação de 85 ou mais |
+
+O **piso do Verified é 35**: você precisa tanto de uma carteira Canton conectada (a âncora) QUANTO de uma pontuação de pelo menos 35 para ser Verified. Essa verificação em duas partes (âncora mais corroboração) garante que uma carteira sozinha não seja suficiente, e que fatores leves sozinhos nunca sejam suficientes.
+
+Apenas os níveis Verified e acima (Verified, Trusted, Elite) ganham um emblema de escudo visível no seu perfil público. Contas Newcomer não exibem emblema.
+
+## O que "Verified" significa
+
+Verified é uma verificação formal: sua conta só é Verified se você atender a AMBAS as condições.
+
+1. Uma carteira Canton conectada (Send, 5N Loop ou outro cliente Canton)
+2. Um Human Score de 35 ou mais
+
+Isso reflete o padrão de "âncora mais corroboração" usado pelo Gitcoin Passport e por outras plataformas de credibilidade. Na Canton, esse design é mais forte porque os party-IDs não são gratuitos: um único humano não consegue criar facilmente muitas contas verificadas.
+
+Assim que você alcança Verified, desbloqueia a capacidade de participar de campanhas on-chain e de outros recursos da comunidade que exigem prova de humanidade.
+
+## Como melhorar sua pontuação
+
+As alavancas concretas são os selos que você conquista. Conecte uma carteira Canton, adicione provas sociais e de identidade, mantenha-se ativo e mantenha sua conta atualizada.
+
+**Carteira (a âncora obrigatória)**
+- Conecte uma carteira Canton: +10 pontos. Esta é a âncora para o emblema Verified e habilita toda a demais atividade on-chain.
+
+**Segurança e identidade (até 19 pontos)**
+- Verifique seu e-mail: +4 pontos
+- Ative a autenticação de dois fatores: +8 pontos
+- Complete seu perfil: +8 pontos (nome de exibição +3, slug personalizado +2, avatar +3)
+
+**Prova social (até 26 pontos)**
+- Vincule sua conta do X: +8 pontos
+- Ative o Discord: +5 pontos
+- Ative o Telegram: +5 pontos
+- (Em breve) GitHub, Google ou Reddit: +12 pontos cada
+
+**Atividade e longevidade (até 17 pontos)**
+- Sequência de engajamento diário (7 dias ou mais) ou 10 ações ou mais em 30 dias: +6 pontos
+- Idade da conta (até 6 meses): +5 pontos (com teto de 6 pontos, escalonado pelo tempo)
+- (Em breve) Idade do party-ID e posse de tokens: +15 pontos
+
+**Indicação (até 6 pontos)**
+- Indicado por um usuário Trusted: +6 pontos (usuários com pontuação de reputação de 51 ou mais)
+
+Sua pontuação aumenta à medida que você conquista selos, e você sempre pode acompanhar seu progresso na aba Score.
+
+## Onde você a vê
+
+**Sua aba Score**
+Acesse **/profile/score** para ver seu detalhamento completo. A página mostra seu nível atual, a descrição do nível, um anel de progresso e cada selo que você pode conquistar, organizados por Identidade, Redes Sociais, Carteira e Atividade. Os selos conquistados mostram sua contribuição real para a pontuação; os selos ainda não obteníveis mostram os pontos-alvo.
+
+**Seu perfil público**
+Se você tiver um nível Verified ou superior e a chave de privacidade **show_human_score** estiver ativada, seu emblema de pontuação aparece como uma pílula de escudo no cabeçalho do seu perfil público (/u/[seu-slug]). O emblema mostra o nome do seu nível (Verified, Trusted ou Elite), mas nunca o número bruto.
+
+**Onde os emblemas são exibidos**
+O emblema Verified também aparece no seu perfil dentro do hub do CCTools e nas tabelas de classificação.
+
+## Controle de privacidade
+
+A chave **show_human_score** na aba Privacy (/profile/privacy) controla se seu emblema de pontuação fica visível para outras pessoas no seu perfil público. Quando a chave está desativada, sua pontuação permanece privada para você: apenas você a vê na sua própria página /profile/score.
+
+Todas as outras regras de privacidade (is_public, show_reputation, show_activity_stats) continuam funcionando como antes. Lembre-se: alterar as configurações de privacidade só afeta o que os outros veem. Você sempre vê tudo na sua própria conta.
+
+## Em breve
+
+A Fase 1.5 adicionará selos para vínculos do GitHub, Google e Reddit (+12 pontos cada). A Fase 2 introduzirá a idade do party-ID, a posse de tokens e a atividade cross-chain (+15 pontos). Essas expansões tornarão a pontuação mais sofisticada sem alterar a verificação central em duas partes (âncora da carteira mais corroboração).
+
+## Perguntas frequentes
+
+**Posso ver minha pontuação bruta?**
+Não. A pontuação de 0 a 100 é interna e só aparece como um rótulo de nível e o detalhamento de pontos. Isso corresponde à forma como outras plataformas de identidade apresentam a confiança: os nomes de nível são mais claros e menos manipuláveis do que números brutos.
+
+**Preciso acessar /profile/score para conquistar selos?**
+Não. Os selos são conquistados automaticamente quando você completa a ação (vincular uma rede social, ativar 2FA, manter-se ativo). A página /profile/score apenas mostra o detalhamento.
+
+**Minha pontuação é alguma vez excluída?**
+Não. Sua pontuação persiste até que você banha sua conta ou sua conta seja banida. Remover selos individuais (por exemplo, desvincular uma rede social) reduzirá sua pontuação, mas não a redefinirá para zero.
+
+**A pontuação afeta minha Reputation?**
+Não. A pontuação e a Reputation são independentes. A pontuação responde "é uma pessoa real?". A Reputation responde "esta pessoa contribui com qualidade?". Você pode ser Verified e ter baixa Reputation, ou ter alta Reputation e ser Unverified.
+
+**Com que frequência minha pontuação é atualizada?**
+A pontuação é recalculada a cada quatro horas em uma programação de cron, e instantaneamente quando você adiciona ou remove um selo pela interface (a API de detalhamento reflete a mudança de imediato).
