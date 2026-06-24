@@ -1,27 +1,54 @@
 ---
-title: "Understanding P&L"
-description: "How CCTools calculates your profit and loss across your portfolio."
+title: "Understanding Your Portfolio P&L on CCTools"
+sidebarTitle: "P&L Explained"
+description: "Learn how CCTools calculates your Canton portfolio profit and loss, including unrealized gains, staking rewards, and how the 24h, 7d, and 30d views work."
 ---
 
-## How P&L Works
+CCTools calculates your portfolio P&L by comparing your current wallet values against historical snapshots, factoring in all inflows, outflows, and staking rewards earned over the selected period. The result gives you a clear picture of how your Canton holdings have changed — not just in raw CC terms, but in real value.
 
-CCTools calculates your Profit & Loss based on your transaction history. For each token:
+## Time range views
 
-- **Cost basis** is calculated using the average acquisition price
-- **Current value** uses real-time market prices
-- **P&L** = Current Value - Cost Basis
+At the top of the Portfolio dashboard you'll find three period tabs: **24h**, **7d**, and **30d**. Switching between them updates every P&L figure on the page to reflect that window.
 
-P&L is shown both in absolute USD terms and as a percentage.
+| Tab | What it shows |
+|-----|---------------|
+| **24h** | Balance change over the last 24 hours — useful for spotting same-day reward payouts or sudden price moves |
+| **7d** | Seven-day view — good for tracking weekly reward accumulation and short-term trends |
+| **30d** | Thirty-day view — the broadest default view, best for understanding your overall monthly position |
 
-## Export Options
+Each tab displays the total balance change as both an **absolute CC/USD amount** and a **percentage**, so you can see the magnitude and scale of the movement at a glance.
 
-You can export your portfolio data in CSV format for:
+## What's included in P&L
 
-- Tax reporting (compatible with Koinly and other tax tools)
-- Personal record keeping
-- Spreadsheet analysis
+Your P&L figure rolls up everything that affects your wallet's value over the selected period:
 
-Go to **Portfolio** and click the **Export** button in the top right.
+- **CC balance changes** — movement in your CC holdings due to price fluctuations in USD or actual transfers in and out
+- **Staking rewards earned** — all CC rewards received from delegating to Canton Network validators during the period
+- **Incoming transfers** — CC received from other addresses, which increases your portfolio value
+- **Outgoing transfers** — CC sent to other addresses, which reduces your portfolio value
 
-**Note:** Full history and tax report export are Pro features. Free users get 7-day balance history, Pro users get 30-day history.
+## Balance series chart
 
+Each wallet's detail view includes a **balance series chart** — a time-series graph of that wallet's CC balance plotted over time. Use it to:
+
+- **Identify reward payouts** — regular step-ups in the line correspond to staking rewards landing in your wallet
+- **Spot large transfers** — sharp jumps or drops indicate significant CC moving in or out
+- **Track price impact** — when the chart is denominated in USD, wider movements reflect CC price changes against the dollar
+
+To open a wallet's chart, click that wallet's card from the main Portfolio page.
+
+## Why your P&L may look unexpected
+
+<Info>
+  A few common reasons your P&L figure might seem off:
+
+  - **New transfers look like gains or losses** — any CC you moved into a tracked wallet during the period appears as an inflow, which increases the period-over-period change. This is expected behavior, not an error.
+  - **Pending Canton indexer updates** — Canton indexers occasionally lag behind the chain by a few minutes. If a recent transaction isn't reflected yet, wait a moment and click **Refresh**.
+  - **CC price denominated in USD** — P&L in USD terms moves with the CC/USD exchange rate, not just your on-chain balance. A flat CC balance can still show a positive or negative USD P&L if the price has moved.
+</Info>
+
+## Exporting for tax purposes
+
+P&L figures in CCTools give you a real-time overview, but for formal accounting or tax reporting you'll want a complete, itemized transaction record. The **Export** tool generates a full CSV or JSON history of your rewards and transfers for any date range you choose.
+
+See [Track Staking Rewards and Export Portfolio Data](/portfolio/rewards-tracking) to learn how to generate an export.

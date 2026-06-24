@@ -1,18 +1,73 @@
 ---
-title: "Portfolio Not Loading"
-description: "Troubleshoot issues with portfolio data not showing correctly."
+title: "Troubleshoot Portfolio and Data Issues on CCTools"
+sidebarTitle: "Portfolio Issues"
+description: "Fix common CCTools portfolio issues: wallets not loading, missing rewards, incorrect balances, slow sync, and export problems."
 ---
 
-## Data Not Showing
+Portfolio data on CCTools is sourced from Canton Network blockchain indexers, which can occasionally run behind during periods of high network activity. Most portfolio issues are temporary and resolve after a manual refresh. Work through the relevant accordion below to diagnose your situation.
 
-**Wallet just added?**
-It may take a few minutes for your wallet data to fully load. Wait 2-3 minutes and refresh the page.
+<AccordionGroup>
+  <Accordion title="My wallet balance looks wrong">
+    The most common cause is an indexer that hasn't caught up yet.
 
-**Showing zero balance?**
-- Verify your wallet address is correct
-- Make sure the wallet has Canton Network tokens (not other chains)
-- Try removing and re-adding the wallet
+    1. **Click the Refresh button** on the Portfolio page and wait 2–3 minutes
+    2. **Check again after 30 minutes** — indexers under load can take longer to fully sync
+    3. **Check the Discord #status channel** — if Canton Network indexers are experiencing a known delay, it will be noted there
 
-**Historical data missing?**
-Historical data depends on indexer availability. Some older transactions may not be reflected.
+    If the balance is still wrong after 30 minutes and there's no known network issue, contact support with your wallet address and a description of the discrepancy.
+  </Accordion>
 
+  <Accordion title="My staking rewards aren't showing">
+    Staking reward data can lag behind real-time balances by several hours due to how rewards are calculated and distributed on-chain.
+
+    - **Wait 24 hours** — reward calculations are batched and may not appear immediately after they're distributed
+    - **Confirm the wallet address** — make sure the wallet address in your CCTools profile is the one you staked from
+    - **Check the transaction history** — look for incoming reward transactions in your transaction list; if they're there but not reflected in the displayed balance, click Refresh
+
+    If rewards are still missing after 24 hours, contact support with your wallet address and the expected reward amount.
+  </Accordion>
+
+  <Accordion title="My wallet shows 0 balance but I have CC">
+    A zero balance when you know CC is present usually comes down to one of three causes:
+
+    1. **Wrong wallet address** — Canton Network addresses are case-sensitive. Double-check that the address in your CCTools profile matches exactly what's in your wallet app, including capitalization
+    2. **Wrong network** — confirm your wallet is connected to Canton Network, not a testnet or another chain
+    3. **Address not added correctly** — try removing the wallet from your CCTools profile and re-adding it from scratch
+
+    After correcting the address, click Refresh to trigger a fresh sync.
+  </Accordion>
+
+  <Accordion title="The portfolio page is loading slowly">
+    CCTools loads a cached snapshot of your portfolio first for speed, then performs a full sync in the background or when you click Refresh.
+
+    Slow loads are most common when:
+    - Canton Network indexers are under high load (check the Stats page for unusual throughput)
+    - You have a large number of transactions in your history
+    - Your internet connection is throttled
+
+    If the page hasn't fully loaded after 2 minutes, try a hard refresh (`Ctrl+Shift+R` or `Cmd+Shift+R`). If the issue is persistent, check Discord for any known service issues.
+  </Accordion>
+
+  <Accordion title="My export is empty">
+    If you download a transaction export and the file is empty or missing data:
+
+    1. **Check the date range** — make sure the selected date range covers the period when you had activity. Exporting the last 7 days won't include older transactions
+    2. **Select the right wallet** — if you have multiple wallets added to CCTools, make sure you've selected either the specific wallet with activity or **All wallets**
+    3. **Try a shorter range** — very large exports can time out. Try exporting one month at a time
+
+    If the export is still empty after checking these settings, contact support.
+  </Accordion>
+
+  <Accordion title="I see duplicate transactions">
+    Duplicate transactions can appear when CCTools re-indexes a wallet after a sync event. This is usually temporary.
+
+    1. **Wait and refresh** — duplicates often clear on their own after the re-index completes
+    2. **Check that you didn't add the same wallet twice** — go to **Settings → Wallets** and confirm the address isn't listed more than once
+
+    If duplicates persist after 24 hours, contact support with your wallet address and a screenshot showing the duplicates. This helps the team identify and fix any indexer issues.
+  </Accordion>
+</AccordionGroup>
+
+## Still stuck?
+
+If you've worked through the relevant steps and the issue persists, the CCTools team can help. See [Contact Support](/troubleshooting/contact-support) for all available channels.

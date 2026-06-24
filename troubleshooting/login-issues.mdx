@@ -1,35 +1,74 @@
 ---
-title: "Login Issues"
-description: "Can't log in? Here are the most common causes and fixes."
+title: "Fix Login and Account Access Issues on CCTools"
+sidebarTitle: "Login Issues"
+description: "Resolve common CCTools login problems: forgotten password, social login not working, 2FA issues, email verification, and account recovery steps."
 ---
 
-## Common Issues
+Most login issues on CCTools can be resolved in a few steps. The most common cause is a mismatch between the sign-in method you're using now and the one you used when you created your account — for example, trying email/password when you originally signed up with Google. Work through the accordion below to find your situation.
 
-**"Invalid credentials" error**
-- Double-check your email and password
-- Try the "Forgot Password" link to reset
-- Make sure you're using the correct login method (Email, Google, Twitter/X, or Discord)
+<AccordionGroup>
+  <Accordion title="I forgot my password">
+    On the CCTools login page, click **Forgot Password** below the password field. Enter the email address associated with your account and submit the form. A password reset link will be sent to that address.
 
-**"Email not verified" error**
-- Check your inbox (and spam folder) for the verification email
-- Click the verification link in the email
-- If you didn't receive it, click "Resend verification email" on the login page
+    If you don't receive the email within a few minutes:
+    - Check your spam or junk folder
+    - Add `noreply@cctools.network` to your contacts and try again
+    - Make sure you're using the email address you registered with — not an alias
 
-**2FA issues**
-- If you enabled 2FA and lost access to your authenticator app, reach out via the contact form
-- Email 2FA codes may land in spam
+    If you originally signed up with a social login (Google, X, Discord), you may not have a password set. Try signing in with that social account instead.
+  </Accordion>
 
-**Page loads but nothing happens**
-- Clear your browser cache and cookies
-- Try a different browser
-- Disable browser extensions that might interfere
+  <Accordion title="I'm not receiving the verification email">
+    Verification emails can sometimes be delayed or filtered by email providers.
 
-## Still Can't Log In?
+    1. **Check spam and junk folders** — verification emails from `noreply@cctools.network` are occasionally caught by spam filters
+    2. **Add the sender to your contacts** — add `noreply@cctools.network` and request a new verification email
+    3. **Wait a few minutes** — delivery can take up to 5 minutes depending on your provider
+    4. **Try a different email provider** — if you're using a work or school email, it may be blocking the domain
 
-If none of the above works, reach out via the contact form at **cctools.network/contact** with:
+    If none of these work, contact support from the [Contact Support](/troubleshooting/contact-support) page.
+  </Accordion>
 
-- The email you're trying to log in with
-- What error message you see
-- Your browser and device info
-- Screenshots if possible
+  <Accordion title="My social login isn't working">
+    If signing in with Google, X, or Discord is failing, try the following:
 
+    - **Switch to email/password login** — if you set a password when registering, this will work independently of your social account
+    - **Check your social account connection** — once logged in via email, go to **Settings → Profile → Connections** and verify that your social account is linked correctly
+    - **Re-authorize the connection** — disconnect and reconnect the social account in Settings if the authorization token has expired
+    - **Clear your browser cache and cookies** — stale auth state can cause social login flows to fail
+
+    If your social account's email address has changed since you created your CCTools account, the social login may not match. Contact support to merge accounts.
+  </Accordion>
+
+  <Accordion title="I'm locked out after too many failed attempts">
+    After several failed login attempts, CCTools temporarily locks the account to protect against brute-force attacks.
+
+    **Wait 15 minutes**, then try again with your correct credentials. The lockout clears automatically.
+
+    If the lockout persists beyond 15 minutes, or if you didn't trigger it yourself, contact support immediately — this could indicate an unauthorized access attempt. See [Contact Support](/troubleshooting/contact-support).
+  </Accordion>
+
+  <Accordion title="My 2FA code isn't working">
+    Two-factor authentication codes are time-sensitive (TOTP codes expire every 30 seconds). Common causes:
+
+    - **Device clock out of sync** — make sure your device's date and time are set to automatic/network time. Even a 30-second drift can invalidate TOTP codes
+    - **Wrong authenticator app entry** — if you have multiple CCTools entries in your authenticator, try each one
+    - **Email 2FA delay** — if you're using email-based 2FA, check your spam folder and wait up to 2 minutes for delivery
+
+    **If you've lost access to your authenticator app:** Contact CCTools support via Discord or the [feedback form]("https://cctools.network/feedback"). You'll need to verify your identity before 2FA can be reset.
+  </Accordion>
+
+  <Accordion title="I can't find my account">
+    If the login page says your account doesn't exist:
+
+    1. **Try all sign-in methods** — the account may have been created with a different method (Google vs. email, for example). Try each option on the login page
+    2. **Check for typos in your email** — make sure you're entering the exact email address you registered with, including any dots or plus signs
+    3. **Check if you have multiple email addresses** — try other email addresses you might have used at signup
+
+    If you're certain you created an account but can't find it, reach out to support with any details you remember about how you signed up.
+  </Accordion>
+</AccordionGroup>
+
+## Still stuck?
+
+If none of the steps above resolve your issue, the CCTools support team can help. See [Contact Support](/troubleshooting/contact-support) for all available channels.

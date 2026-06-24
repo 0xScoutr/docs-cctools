@@ -1,107 +1,64 @@
 ---
-title: The Canton Map
-description: Navigate the Canton network ecosystem with an interactive force-directed graph of projects, validators, apps, and campaigns.
+title: "Explore the Canton Network Visual Map"
+sidebarTitle: "Canton Map"
+description: "The Canton Map on CCTools is an interactive visual explorer showing all Canton Network nodes, validators, ecosystem projects, and their interconnections."
 ---
 
-An interactive network visualization that maps Canton ecosystem participants in real time. The Canton Map shows projects, validators, featured apps, and campaigns as interconnected nodes, with edges representing their relationships.
+The Canton Map gives you a bird's-eye view of the Canton Network as a living, interactive graph. Instead of reading through lists, you can see validators, ecosystem projects, and the relationships between them rendered visually — making it easy to understand how different participants connect and where any given project sits within the broader network.
 
-## Opening the map
+## Accessing the map
 
-Visit the Canton Map page and select a category (Finance, Infrastructure, Social, etc.) from the grid. The map loads only that category's subgraph, keeping performance fast regardless of network size.
+Go to [cctools.network/canton-map](https://cctools.network/canton-map) to open the map. From the landing page, select a category (Finance, Infrastructure, Social, and others) from the category grid. The map loads the subgraph for that category, keeping performance snappy regardless of how large the overall network grows.
 
-Each category shows:
-- **Projects** - solid colored circles, grouped by category color (blue for DeFi, amber for Trading, etc.)
-- **Validators & Super Validators** - ring nodes that secure projects on-chain
-- **Featured Apps** - apps built on top of selected projects
-- **Earn Listings** - opportunities available within the category
-- **Campaigns** - active promotions and events
+## What you'll see
 
-## Reading the graph
+The map renders Canton Network participants as nodes in a force-directed graph, with edges representing the relationships between them.
 
-**Node types** (shown in the legend):
+**Node types** you'll encounter:
 
-- **Project** - solid circle with your category color
-- **Category Hub** - hollow gray ring (shows projects within a category)
-- **Validator** - hollow blue ring (validates one or more projects)
-- **Super Validator** - hollow amber ring (higher on-chain stake)
-- **Featured App** - solid purple circle (app built on a project)
-- **Earn Listing** - solid green circle (paid opportunity)
-- **Campaign** - solid purple circle (limited-time promotion)
+- **Projects** — solid colored circles grouped by category color (for example, blue for DeFi, amber for Trading)
+- **Validators** — hollow ring nodes that secure one or more projects on-chain
+- **Super Validators** — amber ring nodes with elevated governance rights
+- **Featured Apps** — solid purple circles representing apps built on top of ecosystem projects
+- **Earn Listings** — green circles marking active earning opportunities within the category
+- **Campaigns** — purple circles showing limited-time promotions tied to projects
 
-**Visual overlays** on project nodes:
-- Small **featured app badge** (purple sparkle) - has featured apps
-- **Sponsored badge** (amber bolt) - is sponsored
-- **Validator badge** (green hexagon) - has at least one validator
-- **SV badge** (amber hexagon) - has at least one super validator
+**Visual overlays** on project nodes give you at-a-glance status:
 
-**Connections** show relationships:
-- Projects belong to categories (upward edges)
-- Validators and super validators secure projects (inbound edges)
-- Featured apps are powered by projects (outbound edges)
-- Projects host earn listings and campaigns
+- A **purple sparkle badge** means the project has featured apps built on top of it
+- An **amber bolt badge** indicates a sponsored project
+- A **green hexagon badge** means at least one validator secures this project
+- An **amber hexagon badge** means at least one Super Validator secures this project
 
-## Interacting with the map
+**Connections** tell the story of relationships: projects connect upward to their category hub, validators connect inward to the projects they secure, and featured apps branch outward from the projects that power them.
 
-**Pan** - click and drag to move around the graph.
+## Navigating the map
 
-**Zoom** - scroll up to zoom in, scroll down to zoom out. Use the zoom buttons in the bottom-right corner for finer control.
+**Pan** by clicking and dragging anywhere on the canvas.
 
-**Search** - the search bar at the top finds any project, validator, or app by name or ID. Results populate in a dropdown with keyboard navigation:
-- Arrow Up / Down to change selection
-- Enter to jump to a node
-- Escape to close
+**Zoom** by scrolling up to zoom in and scrolling down to zoom out. The zoom buttons in the bottom-right corner give you finer step-by-step control. Use **Reset View** to return to the default position at any time.
 
-When you search for a node in another category, the map automatically switches to that category and focuses the node.
+**Search** using the search bar at the top to find any project, validator, or app by name. Results appear in a dropdown with keyboard navigation — use the arrow keys to move through suggestions and press Enter to jump to a node. If the node you're jumping to lives in a different category, the map automatically switches to that category and focuses on the node.
 
-**Click a node** - opens its detail panel on the right (desktop) or as a bottom sheet (mobile). The panel shows:
-- Name, logo, and category
-- Related nodes (connected projects, validators, apps, opportunities, campaigns)
-- Scores and metrics (if available)
-- Links to external resources
+**Click any node** to open its detail panel on the right side of the screen (or as a bottom sheet on mobile). The panel shows the node's name, logo, category, connected nodes, scores, and links to external resources. From the detail panel you can navigate directly to the project's full CCTools profile page.
 
-**Filter node types** - toggle validators, super validators, featured apps, earn listings, or campaigns on and off using the filters button. A badge on the button shows how many filters are active.
+**Filter node types** using the filters button to toggle validators, Super Validators, featured apps, earn listings, and campaigns on or off. A badge on the button shows how many filter types are currently active.
 
-**Zoom controls** (bottom right):
-- Zoom In / Zoom Out - adjust scale in steps
-- Reset View - return to the default zoom and position
-- Reheat Simulation - restart the force physics, useful if nodes pile up in a corner
+If nodes start to pile up or the layout feels cluttered after a lot of interaction, click **Reheat Simulation** to restart the force physics and let the graph settle back into a clean arrangement.
+
+<Info>
+  The Canton Map is updated continuously as new projects and validators join the network. Category subgraphs typically contain 30–80 nodes and load in under 500ms, with the simulation running entirely in your browser for smooth 60fps interaction.
+</Info>
 
 ## Desktop vs. mobile
 
-**Desktop**: The legend sidebar (220px) appears on the left with node-type key, visual overlays, and category buttons. Hide it to expand the canvas. The node detail panel docks to the right side.
+On **desktop**, the legend sidebar appears on the left with the node-type key, visual overlays guide, and category picker. You can hide the sidebar to expand the canvas. The node detail panel docks to the right side.
 
-**Mobile**: Tap the filters button (left of the search bar) to open the legend and category picker in a bottom sheet. The detail panel slides up from the bottom when you select a node.
+On **mobile**, tap the filters button to open the legend and category picker in a bottom sheet. The detail panel slides up from the bottom when you select a node.
 
-## Understanding the layout
+## Tips for exploring the map
 
-The graph uses a force-directed simulation that:
-- Repels overlapping nodes (collision)
-- Attracts connected nodes toward each other
-- Clusters nodes by their relationships
-
-Nodes settle into a stable arrangement over 60-120 ticks. If the layout feels cluttered, tap Reheat Simulation to restart the physics from scratch. Dragging any node temporarily pins it in place; release to unpin.
-
-The background includes a subtle dot grid and radial gradient to keep the canvas readable at any zoom level.
-
-## Performance
-
-Each category loads only its subgraph (typically 30-80 nodes), not the entire network. The map uses a Canvas renderer and Web Workers for simulation, keeping 60 FPS even on older devices.
-
-- **Category picker** loads graph metadata in ~100ms
-- **Map rendering** completes in ~200-500ms depending on subgraph size
-- **Simulation** runs in the browser; no server round-trips during interaction
-
-## Tips
-
-- **Start with a small category** if you are new to the map. Finance (DeFi) is the largest; Services or DAO are more compact.
-- **Use the legend** to understand what each color and shape means. The visual grammar is consistent across all categories.
-- **Search by project name** to jump straight to a specific ecosystem player, then explore outbound edges to discover validators and apps.
-- **Hover over a node** to see its name in a tooltip. Click to open the full detail panel.
-- **Open multiple detail panels** by searching and clicking nodes across different categories. Each panel replaces the previous one.
-
-## Next steps
-
-From the detail panel, navigate to:
-- The project's full profile page (if it is a project)
-- Related projects, validators, or campaigns on the same map
-- Earn opportunities to participate in the ecosystem
+- **Start with a smaller category** like Services or DAO if you're new to the map — Finance (DeFi) is the largest subgraph and can feel overwhelming at first.
+- **Hover over a node** to see its name in a tooltip before clicking.
+- **Search for a project you already know** to jump straight to it, then explore its connected edges to discover related validators and apps you might not have found otherwise.
+- **Use the legend** on the left to keep track of what each color and shape means — the visual grammar is consistent across all categories.

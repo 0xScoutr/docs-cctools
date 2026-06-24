@@ -1,27 +1,49 @@
 ---
-title: "Network Stats"
-description: "What data is shown on the Network Stats page and how it is collected."
+title: "Canton Network Live Stats on CCTools"
+sidebarTitle: "Network Stats"
+description: "Monitor Canton Network in real time on CCTools. View live throughput, transaction volume, burn and mint rates, validator uptime, and the CC halving countdown."
 ---
 
-## Overview
+The CCTools Network Stats page ([/stats](https://cctools.network/stats)) gives you a live view of Canton Network's health and activity. Whether you're tracking the network's growth, evaluating validator performance, or watching CC tokenomics play out in real time, this is your dashboard for the numbers that matter.
 
-The **Network Stats** page shows real-time and historical data about the Canton Network:
+<Info>
+  Network stats are sourced directly from Canton Network nodes and updated continuously. There is no manual refresh needed — the page stays current automatically.
+</Info>
 
-- **CC Price** - Current price, 24h change, market cap, and volume
-- **Validators** - Total number of Super Validators and regular validators
-- **Burn/Mint Ratio** - Whether the network is currently deflationary (more burns than mints)
-- **Daily Transactions** - Transaction volume on the network
-- **Governance** - Total proposals, approval rate, executed vs rejected
-- **Issuance Rates** - Per Super Validator, Validator, and App coupon rates
-- **TradingView Chart** - Live KRAKEN:CCUSD price chart with full TradingView integration
+## What you can see
 
-## Burn vs Mint
+The Stats page surfaces key metrics across three areas: network performance, validator health, and token supply dynamics.
 
-CCTools tracks hourly burn and mint data for the CC token:
+### Network performance
 
-- **Burns** - CC tokens burned as transaction fees
-- **Mints** - CC tokens minted as validator rewards
-- **Ratio** - When the ratio is above 1.0, more CC is being burned than minted (deflationary)
+**Live throughput**
+Transactions per second (TPS) across Canton Network, updated in real time. Watch how network activity fluctuates throughout the day and track long-term growth as more applications launch.
 
-This data is shown in a dual bar chart covering the last 24-72 hours, helping you understand the token's supply dynamics in real-time.
+**Transaction volume**
+Aggregate transaction counts over configurable time windows — daily, weekly, and monthly. Use this to understand cadence and spot spikes that correspond to campaign launches, market events, or protocol upgrades.
 
+### Validator health
+
+**Validator uptime**
+The percentage of time each active validator is online and participating in consensus. High uptime across the validator set indicates a healthy, resilient network. Low uptime on a specific validator may indicate maintenance or an incident.
+
+### CC tokenomics
+
+**Burn/mint ratio**
+The rate at which Canton Coin (CC) is burned relative to the rate at which new CC enters circulation. A burn rate that outpaces minting is deflationary pressure — useful context when evaluating CC as an asset. The ratio updates as on-chain activity changes.
+
+**CC halving countdown**
+A live countdown to the next Canton Coin halving event, when the block reward for validators is cut in half. Halvings directly affect the rate of new CC issuance and have historically been significant events for Canton tokenomics. The countdown is based on projected block times.
+
+## Why it matters
+
+Network stats help you understand Canton's growth trajectory and the health of the infrastructure your assets sit on.
+
+- **For investors**: the burn/mint ratio and transaction volume give you a macro view of demand relative to supply
+- **For validators and stakers**: uptime data lets you assess which validators are most reliable
+- **For developers and project teams**: throughput metrics tell you whether the network can handle your application's load
+- **For everyone**: the halving countdown is one of the most anticipated recurring events in the Canton ecosystem — knowing when it's coming helps you plan
+
+<Tip>
+  Bookmark the [/stats](https://cctools.network/stats) page and check it alongside market data when evaluating Canton Network activity. Volume spikes often coincide with major campaign launches or ecosystem announcements.
+</Tip>

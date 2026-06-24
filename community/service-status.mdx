@@ -1,95 +1,51 @@
 ---
-title: "Service Status"
-description: "Real-time uptime and performance monitoring for the CCTools public API."
+title: "Check CCTools Service Status and Known Issues"
+sidebarTitle: "Service Status"
+description: "Monitor CCTools uptime and service health. Find out what to do when data isn't loading, portfolio sync is slow, or you're experiencing other platform issues."
 ---
 
-The CCTools public API provides a real-time status dashboard at **status.cctools.network** where you can monitor the health and performance of all core endpoints.
+CCTools aims for 24/7 availability across all platform features. When something isn't working as expected — whether that's slow portfolio data, a news feed that isn't loading, or an unresponsive feature — this page explains where to look and what to do.
 
-## About the status page
+## Real-time status dashboard
 
-The status page is a public, live dashboard for the CCTools public API. It collects health data continuously and updates automatically:
+The CCTools public API has a live status page at **[status.cctools.network](https://status.cctools.network)**. It refreshes automatically every 30 seconds and gives you a granular view of which services are healthy and which are not.
 
-- Page refreshes every 30 seconds
-- Each endpoint is checked approximately every 2 minutes
-- Historical data covers the last hour
-- Recent incidents are shown from the past 30 days
+The dashboard shows:
 
-## What you see on the status page
+- **Overall system status** — either All systems operational, Degraded performance, or Major outage
+- **Per-endpoint health** — status, last check time, HTTP response code, latency, and a 1-hour uptime percentage for each core service
+- **Active incidents** — any ongoing issues with a severity level (minor, major, or critical), current status (investigating, identified, monitoring), and which endpoints are affected
+- **Recent incident history** — resolved incidents from the past 30 days, so you can see what was recently fixed
 
-### Overall status
+Check the status page first any time you encounter unexpected behaviour. If there's a known incident, it will be listed there along with its current status.
 
-At the top of the page, you'll see the overall system status displayed as one of three states:
+## Common issues and quick fixes
 
-- **All systems operational**: Every monitored endpoint is healthy
-- **Degraded performance**: Some endpoints are not fully healthy or there are active incidents
-- **Major outage**: Most endpoints are down or there is a critical incident
+**Portfolio data is delayed or stale**
 
-### Per-endpoint health
+Canton blockchain indexers occasionally run behind, especially during periods of high network activity. This is normal and temporary. Use the **Refresh** button on your portfolio page to trigger a manual sync. If balances are still wrong after a few minutes, try removing and re-adding the affected wallet.
 
-The status page displays a table of monitored endpoints grouped by category. For each endpoint you can see:
+**News feed isn't updating**
 
-- Status indicator (green for operational, red for down)
-- Last check time (e.g., "47 seconds ago")
-- HTTP status code of the most recent response
-- Latency of the most recent check in milliseconds
-- 1-hour uptime percentage
-- Average latency over the last hour
-- Latency sparkline (visual chart showing the last hour of checks using a logarithmic scale)
+The news ingestion pipeline runs every 10 minutes. If the feed looks stale, wait a few minutes and reload the page. If the issue persists beyond 30 minutes, check [status.cctools.network](https://status.cctools.network) for any active incidents affecting the news service.
 
-### Active incidents
+**Features aren't loading**
 
-If there are any ongoing issues, the **Active incidents** section appears near the top. Each incident card displays:
+If a page or feature isn't responding, check the status dashboard for any active incidents. If the dashboard shows all systems operational but you're still seeing issues, it may be a local network or browser problem — try a hard refresh (Ctrl+Shift+R / Cmd+Shift+R) or a different browser.
 
-- Incident title and severity level (minor, major, critical, or maintenance)
-- Current status (investigating, identified, monitoring, or resolved)
-- Description of the issue, if available
-- Which endpoint(s) are affected
-- When the incident started
+## Discord status announcements
 
-### Recent incident history
+For incidents that affect a large portion of users, the CCTools team posts announcements in the **#announcements** and **#status** channels on Discord. If you're experiencing an issue and the status page doesn't yet reflect it, checking Discord is the fastest way to find out if others are affected and whether the team is already investigating.
 
-Below the endpoints, you'll find **Recent updates (last 30 days)**, showing resolved incidents and past status changes. This helps you understand what was recently fixed or changed.
+Join the server at [discord.gg/Pm2YpafyxP](https://discord.gg/Pm2YpafyxP).
 
-## Monitored endpoints
+## Reporting an issue
 
-The status page watches 11 core endpoints across the CCTools public API:
+If the status page shows everything as healthy but you're still experiencing a problem, please report it:
 
-**Meta**
-- OpenAPI spec (API specification document)
+- **Discord** — Post in **#support** with a description of the issue, what you were trying to do, and any error messages you saw
+- **Contact form** — Submit a report at [cctools.network/contact](https://cctools.network/contact) for issues that need a direct response from the team
 
-**Ecosystem**
-- List projects
-- Trending projects
-- Project categories
-- Project rankings
-
-**Users**
-- Get user profile (using a test user account)
-- User badges
-- User contributions
-- User activity
-
-**Earn**
-- List opportunities
-
-**Leaderboard**
-- Leaderboard rankings
-
-Each endpoint is probed individually to ensure you get a granular view of which services are healthy and which may have issues.
-
-## Troubleshooting
-
-If you encounter issues with the CCTools API:
-
-1. **Check the status page first**: Visit **status.cctools.network** to see if there is a known incident affecting your endpoint
-2. **Review active incidents**: If there is an active incident, check its status and description to understand the issue and any workarounds
-3. **Check the affected endpoints**: The incident card shows which endpoint(s) are impacted, so you can identify if your call is affected
-4. **Report the issue**: If the status page shows everything green but you are still experiencing problems, report it via the **Report an issue** link or contact us at **/contact**
-
-## Useful links
-
-- **API base**: https://api.cctools.network
-- **OpenAPI specification**: https://api.cctools.network/api/v1/openapi.json
-- **API documentation**: https://docs.cctools.network/api
-- **Get an API key**: Visit **/profile/api** to generate your API key
-- **Report an issue**: Use **/contact** to report problems not listed on the status page
+<Info>
+  When reporting an issue, include your browser, operating system, and a description of the steps that led to the problem. Screenshots are especially helpful for UI issues.
+</Info>

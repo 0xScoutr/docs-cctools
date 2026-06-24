@@ -1,110 +1,49 @@
 ---
-title: Human Score and Verification
-description: Anti-sybil credibility score that signals how real and established your CCTools account is.
+title: "Understanding Your CCTools Human Score"
+sidebarTitle: "Human Score"
+description: "The CCTools Human Score is a trust and reputation metric that helps distinguish genuine users from bots. Learn what affects it and how to improve yours."
 ---
 
-Your Human Score is a 0 to 100 credibility signal that helps the Canton Network community identify verified humans and filter out bots and sybils. Unlike a raw number, you see it as a descriptive tier that matches how other identity platforms (Worldcoin, BrightID, Galxe) communicate trust.
+The Human Score is a reputation metric CCTools uses to verify that activity on the platform comes from real users, not bots or automated accounts. It gives the community a way to gauge how genuine and engaged a participant you are — and it gives you a way to demonstrate your credibility within the Canton ecosystem.
 
-## What it measures
+## What affects your Human Score
 
-The Human Score combines multiple corroboration signals to answer a single question: "Is this a unique human?" It pulls from three main categories.
+Your Human Score is calculated from a combination of signals that reflect real, sustained engagement with CCTools:
 
-- **Identity and security**: Email verification, two-factor authentication, profile completeness (display name, custom slug, avatar)
-- **On-chain and social proof**: Canton wallet connection, linked social accounts (X, Discord, Telegram), account age, and activity patterns
-- **Community signals**: Engagement consistency (daily streaks of 7+ days or 10+ actions in 30 days), being referred by a trusted user
+- **Quest completion** — finishing Learn & Earn quests shows consistent, purposeful use of the platform
+- **Consistent platform activity** — regular logins and interactions contribute positively over time
+- **Connected social accounts** — linking Google, X (Twitter), Discord, or Telegram adds verified identity signals
+- **Profile completeness** — a fully filled-out profile is a stronger trust signal than an empty one
+- **Referral quality** — referring users who go on to engage actively with the platform reflects well on your score
 
-The score is computed by a materialized view that refreshes every four hours and on-demand when you add or remove a stamp. Banned accounts are hard-capped at a score of 0 and never Verified, regardless of other signals.
+## Where it appears
 
-## Score tiers
+Your Human Score can appear in two places:
 
-Your score maps to one of six tiers.
+- **Your public profile** — visible to other CCTools users when you enable it in **Settings → Profile → Privacy → Show Reputation Score**
+- **Community contexts** — the score acts as a trust signal that the broader Canton community can reference when evaluating participants
 
-| Tier | Range | Verified? | Meaning |
-|------|-------|-----------|---------|
-| Restricted | 0 | No | Account banned (contact support if you think this is a mistake) |
-| Unverified | 0-34 | No | No Canton wallet connected yet |
-| Newcomer | 0-34 | No | Wallet connected, but score below threshold |
-| Verified | 35-59 | Yes | Connected Canton wallet AND score at or above 35 |
-| Trusted | 60-84 | Yes | Score 60 or higher |
-| Elite | 85-100 | Yes | Score 85 or higher |
+If you've disabled the Reputation Score toggle in your Privacy settings, your Human Score will not be shown to other users. See [Public Profile](/account/public-profile) for details on managing that toggle.
 
-The **Verified floor is 35**: you need both a connected Canton wallet (the anchor) AND a score of at least 35 to be Verified. This two-part gate (anchor plus corroboration) ensures that a wallet alone is not sufficient, and soft factors alone are never sufficient.
+## Improving your score
 
-Only Verified-and-above tiers (Verified, Trusted, Elite) earn a visible shield badge on your public profile. Newcomer accounts show no badge.
+The most effective way to grow your Human Score is to use CCTools as an active, genuine participant. Specifically:
 
-## What "Verified" means
+<Steps>
+  <Step title="Use CCTools regularly">
+    Log in and interact with the platform consistently. Regular engagement over time is weighted more heavily than sporadic bursts of activity.
+  </Step>
+  <Step title="Complete Learn & Earn quests">
+    Working through quests in the Academy and Earn sections demonstrates purposeful engagement and contributes directly to your score.
+  </Step>
+  <Step title="Connect your social accounts">
+    Link Google, X (Twitter), Discord, and Telegram in **Settings → Profile → Connected Accounts**. Each verified connection strengthens your identity signal.
+  </Step>
+  <Step title="Maintain a daily streak">
+    Keeping an active streak shows that you're a consistent user — one of the clearest indicators of genuine human activity.
+  </Step>
+</Steps>
 
-Verified is a formal gate: your account is only Verified if you have BOTH of these conditions met.
-
-1. A connected Canton wallet (Send, 5N Loop, or another Canton client)
-2. A Human Score of 35 or higher
-
-This mirrors the "anchor plus corroboration" pattern used by Gitcoin Passport and other credibility platforms. On Canton, this design is stronger because party-IDs are not free: a single human cannot easily create many verified accounts.
-
-Once you reach Verified, you unlock the ability to participate in on-chain campaigns and other community features that require proof of humanity.
-
-## How to improve your score
-
-The concrete levers are the stamps you earn. Connect a Canton wallet, add social and identity proofs, stay active, and keep your account fresh.
-
-**Wallet (the required anchor)**
-- Connect a Canton wallet: +10 points. This is the anchor for the Verified badge and enables all other on-chain activity.
-
-**Security and identity (up to 19 points)**
-- Verify your email: +4 points
-- Enable two-factor authentication: +8 points
-- Complete your profile: +8 points (display name +3, custom slug +2, avatar +3)
-
-**Social proof (up to 26 points)**
-- Link your X account: +8 points
-- Enable Discord: +5 points
-- Enable Telegram: +5 points
-- (Coming soon) GitHub, Google, or Reddit: +12 points each
-
-**Activity and longevity (up to 17 points)**
-- Daily engagement streak (7+ days) or 10+ actions in 30 days: +6 points
-- Account age (up to 6 months): +5 points (caps at 6 points, scaled by time)
-- (Coming soon) Party-ID age and token holdings: +15 points
-
-**Referral (up to 6 points)**
-- Referred by a Trusted user: +6 points (users with reputation score 51 or higher)
-
-Your score increases as you earn stamps, and you can always see your progress on the Score tab.
-
-## Where you see it
-
-**Your Score tab**
-Visit **/profile/score** to see your detailed breakdown. The page shows your current tier, tier description, a progress ring, and every stamp you can earn: organized by Identity, Socials, Wallet, and Activity. Earned stamps show your actual contribution to the score; unearthable stamps show the target points.
-
-**Your public profile**
-If you have a Verified-and-above tier and the **show_human_score** privacy toggle is on, your score badge appears as a shield pill in your public profile header (/u/[your-slug]). The badge shows your tier name (Verified, Trusted, or Elite) but never the raw number.
-
-**Where badges render**
-The Verified badge also appears on your profile in the CCTools hub and on leaderboards.
-
-## Privacy control
-
-The **show_human_score** toggle on the Privacy tab (/profile/privacy) controls whether your score badge is visible to others on your public profile. When the toggle is off, your score remains private to you: only you see it on your own /profile/score page.
-
-All other privacy rules (is_public, show_reputation, show_activity_stats) continue to work as before. Remember: changing privacy settings only affects what others see. You always see everything on your own account.
-
-## Coming soon
-
-Phase 1.5 will add stamps for GitHub, Google, and Reddit links (+12 points each). Phase 2 will introduce Party-ID age, token holdings, and cross-chain activity (+15 points). These expansions will make the score more sophisticated without changing the core two-part gate (wallet anchor plus corroboration).
-
-## FAQ
-
-**Can I see my raw score?**
-No. The 0-100 score is internal and only surfaces as a tier label and the points breakdown. This matches how other identity platforms present trust: tier names are clearer and less gamifiable than raw numbers.
-
-**Do I need to visit /profile/score to earn stamps?**
-No. Stamps are earned automatically when you complete the action (link a social, enable 2FA, stay active). The /profile/score page just shows you the breakdown.
-
-**Is my score ever deleted?**
-No. Your score persists until you either ban your account or your account is banned. Removing individual stamps (e.g. unlinking a social) will lower your score, but it will not reset to zero.
-
-**Does score affect my Reputation?**
-No. Score and Reputation are independent. Score answers "is a real person?". Reputation answers "does this person contribute quality?". You can be Verified and have low Reputation, or have high Reputation and be Unverified.
-
-**How often does my score update?**
-The score recomputes every four hours on a cron schedule, and instantly when you add or remove a stamp via the UI (the breakdown API reflects the change immediately).
+<Info>
+  The Human Score is a trust signal — it does not directly affect your XP total or leaderboard rankings. Think of it as a reputation layer that sits alongside your activity stats, not a replacement for them.
+</Info>

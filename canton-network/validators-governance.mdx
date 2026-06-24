@@ -1,37 +1,56 @@
 ---
-title: "Validators & Governance"
-description: "Browse validators, understand Super Validators, and track governance proposals."
+title: "Canton Validators and On-Chain Governance Explained"
+sidebarTitle: "Validators & Governance"
+description: "Understand how Canton Network validators work and how on-chain governance operates. Track proposals, Super Validator votes, and price consensus rounds on CCTools."
 ---
 
-## Validators Page
+Canton Network is secured and governed by a network of validators — institutional and independent operators who run the infrastructure that keeps the chain running. Unlike many blockchain networks where validators are anonymous stakers, Canton's validator set is largely composed of known, regulated entities, which gives the network a verifiable layer of accountability. CCTools gives you a live view of all validator activity and on-chain governance, so you can follow the decisions shaping the network in real time.
 
-The **Validators** page lists all active validators on the Canton Network. For each validator you can see:
+## Validator roles
 
-- Validator name and identity
-- Role (Super Validator or regular Validator)
-- Performance metrics and rewards data
+Canton Network has two tiers of validators, each with different responsibilities and levels of governance participation:
 
-**Pro users** get access to additional validator data and export options.
+**Regular Validators** run Canton Network nodes and earn CC rewards for doing so. Their primary role is infrastructure: processing transactions, maintaining uptime, and contributing to the network's overall security. They are eligible for per-round CC rewards based on their tier and performance.
 
-## Super Validators
+**Super Validators** do everything regular validators do, plus they have additional governance responsibilities that give them a direct role in shaping how the network operates:
 
-Super Validators are major financial institutions that validate transactions and have additional governance rights:
+- **Price consensus rounds** — Super Validators participate in regular rounds to establish a consensus on the CC/USD reference price, which is used across the network for fee calculations and reward distributions
+- **Network configuration changes** — Super Validators vote on changes to Canton Network parameters, such as issuance rates and protocol upgrades
+- **On-chain proposal voting** — governance proposals require Super Validator approval to pass; each Super Validator's vote is recorded on-chain and visible to anyone
 
-- Voting on protocol changes and network parameters
-- Proposing network upgrades
-- Setting fee structures
+Being a Super Validator is not just a technical role — it is a governance commitment. Super Validators are accountable for the decisions they make on-chain, and CCTools surfaces their voting records so you can evaluate their participation.
 
-Examples include major banks and financial institutions that participate in the Canton Network consortium.
+## Global Synchronizer Foundation (GSF)
 
-## Governance
+The **Global Synchronizer Foundation (GSF)** is the formal governance body overseeing Canton Network. The GSF coordinates the validator set, sets the framework for on-chain governance, and provides the institutional structure within which proposals are debated and executed.
 
-CCTools tracks all governance activity on the **Governance** page:
+The GSF's validator membership includes some of the world's most prominent financial institutions — among them Goldman Sachs, J.P. Morgan, and BNY Mellon. This institutional backing is a core part of Canton Network's value proposition: the chain is governed by entities with deep regulatory expertise and reputational skin in the game, not anonymous token holders.
 
-- Active and past proposals
-- Voting status and results
-- Super Validator participation
-- Approval rate and execution status
-- Network parameter changes
+For CCTools users, the GSF's role means that governance on Canton is more structured than on typical public blockchains. Proposals go through a defined process, Super Validators vote with their identities on record, and the outcomes are enforced through the protocol automatically.
 
-This gives the community full transparency into how the network is governed.
+## Monitoring governance on CCTools
 
+The [Governance](https://cctools.network/governance) page on CCTools is your window into Canton Network's on-chain decision-making. Everything is sourced directly from the Canton Network and updated in real time.
+
+On the Governance page you can see:
+
+- **Active proposals** — proposals currently open for Super Validator voting, including proposal type, description, and current vote tally
+- **Historical proposals** — the full archive of past governance actions, with final vote counts, approval or rejection status, and execution records
+- **Super Validator vote records** — for each proposal, you can see exactly how each Super Validator voted, giving you a detailed view of individual participation rates and positions
+- **Price consensus rounds** — a log of completed price consensus rounds, showing the reference price established each round and which Super Validators participated
+- **Network configuration changes** — a record of approved parameter changes, such as issuance rate adjustments, that have been applied to the network
+
+<Info>
+  Governance data is sourced directly from Canton Network and updated in real time. There is no manual curation — what you see on the Governance page is a direct read from on-chain state.
+</Info>
+
+## Monitoring validators
+
+The [Validators](https://cctools.network/validators) page gives you a full picture of Canton's active validator set. You can:
+
+- **View the full validator list** — every active validator on Canton Network, with name, identity, and current status
+- **Filter by tier** — toggle between Super Validators and regular Validators to focus on the segment you're interested in
+- **Check uptime and performance** — see which validators are meeting their infrastructure commitments and which have had recent downtime
+- **Explore ecosystem connections** — many validators are linked to Canton ecosystem projects; the Validators page surfaces those connections so you can see which validators are backing which apps
+
+For deeper analysis — including side-by-side validator comparisons and exportable data — [CCTools Pro](/account/pro-subscription) unlocks additional validator metrics and export functionality.

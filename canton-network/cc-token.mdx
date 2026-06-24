@@ -1,25 +1,62 @@
 ---
-title: "The CC Token"
-description: "Understand CC token economics, supply, burns, and halving schedule."
+title: "Canton Coin (CC): The Native Token of Canton Network"
+sidebarTitle: "CC Token"
+description: "Canton Coin (CC) is the native token of Canton Network, earned by validators and used for fees. Learn about CC's halving schedule and how to acquire it."
 ---
 
-## Token Economics
+Canton Coin (CC) is the native cryptocurrency of Canton Network. It powers the network's economic layer: you pay CC as transaction fees when you use Canton apps, validators earn CC as rewards for running network infrastructure, and CC is the unit of value exchanged across Canton's DEXes, wallets, and institutional platforms. Understanding how CC works — its supply mechanics, halving schedule, and where to get it — is fundamental to participating in the Canton ecosystem.
 
-The **CC token** is the native currency of Canton Network.
+## Earning CC
 
-- **Max supply**: 1 billion CC tokens
-- **Mechanism**: Burn/mint model - tokens are burned for transaction fees and minted as validator rewards
-- **Halving**: Minting rewards are reduced periodically following a halving schedule
+The primary way CC enters circulation is through validator rewards. Validators and Super Validators earn CC each round for securing the network and participating in governance. The amount earned depends on the validator's tier, the current issuance rate per round, and the number of halvings that have already occurred.
 
-The deflationary mechanism means that as network usage increases, more CC is burned while minting rewards decrease over time.
+Beyond running a validator, there are other ways to accumulate CC:
 
-## Where to Track CC
+- **Staking delegation** — some validators allow you to delegate stake to them and share in a portion of their CC rewards
+- **Ecosystem app campaigns** — Canton projects regularly run campaigns on CCTools where you can earn CC or other rewards by completing tasks, providing liquidity, or engaging with their platform
+- **DEX trading rewards** — select Canton DEXes offer liquidity provider rewards denominated in CC
 
-CCTools provides real-time CC token data on the **$CC Token** page:
+If you want to model potential CC returns before committing capital, use the [Rewards Calculator](/canton-network/rewards-calculator) to estimate earnings across all three participation types.
 
-- Current price and 24h change
-- Market cap and circulating supply
-- Historical price charts
-- Burn and mint rates
-- Halving countdown
+## CC halving
 
+Like Bitcoin, Canton Coin has a **halving mechanism** built into its issuance schedule. Validator minting rewards are reduced at predetermined intervals, progressively lowering the rate at which new CC enters circulation. This deflationary mechanic means:
+
+- Early validators and participants earn at higher issuance rates
+- As the network matures and usage grows, transaction fee burns can outpace minting — pushing the burn/mint ratio above 1.0 and making CC net-deflationary
+- The total supply of CC is bounded over the long run
+
+CCTools tracks the halving countdown live on the [Network Stats](/network/network-stats) page, alongside the current burn/mint ratio updated hourly. You can see in real time whether the network is currently net-inflationary or net-deflationary based on actual on-chain activity.
+
+<Note>
+  The Network Stats page shows the current issuance rates per round for Super Validators, Validators, and App coupons — useful context when reading the halving countdown and burn/mint ratio together.
+</Note>
+
+## Getting CC
+
+You can acquire CC through several venues, each with different fee structures, KYC requirements, and supported regions. The main options are:
+
+| Venue | Fee | Notes |
+|---|---|---|
+| **Cantex** | 0.05% | Canton-native DEX, no KYC for basic trading |
+| **Temple** | 0.10% | Institutional-grade interface, may require KYC |
+| **OneSwap** | 0.30% | Standard AMM model |
+| **Bron** | 0.00% | Zero-fee wallet and exchange app |
+
+The [Markets → Get CC](https://cctools.network/markets/get-cc) page on CCTools compares all available venues side by side — showing current price, 24-hour volume, KYC requirements, fees, and regional availability. Use it to find the best venue for your situation before you trade.
+
+Bridging from other networks (Base, Ethereum, Solana) is also coming soon, which will allow you to bring external assets into Canton and swap them for CC without needing a Canton-native account first.
+
+<Tip>
+  Before buying CC, check the Markets → Get CC page to compare venues. You can filter by KYC requirement, fee level, and your country to find the most suitable option — especially useful if you're in a region where certain exchanges have restrictions.
+</Tip>
+
+## CC price tracking
+
+CCTools gives you several ways to monitor the CC price:
+
+- **Overview dashboard** — the home page shows the current CC price with a 24-hour hourly chart, so you can see intraday price movement at a glance
+- **Network Stats page** — the [Network Stats](/network/network-stats) page includes a live KRAKEN:CCUSD TradingView chart with full charting tools, alongside market cap, circulating supply, and 24h volume
+- **Markets → Tokens** — the `/markets/tokens` page shows full market data across all Canton-traded assets, including CC price history and cross-venue price comparison
+
+For real-time price alerts and portfolio-level P&L tracking tied to your CC holdings, connect your wallets on the [Portfolio](/portfolio/adding-wallets) page.

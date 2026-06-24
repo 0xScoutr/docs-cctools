@@ -1,20 +1,62 @@
 ---
-title: "What is Canton Network?"
-description: "An introduction to Canton Network and its unique architecture."
+title: "What is Canton Network? A Guide for CCTools Users"
+sidebarTitle: "Canton Network"
+description: "Canton Network is an enterprise blockchain built by Digital Asset using Daml smart contracts. Learn how it works and why CCTools is built around it."
 ---
 
-## Overview
+Canton Network is an enterprise-grade blockchain built by [Digital Asset](https://www.digitalasset.com/) — the company behind the Daml smart contract language. Unlike general-purpose public blockchains, Canton was designed from the ground up for institutions and users who need strong privacy guarantees, compliance-friendly architecture, and the ability to transact across applications atomically. CCTools is built entirely around Canton Network, giving you purpose-built tools to track, earn, govern, and explore this ecosystem.
 
-Canton Network is a privacy-enabled interoperable blockchain network designed for institutional use. Unlike traditional blockchains, Canton uses **DAML smart contracts** and supports atomic transactions across multiple applications.
+## Built for institutions and users
 
-Key differentiators:
+Most blockchains offer a simple trade-off: either everything is public (Ethereum), or the network is closed (permissioned enterprise chains). Canton takes a different approach with its **sub-transaction privacy model** — only the parties directly involved in a transaction can see its details, while the overall network still benefits from shared state and composability.
 
-- **Privacy by design** - Transaction data is only visible to participants
-- **Interoperability** - Applications can transact atomically across the network
-- **Institutional grade** - Built by and for major financial institutions
-- **DAML** - Uses the DAML smart contract language (by Digital Asset)
+This design makes Canton uniquely attractive to regulated financial institutions. Major global banks and asset managers run Canton validators not just as infrastructure operators, but as active participants in a shared financial network. For end users, this means you interact with a blockchain that has institutional-grade security and uptime behind it — while still being able to use DEXes, wallets, and DeFi apps just as you would on any other network.
 
-## Who Built Canton?
+Key properties of Canton Network:
 
-Canton Network was created by **Digital Asset** and is governed by a consortium of major financial institutions acting as Super Validators. The network is designed to bring institutional finance on-chain while maintaining the privacy and compliance requirements that regulated entities need.
+- **Sub-transaction privacy** — transaction data is only visible to the parties involved
+- **Atomic cross-app transactions** — applications can transact with each other in a single atomic step
+- **Daml smart contracts** — all Canton apps are powered by Daml, a purpose-built smart contract language with built-in privacy semantics
+- **Institutional validator set** — major financial institutions run the infrastructure
 
+## Daml smart contracts
+
+Every application on Canton Network — from DEXes to wallets to real-world asset platforms — is built using **Daml** (Digital Asset Modeling Language). Daml is a functional smart contract language that encodes privacy natively: contracts specify exactly which parties are signatories, observers, and controllers, which means privacy rules are enforced at the language level rather than bolted on afterward.
+
+For you as a user, this means Canton apps have predictable, auditable behavior. If you're an app builder or developer, Daml's composability lets your contracts interact directly with other Canton contracts — enabling complex multi-party workflows without going through a centralized intermediary. CCTools tracks all Daml-powered projects in the Ecosystem directory.
+
+## The Canton ecosystem
+
+More than **470 projects** are building on Canton Network, spanning virtually every vertical in digital finance:
+
+- **DEXes and trading** — Cantex, OneSwap, and others provide on-chain spot trading for CC and other Canton assets
+- **Institutional platforms** — Temple Digital Group, Fairmint, and similar projects bring tokenized securities and real-world assets (RWA) to Canton
+- **Wallets** — Bron, Send, and other wallets let everyday users hold and transfer CC and other Canton tokens
+- **Infrastructure and bridges** — cross-chain bridges connecting Canton to Base, Ethereum, and Solana are in development
+- **DeFi and stablecoins** — lending protocols, stablecoin issuers, and liquidity providers are expanding the Canton DeFi stack
+
+You can explore the full directory on the [Ecosystem](/ecosystem/browsing-projects) page — filter by category, status, or role, upvote projects you're following, and track new entrants to the network.
+
+## Why CCTools is Canton-specific
+
+CCTools was built by the community, for the community. Every feature on the platform is tailored to Canton Network:
+
+- **Portfolio tracking** is Canton-native — it reads directly from Canton party data, not a generic multi-chain indexer
+- **Governance monitoring** tracks Super Validator votes, price consensus rounds, and on-chain proposals specific to Canton's governance model
+- **Network Stats** show Canton-specific metrics like the burn/mint ratio, CC halving countdown, and per-validator uptime
+- **Ecosystem directory** covers Canton projects exclusively, with CCTools scores based on Canton-specific activity signals
+- **Rewards Calculator** models CC rewards using the actual Canton Network issuance parameters — not generic yield estimates
+
+Because CCTools is single-network focused, every data point you see is directly relevant to your Canton activity. There's no noise from other chains.
+
+<CardGroup cols={3}>
+  <Card title="CC Token" icon="coins" href="/canton-network/cc-token">
+    Learn about Canton Coin — how it's earned, its halving schedule, and where to buy it.
+  </Card>
+  <Card title="Validators & Governance" icon="building-columns" href="/canton-network/validators-governance">
+    Understand how Canton validators work and how to monitor on-chain governance activity.
+  </Card>
+  <Card title="Ecosystem on CCTools" icon="globe" href="/ecosystem/browsing-projects">
+    Browse 470+ Canton projects, filter by category, and discover what's building on the network.
+  </Card>
+</CardGroup>

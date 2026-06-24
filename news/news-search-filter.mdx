@@ -1,17 +1,56 @@
 ---
-title: "Searching & Filtering"
-description: "Use search and filters to narrow down the feed. Load more reveals the rest of the archive."
+title: "Filter and Search Canton News on CCTools"
+sidebarTitle: "Search & Filter"
+description: "Use CCTools news filters to find Canton Network articles by recency, source, and topic tags. Zero in on what matters most to you."
 ---
 
-## Search
+The CCTools news feed aggregates Canton Network coverage from many sources at once. Filters let you cut through the volume and focus on exactly what's relevant to you — whether that's the latest 24 hours of headlines or a specific topic like governance or RWA. All filters work across both the **News** tab and the **Forum** tab at [cctools.network/news](https://cctools.network/news).
 
-The search bar at the top of the page matches against titles, summaries, and source names. Searching triggers a deeper fetch - instead of the initial cached top items, CCTools loads the full recent archive for the channel you're in so you can find older stories.
+## Time filters
 
-## Load More
+Use time filters to limit results to articles published within a specific window:
 
-Each feed starts with the most recent items and a **Load More** button at the bottom. Clicking it fetches the next page without reloading the page. The tab badges always show the true total in the database, not just what's currently loaded.
+| Filter | What it shows |
+|--------|---------------|
+| **Last 24 hours** | Articles published in the past day |
+| **Last 7 days** | Articles from the past week |
+| **Last 30 days** | Articles from the past month |
+| **Last 90 days** | Articles from the past three months |
 
-## Community Submissions
+By default the feed shows recent items without a time restriction. Apply a time filter when you want to focus on breaking news or catch up after a period away.
 
-To submit a community post, open the Community tab and click **Submit**. Community submissions go through the same moderation queue as Academy posts and earn XP when approved.
+<Tip>
+  Set the **Last 24 hours** filter and check in each morning to keep a daily pulse on Canton Network developments without getting buried in older content.
+</Tip>
 
+## Tag filters
+
+Tags reflect the topics covered in each article. Use tag filters to narrow the feed to a specific area of the Canton ecosystem, such as:
+
+- **DeFi** — liquidity pools, yield, trading activity
+- **RWA** — real-world asset tokenisation projects and news
+- **Governance** — proposals, voting, protocol changes
+- **Ecosystem** — new projects, partnerships, funding announcements
+- **Developer** — tooling, SDKs, protocol upgrades
+
+The available tags reflect what's actually in the feed, so the tag list updates as new content is ingested.
+
+## Source filters
+
+Filter by publication or community channel to see content from specific outlets you trust or follow. Source filters are especially useful if you want to focus on primary sources (such as official Canton Network announcements) or a particular media outlet covering the ecosystem.
+
+Available sources depend on what's currently in the feed and update automatically as new sources are added to the ingestion pipeline.
+
+## Searching
+
+The search bar at the top of the feed matches against article titles, summaries, and source names. Typing a search term triggers a deeper fetch — instead of showing only the most recent cached items, CCTools loads the full recent archive for the active tab, so you can find older stories that would otherwise require scrolling through many pages.
+
+## Combining filters
+
+All filters stack. You can apply a time window, one or more tag filters, and a source filter at the same time to get a highly specific slice of the feed. For example: **Last 7 days** + **Governance** tag + a specific source gives you only governance coverage from that outlet in the past week.
+
+To reset, clear all active filters. The feed returns to its default unfiltered view.
+
+## Load more
+
+The feed initially loads the most recent items. Click **Load More** at the bottom of the list to fetch the next page of results without reloading the page. The tab badge always shows the true total number of items in the database — not just what's currently loaded — so you always know how much more is available.

@@ -1,38 +1,69 @@
 ---
-title: "How Winners Are Chosen"
-description: "How campaign rewards are distributed - raffle vs first-come-first-served, how winners are drawn, and the claim window."
+title: "How Campaign Winners and Rewards Are Determined"
+sidebarTitle: "Reward Selection"
+description: "CCTools campaign rewards are distributed based on verified on-chain activity, task completion proofs, and leaderboard rankings depending on the campaign type."
 ---
 
-## Two Ways Rewards Are Distributed
+How rewards are allocated varies by campaign, but CCTools prioritizes verifiable on-chain proof over self-reporting. Every campaign publishes its rules before it opens, so you always know the criteria before you act.
 
-When a campaign has a limited reward pool (for example, a fixed number of codes, allocations, or prizes from the partner), CCTools distributes those rewards using one of **two mechanics**. The partner chooses which one fits their campaign:
+<Note>
+  CCTools verifies task completion using on-chain data where possible. Social tasks are verified via connected social accounts — make sure your accounts are linked in **Settings → Profile → Connections** before completing social tasks.
+</Note>
 
-- **Raffle** - Everyone who completes all the required tasks is entered into a random draw. Winners are picked at random from that pool after the campaign ends. Doing the tasks earlier gives you no advantage over doing them later - every valid entry has the same odds.
-- **First-Come-First-Served (FCFS)** - The reward goes to the first participants to finish all the required tasks, in order of completion, until the pool runs out. Here, speed matters: finishing early secures your spot.
+## Verification methods
 
-The campaign page tells you which mechanic is in use so you always know whether you're racing the clock (FCFS) or simply qualifying for a draw (raffle).
+Different campaign types use different verification approaches. The campaign detail page always explains which method applies.
 
-## Winners Are Not Ranked by XP
+**On-chain activity tracking**
 
-An important point: **campaign winners are never selected by XP, level, or leaderboard position.** Your standing on the leaderboard has no bearing on whether you win a campaign reward.
+For bridging, swapping, liquidity provision, and other on-chain actions, CCTools monitors your wallet address directly on Canton Network. When you complete a qualifying transaction, it is read from the chain and matched against campaign criteria — no manual submission needed. Your wallet address is the proof.
 
-What matters is completing the campaign's required tasks. After that, selection is either random (raffle) or by finish order (FCFS) - not by how much XP you've accumulated. This keeps campaigns fair for newer members, not just long-time power users.
+Examples of what gets tracked:
+- Bridge transaction hash and amount
+- Swap volume over the campaign window
+- Liquidity position size and duration
+- Token balance at a snapshot block
 
-## How the Draw Works
+**Leaderboard ranking**
 
-For **raffle** campaigns, the draw happens **after the campaign deadline passes**, never before. The process is:
+Some campaigns rank participants rather than awarding a flat reward. Temple's market maker campaign, for example, sorts participants by verified on-chain settlement volume. Your position on the leaderboard at campaign close determines your reward tier. Leaderboards are typically visible in real time so you can gauge your standing.
 
-1. We take the pool of everyone who completed all required tasks
-2. Winners are drawn **at random** from that pool
-3. For higher-value prizes, basic integrity checks are applied first - for example, filtering out clusters of accounts sharing one IP address or sets of tasks all completed within the same few seconds (a sign of automation rather than a real person)
+**Task completion verification**
 
-The goal is simple: real participants get a fair, random shot, and obvious abuse doesn't crowd them out.
+For off-chain tasks such as social sharing or upvoting, CCTools verifies completion through your connected social accounts. When you click **Verify** on a task, CCTools checks the connected account for the required action (a post, a follow, an upvote). Tasks that cannot be verified will not count toward your reward.
 
-## Claiming Your Reward & the 7-Day Window
+## Fair distribution
 
-Once winners are selected, they are notified through **two channels**: a public announcement (for example, on X) and a direct message where applicable. If a reward requires information from you to deliver it (such as a wallet/party ID for an on-chain prize), you'll be asked to provide it.
+CCTools and partner projects are committed to transparent, rule-based reward distribution. Campaign rules — including eligibility criteria, reward amounts, and distribution timelines — are published on the campaign page before the campaign opens. Rule changes after a campaign starts are not permitted.
 
-Winners have a **7-day claim window** from the announcement to respond and claim. This window is **final and applies equally to everyone**. If a winner doesn't respond within 7 days, their unclaimed slot reverts to the pool as described in the original campaign terms.
+Reward pools are fixed at the start of each campaign. If a campaign awards rewards proportionally (for example, by bridge volume), the per-user amount depends on total participation.
 
-Why the firm deadline? Because the winners who respond on time deserve certainty, and a consistent window is the only fair way to treat everyone the same. The two-channel notification means the responsibility to watch for the announcement is reasonable to expect. Plan to check back within the week if you've completed a campaign you're hoping to win.
+## When rewards are distributed
 
+Rewards are typically distributed within a few days of campaign close. The exact timeline is stated on the campaign page. Rewards may be:
+
+- **Sent to your wallet** — CC and project tokens are sent directly to the wallet address that completed the on-chain tasks
+- **Credited as XP** — XP is applied to your CCTools profile automatically
+- **Distributed by the project team** — some project token distributions are handled directly by the partner; the campaign page will note if this is the case
+
+If you don't see your reward immediately after the campaign closes, wait 24 hours. Canton Network indexers can introduce short delays in reward processing.
+
+## Disputes
+
+If you believe you completed all required tasks but did not receive a reward, follow these steps:
+
+<Steps>
+  <Step title="Wait 24 hours after campaign close">
+    Indexer delays are the most common cause of missing rewards. Most cases resolve on their own within 24 hours.
+  </Step>
+  <Step title="Check your wallet address">
+    Confirm that the wallet address shown in your CCTools profile is the one you used for on-chain tasks. Rewards are sent to the completing wallet, not your profile email.
+  </Step>
+  <Step title="Contact the campaign partner">
+    Each campaign is run in partnership with a specific project. Reach out to that project's team via their Discord or the CCTools [feedback form]("https://cctools.network/feedback") and include your wallet address, the campaign name, and a description of the tasks you completed.
+  </Step>
+</Steps>
+
+<Warning>
+  CCTools can verify on-chain activity but cannot override reward decisions made by partner project smart contracts. Always check the campaign rules before participating to understand how edge cases are handled.
+</Warning>
