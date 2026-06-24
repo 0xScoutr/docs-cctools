@@ -1,7 +1,7 @@
 ---
 title: "Understanding Your Canton Portfolio P&L in CCTools"
 sidebarTitle: "P&L Explained"
-description: "Learn how CCTools calculates your Canton portfolio profit and loss, including unrealized gains, staking rewards, and how the 24h, 7d, and 30d views work."
+description: "Learn how CCTools calculates your Canton portfolio profit and loss, including balance changes, staking rewards, and how the 24h, 7d, and 30d views work."
 ---
 
 CCTools calculates your portfolio P&L by comparing your current wallet values against historical snapshots, factoring in all inflows, outflows, and staking rewards earned over the selected period. The result gives you a clear picture of how your Canton holdings have changed — not just in raw CC terms, but in real value.
@@ -43,7 +43,7 @@ To open a wallet's chart, click that wallet's card from the main Portfolio page.
   A few common reasons your P&L figure might seem off:
 
   - **New transfers look like gains or losses** — any CC you moved into a tracked wallet during the period appears as an inflow, which increases the period-over-period change. This is expected behavior, not an error.
-  - **Pending Canton indexer updates** — Canton indexers occasionally lag behind the chain by a few minutes. If a recent transaction isn't reflected yet, wait a moment and click **Refresh**.
+  - **Data not yet updated** — Canton Network data can occasionally take a few minutes to fully reflect recent activity. If a recent transaction isn't showing yet, wait a moment and click **Refresh**.
   - **CC price denominated in USD** — P&L in USD terms moves with the CC/USD exchange rate, not just your on-chain balance. A flat CC balance can still show a positive or negative USD P&L if the price has moved.
 </Info>
 

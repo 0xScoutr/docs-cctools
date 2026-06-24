@@ -27,7 +27,7 @@ For a quick snapshot without drilling into individual wallets, the main Portfoli
   <Step title="Choose a format">
     Pick the format that suits your workflow:
     - **CSV** (Standard) — best for spreadsheets and tax software
-    - **JSON** (Developer) — best for custom scripts and programmatic analysis
+    - **JSON** (Advanced) — best for custom reports and data analysis tools
   </Step>
   <Step title="Filter by transaction type">
     Choose what to include in the export. Select **All** (Rewards + Transfers) for a complete record, or filter to just **Rewards** or **Transfers** if you only need one type.
@@ -45,9 +45,9 @@ CCTools offers two export formats depending on how you plan to use the data:
 
 Comma-separated values that open directly in Excel, Google Sheets, or any standard spreadsheet tool. Each row represents one transaction (reward payout or transfer) with columns for date, type, amount in CC, and relevant counterparty or validator information. Compatible with most crypto tax software.
 
-**JSON — Developer**
+**JSON — Advanced**
 
-A structured JSON file with the same transaction data in a machine-readable format. Ideal if you're building custom reports, feeding data into accounting pipelines, or writing scripts that need to process your Canton transaction history programmatically.
+A structured JSON file with the same transaction data in a machine-readable format. Ideal if you prefer to work with raw data files, build custom reports in your own tools, or share transaction history with an accountant who uses specialized software.
 
 ## Using exports for tax reporting
 
@@ -55,7 +55,7 @@ A structured JSON file with the same transaction data in a machine-readable form
   CCTools exports are raw transaction data pulled directly from the Canton Network. They are not tax advice. How staking rewards and transfers are classified for tax purposes — and whether they constitute income, capital gains, or something else entirely — varies by jurisdiction and individual circumstances. Consult a qualified tax professional before filing based on this data.
 </Note>
 
-Your export gives a tax advisor or accounting tool everything they need: a timestamped, itemised record of every reward and transfer for the wallets and date range you selected.
+Your export gives a tax advisor or accounting tool everything they need: a timestamped, itemized record of every reward and transfer for the wallets and date range you selected.
 
 <Tip>
   Set a reminder to run a quarterly export so you're never scrambling to reconstruct months of history at tax time. Keeping regular exports means your records stay current and any discrepancies are easier to catch early.

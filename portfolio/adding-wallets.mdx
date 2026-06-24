@@ -7,7 +7,7 @@ description: "Connect multiple Canton Network wallet addresses to CCTools to tra
 The CCTools Portfolio lets you track any number of Canton wallet addresses in one place. You don't need to "connect" a wallet in the traditional sense — there's no signing, no permissions dialog, and no browser extension required. Just paste a public address and CCTools does the rest.
 
 <Note>
-  CCTools only reads public blockchain data. You never need to provide a private key or seed phrase. Only ever add public wallet addresses — your funds remain entirely in your control at all times.
+  CCTools only reads publicly available Canton Network data. You never need to provide a private key or seed phrase. Only ever add public wallet addresses — your funds remain entirely in your control at all times.
 </Note>
 
 ## Adding a wallet
@@ -23,7 +23,7 @@ The CCTools Portfolio lets you track any number of Canton wallet addresses in on
     Click **Add Wallet**, then paste your Canton Network public wallet address into the input field.
   </Step>
   <Step title="Save and load">
-    Click **Save**. CCTools immediately begins pulling data from the Canton indexers — your wallet's balance, rewards, and transaction history typically appear within seconds.
+    Click **Save**. CCTools immediately begins loading your wallet data — your balance, rewards, and transaction history typically appear within seconds.
   </Step>
 </Steps>
 
@@ -47,10 +47,10 @@ You can add as many wallets as you like — there's no cap on the number of Cant
 
 ## Refreshing data
 
-Canton blockchain data is cached to keep the Portfolio overview loading quickly. To pull the latest on-chain state, click the **Refresh** button at the top of the Portfolio page. CCTools will re-query the Canton indexers and update balances, rewards, and transfers in real time.
+CCTools keeps your Portfolio data up to date automatically, but you can request a manual refresh at any time. Click the **Refresh** button at the top of the Portfolio page to pull the very latest balances, rewards, and transfers from the Canton Network.
 
 <Note>
-  Canton indexers can occasionally be slow to respond, particularly during periods of high network activity. If a refresh takes longer than expected, wait a moment and try again. Cached data displayed in the meantime reflects your last successful sync.
+  During periods of high Canton Network activity, a refresh may take a little longer than usual. If it doesn't complete right away, wait a moment and try again. The data shown in the meantime reflects your most recent successful sync.
 </Note>
 
 ## Removing a wallet
