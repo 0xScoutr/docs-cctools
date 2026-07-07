@@ -4,14 +4,14 @@
   "name": "CCTools",
   "description": "Documentation for CCTools - the multi-tool platform for the Canton Network ecosystem.",
   "colors": {
-    "primary": "#b3e33b",
-    "light": "#5c741c",
-    "dark": "#080905"
+    "primary": "#4d7c0f",
+    "light": "#e6ff6a",
+    "dark": "#4d7c0f"
   },
   "appearance": {
     "default": "dark"
   },
-  "favicon": "https://media.brand.dev/fa84be84-c5c3-4dea-96f7-ae4875a9241f.png",
+  "favicon": "/favicon.png",
   "icons": {
     "library": "lucide"
   },
@@ -798,8 +798,8 @@
     ]
   },
   "logo": {
-    "light": "https://media.brand.dev/220572d0-5729-44a4-8cf4-c2530533a43d.png",
-    "dark": "https://media.brand.dev/220572d0-5729-44a4-8cf4-c2530533a43d.png"
+    "light": "/logo/cctools.png",
+    "dark": "/logo/cctools.png"
   },
   "navbar": {
     "primary": {

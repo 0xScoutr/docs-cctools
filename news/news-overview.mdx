@@ -1,37 +1,30 @@
 ---
-title: "Canton Network News and Community Forum on CCTools"
-sidebarTitle: "News Feed"
-description: "Stay current with Canton Network on CCTools. The News feed surfaces curated articles and ecosystem updates; the Forum hosts community discussion posts."
+title: "News & Community Feed"
+description: "Two parallel feeds: curated Canton news and community-submitted posts, refreshed every 10 minutes."
 ---
 
-The CCTools News section is your centralised source for Canton Network information. Rather than monitoring a dozen different outlets and community channels, you get everything in one place — curated news articles pulled from across the web, alongside posts submitted directly by community members. The feed refreshes automatically, so you're always looking at current information.
+## Two Feeds in One Page
 
-## News feed
+The **News** page has two channels behind a tab switcher at the top:
 
-The **News** tab at [cctools.network/news](https://cctools.network/news) surfaces curated Canton Network articles from multiple web sources. The pipeline pulls from Google News and RSS feeds, deduplicates stories that appear across multiple publishers, and generates a short plain-language summary for each item so you can get the key takeaway without clicking through.
+- **News** - Curated Canton Network coverage from the web. Items are pulled from Google News and RSS sources, then summarized by an LLM so you can get the essentials in a sentence or two without clicking through.
+- **Community** - Member-submitted posts: announcements, takes, threads, write-ups, and updates shared by other CCTools users.
 
-Each item in the feed shows:
-- **Title** and **source publication**
-- **Publication date**
-- **AI-generated summary** — a sentence or two covering the essentials
-- **Related Canton projects** mentioned in the article (visible on the detail page)
+Each tab shows a live count of how many items exist in that channel so you always know how much there is to read.
 
-Click any item to open its detail page with the full summary and a link to the original source.
+## How Often It Updates
 
-## Forum
+News ingestion runs **every 10 minutes**. The pipeline:
 
-The **Forum** tab at [cctools.network/news/forum](https://cctools.network/news/forum) hosts posts submitted directly by CCTools community members — announcements, threads, takes, write-ups, and updates from Canton Network participants. Unlike the curated news feed, the forum is driven entirely by the community.
+1. Queries Google News (via Serper) for Canton-related keywords
+2. Merges items from curated RSS feeds
+3. **Deduplicates** across publishers using a normalized title key - the same story from two outlets only appears once
+4. Runs an LLM summary on each new article
+5. Publishes to the feed
 
-Forum posts go through the same moderation process as Academy submissions. Approved posts earn the submitter XP. Each post shows the author's level and links to their public profile, the same way Academy posts do.
+The community feed updates in real time as new posts are submitted and approved.
 
-## Filtering and searching
+## Reading an Item
 
-Both the News and Forum feeds support time filters, tag filters, and source filters to help you focus on what's relevant to you. You can also search by keyword across titles, summaries, and source names.
+Click any item to open its detail page, which shows the full summary, source link, publication date, and any related Canton projects mentioned. For community posts, you also see the author's Level - the same author card shown on Academy posts.
 
-For full details on how to use every filter option, see [Search & Filter](/news/news-search-filter).
-
-## Notifications
-
-You don't have to check the News page manually to stay current. CCTools can notify you when new Canton content is published — including curated news articles and new Academy posts.
-
-To learn how to set up and manage your notification preferences, see [Notifications](/news/new-content-notifications).

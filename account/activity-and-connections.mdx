@@ -1,53 +1,77 @@
 ---
-title: "Connect Social Accounts to CCTools: Google, X, Discord"
-sidebarTitle: "Connections"
-description: "Link your Google, X (Twitter), Discord, and Telegram accounts to CCTools for social login, identity verification, and enhanced community features."
+title: Activity & Connections
+description: Track your XP events and submissions, manage social connections, and link wallets.
 ---
 
-Connecting social accounts to CCTools enables social login, strengthens your Human Score, and links your identity across the Canton community. The more accounts you connect, the more complete your verified presence becomes — both for your own convenience and as a signal of authenticity to others.
+The Activity and Connections sections let you review your engagement history and link external accounts for community participation and portfolio management.
 
-## Connecting accounts
+## Activity
 
-You can link any combination of Google, X (Twitter), Discord, and Telegram to your CCTools account.
+Visit **Activity** to see your complete engagement history across three tabs.
 
-<Steps>
-  <Step title="Open Connected Accounts">
-    Navigate to **Settings → Profile → Connected Accounts** (or go directly to `/profile/connections`).
-  </Step>
-  <Step title="Choose a platform to connect">
-    You'll see a row for each supported platform: **Google**, **X (Twitter)**, **Discord**, and **Telegram**. Click **Connect** next to the one you want to link.
-  </Step>
-  <Step title="Authorize the connection">
-    A pop-up will open asking you to authorize CCTools to read your basic profile information from that platform. Follow the prompts to approve.
-  </Step>
-  <Step title="Confirm the connection">
-    Once authorized, the platform will appear as **Connected** in your list. You can link multiple accounts in the same session.
-  </Step>
-</Steps>
+### XP tab
 
-## Benefits of connecting
+Every XP event you earned appears here, sorted newest first. Each entry shows:
 
-Linking your social accounts unlocks several advantages across CCTools:
+- The action that earned XP (for example, "Daily check-in", "Upvote project", "Project approved").
+- When you earned it (relative time like "2h ago" or exact date for older events).
+- The XP amount in green.
 
-<CardGroup cols={2}>
-  <Card title="Social login" icon="arrow-right-to-bracket">
-    Sign in to CCTools faster using your connected Google, X, Discord, or Telegram account — no password required.
-  </Card>
-  <Card title="Human Score boost" icon="shield-check">
-    Each verified social connection adds to your trust score, signaling to the community that your account belongs to a real person.
-  </Card>
-  <Card title="Discord integration" icon="discord">
-    Link your Discord account to gain community recognition and access Discord-gated features within the Canton ecosystem.
-  </Card>
-  <Card title="Identity across Canton" icon="globe">
-    A connected profile ties together your identity across the Canton Network community, making collaboration and recognition easier.
-  </Card>
-</CardGroup>
+The summary strip at the top displays your total XP events earned.
 
-## Disconnecting accounts
+### Submissions tab
 
-If you want to remove a linked account, return to **Settings → Profile → Connected Accounts** (`/profile/connections`) and click **Disconnect** next to the platform you want to unlink. The connection is removed immediately. You can reconnect that account at any time by following the steps above.
+Track every project, opportunity, and edit suggestion you submitted. Each entry shows:
 
-<Note>
-  CCTools only reads basic profile information — such as your name and username — from connected accounts. It does not access your private messages, read your feeds, or post anything on your behalf.
-</Note>
+- The submission title.
+- Its type label (New project, Opportunity, or Edit suggestion).
+- Submission date.
+- Current status as a colored badge:
+  - Green "Approved"
+  - Amber "Pending" or "Needs revision"
+  - Red "Rejected"
+
+The summary strip shows your total submissions, broken down by approved and pending counts. For approved project submissions, you can click the arrow icon to jump to the project page.
+
+### Votes tab
+
+View all the projects you upvoted, sorted newest first. Each row displays:
+
+- The project name and logo.
+- Its category (if set).
+- When you upvoted it.
+- A green badge confirming "Upvoted".
+- A link to the project page.
+
+The summary strip shows your total upvoted projects.
+
+## Connections
+
+The **Connections** page lets you link social accounts and wallets to enable task verification and cross-chain portfolio management.
+
+### Connected Accounts
+
+Link your social accounts to unlock participation in community-driven features and task verification. Five providers are supported:
+
+- **Google**: Click Connect to authenticate with your Google account. Once linked, your email appears below the label. Disconnect anytime with the disconnect icon.
+- **X (Twitter)**: Link your X account by clicking Connect. Your handle (@username) displays when linked.
+- **Discord**: Connect your Discord account to enable community verification. Your Discord username appears when linked.
+- **Telegram**: On desktop, a login widget appears when you click Connect. On mobile, you are redirected to Telegram for authentication. Once connected, your Telegram username displays.
+- **GitHub**: Link your GitHub account using OAuth. Your GitHub username appears when linked.
+
+For each connected account, you see a green "Connected" badge. Click the disconnect icon to remove the account. The backend will then clear the link on your next session.
+
+### Wallets
+
+Link Canton wallets and cross-chain EVM or Solana (SVM) wallets to aggregate your portfolio. You can:
+
+- Connect multiple wallets (up to three Canton wallets with one designated as primary).
+- Rename wallet labels inline for easy identification.
+- Set a primary wallet.
+- Disconnect wallets at any time.
+
+For the full wallet setup guide, including step-by-step instructions for adding wallets and managing labels, see [Adding Wallets](/portfolio/adding-wallets).
+
+---
+
+**Signing in required**: Activity and Connections pages are only visible to logged-in users. Guest visitors see a sign-in prompt.

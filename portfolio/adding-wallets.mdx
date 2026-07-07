@@ -1,58 +1,69 @@
 ---
-title: "Add and Manage Canton Wallet Addresses in CCTools Portfolio"
-sidebarTitle: "Adding Wallets"
-description: "Connect multiple Canton Network wallet addresses to CCTools to track balances, rewards, P&L, and transaction history in one dashboard."
+title: "Adding Wallets"
+description: "Connect Canton and cross-chain wallets to track your unified portfolio."
 ---
 
-The CCTools Portfolio lets you track any number of Canton wallet addresses in one place. You don't need to "connect" a wallet in the traditional sense — there's no signing, no permissions dialog, and no browser extension required. Just paste a public address and CCTools does the rest.
+## Add a Canton Wallet
 
-<Note>
-  CCTools only reads publicly available Canton Network data. You never need to provide a private key or seed phrase. Only ever add public wallet addresses — your funds remain entirely in your control at all times.
-</Note>
+Navigate to **Portfolio** and click the **My Wallets** button. Select **Connect Canton wallet** and follow the wallet picker to link your wallet (Send, 5N Loop, or Cantor8). Cantor8 connects on desktop only for now.
 
-## Adding a wallet
+Once linked, CCTools automatically scans your wallet and displays:
 
-<Steps>
-  <Step title="Go to the Portfolio page">
-    Sign in to CCTools and navigate to [Portfolio](/portfolio). This is your central dashboard for all Canton wallet activity.
-  </Step>
-  <Step title="Open My Wallets">
-    Click the **My Wallets** button to open the wallet management panel.
-  </Step>
-  <Step title="Add a new wallet">
-    Click **Add Wallet**, then paste your Canton Network public wallet address into the input field.
-  </Step>
-  <Step title="Save and load">
-    Click **Save**. CCTools immediately begins loading your wallet data — your balance, rewards, and transaction history typically appear within seconds.
-  </Step>
-</Steps>
+- Balance in CC and USD
+- Unlocked and locked amounts
+- 7-day price change
+- 30-day reward estimate
 
-## What you see per wallet
+## Connect Cross-Chain Wallets
 
-Once a wallet is added, click on it to open its detail view. For each wallet you can see:
+You can also connect EVM (Ethereum, Base, Polygon, etc.) and Solana wallets to your portfolio. In the **My Wallets** modal, add an EVM or Solana wallet by clicking **+ Connect** under the corresponding chain section.
 
-- **Current CC balance** — the live on-chain balance for that address
-- **Staking rewards (30d summary)** — a snapshot of rewards earned over the last 30 days from delegating CC to validators
-- **Recent transfers** — incoming and outgoing CC transactions with timestamps and counterparties
-- **Balance chart** — a historical view of your CC balance over time
-- **P&L** — profit and loss calculated against historical snapshots
+Each wallet you connect:
 
-## Multiple wallets
+- Is linked via signature verification (no seed phrases shared)
+- Shows holdings and real-time balance
+- Contributes to your unified portfolio net worth
+- Adds a cross-chain score bonus to your Canton profile
 
-You can add as many wallets as you like — there's no cap on the number of Canton addresses you track. The top-level Portfolio view aggregates everything, showing your **combined total balance**, overall P&L, and period-over-period changes across all wallets at once. Click any individual wallet card to drill into its own dedicated detail view.
+## Wallet Limits by Plan
 
-<Tip>
-  Add all your wallets — including validator hot wallets — to get a complete picture of your Canton holdings. Seeing everything in one dashboard makes it far easier to spot reward patterns and track your total position.
-</Tip>
+Free and Pro users have different wallet caps per chain:
 
-## Refreshing data
+- **Free plan**: 1 wallet per chain (Canton, EVM, Solana)
+- **Pro plan**: Up to 5 wallets per chain
 
-CCTools keeps your Portfolio data up to date automatically, but you can request a manual refresh at any time. Click the **Refresh** button at the top of the Portfolio page to pull the very latest balances, rewards, and transfers from the Canton Network.
+If you hit the free limit, upgrade to Pro to add more wallets.
 
-<Note>
-  During periods of high Canton Network activity, a refresh may take a little longer than usual. If it doesn't complete right away, wait a moment and try again. The data shown in the meantime reflects your most recent successful sync.
-</Note>
+## Manage Your Wallets
 
-## Removing a wallet
+In the **My Wallets** modal, you can:
 
-To stop tracking a wallet, open **My Wallets**, locate the wallet you want to remove, and click the remove option. This only unlinks that address from your CCTools account — it has no effect whatsoever on the wallet itself or any funds held on-chain. You can always re-add the same address later.
+- **Rename** a wallet (up to 40 characters) - click the pencil icon
+- **Set as primary** - mark a wallet as your main one with the star icon
+- **Disconnect** - remove tracking from any wallet with the link-off icon
+
+Disconnecting only removes tracking in CCTools and does not affect your actual wallet.
+
+## What Your Portfolio Shows
+
+Your unified portfolio displays:
+
+**Total net worth**
+- All Canton, EVM, and Solana wallets summed in USD
+- Per-chain allocation bar showing balance distribution
+- 30-day CC rewards estimate (Canton wallets only)
+- Last updated timestamp
+
+**Per-wallet detail pages**
+Click any wallet card to see:
+- Locked and unlocked CC breakdown
+- Holding fees paid
+- Daily rewards history chart (if you're running a validator or Featured App)
+- Recent transfers and counterparties
+- Wallet stats (reward/burn ratio, top trading partners)
+
+**Note:** Detailed profit and loss charts are available to Pro users only. Free users see balances, rewards, and activity metrics for all connected wallets.
+
+## Just Exploring?
+
+If you don't want to connect a wallet yet, use the **Tracker** to inspect any Canton party ID or wallet address read-only. Click the **Track any Party ID** link in My Wallets or go to **Tracker** to get started.

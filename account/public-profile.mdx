@@ -1,38 +1,128 @@
 ---
-title: "Control Your CCTools Public Profile Visibility Settings"
-sidebarTitle: "Public Profile"
-description: "Choose what other CCTools users can see on your public profile: toggle your reputation score and activity stats — level, XP, streak, and badges."
+title: "Public Profile"
+description: "Share your Canton Network contributions with a public, shareable profile that showcases your level, XP, badges, activity, and reputation."
 ---
 
-Your public profile is what other CCTools users see when they look up your account. You control exactly what's visible — from your Human Score and earned badges down to your XP level and activity streak. These settings let you share as much or as little as you like.
+## Overview
 
-## Privacy controls
+Every CCTools user has a public profile at `cctools.network/u/{slug}`. Your profile is publicly viewable and shareable, even without login. By default, your profile is set to public, but you control what appears on it through privacy toggles on the **Privacy** page.
 
-To manage your profile visibility, go to **Settings → Profile → Privacy**. You'll find three toggles that let you fine-tune what's exposed to the rest of the community.
+Your public profile acts as your Canton Network identity card, displaying your level, achievements, activity streak, badges, favorite projects, and reputation score.
 
-| Toggle | What it controls |
-|---|---|
-| **Public profile** | When turned off, your entire profile becomes private and no one else can view it. |
-| **Show Reputation Score** | Show or hide your Human Score on your public profile page. |
-| **Show activity stats** | Show or hide your level, XP, streak, badges, and other activity data. |
+## What Appears on Your Profile
 
-<Note>
-  Changing your privacy settings only affects what others see. Regardless of your configuration, you always have full visibility into your own account data, stats, and history.
-</Note>
+### Header Section
 
-## What others see on your public profile
+Your profile header shows:
 
-When your profile is set to public, other users can see the following information:
+- **Display name** - The name you set on **Settings > Profile**
+- **Avatar** - Your profile picture
+- **Level bubble** - Your current level (0-50+) displayed as a number in the top right of your avatar ring
+- **Level name and color** - Your tier (e.g. "Validator", "Architect", "Canton OG") rendered in your level's color
+- **Member since** - The month and year you joined CCTools
+- **Era badge** - Genesis or Discovery era badge, displayed in the top right of the banner
+- **Human Score badge** - A trust-signal badge (Verified, Trusted, or Elite) appears below your name if you have a verified Score and have not hidden it (see Privacy controls below)
 
-- **Username** — your CCTools display name
-- **Badges** — achievements you've earned through quests and platform activity
-- **XP level** — your current experience level on the platform
-- **Streak** — your current daily activity streak
-- **Referral count** — the number of users you've referred to CCTools
-- **Reputation Score** — your Human Score, if you've chosen to display it
+### Activity Stats Grid
 
-You can hide your Reputation Score and activity stats independently using the toggles in Privacy settings, so you have full control over which of these fields are visible.
+When **Show activity stats** is enabled, your profile displays 8 cards:
 
-## Leaderboard visibility
+- **Total XP** - Cumulative XP earned (formatted as 1.2k for 1200+)
+- **Streak** - Current consecutive daily active days, or "-" if no active streak
+- **Badges** - Count of earned badges (excluding era badges)
+- **XP Rank** - Your global rank by total XP, or "-" if unranked
+- **Actions** - Total submissions, upvotes, interests, and referral completions
+- **Referrals** - Confirmed referral count
+- **Upvotes given** - Total project upvotes you have cast
+- **Interests** - Total opportunity interests you have marked
 
-Your leaderboard rankings are visible to all users by default when your profile is public. This allows the community to see how you rank on XP, streaks, and other competitive metrics. If you set your profile to private, you will be removed from public leaderboard views.
+### Level and Reputation Cards
+
+Below the header stats, two cards display your progression:
+
+- **Level Crest** - Shows your current XP, progress bar toward the next level, and milestone indicator
+- **Reputation Card** - Shows your Reputation tier (New, Rising, Established, etc.) when **Show Reputation score** is enabled
+
+### Badge Gallery
+
+Your earned badges appear in two sections:
+
+- **Top Badges** - Your 3 rarest badges (sorted by rarity: Legendary, Epic, Rare, Uncommon, Common), displayed large with name and rarity level
+- **All Badges** - All remaining badges in a compact grid, up to 12 visible. A "more badges" button shows if you have earned more than 15
+- **Era badge** - A standalone section for your Genesis or Discovery era tier
+
+Click any badge to see its full name, description, rarity, and the exact date you earned it.
+
+### Activity Calendar
+
+A 90-day check-in calendar shows your daily activity across 3 months. This calendar:
+
+- Displays the last 90 days of your check-ins
+- Shows your current streak and best streak (lifetime)
+- Uses color-coded cells: level color for active days, amber for today, and light gray for inactive days
+- Lists the count of active days per month
+
+### Favorite Projects
+
+Your top 3 projects by upvote frequency appear as linked cards, each showing:
+
+- **Rank** (1st, 2nd, 3rd) in a colored pill
+- **Project logo and name**
+- **Category** tag
+- **Total votes** this project has received from all users
+- **Your votes** (×N voted) if you have upvoted it multiple times
+- A colored bar showing relative vote weight
+
+Clicking a favorite project takes you to its ecosystem profile.
+
+### Human Score Badge
+
+For verified-and-above users, a Human Score badge appears under your display name in the header (when enabled via privacy controls). The badge shows:
+
+- **Shield icon and tier name** (Verified, Trusted, or Elite) in green
+- A clickable button that opens an explainer showing what the score measures and how it is calculated
+
+The badge is a public trust signal. If your score is below the verification threshold (35 points), or if you have not connected a Canton wallet, the badge does not appear. If your account is restricted (banned), a red "Restricted" badge appears instead.
+
+For more detail on how the Human Score works, see the Human Score page.
+
+## What Is Hidden
+
+The following never appear on your public profile:
+
+- **Email address** - Only you can see it
+- **User ID** - Internal UUID not exposed
+- **Account settings** - Password, 2FA, session data
+- **Disabled sections** - Any section you toggle off in Privacy remains hidden
+- **Admin and operator accounts** - The profile returns "User not found"
+- **Private profiles** - Returns "This profile does not exist or is private"
+
+## Getting and Sharing Your URL
+
+### Copy Your URL
+
+On the public profile page, click the **Share** button at the top right to open the Share Modal. Use the three action buttons:
+
+1. **Copy URL** - Copies your full profile URL to the clipboard (e.g., `https://cctools.network/u/yourusername`)
+2. **Post on X** - Opens a pre-filled tweet with your display name, level, tier, rank, and XP, with a link to your profile
+3. **Save Image** - Downloads a profile card PNG with your avatar, name, level, tier, and top stats
+
+### Customize Your URL Slug
+
+Your URL slug defaults to your username. You can customize it on **Settings > Identity** to make it shorter or more memorable (e.g., `/u/alice` instead of `/u/alice.smith`). Changing your slug redirects the old URL automatically.
+
+## Privacy Controls
+
+Visit **Settings > Privacy** to manage what others see on your public profile. All toggles default to **ON**. Toggling a setting off immediately removes that section from your public profile view:
+
+- **Public profile** (master toggle) - When OFF, your profile returns "This profile is private" to all visitors. You always see your full profile. This is the primary privacy gate.
+- **Show activity stats** - Controls visibility of level, XP, streak, badges, calendar, and stats (Rank, Actions, Referrals, Upvotes, Interests)
+- **Show Reputation score** - Controls visibility of the Reputation tier card
+- **Show Score** - Controls whether the Human Score badge appears in your header (note: requires Verified+ tier and an active score; Newcomer users see no badge regardless)
+
+**Note:** You always see your own full profile. Privacy toggles only affect what other visitors see.
+
+## Related
+
+- For information on what the Human Score measures and how to improve your score, see the Human Score page.
+- To share a profile card or manage your profile identity, see Profile Settings.

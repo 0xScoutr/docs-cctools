@@ -1,62 +1,22 @@
 ---
-title: "Track Canton Staking Rewards and Export Portfolio Data"
-sidebarTitle: "Rewards & Export"
-description: "View your Canton Network staking rewards history and export portfolio data as CSV or JSON for tax reporting, accounting, or personal analysis."
+title: "Rewards Tracking"
+description: "Track validator rewards, staking yields, and other Canton Network rewards."
 ---
 
-CCTools tracks every staking reward your Canton wallets earn and lets you export a complete transaction history for any date range you choose. Whether you're reconciling a quarter's worth of delegation income or preparing records for your accountant, the rewards view and export tool give you everything in one place.
+## Rewards Dashboard
 
-## Viewing your rewards
+The Rewards section in your Portfolio shows all rewards earned from:
 
-Your rewards history is available at the wallet level. From the [Portfolio](/portfolio) page, click on any wallet to open its detail view — the rewards history for that address is listed there, showing each payout with its timestamp and CC amount.
+- **Validator staking** - CC tokens earned from delegating to validators
+- **Protocol rewards** - Any rewards from DeFi protocols on Canton
 
-For a quick snapshot without drilling into individual wallets, the main Portfolio overview displays a **30d rewards summary** for each wallet card. This gives you a fast read on how much CC you've earned from staking over the past month, across every address you're tracking.
+Rewards are tracked automatically once your wallet is connected.
 
-## Exporting your data
+## Historical Rewards
 
-<Steps>
-  <Step title="Open the Export page">
-    From the Portfolio page, click the **Export** button. This takes you to [/exports](https://cctools.network/exports), where you can configure and generate your download.
-  </Step>
-  <Step title="Select a wallet">
-    Use the wallet selector to choose a specific wallet address, or pick **All wallets** to export data across every address linked to your account.
-  </Step>
-  <Step title="Set your date range">
-    Enter a **start date** and **end date** to scope the export to the period you need. You can use any custom range — a single day, a tax year, or your full history.
-  </Step>
-  <Step title="Choose a format">
-    Pick the format that suits your workflow:
-    - **CSV** (Standard) — best for spreadsheets and tax software
-    - **JSON** (Advanced) — best for custom reports and data analysis tools
-  </Step>
-  <Step title="Filter by transaction type">
-    Choose what to include in the export. Select **All** (Rewards + Transfers) for a complete record, or filter to just **Rewards** or **Transfers** if you only need one type.
-  </Step>
-  <Step title="Generate the export">
-    Click **Generate Export**. Your file is prepared and appears in the **Recent Exports** list below, ready to download.
-  </Step>
-</Steps>
+View your rewards history over time with the rewards chart. You can filter by:
 
-## Export formats
+- Time period (7d, 30d, 90d, all time)
+- Reward type (staking, protocol, etc.)
+- Specific wallet
 
-CCTools offers two export formats depending on how you plan to use the data:
-
-**CSV — Standard**
-
-Comma-separated values that open directly in Excel, Google Sheets, or any standard spreadsheet tool. Each row represents one transaction (reward payout or transfer) with columns for date, type, amount in CC, and relevant counterparty or validator information. Compatible with most crypto tax software.
-
-**JSON — Advanced**
-
-A structured JSON file with the same transaction data in a machine-readable format. Ideal if you prefer to work with raw data files, build custom reports in your own tools, or share transaction history with an accountant who uses specialized software.
-
-## Using exports for tax reporting
-
-<Note>
-  CCTools exports are raw transaction data pulled directly from the Canton Network. They are not tax advice. How staking rewards and transfers are classified for tax purposes — and whether they constitute income, capital gains, or something else entirely — varies by jurisdiction and individual circumstances. Consult a qualified tax professional before filing based on this data.
-</Note>
-
-Your export gives a tax advisor or accounting tool everything they need: a timestamped, itemized record of every reward and transfer for the wallets and date range you selected.
-
-<Tip>
-  Set a reminder to run a quarterly export so you're never scrambling to reconstruct months of history at tax time. Keeping regular exports means your records stay current and any discrepancies are easier to catch early.
-</Tip>

@@ -1,58 +1,55 @@
 ---
-title: "Where CCTools Data Comes From: Sources and Freshness"
-sidebarTitle: "Data Sources"
-description: "CCTools aggregates live data from Canton Network indexers and DEX feeds to power portfolio tracking, network stats, governance data, and market prices."
+title: "Data Sources & APIs"
+description: "Where CCTools gets its data, the categories of providers behind it, and how often each surface is refreshed."
 ---
 
-CCTools displays live data from multiple sources. Understanding where data comes from helps you interpret what you see — and helps you troubleshoot if something looks off. Every section of CCTools pulls from a different upstream source, each with its own update cadence.
+## How CCTools Sources Data
 
-<Info>
-  CCTools reads public blockchain data only. Your private keys and seed phrases are never requested or stored. You connect a wallet address for read access — not signing authority.
-</Info>
+CCTools brings together several different classes of data so that everything you see - prices, on-chain activity, DeFi metrics, and ecosystem signals - lives in one place. Rather than relying on any single source, we combine multiple provider categories and reconcile them, so a hiccup or gap in one feed doesn't leave a page blank or stale.
 
-## Portfolio and wallet data
+The main categories we draw from are:
 
-Your portfolio balances, transaction history, and staking positions are sourced from Canton Network blockchain indexers. The indexer reads on-chain state directly and reflects the actual contents of your wallet on Canton Network. No third-party custody or wallet access is required — CCTools sees only what is publicly visible on-chain.
+- **On-chain indexers** - Services that read and index the Canton Network ledger so we can surface validator data, transactions, burns/mints, featured apps, and wallet balances without each user having to run their own node.
+- **Price oracles** - Market-data providers that supply CC token price, market cap, 24h volume, and circulating supply.
+- **TVL & DeFi aggregators** - Sources that track total value locked, liquidity, and protocol-level metrics across Canton DeFi apps.
+- **Social & community APIs** - Public APIs used for engagement signals and campaign task verification (for example, confirming an X follow or retweet).
 
-Portfolio data syncs when you click the **Refresh** button on the Portfolio page. Between refreshes, CCTools displays the most recently indexed snapshot.
+We intentionally describe these by category. The exact mix of providers behind each one evolves as the ecosystem and our infrastructure mature.
 
-## Market data
+## Price Data
 
-Token prices and liquidity pool data are sourced from Canton DEXes — Cantex, OneSwap, Send, and Tradecraft — and supplemented by market data providers for tokens that also trade on external exchanges. Prices are updated continuously as new trades occur on-chain.
+CC token price, market cap, 24h volume, and circulating supply come from established market-data providers (price oracles). Where more than one source is available, we cross-check them to reduce the impact of any single feed being delayed or off.
 
-The Get CC page and token pages aggregate prices across multiple venues in real time, so comparisons reflect current market conditions rather than stale snapshots.
+Price data is refreshed frequently - on the order of every few minutes - so the numbers you see stay close to live market conditions.
 
-## Network stats
+## Network Data
 
-The data behind the [Network Stats page](https://cctools.network/stats) — throughput, transaction volume, burn/mint ratio, validator uptime, and the CC halving countdown — comes directly from Canton Network nodes. These metrics are read from the chain itself, not from a third-party data provider, making them as close to ground truth as possible.
+On-chain network data is read from the Canton Network through on-chain indexers:
 
-## Governance data
+- Validator and Super Validator counts
+- Daily transaction volume
+- Burn and mint amounts per round
+- Featured app count
+- Total network parties
 
-On-chain governance events, including proposals, votes, and price consensus rounds, are read directly from Canton Network. CCTools surfaces these events so you can follow governance activity without querying the chain yourself.
+Network stats are synced regularly so the Network Stats page reflects current chain activity.
 
-## Ecosystem project data
+## Portfolio Data
 
-Project profiles in the CCTools ecosystem directory are maintained by the CCTools team in collaboration with project teams. AI-generated scores and summaries are recalculated periodically based on available on-chain and off-chain signals. If you represent a project and want to update your listing, contact the team via the [feedback form](https://cctools.network/feedback).
+Wallet balances and rewards are fetched from the Canton Network via on-chain indexers. When you add a wallet, CCTools queries your holdings to display:
 
-## Data freshness
+- Token balances
+- Rewards history
+- Transfer records
 
-| Data type | Update cadence |
-|---|---|
-| Portfolio balances | On demand (click Refresh) |
-| Token prices | Continuous |
-| DeFi pool TVL and APR | Continuous |
-| Network stats (throughput, volume) | Continuous |
-| Validator uptime | Continuous |
-| Governance events | Near real-time |
-| Project profiles and AI scores | Periodic |
+This is **read-only** - CCTools only ever needs your public wallet address and never has access to move your funds.
 
-## When data looks wrong
+## Refresh Cadence
 
-Canton Network indexers occasionally run behind during periods of high activity or after a network event. If something looks incorrect:
+Different surfaces update on different schedules, tuned to how fast each kind of data actually changes:
 
-1. **Click Refresh** on the Portfolio page and wait a few minutes before concluding there's an issue
-2. **Check the Stats page** — if throughput or transaction volume looks unusual, the network may be under load
-3. **Visit the Discord #status channel** for any known outages or indexer delays the team is tracking
-4. **Submit a report** via the [feedback form](https://cctools.network/feedback) if the issue persists after 30 minutes
+- **Prices** - refreshed every few minutes
+- **News feed** - new items ingested and summarized every 10 minutes
+- **New-content scan (new projects, opportunities, campaigns, posts, learn paths)** - every 30 minutes
 
-Most data discrepancies resolve on their own once the indexer catches up. Persistent issues are rare and are typically addressed quickly once reported.
+If a number ever looks momentarily out of date, a refresh shortly after will usually pick up the latest values.

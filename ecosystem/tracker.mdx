@@ -1,54 +1,90 @@
 ---
-title: "Track All Canton Network Validators and App Addresses"
-sidebarTitle: "Validator Tracker"
-description: "Monitor Canton Network validators and ecosystem app addresses in CCTools. Filter by role, view Super Validators, and explore linked project details."
+title: "Using the Tracker"
+description: "Public party inspector for Canton - search and inspect any wallet by name or party-id."
 ---
 
-The tracker section of the Ecosystem covers two directories — **Validators** and **App Addresses** — giving you a live view of all active Canton Network participants. Whether you want to understand who secures the network, find a validator to host your wallet, or trace on-chain app deployments back to the projects behind them, these two pages give you that full picture in one place.
+## What the Tracker Is
 
-## Validators
+**Tracker** is a public Canton party inspector (Canton's answer to Etherscan). Search for any party by name from the party-labels directory, or paste a party-id directly to inspect balances, activity, validators, featured apps, and ANS names. No login required - everything is public and instant.
 
-Visit [cctools.network/validators](https://cctools.network/validators) to see every validator currently operating on the Canton Network.
+Think of it as a read-only explorer: see what any wallet holds, who they trade with, and how long they have been active on Canton.
 
-Validators are the backbone of Canton — they run the infrastructure that processes transactions, maintain ledger consensus, and participate in governance decisions that shape how the network evolves. In return for this work, validators earn CC rewards proportional to their activity and stake.
+## Searching for a Party
 
-The Validators page lists all active validators with the following details:
+The Tracker search works two ways:
 
-- **Validator name and identity** — the registered name and on-chain party ID
-- **Role** — Super Validator or regular Validator
-- **Ecosystem link** — whether the validator is associated with a known Canton project in the CCTools directory
+**By name** - Start typing a project, validator, app, or ANS name. The search surfaces results from the party-labels directory, sorted by match relevance:
+- Projects and featured apps show their logo and category label
+- Validators display a "Validator" tag
+- ANS names appear with an "ANS" label
+- Each result shows the short address for quick verification
 
-**Filters** let you narrow the list by:
+**By party-id** - Paste or type a full party-id (format: hint::fingerprint) directly into the search box. Press Enter or click Inspect to jump straight to the detail page. No suggestions dropdown appears for party-ids.
 
-- **Role** — filter to show only Super Validators, only regular Validators, or all
-- **Ecosystem link** — show only validators linked to a project, or only standalone validators with no project affiliation
+Use arrow keys to navigate suggestions, Enter to select, or Escape to close the dropdown.
 
-## Super Validators
+## What You See
 
-Super Validators are a distinct class of validator with elevated responsibilities on the Canton Network. Beyond running standard validation infrastructure, Super Validators take on additional governance duties:
+When you inspect a party, the Tracker displays:
 
-- **Price consensus rounds** — participating in the collective determination of on-chain price feeds and reference rates
-- **Network configuration changes** — voting on protocol upgrades, fee structures, and other network parameter updates
-- **Governance proposals** — sponsoring and ratifying changes that affect all Canton Network participants
+### Identity & Balance
+- Party name (if registered) and full party-id
+- Current balance in CC and USD equivalent
+- **Badges**:
+  - Stale indicator (shows cache age if data is older than live)
+  - Persona badges (e.g., Validator, Featured App)
+  - Active since date and days on network
 
-Super Validators are typically major financial institutions with significant Canton Network involvement. On the Validators page, Super Validators are clearly marked and can be filtered to a separate view.
+### 30-Day Balance Chart
+A line chart showing balance history over the last 30 days, with CC and USD values on hover. If less than 2 days of history exist, the chart does not display.
 
-## App Addresses
+### Balance Breakdown
+Four stats at a glance:
+- Unlocked CC
+- Locked CC
+- Estimated rewards (30-day projection)
+- Hosted on (validator or infrastructure provider)
 
-Visit [cctools.network/apps](https://cctools.network/apps) to browse all on-chain addresses linked to Canton ecosystem applications.
+### Activity Stats (Last 30 Days)
+A summary of on-chain movement:
+- Total number of transfers
+- Volume received (in CC)
+- Volume sent (in CC)
+- Number of unique counterparties
 
-While the Validators page covers infrastructure, App Addresses covers the smart contract layer — the on-chain deployments that power wallets, exchanges, DeFi protocols, and other Canton apps. Each row in the directory represents a Canton party address that has been identified as belonging to an ecosystem project.
+### Recent Activity
+The 10 most recent transfers to or from this party. Each row shows:
+- Direction (sent/received, indicated by a red up-arrow or green down-arrow)
+- Counterparty address (clickable link to inspect them)
+- Amount transferred
+- Timestamp
 
-You can filter by:
+Click any counterparty address to inspect them in the Tracker.
 
-- **Ecosystem link status** — show only addresses that are linked to a named project in the CCTools directory, or show unlinked addresses that have been flagged as active but not yet identified
+### Top Counterparties
+The parties this wallet exchanged with most in the last 30 days, ranked by frequency and volume:
+- Number of transfers with each party
+- Total CC exchanged
+- Click to jump to that party's detail page
 
-Use App Addresses to verify that a smart contract or on-chain app you're interacting with is actually the one it claims to be, by cross-referencing the address against its linked project profile.
+### Linked Project
+If the inspected party is a Canton project (validator, featured app, or ecosystem member), a card displays:
+- Project logo and name
+- Link to view the full project details in the Ecosystem
 
-## Submitting a validator
+## Recent Lookups
 
-Validators that aren't yet listed in the CCTools directory can apply to be added. Use the **Submit** form on the Validators page to request a listing. The CCTools team will review the submission and reach out if additional information is needed.
+All successful inspections are saved locally in your browser under a "Recent lookups" card on the main Tracker page:
+- Stored only in **browser localStorage** - not on your CCTools account
+- Shows up to 8 most recent parties
+- Click to jump back to a previous inspection
+- Clear all history with the "Clear" button
 
-<Info>
-  Validator data is sourced directly from the Canton Network and updated continuously. Role assignments, addresses, and activity metrics all reflect the live state of the network.
-</Info>
+This is browser-side convenience history only, similar to an explorer's bookmark list. Each browser and device keeps its own list.
+
+## Tips for Effective Browsing
+
+- **Search tips**: The search requires at least 2 characters. Full party-ids (containing ::) skip the name lookup and go straight to the detail page.
+- **Navigation**: Use the back button to return to the main Tracker page. Recent lookups let you jump between multiple inspections without re-searching.
+- **Activity context**: All stats reset to zeros if no activity occurred in the 30-day window. Recent transfers may show a counterparty of "network" if it was a direct mint or burn.
+- **Stale data**: Balance data refreshes on a cache schedule. The Stale badge on the identity card shows you how old the cached balance is.
