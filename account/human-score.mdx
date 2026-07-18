@@ -66,8 +66,8 @@ The concrete levers are the stamps you earn. Connect a Canton wallet, add social
 - Account age (up to 6 months): +5 points (caps at 6 points, scaled by time)
 - (Coming soon) Party-ID age and token holdings: +15 points
 
-**Referral (up to 6 points)**
-- Referred by a Trusted user: +6 points (users with reputation score 51 or higher)
+**Discord verification (up to 6 points)**
+- Verified in the CCTools Discord server: +6 points (passed the server verification check)
 
 Your score increases as you earn stamps, and you can always see your progress on the Score tab.
 
@@ -86,7 +86,7 @@ The Verified badge also appears on your profile in the CCTools hub and on leader
 
 The **show_human_score** toggle on the Privacy tab (/profile/privacy) controls whether your score badge is visible to others on your public profile. When the toggle is off, your score remains private to you: only you see it on your own /profile/score page.
 
-All other privacy rules (is_public, show_reputation, show_activity_stats) continue to work as before. Remember: changing privacy settings only affects what others see. You always see everything on your own account.
+All other privacy rules (is_public, show_activity_stats) continue to work as before. Remember: changing privacy settings only affects what others see. You always see everything on your own account.
 
 ## Coming soon
 
@@ -102,9 +102,6 @@ No. Stamps are earned automatically when you complete the action (link a social,
 
 **Is my score ever deleted?**
 No. Your score persists until you either ban your account or your account is banned. Removing individual stamps (e.g. unlinking a social) will lower your score, but it will not reset to zero.
-
-**Does score affect my Reputation?**
-No. Score and Reputation are independent. Score answers "is a real person?". Reputation answers "does this person contribute quality?". You can be Verified and have low Reputation, or have high Reputation and be Unverified.
 
 **How often does my score update?**
 The score recomputes every four hours on a cron schedule, and instantly when you add or remove a stamp via the UI (the breakdown API reflects the change immediately).
