@@ -1,0 +1,73 @@
+---
+title: "Authentication & rate limits"
+description: "API keys, tiers, rate limits, and error handling for the CCTools Public API."
+icon: "key"
+---
+
+## API keys
+
+Every request authenticates with a key in the **`X-API-Key`** header:
+
+```bash
+curl -H "X-API-Key: cck_your_key_here" \
+  "https://api.cctools.network/api/v1/public/status"
+```
+
+Keys are strings of the form `cck_` followed by 56 hex characters. There is no
+`Authorization: Bearer` support — sending a Bearer token returns `401`.
+
+Create, list, and revoke keys at
+[cctools.network/profile/api](https://cctools.network/profile/api). The
+cleartext is shown exactly once at creation; afterward only the prefix is
+visible. You can hold up to 10 active keys.
+
+## Tiers
+
+Your key inherits a tier from your account eligibility. The tier sets your
+rate limit and is echoed on every response as `meta.tier`.
+
+| Tier | Rate limit | Eligibility |
+|---|---|---|
+| **Free** | 60 req/min | A verified Human Score (wallet-anchored) **or** account level 5+. Granted instantly, no review. |
+| **Validator** | Unlimited | A Canton validator party ID that passes the governance snapshot + endpoint handshake. 12-month term. |
+| **Paid** | 1,000 req/min (configurable) | Builders, funds, and partners. Apply with a use case; reviewed in 3-5 business days. |
+
+## Rate limits
+
+Limits are per key, per minute. When you exceed yours you get `429` with a
+`Retry-After: 60` header:
+
+```json
+{ "error": "Rate limit exceeded", "code": "rate_limited" }
+```
+
+Every successful response also carries your ceiling in
+`meta.rate_limit_remaining`, so you can back off before you hit the wall.
+
+## Errors
+
+| Status | `code` | Meaning |
+|---|---|---|
+| `400` | `bad_request` | Malformed parameter. |
+| `401` | `unauthorized` | Missing, malformed, revoked, or expired key. |
+| `404` | `not_found` | No such resource (e.g. unknown slug). |
+| `429` | `rate_limited` | Over your per-minute limit. Retry after the header. |
+
+All errors share the shape `{ "error": "...", "code": "..." }`.
+
+## Good practice
+
+<AccordionGroup>
+  <Accordion title="Keep keys server-side" icon="server">
+    Never ship a key in a browser bundle or mobile app. Proxy through a backend
+    you control. A leaked key can be used up to its rate limit until you revoke it.
+  </Accordion>
+  <Accordion title="Rotate on suspicion" icon="rotate">
+    Revoking is immediate — the key starts returning `401` right away. Mint a
+    replacement first, cut over, then revoke the old one.
+  </Accordion>
+  <Accordion title="Handle 429 gracefully" icon="clock">
+    Respect `Retry-After`. For steady workloads, stay under your tier ceiling
+    rather than bursting and backing off.
+  </Accordion>
+</AccordionGroup>

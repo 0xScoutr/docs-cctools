@@ -28,6 +28,10 @@
   },
   "redirects": [
     {
+      "source": "/api",
+      "destination": "/api/overview"
+    },
+    {
       "source": "/en",
       "destination": "/"
     },
@@ -304,6 +308,16 @@
               "getting-started/what-is-cctools",
               "getting-started/create-account",
               "getting-started/navigating-the-platform"
+            ]
+          },
+          {
+            "group": "Public API",
+            "icon": "plug",
+            "pages": [
+              "api/overview",
+              "api/quickstart",
+              "api/authentication",
+              "api/endpoints"
             ]
           },
           {

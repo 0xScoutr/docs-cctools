@@ -1,0 +1,57 @@
+---
+title: "Quickstart"
+description: "From zero to your first CCTools API call in two minutes."
+icon: "rocket"
+---
+
+## 1. Sign in
+
+Open [cctools.network](https://cctools.network) and sign in (or create a free
+account).
+
+## 2. Open the developer panel
+
+Go to [cctools.network/profile/api](https://cctools.network/profile/api).
+
+## 3. Get a key
+
+- **Free tier** — if your account has a verified Human Score or is level 5 or
+  above, you'll see **Get a free key**. Click it, then **New key**. The free
+  tier allows 60 requests per minute.
+- **Validator** — submit your Canton validator party ID for instant,
+  auto-verified access at the unlimited tier.
+- **Builder / fund / partner** — fill out the short application for a reviewed
+  paid tier.
+
+The cleartext key (`cck_…`) is shown **once**. Copy it and store it somewhere
+safe — you can't see it again, only revoke it and mint a new one.
+
+<Warning>
+Never expose a key in client-side code. Proxy calls through a server you
+control. Anyone with your key can call the API as you, up to your rate limit.
+</Warning>
+
+## 4. Make your first call
+
+```bash
+curl -H "X-API-Key: cck_your_key_here" \
+  "https://api.cctools.network/api/v1/public/ecosystem/projects?limit=5"
+```
+
+You should get back a JSON envelope:
+
+```json
+{
+  "data": [ { "slug": "…", "name": "…", "score": 87 } ],
+  "pagination": { "limit": 5, "offset": 0, "total": 491 },
+  "meta": { "tier": "free", "rate_limit_remaining": 60 }
+}
+```
+
+That's it. Browse every route in the [endpoint reference](/api/endpoints).
+
+<Tip>
+Testing with `curl`, `python-requests`, or any default client works out of the
+box — as long as the `X-API-Key` header is present. Keyless requests from tool
+clients are blocked; keyed requests are not.
+</Tip>

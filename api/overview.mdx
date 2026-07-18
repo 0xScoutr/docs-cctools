@@ -1,0 +1,76 @@
+---
+title: "CCTools Public API"
+description: "A read-only REST API for the Canton Network ecosystem — projects, campaigns, leaderboards, users, and network stats."
+icon: "plug"
+---
+
+The CCTools Public API gives you programmatic, read-only access to the same
+Canton Network data that powers cctools.network: the ecosystem directory,
+earn campaigns, leaderboards, public user profiles, governance, news, and
+live network statistics.
+
+## Base URL
+
+```
+https://api.cctools.network
+```
+
+Every endpoint lives under the `/api/v1/public/` prefix and returns JSON.
+
+## Authentication
+
+All requests require an API key, sent in the **`X-API-Key`** header. There is
+no `Authorization: Bearer` scheme — a Bearer header is rejected.
+
+```bash
+curl -H "X-API-Key: cck_your_key_here" \
+  "https://api.cctools.network/api/v1/public/network/stats"
+```
+
+Generate and manage keys at [cctools.network/profile/api](https://cctools.network/profile/api).
+See [Authentication](/api/authentication) for the full flow.
+
+## Response envelope
+
+Successful responses share one shape:
+
+```json
+{
+  "data": { "...": "..." },
+  "pagination": { "limit": 50, "offset": 0, "total": 491 },
+  "meta": { "tier": "free", "rate_limit_remaining": 60 }
+}
+```
+
+- `data` — the payload (object or array, depending on the endpoint).
+- `pagination` — present on list endpoints; `null` otherwise.
+- `meta.tier` — your key's tier.
+- `meta.rate_limit_remaining` — your per-minute ceiling.
+
+Errors are `{ "error": "message", "code": "..." }` with an HTTP status of
+`400`, `401`, `404`, or `429`.
+
+## Tiers at a glance
+
+| Tier | Rate limit | Who | How |
+|---|---|---|---|
+| **Free** | 60 req/min | Verified Human Score or account level 5+ | Instant self-serve at /profile/api |
+| **Validator** | Unlimited | Verified Canton validators | Submit party ID (auto-verified) |
+| **Paid** | 1,000 req/min (configurable) | Builders, funds, partners | Apply, reviewed in 3-5 business days |
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Quickstart" icon="rocket" href="/api/quickstart">
+    Get a free key and make your first call in two minutes.
+  </Card>
+  <Card title="Authentication" icon="key" href="/api/authentication">
+    Keys, tiers, rate limits, and error codes.
+  </Card>
+  <Card title="Endpoints" icon="list" href="/api/endpoints">
+    Every read-only endpoint with a copy-paste example.
+  </Card>
+  <Card title="Manage keys" icon="gear" href="https://cctools.network/profile/api">
+    Create, list, and revoke your keys.
+  </Card>
+</CardGroup>

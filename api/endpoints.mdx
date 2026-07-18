@@ -1,0 +1,104 @@
+---
+title: "Endpoint reference"
+description: "Every read-only endpoint on the CCTools Public API, with a copy-paste example."
+icon: "list"
+---
+
+All endpoints are `GET`, live under `https://api.cctools.network`, require the
+`X-API-Key` header, and return the standard `{ data, pagination, meta }`
+envelope. List endpoints accept `?limit=` (1-200, default 50) and `?offset=`.
+
+<Note>
+Replace `cck_…` with one of your keys from
+[/profile/api](https://cctools.network/profile/api).
+</Note>
+
+## Ecosystem
+
+| Endpoint | Description |
+|---|---|
+| `GET /api/v1/public/ecosystem/projects` | List ecosystem projects with score + metadata. |
+| `GET /api/v1/public/ecosystem/projects/{slug}` | A single project by slug. |
+| `GET /api/v1/public/ecosystem/projects/{slug}/analytics` | Time-series analytics for a project. |
+| `GET /api/v1/public/ecosystem/categories` | All project categories. |
+| `GET /api/v1/public/ecosystem/rankings` | Projects ranked by score. |
+| `GET /api/v1/public/ecosystem/trending` | Projects trending over the last 7 days. |
+
+```bash
+curl -H "X-API-Key: cck_…" \
+  "https://api.cctools.network/api/v1/public/ecosystem/projects?limit=10"
+```
+
+## Users
+
+Public profile data for a user, addressed by their profile `username` (slug).
+
+| Endpoint | Description |
+|---|---|
+| `GET /api/v1/public/users/{username}` | Public profile: level, XP, tier, badges count. |
+| `GET /api/v1/public/users/{username}/badges` | Badges earned by the user. |
+| `GET /api/v1/public/users/{username}/activity` | Recent public activity. |
+| `GET /api/v1/public/users/{username}/contributions` | Approved contributions (projects, edits). |
+
+```bash
+curl -H "X-API-Key: cck_…" \
+  "https://api.cctools.network/api/v1/public/users/{username}"
+```
+
+Profiles set to private return `404`.
+
+## Earn
+
+| Endpoint | Description |
+|---|---|
+| `GET /api/v1/public/earn` | Active campaigns and earn opportunities. |
+| `GET /api/v1/public/earn/{slug}` | A single opportunity by slug. |
+
+```bash
+curl -H "X-API-Key: cck_…" \
+  "https://api.cctools.network/api/v1/public/earn?limit=20"
+```
+
+## Leaderboard
+
+| Endpoint | Description |
+|---|---|
+| `GET /api/v1/public/leaderboard` | Top users by XP. |
+
+```bash
+curl -H "X-API-Key: cck_…" \
+  "https://api.cctools.network/api/v1/public/leaderboard?limit=50"
+```
+
+## Network
+
+| Endpoint | Description |
+|---|---|
+| `GET /api/v1/public/network/stats` | Point-in-time Canton Coin price, market cap, validators, activity. |
+| `GET /api/v1/public/network/history` | Daily mint vs burn history. Accepts `?days=1..365` (default 30). |
+
+```bash
+curl -H "X-API-Key: cck_…" \
+  "https://api.cctools.network/api/v1/public/network/history?days=90"
+```
+
+## Governance, news, CIPs, status
+
+| Endpoint | Description |
+|---|---|
+| `GET /api/v1/public/governance` | Canton governance activity. |
+| `GET /api/v1/public/news` | Ecosystem news feed. |
+| `GET /api/v1/public/cips` | Canton Improvement Proposals. |
+| `GET /api/v1/public/status` | API + data-source health. |
+
+```bash
+curl -H "X-API-Key: cck_…" \
+  "https://api.cctools.network/api/v1/public/status"
+```
+
+<Tip>
+Key management endpoints (`/api/v1/auth/api-keys/*`) are authenticated by your
+logged-in session, not an API key, and are driven by the
+[/profile/api](https://cctools.network/profile/api) UI — you don't call them
+directly.
+</Tip>
