@@ -48,14 +48,17 @@ Successful responses share one shape:
 - `meta.rate_limit_remaining` — your per-minute ceiling.
 
 Errors are `{ "error": "message", "code": "..." }` with an HTTP status of
-`400`, `401`, `404`, or `429`.
+`400`, `401`, `404`, `429`, or `503`. A `503` with code `warming_up` means a
+cron-warmed dataset has a cold cache: retry in a minute rather than treating it
+as an empty result.
 
 ## Tiers at a glance
 
 | Tier | Rate limit | Who | How |
 |---|---|---|---|
 | **Free** | 60 req/min | Verified Human Score | Instant self-serve at /profile/api |
-| **Validator** | Unlimited | Verified Canton validators | Submit party ID (auto-verified) |
+| **Pro** | Unlimited | CCTools Pro subscribers | Instant self-serve at /profile/api |
+| **Validator** | Unlimited | Canton validators | Submit party ID; auto-approved for known operators, otherwise reviewed |
 | **Paid** | 1,000 req/min (configurable) | Builders, funds, partners | Apply, reviewed in 3-5 business days |
 
 ## Next steps

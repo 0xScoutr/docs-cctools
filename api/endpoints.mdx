@@ -1,104 +1,170 @@
 ---
 title: "Endpoint reference"
-description: "Every read-only endpoint on the CCTools Public API, with a copy-paste example."
+description: "Every endpoint on the CCTools Public API, with a copy-paste example."
 icon: "list"
 ---
 
-All endpoints are `GET`, live under `https://api.cctools.network`, require the
-`X-API-Key` header, and return the standard `{ data, pagination, meta }`
-envelope. List endpoints accept `?limit=` (1-200, default 50) and `?offset=`.
+{/* GENERATED FILE. Do not edit by hand.
+    Regenerate with: node cctools2/backend/scripts/gen-docs-endpoints.mjs
+    Source of truth: cctools2/backend/src/lib/api/openapi-spec.ts */}
+
+All 46 endpoints live under `https://api.cctools.network`, return the
+standard `{ data, pagination, meta }` envelope, and require the `X-API-Key`
+header. The one exception is `/api/v1/public/status`, which needs no key and
+answers with its payload directly.
+
+List endpoints accept `?limit=` (1-200, default 50) and `?offset=`.
 
 <Note>
-Replace `cck_…` with one of your keys from
-[/profile/api](https://cctools.network/profile/api).
+Replace `cck_...` with one of your keys from
+[/profile/api](https://cctools.network/profile/api). An interactive explorer
+with a live Send button is at [cctools.network/api-docs](https://cctools.network/api-docs).
 </Note>
+
+<Warning>
+Endpoints served from a cron-warmed cache answer `503` with code
+`warming_up` on a cold cache, rather than returning an empty body. Treat that
+as a retry, not as an empty result.
+</Warning>
 
 ## Ecosystem
 
-| Endpoint | Description |
-|---|---|
-| `GET /api/v1/public/ecosystem/projects` | List ecosystem projects with score + metadata. |
-| `GET /api/v1/public/ecosystem/projects/{slug}` | A single project by slug. |
-| `GET /api/v1/public/ecosystem/projects/{slug}/analytics` | Time-series analytics for a project. |
-| `GET /api/v1/public/ecosystem/categories` | All project categories. |
-| `GET /api/v1/public/ecosystem/rankings` | Projects ranked by score. |
-| `GET /api/v1/public/ecosystem/trending` | Projects trending over the last 7 days. |
-
-```bash
-curl -H "X-API-Key: cck_…" \
-  "https://api.cctools.network/api/v1/public/ecosystem/projects?limit=10"
-```
-
-## Users
-
-Public profile data for a user, addressed by their profile `username` (slug).
+Projects, categories, rankings, trending.
 
 | Endpoint | Description |
 |---|---|
-| `GET /api/v1/public/users/{username}` | Public profile: level, XP, tier, badges count. |
-| `GET /api/v1/public/users/{username}/badges` | Badges earned by the user. |
-| `GET /api/v1/public/users/{username}/activity` | Recent public activity. |
-| `GET /api/v1/public/users/{username}/contributions` | Approved contributions (projects, edits). |
+| `GET /api/v1/public/ecosystem/categories` | List categories with counts |
+| `GET /api/v1/public/ecosystem/projects` | List projects |
+| `GET /api/v1/public/ecosystem/projects/{slug}` | Get project by slug |
+| `GET /api/v1/public/ecosystem/projects/{slug}/analytics` | Engagement analytics for a project |
+| `GET /api/v1/public/ecosystem/projects/{slug}/campaigns` | Project campaigns |
+| `GET /api/v1/public/ecosystem/projects/{slug}/token` | Project token stats |
+| `GET /api/v1/public/ecosystem/rankings` | Projects ranked by metric |
+| `GET /api/v1/public/ecosystem/trending` | Top 20 trending projects this epoch |
 
 ```bash
-curl -H "X-API-Key: cck_…" \
-  "https://api.cctools.network/api/v1/public/users/{username}"
+curl -H "X-API-Key: cck_..." \
+  "https://api.cctools.network/api/v1/public/ecosystem/categories"
 ```
 
-Profiles set to private return `404`.
+## Canton network
+
+Canton network data: validators, Super Validators, Featured Apps, governance, burn and mint, CIPs.
+
+| Endpoint | Description |
+|---|---|
+| `GET /api/v1/public/cips` | CIP reference corpus |
+| `GET /api/v1/public/featured-apps` | Featured App registry |
+| `GET /api/v1/public/featured-apps/{slug}` | Featured App detail |
+| `GET /api/v1/public/governance` | Governance proposals |
+| `GET /api/v1/public/network/burn-mint` | Burn and mint volume |
+| `GET /api/v1/public/network/cc-price` | Canton Coin price |
+| `GET /api/v1/public/network/history` | Network history |
+| `GET /api/v1/public/network/stats` | Network stats |
+| `GET /api/v1/public/validators` | List validators |
+| `GET /api/v1/public/validators/{partyId}` | Validator detail |
+| `GET /api/v1/public/validators/super-validators` | Super Validators |
+| `GET /api/v1/public/validators/sv-votes` | Super Validator price votes |
+| `GET /api/v1/public/validators/top-app-rewards` | Top app providers by reward |
+| `GET /api/v1/public/validators/top-rewards` | Top validators by reward |
+
+```bash
+curl -H "X-API-Key: cck_..." \
+  "https://api.cctools.network/api/v1/public/cips"
+```
+
+## Markets and DeFi
+
+DeFi and trading: protocol TVL, token registry, liquidity pools, tickers and trades.
+
+| Endpoint | Description |
+|---|---|
+| `GET /api/v1/public/markets/pools/oneswap` | OneSwap liquidity pools |
+| `GET /api/v1/public/markets/pools/send` | Send liquidity pools |
+| `GET /api/v1/public/markets/pools/tradecraft` | Tradecraft liquidity pools |
+| `GET /api/v1/public/markets/protocols` | Canton DeFi protocols |
+| `GET /api/v1/public/markets/tickers` | Trading pairs |
+| `GET /api/v1/public/markets/tokens` | Token registry |
+| `GET /api/v1/public/markets/trades` | Recent trades |
+
+```bash
+curl -H "X-API-Key: cck_..." \
+  "https://api.cctools.network/api/v1/public/markets/pools/oneswap"
+```
+
+## Content and directories
+
+Academy posts, learn paths, news, developer tooling and the badge catalog.
+
+| Endpoint | Description |
+|---|---|
+| `GET /api/v1/public/academy/posts` | List Academy posts |
+| `GET /api/v1/public/academy/posts/{slug}` | Academy post by slug |
+| `GET /api/v1/public/badges` | Badge catalog |
+| `GET /api/v1/public/devtools` | Developer tooling directory |
+| `GET /api/v1/public/learn/paths` | Learn path catalog |
+| `GET /api/v1/public/learn/paths/{slug}` | Learn path by slug |
+| `GET /api/v1/public/news` | Canton news |
+
+```bash
+curl -H "X-API-Key: cck_..." \
+  "https://api.cctools.network/api/v1/public/academy/posts"
+```
+
+## Public profiles
+
+Public profiles, badges, contributions, activity.
+
+| Endpoint | Description |
+|---|---|
+| `GET /api/v1/public/users/{username}` | Public profile |
+| `GET /api/v1/public/users/{username}/activity` | Recent XP events |
+| `GET /api/v1/public/users/{username}/badges` | Badges earned |
+| `GET /api/v1/public/users/{username}/contributions` | Approved submissions + edits |
+
+```bash
+curl -H "X-API-Key: cck_..." \
+  "https://api.cctools.network/api/v1/public/users/sharpagent358"
+```
 
 ## Earn
 
+Opportunities (campaigns, app rewards, community).
+
 | Endpoint | Description |
 |---|---|
-| `GET /api/v1/public/earn` | Active campaigns and earn opportunities. |
-| `GET /api/v1/public/earn/{slug}` | A single opportunity by slug. |
+| `GET /api/v1/public/earn` | List opportunities |
+| `GET /api/v1/public/earn/{slug}` | Opportunity by slug |
 
 ```bash
-curl -H "X-API-Key: cck_…" \
-  "https://api.cctools.network/api/v1/public/earn?limit=20"
+curl -H "X-API-Key: cck_..." \
+  "https://api.cctools.network/api/v1/public/earn"
 ```
 
-## Leaderboard
+## Leaderboards
+
+Top users by XP.
 
 | Endpoint | Description |
 |---|---|
-| `GET /api/v1/public/leaderboard` | Top users by XP. |
+| `GET /api/v1/public/leaderboard` | Top users by total XP |
+| `GET /api/v1/public/leaderboard/projects` | Project leaderboard |
+| `GET /api/v1/public/leaderboard/validators` | Validator leaderboard |
 
 ```bash
-curl -H "X-API-Key: cck_…" \
-  "https://api.cctools.network/api/v1/public/leaderboard?limit=50"
+curl -H "X-API-Key: cck_..." \
+  "https://api.cctools.network/api/v1/public/leaderboard"
 ```
 
-## Network
+## Status
+
+Service health and incidents. The only keyless endpoint on this API.
 
 | Endpoint | Description |
 |---|---|
-| `GET /api/v1/public/network/stats` | Point-in-time Canton Coin price, market cap, validators, activity. |
-| `GET /api/v1/public/network/history` | Daily mint vs burn history. Accepts `?days=1..365` (default 30). |
+| `GET /api/v1/public/status` | Service status |
 
 ```bash
-curl -H "X-API-Key: cck_…" \
-  "https://api.cctools.network/api/v1/public/network/history?days=90"
-```
-
-## Governance, news, CIPs, status
-
-| Endpoint | Description |
-|---|---|
-| `GET /api/v1/public/governance` | Canton governance activity. |
-| `GET /api/v1/public/news` | Ecosystem news feed. |
-| `GET /api/v1/public/cips` | Canton Improvement Proposals. |
-| `GET /api/v1/public/status` | API + data-source health. |
-
-```bash
-curl -H "X-API-Key: cck_…" \
+curl -H "X-API-Key: cck_..." \
   "https://api.cctools.network/api/v1/public/status"
 ```
-
-<Tip>
-Key management endpoints (`/api/v1/auth/api-keys/*`) are authenticated by your
-logged-in session, not an API key, and are driven by the
-[/profile/api](https://cctools.network/profile/api) UI — you don't call them
-directly.
-</Tip>

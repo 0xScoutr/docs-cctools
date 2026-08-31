@@ -29,13 +29,27 @@ rate limit and is echoed on every response as `meta.tier`.
 | Tier | Rate limit | Eligibility |
 |---|---|---|
 | **Free** | 60 req/min | A verified Human Score (connect a Canton wallet). Granted instantly, no review. |
-| **Validator** | Unlimited | A Canton validator party ID that passes the governance snapshot + endpoint handshake. 12-month term. |
+| **Pro** | Unlimited | Included with a [CCTools Pro](https://cctools.network/pro) subscription. Granted instantly, and runs for as long as the subscription does. |
+| **Validator** | Unlimited | A Canton validator party ID. Auto-approved when the party is a known operator, otherwise reviewed. 12-month term, free. |
 | **Paid** | 1,000 req/min (configurable) | Builders, funds, and partners. Apply with a use case; reviewed in 3-5 business days. |
+
+Free and Pro are self-service: open [/profile/api](https://cctools.network/profile/api)
+and the button appears if you qualify. Validators submit a party ID on the same
+page. Everyone else applies there too.
+
+A Pro subscriber who renews can press the same button again to extend their API
+access to match. Nothing is ever downgraded by pressing it: if you already hold
+a validator or paid tier, it stays.
 
 ## Rate limits
 
-Limits are per key, per minute. When you exceed yours you get `429` with a
-`Retry-After: 60` header:
+Limits are counted per key, per minute, **per connection**. The API runs as a
+multi-process cluster where each process keeps its own counter, so a client
+spreading requests across many connections can exceed the stated figure before
+anything pushes back. Treat the number as the sustained rate to design for
+rather than a ceiling to probe.
+
+When you do exceed it you get `429` with a `Retry-After: 60` header:
 
 ```json
 { "error": "Rate limit exceeded", "code": "rate_limited" }
@@ -52,6 +66,7 @@ Every successful response also carries your ceiling in
 | `401` | `unauthorized` | Missing, malformed, revoked, or expired key. |
 | `404` | `not_found` | No such resource (e.g. unknown slug). |
 | `429` | `rate_limited` | Over your per-minute limit. Retry after the header. |
+| `503` | `warming_up` | A cron-warmed dataset has a cold cache. Retry in a minute; this is not an empty result. |
 
 All errors share the shape `{ "error": "...", "code": "..." }`.
 
