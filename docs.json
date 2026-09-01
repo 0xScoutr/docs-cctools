@@ -300,139 +300,151 @@
     "languages": [
       {
         "language": "en",
-        "groups": [
+        "default": true,
+        "tabs": [
           {
-            "group": "Getting Started",
+            "tab": "Guides",
             "icon": "book-open",
-            "pages": [
-              "getting-started/what-is-cctools",
-              "getting-started/create-account",
-              "getting-started/navigating-the-platform"
+            "groups": [
+              {
+                "group": "Getting Started",
+                "icon": "book-open",
+                "pages": [
+                  "getting-started/what-is-cctools",
+                  "getting-started/create-account",
+                  "getting-started/navigating-the-platform"
+                ]
+              },
+              {
+                "group": "Portfolio",
+                "icon": "wallet",
+                "pages": [
+                  "portfolio/adding-wallets",
+                  "portfolio/understanding-pnl",
+                  "portfolio/rewards-tracking"
+                ]
+              },
+              {
+                "group": "Ecosystem",
+                "icon": "globe",
+                "pages": [
+                  "ecosystem/browsing-projects",
+                  "ecosystem/tracker",
+                  "ecosystem/compare",
+                  "ecosystem/canton-map",
+                  "ecosystem/sponsored-listings"
+                ]
+              },
+              {
+                "group": "Earn & XP",
+                "icon": "zap",
+                "pages": [
+                  "earn/earn-opportunities",
+                  "earn/xp-system",
+                  "earn/badges",
+                  "earn/referral-program",
+                  "earn/leaderboard",
+                  "earn/learn-paths"
+                ]
+              },
+              {
+                "group": "Academy",
+                "icon": "graduation-cap",
+                "pages": [
+                  "academy/academy-overview",
+                  "academy/reading-upvoting-posts",
+                  "academy/writing-posts"
+                ]
+              },
+              {
+                "group": "News & Feed",
+                "icon": "newspaper",
+                "pages": [
+                  "news/news-overview",
+                  "news/news-search-filter",
+                  "news/new-content-notifications"
+                ]
+              },
+              {
+                "group": "Account & Settings",
+                "icon": "settings",
+                "pages": [
+                  "account/profile-settings",
+                  "account/public-profile",
+                  "account/human-score",
+                  "account/activity-and-connections",
+                  "account/security",
+                  "account/notifications",
+                  "account/pro-subscription"
+                ]
+              },
+              {
+                "group": "Canton Network",
+                "icon": "box",
+                "pages": [
+                  "canton-network/what-is-canton",
+                  "canton-network/cc-token",
+                  "canton-network/rewards-calculator",
+                  "canton-network/validators-governance"
+                ]
+              },
+              {
+                "group": "Campaigns",
+                "icon": "megaphone",
+                "pages": [
+                  "campaigns/how-campaigns-work",
+                  "campaigns/how-winners-are-chosen",
+                  "campaigns/sponsored-campaigns"
+                ]
+              },
+              {
+                "group": "Network & Data",
+                "icon": "chart-column",
+                "pages": [
+                  "network/network-stats",
+                  "network/markets",
+                  "network/data-sources"
+                ]
+              },
+              {
+                "group": "Community",
+                "icon": "users",
+                "pages": [
+                  "community/community-rules",
+                  "community/contribute",
+                  "community/discord",
+                  "community/faq",
+                  "community/service-status"
+                ]
+              },
+              {
+                "group": "Troubleshooting",
+                "icon": "life-buoy",
+                "pages": [
+                  "troubleshooting/login-issues",
+                  "troubleshooting/portfolio-issues",
+                  "troubleshooting/contact-support"
+                ]
+              }
             ]
           },
           {
-            "group": "Public API",
+            "tab": "API",
             "icon": "plug",
-            "pages": [
-              "api/overview",
-              "api/quickstart",
-              "api/authentication",
-              "api/endpoints"
-            ]
-          },
-          {
-            "group": "Portfolio",
-            "icon": "wallet",
-            "pages": [
-              "portfolio/adding-wallets",
-              "portfolio/understanding-pnl",
-              "portfolio/rewards-tracking"
-            ]
-          },
-          {
-            "group": "Ecosystem",
-            "icon": "globe",
-            "pages": [
-              "ecosystem/browsing-projects",
-              "ecosystem/tracker",
-              "ecosystem/compare",
-              "ecosystem/canton-map",
-              "ecosystem/sponsored-listings"
-            ]
-          },
-          {
-            "group": "Earn & XP",
-            "icon": "zap",
-            "pages": [
-              "earn/earn-opportunities",
-              "earn/xp-system",
-              "earn/badges",
-              "earn/referral-program",
-              "earn/leaderboard",
-              "earn/learn-paths"
-            ]
-          },
-          {
-            "group": "Academy",
-            "icon": "graduation-cap",
-            "pages": [
-              "academy/academy-overview",
-              "academy/reading-upvoting-posts",
-              "academy/writing-posts"
-            ]
-          },
-          {
-            "group": "News & Feed",
-            "icon": "newspaper",
-            "pages": [
-              "news/news-overview",
-              "news/news-search-filter",
-              "news/new-content-notifications"
-            ]
-          },
-          {
-            "group": "Account & Settings",
-            "icon": "settings",
-            "pages": [
-              "account/profile-settings",
-              "account/public-profile",
-              "account/human-score",
-              "account/activity-and-connections",
-              "account/security",
-              "account/notifications",
-              "account/pro-subscription"
-            ]
-          },
-          {
-            "group": "Canton Network",
-            "icon": "box",
-            "pages": [
-              "canton-network/what-is-canton",
-              "canton-network/cc-token",
-              "canton-network/rewards-calculator",
-              "canton-network/validators-governance"
-            ]
-          },
-          {
-            "group": "Campaigns",
-            "icon": "megaphone",
-            "pages": [
-              "campaigns/how-campaigns-work",
-              "campaigns/how-winners-are-chosen",
-              "campaigns/sponsored-campaigns"
-            ]
-          },
-          {
-            "group": "Network & Data",
-            "icon": "chart-column",
-            "pages": [
-              "network/network-stats",
-              "network/markets",
-              "network/data-sources"
-            ]
-          },
-          {
-            "group": "Community",
-            "icon": "users",
-            "pages": [
-              "community/community-rules",
-              "community/contribute",
-              "community/discord",
-              "community/faq",
-              "community/service-status"
-            ]
-          },
-          {
-            "group": "Troubleshooting",
-            "icon": "life-buoy",
-            "pages": [
-              "troubleshooting/login-issues",
-              "troubleshooting/portfolio-issues",
-              "troubleshooting/contact-support"
+            "groups": [
+              {
+                "group": "Public API",
+                "icon": "plug",
+                "pages": [
+                  "api/overview",
+                  "api/quickstart",
+                  "api/authentication",
+                  "api/endpoints"
+                ]
+              }
             ]
           }
-        ],
-        "default": true
+        ]
       },
       {
         "language": "es",
