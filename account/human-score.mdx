@@ -3,13 +3,13 @@ title: Human Score and Verification
 description: Anti-sybil credibility score that signals how real and established your CCTools account is.
 ---
 
-Your Human Score is a 0 to 100 credibility signal that helps the Canton Network community identify verified humans and filter out bots and sybils. Unlike a raw number, you see it as a descriptive tier that matches how other identity platforms (Worldcoin, BrightID, Galxe) communicate trust.
+Your Human Score is a credibility signal that helps the Canton Network community identify verified humans and filter out bots and sybils. Unlike a raw number, you see it as a descriptive tier that matches how other identity platforms (Worldcoin, BrightID, Galxe) communicate trust.
 
 ## What it measures
 
 The Human Score combines multiple corroboration signals to answer a single question: "Is this a unique human?" It pulls from three main categories.
 
-- **Identity and security**: Email verification, two-factor authentication, profile completeness (display name, custom slug, avatar)
+- **Identity and security**: Email verification, two-factor authentication, and an uploaded avatar
 - **On-chain and social proof**: Canton wallet connection, linked social accounts (X, Discord, Telegram), account age, and activity patterns
 - **Community signals**: Engagement consistency (daily streaks of 7+ days or 10+ actions in 30 days), being referred by a trusted user
 
@@ -17,27 +17,25 @@ The score is computed by a materialized view that refreshes every four hours and
 
 ## Score tiers
 
-Your score maps to one of six tiers.
+Your score maps to one of four tiers. Every stamp below is priced by how expensive it is to forge, which puts the highest score anyone can reach at **73**, not 100.
 
 | Tier | Range | Verified? | Meaning |
 |------|-------|-----------|---------|
 | Restricted | 0 | No | Account banned (contact support if you think this is a mistake) |
-| Unverified | 0-34 | No | No Canton wallet connected yet |
-| Newcomer | 0-34 | No | Wallet connected, but score below threshold |
-| Verified | 35-59 | Yes | Connected Canton wallet AND score at or above 35 |
-| Trusted | 60-84 | Yes | Score 60 or higher |
-| Elite | 85-100 | Yes | Score 85 or higher |
+| Newcomer | Any | No | No Canton wallet connected, or score below the floor |
+| Verified | 26-54 | Yes | Connected Canton wallet AND score at or above 26 |
+| Elite | 55-73 | Yes | Score 55 or higher, which is out of reach without on-chain history |
 
-The **Verified floor is 35**: you need both a connected Canton wallet (the anchor) AND a score of at least 35 to be Verified. This two-part gate (anchor plus corroboration) ensures that a wallet alone is not sufficient, and soft factors alone are never sufficient.
+The **Verified floor is 26**: you need both a connected Canton wallet (the anchor) AND a score of at least 26 to be Verified. This two-part gate (anchor plus corroboration) ensures that a wallet alone is not sufficient, and soft factors alone are never sufficient.
 
-Only Verified-and-above tiers (Verified, Trusted, Elite) earn a visible shield badge on your public profile. Newcomer accounts show no badge.
+Only Verified and Elite earn a visible shield badge on your public profile. Newcomer accounts show no badge.
 
 ## What "Verified" means
 
 Verified is a formal gate: your account is only Verified if you have BOTH of these conditions met.
 
 1. A connected Canton wallet (Send, 5N Loop, or another Canton client)
-2. A Human Score of 35 or higher
+2. A Human Score of 26 or higher
 
 This mirrors the "anchor plus corroboration" pattern used by Gitcoin Passport and other credibility platforms. On Canton, this design is stronger because party-IDs are not free: a single human cannot easily create many verified accounts.
 
@@ -47,27 +45,29 @@ Once you reach Verified, you unlock the ability to participate in on-chain campa
 
 The concrete levers are the stamps you earn. Connect a Canton wallet, add social and identity proofs, stay active, and keep your account fresh.
 
-**Wallet (the required anchor)**
-- Connect a Canton wallet: +10 points. This is the anchor for the Verified badge and enables all other on-chain activity.
+**Wallet and on-chain (up to 40 points)**
+- Connect a Canton wallet: +8 points. This is the anchor for the Verified badge.
+- Your linked Canton wallet holds CC: +12 points
+- Active on Canton for 90+ days (first on-chain transfer): +15 points
+- Link more than one Canton wallet: +2 points (+1 for two, +2 for three or more)
+- On-chain history on a linked EVM or Solana wallet: +3 points
 
-**Security and identity (up to 19 points)**
-- Verify your email: +4 points
-- Enable two-factor authentication: +8 points
-- Complete your profile: +8 points (display name +3, custom slug +2, avatar +3)
+**Social proof (up to 21 points)**
+- Pass verification in the CCTools Discord server: +10 points
+- Linked GitHub that is 1+ year old and has 5+ public repos: +5 points
+- Link your X account: +2 points
+- Link your GitHub account: +2 points
+- Link your Discord account: +1 point
+- Link your Telegram account: +1 point
 
-**Social proof (up to 26 points)**
-- Link your X account: +8 points
-- Enable Discord: +5 points
-- Enable Telegram: +5 points
-- (Coming soon) GitHub, Google, or Reddit: +12 points each
+**Security and identity (up to 8 points)**
+- Enable two-factor authentication: +6 points
+- Verify your email: +1 point
+- Upload an avatar: +1 point
 
-**Activity and longevity (up to 17 points)**
-- Daily engagement streak (7+ days) or 10+ actions in 30 days: +6 points
-- Account age (up to 6 months): +5 points (caps at 6 points, scaled by time)
-- (Coming soon) Party-ID age and token holdings: +15 points
-
-**Discord verification (up to 6 points)**
-- Verified in the CCTools Discord server: +6 points (passed the server verification check)
+**Activity and longevity (up to 4 points)**
+- Daily engagement streak (7+ days) or 10+ actions in 30 days: +2 points
+- Account age: +2 points, scaled by time and capped at 6 months
 
 Your score increases as you earn stamps, and you can always see your progress on the Score tab.
 
@@ -77,7 +77,7 @@ Your score increases as you earn stamps, and you can always see your progress on
 Visit **/profile/score** to see your detailed breakdown. The page shows your current tier, tier description, a progress ring, and every stamp you can earn: organized by Identity, Socials, Wallet, and Activity. Earned stamps show your actual contribution to the score; unearthable stamps show the target points.
 
 **Your public profile**
-If you have a Verified-and-above tier and the **show_human_score** privacy toggle is on, your score badge appears as a shield pill in your public profile header (/u/[your-slug]). The badge shows your tier name (Verified, Trusted, or Elite) but never the raw number.
+If you have a Verified-and-above tier and the **show_human_score** privacy toggle is on, your score badge appears as a shield pill in your public profile header (/u/[your-slug]). The badge shows your tier name (Verified or Elite) but never the raw number.
 
 **Where badges render**
 The Verified badge also appears on your profile in the CCTools hub and on leaderboards.
@@ -87,10 +87,6 @@ The Verified badge also appears on your profile in the CCTools hub and on leader
 The **show_human_score** toggle on the Privacy tab (/profile/privacy) controls whether your score badge is visible to others on your public profile. When the toggle is off, your score remains private to you: only you see it on your own /profile/score page.
 
 All other privacy rules (is_public, show_activity_stats) continue to work as before. Remember: changing privacy settings only affects what others see. You always see everything on your own account.
-
-## Coming soon
-
-Phase 1.5 will add stamps for GitHub, Google, and Reddit links (+12 points each). Phase 2 will introduce Party-ID age, token holdings, and cross-chain activity (+15 points). These expansions will make the score more sophisticated without changing the core two-part gate (wallet anchor plus corroboration).
 
 ## FAQ
 
