@@ -2,7 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "almond",
   "name": "CCTools",
-  "description": "Documentation for CCTools - the multi-tool platform for the Canton Network ecosystem.",
+  "description": "CCTools documentation: the free public API for Canton Network data, portfolio and wallet tracking, validator tools, XP and campaigns.",
   "colors": {
     "primary": "#4d7c0f",
     "light": "#e6ff6a",
@@ -836,7 +836,31 @@
   },
   "footer": {
     "socials": {
-      "website": "https://cctools.network"
+      "website": "https://cctools.network",
+      "x": "https://x.com/cantontools"
+    }
+  },
+  "seo": {
+    "indexing": "all",
+    "metatags": {
+      "og:type": "website",
+      "og:site_name": "CCTools Docs",
+      "og:image": "https://docs.cctools.network/images/og.png",
+      "og:image:width": "1200",
+      "og:image:height": "630",
+      "og:image:alt": "CCTools documentation for the Canton Network",
+      "twitter:card": "summary_large_image",
+      "twitter:site": "@cantontools",
+      "twitter:image": "https://docs.cctools.network/images/og.png"
+    },
+    "organization": {
+      "name": "CCTools",
+      "url": "https://cctools.network",
+      "logo": "https://docs.cctools.network/logo/cctools.png",
+      "sameAs": [
+        "https://x.com/cantontools",
+        "https://cctools.network"
+      ]
     }
   }
 }
