@@ -22,7 +22,7 @@ cleartext is shown exactly once at creation; afterward only the prefix is
 visible.
 
 How many active keys you can hold depends on your tier: **2 on Free**, and
-**10 on Validator, Pro and Paid**. The rate limit is counted per key rather
+**10 on Validator and Pro**. The rate limit is counted per key rather
 than per account, so the cap is really a throughput cap, and the reviewed
 tiers get the higher one because somebody vouched for the holder.
 
@@ -34,17 +34,20 @@ rate limit and is echoed on every response as `meta.tier`.
 | Tier | Rate limit | Eligibility |
 |---|---|---|
 | **Free** | 60 req/min | A verified Human Score (connect a Canton wallet). Granted instantly, no review. |
-| **Pro** | Unlimited | Included with a [CCTools Pro](https://cctools.network/pro) subscription. Granted instantly, and runs for as long as the subscription does. |
+| **Pro** | 600 req/min | Included with a [CCTools Pro](https://cctools.network/pro) subscription. Granted instantly, and runs for as long as the subscription does. |
 | **Validator** | Unlimited | A Canton validator party ID. Auto-approved when the party is a known operator, otherwise reviewed. 12-month term, free. |
-| **Paid** | 1,000 req/min (configurable) | Builders, funds, and partners. Apply with a use case; reviewed in 3-5 business days. |
 
 Free and Pro are self-service: open [/profile/api](https://cctools.network/profile/api)
 and the button appears if you qualify. Validators submit a party ID on the same
-page. Everyone else applies there too.
+page.
+
+Building something that needs more than this? Apply on the same page and tell us
+what you are building. Higher and custom limits exist; they are arranged per
+account rather than picked from a list.
 
 A Pro subscriber who renews can press the same button again to extend their API
 access to match. Nothing is ever downgraded by pressing it: if you already hold
-a validator or paid tier, it stays.
+a validator or a negotiated tier, it stays.
 
 ## Rate limits
 
