@@ -19,7 +19,12 @@ Keys are strings of the form `cck_` followed by 56 hex characters. There is no
 Create, list, and revoke keys at
 [cctools.network/profile/api](https://cctools.network/profile/api). The
 cleartext is shown exactly once at creation; afterward only the prefix is
-visible. You can hold up to 10 active keys.
+visible.
+
+How many active keys you can hold depends on your tier: **2 on Free**, and
+**10 on Validator, Pro and Paid**. The rate limit is counted per key rather
+than per account, so the cap is really a throughput cap, and the reviewed
+tiers get the higher one because somebody vouched for the holder.
 
 ## Tiers
 
