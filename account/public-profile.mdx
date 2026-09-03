@@ -15,9 +15,9 @@ Your public profile acts as your Canton Network identity card, displaying your l
 
 Your profile header shows:
 
-- **Display name** - The name you set on **Settings > Profile**
+- **Display name** - The name you set on **Profile > Identity**
 - **Avatar** - Your profile picture
-- **Level bubble** - Your current level (0-50+) displayed as a number in the top right of your avatar ring
+- **Level bubble** - Your current level (1 to 50, the cap) displayed as a number in the top right of your avatar ring
 - **Level name and color** - Your tier (e.g. "Validator", "Architect", "Canton OG") rendered in your level's color
 - **Member since** - The month and year you joined CCTools
 - **Era badge** - Genesis or Discovery era badge, displayed in the top right of the banner
@@ -106,13 +106,13 @@ On the public profile page, click the **Share** button at the top right to open 
 2. **Post on X** - Opens a pre-filled tweet with your display name, level, tier, rank, and XP, with a link to your profile
 3. **Save Image** - Downloads a profile card PNG with your avatar, name, level, tier, and top stats
 
-### Customize Your URL Slug
+### Your URL Slug
 
-Your URL slug defaults to your username. You can customize it on **Settings > Identity** to make it shorter or more memorable (e.g., `/u/alice` instead of `/u/alice.smith`). Changing your slug redirects the old URL automatically.
+Your URL slug is derived automatically from your display name when your account is created: lowercased, accents folded, anything else turned into a hyphen, capped at 32 characters, with a numeric suffix if it collides with an existing slug. Once assigned it is stable. There is no slug field to edit on **Profile > Identity**, and renaming your account later does not change your URL.
 
 ## Privacy Controls
 
-Visit **Settings > Privacy** to manage what others see on your public profile. All toggles default to **ON**. Toggling a setting off immediately removes that section from your public profile view:
+Visit **Profile > Privacy** to manage what others see on your public profile. All toggles default to **ON**. Toggling a setting off immediately removes that section from your public profile view:
 
 - **Public profile** (master toggle) - When OFF, your profile returns "This profile is private" to all visitors. You always see your full profile. This is the primary privacy gate.
 - **Show activity stats** - Controls visibility of level, XP, streak, badges, calendar, and stats (Rank, Actions, Referrals, Upvotes, Interests)

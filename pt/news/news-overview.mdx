@@ -14,7 +14,7 @@ Cada guia mostra uma contagem ao vivo de quantos itens existem naquele canal par
 
 ## Com que frequência é atualizado
 
-A ingestão de notícias ocorre **a cada 10 minutos**. O gasoduto:
+A ingestão de notícias ocorre **a cada 10 minutos**. Os feeds RSS selecionados são buscados em toda execução, enquanto as consultas ao Google News (via Serper) são limitadas a aproximadamente uma vez por hora para respeitar a cota diária do provedor. O pipeline:
 
 1. Consulta o Google News (via Serper) para palavras-chave relacionadas a Cantão
 2. Mescla itens de feeds RSS selecionados

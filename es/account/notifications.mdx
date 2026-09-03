@@ -1,28 +1,37 @@
 ---
 title: "Notificaciones"
-description: "Controle qué actualizaciones le llegan desde la aplicación y por correo electrónico: contenido nuevo, referencias, moderación y más."
+description: "Controle qué actualizaciones recibe en la aplicación y por correo: alertas de portafolio, contenido nuevo, referidos, acceso a la API y más."
 ---
 
 ## Categorías de notificación
 
 CCTools envía notificaciones para varios eventos distintos:
 
-- **Nuevo contenido**: nuevos proyectos, oportunidades de ganar, campañas, publicaciones de la Academia y rutas de aprendizaje.
-- **Tus envíos**: el estado se actualiza cuando el proyecto, la oportunidad o la publicación enviada se aprueban, rechazan o necesitan cambios.
-- **Votos positivos y participación**: cuando su contenido recibe votos positivos o comentarios
-- **Referidos**: cuando un usuario recomendado completa tareas o confirma su recomendación
-- **Alertas de gobernanza**: cuando se abren o cierran nuevas propuestas de Super Validador
-- **Sistema** - Eventos de seguridad de la cuenta (nuevo inicio de sesión, cambio de contraseña, cambios 2FA)
+- **Alerta de portafolio**: cambios de saldo y recompensas detenidas en las carteras que sigue
+- **Nuevo contenido**: nuevos proyectos, oportunidades de ganar y rutas de aprendizaje publicados en CCTools
+- **Actualización de campaña**: cuando se actualiza una campaña de ganar en la que marcó interés. Se envía a todos los que marcaron interés, sin importar la preferencia de Earn
+- **Nueva propuesta de gobernanza**: cuando se abre una nueva propuesta de Super Validador, y cuando una propuesta se aprueba o se rechaza
+- **Insignia obtenida**: cuando desbloquea una nueva insignia
+- **Referido completado**: cuando un usuario recomendado confirma su recomendación
+- **Anuncio**: mensajes del equipo de CCTools para toda la plataforma, siempre entregados en la aplicación
+- **Canton News**: artículos seleccionados sobre Canton Network. Solo Pro, y desactivado de forma predeterminada
+- **Comunidad**: anuncios del foro y publicaciones de gobernanza. Solo Pro, y desactivado de forma predeterminada
+- **Acceso a la API**: el estado de su solicitud de acceso a la API pública, siempre entregado en la aplicación
+
+Las decisiones sobre sus envíos (proyecto, oportunidad o publicación aprobada / rechazada / que necesita cambios) y los eventos de seguridad de la cuenta (restablecimiento de contraseña, código 2FA de inicio de sesión, bloqueo de cuenta) **no** forman parte de este sistema. Se envían como correos electrónicos directos separados, nunca aparecen en el menú desplegable de campana y no tienen interruptor.
 
 ## En la aplicación versus correo electrónico
 
-Cada notificación aparece en el **menú desplegable de campana** en la barra superior. Además, puede habilitar la **entrega de correo electrónico** por categoría en **Configuración → Notificaciones**.
+Cada notificación aparece en el **menú desplegable de campana** en la barra superior. **Configuración > Notificaciones** controla esa campana.
 
-Los correos electrónicos se **se agrupan cada 10 minutos**; nunca recibirá una avalancha de correos electrónicos separados. Cada lote es un resumen único que cubre todo lo que sucedió en esa ventana.
+La mayoría de las categorías son solo dentro de la aplicación. Las únicas que pueden generar correo son las **alertas de portafolio** y **referido completado**, y ese correo es una función **Pro**: las cuentas gratuitas nunca lo reciben, sin importar la preferencia de correo almacenada. Las respuestas de **acceso a la API** son la excepción. Responden a algo que usted envió, así que llegan a todo solicitante, incluidas las cuentas gratuitas. La página de configuración hoy solo muestra la columna de la aplicación.
 
-Las notificaciones sensibles a la seguridad (iniciar sesión desde un dispositivo nuevo, restablecer contraseña) siempre se envían por correo electrónico y no se pueden desactivar.
+Cuando se envían correos electrónicos, la tarea de entrega se ejecuta cada 10 minutos y envía **un correo por notificación**, no un resumen combinado.
+
+Los correos sensibles a la seguridad (restablecimiento de contraseña, código 2FA de inicio de sesión, bloqueo de cuenta) siempre se envían y no se pueden desactivar.
 
 ## Apagar las cosas
 
-Vaya a **Configuración → Notificaciones** para alternar cada categoría de forma independiente. También puedes usar el enlace **Cancelar suscripción** en la parte inferior de cualquier correo electrónico para desactivar rápidamente la categoría que lo envió.
+**Configuración > Notificaciones** tiene seis interruptores: Ecosystem updates, Governance alerts, Learn paths, Earn & Campaigns, Canton News y Community. Canton News, Community y Earn & Campaigns están marcados como Pro, y sus interruptores quedan desactivados en una cuenta gratuita. Alerta de portafolio, insignia obtenida, referido completado, anuncios y respuestas de acceso a la API no tienen interruptor alguno, así que no se pueden silenciar.
 
+El enlace **Cancelar suscripción** en la parte inferior de un correo de notificación abre la pestaña **Account** de su configuración. Los interruptores por categoría están en la pestaña de al lado, en **Configuración > Notificaciones**. No existe una baja por categoría con un solo clic.

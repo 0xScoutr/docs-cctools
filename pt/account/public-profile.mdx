@@ -15,9 +15,9 @@ Seu perfil público funciona como sua carteira de identidade da Canton Network, 
 
 O cabeçalho do seu perfil mostra:
 
-- **Nome de exibição** - O nome que você define em **Settings > Profile**
+- **Nome de exibição** - O nome que você define em **Profile > Identity**
 - **Avatar** - Sua foto de perfil
-- **Bolha de nível** - Seu nível atual (0-50+) exibido como um número no canto superior direito do anel do seu avatar
+- **Bolha de nível** - Seu nível atual (de 1 a 50, o teto) exibido como um número no canto superior direito do anel do seu avatar
 - **Nome e cor do nível** - Seu tier (por exemplo, "Validator", "Architect", "Canton OG") renderizado na cor do seu nível
 - **Membro desde** - O mês e o ano em que você entrou no CCTools
 - **Emblema de era** - Emblema da era Genesis ou Discovery, exibido no canto superior direito do banner
@@ -106,13 +106,13 @@ Na página do perfil público, clique no botão **Share** no canto superior dire
 2. **Post on X** - Abre um tweet pré-preenchido com seu nome de exibição, nível, tier, rank e XP, com um link para o seu perfil
 3. **Save Image** - Baixa um PNG de cartão de perfil com seu avatar, nome, nível, tier e principais estatísticas
 
-### Personalizar o Slug da Sua URL
+### O Slug da Sua URL
 
-O slug da sua URL assume por padrão o seu nome de usuário. Você pode personalizá-lo em **Settings > Identity** para torná-lo mais curto ou mais memorável (por exemplo, `/u/alice` em vez de `/u/alice.smith`). Alterar seu slug redireciona a URL antiga automaticamente.
+O slug da sua URL é derivado automaticamente do seu nome de exibição quando a conta é criada: tudo em minúsculas, acentos removidos, qualquer outro caractere vira hífen, limite de 32 caracteres e um sufixo numérico em caso de colisão com um slug existente. Depois de atribuído, ele é estável. Não existe campo de slug para editar em **Profile > Identity**, e renomear sua conta depois não altera a sua URL.
 
 ## Controles de Privacidade
 
-Acesse **Settings > Privacy** para gerenciar o que os outros veem no seu perfil público. Todos os botões vêm ativados (**ON**) por padrão. Desativar uma configuração remove imediatamente aquela seção da visualização do seu perfil público:
+Acesse **Profile > Privacy** para gerenciar o que os outros veem no seu perfil público. Todos os botões vêm ativados (**ON**) por padrão. Desativar uma configuração remove imediatamente aquela seção da visualização do seu perfil público:
 
 - **Public profile** (botão mestre) - Quando em OFF, seu perfil retorna "This profile is private" a todos os visitantes. Você sempre vê seu perfil completo. Esta é a barreira de privacidade principal.
 - **Show activity stats** - Controla a visibilidade do nível, XP, sequência, emblemas, calendário e estatísticas (Rank, Ações, Indicações, Votos positivos, Interesses)

@@ -1,17 +1,17 @@
 ---
 title: "Entendiendo las pérdidas y ganancias"
-description: "Cómo CCTools calcula sus pérdidas y ganancias en toda su cartera."
+description: "Qué calcula y qué no calcula la cartera por ti, y cómo exportar tus registros de Canton."
 ---
 
 ## Cómo funcionan las pérdidas y ganancias
 
-CCTools calcula sus pérdidas y ganancias en función de su historial de transacciones. Para cada ficha:
+CCTools nunca ve cuánto pagó por sus CC, así que no existe base de costo ni precio de adquisición en el producto. Lo que el portafolio muestra en su lugar:
 
-- **Base de costo** se calcula utilizando el precio de adquisición promedio
-- **Valor actual** utiliza precios de mercado en tiempo real
-- **P&L** = Valor actual - Base de costo
+- **Valor actual**: su saldo de CC calculado con el precio de mercado en vivo del CC
+- **Variación**: cuánto se movió su saldo en las últimas 24 horas, 7 días o 30 días, medida contra su propio historial de saldo
+- **Recompensas y quemas**: la página de cada cartera lista los CC que recibió y los CC que quemó, que es de donde viene la variación del saldo
 
-Las pérdidas y ganancias se muestran tanto en términos absolutos de USD como en porcentaje.
+El valor se muestra en USD y la variación en porcentaje.
 
 ## Opciones de exportación
 
@@ -21,7 +21,7 @@ Puede exportar los datos de su cartera en formato CSV para:
 - Mantenimiento de registros personales
 - Análisis de hojas de cálculo
 
-Vaya a **Portafolio** y haga clic en el botón **Exportar** en la parte superior derecha.
+Vaya a **Portafolio** y haga clic en el botón **Exportar** en la parte superior derecha. No exporta en el acto: abre la [página dedicada de exportación fiscal y de datos](https://cctools.network/exports), donde elige la cartera, el rango de fechas y el formato.
 
-**Nota:** El historial completo y la exportación de informes de impuestos son funciones Pro. Los usuarios gratuitos obtienen un historial de saldo de 7 días, los usuarios Pro obtienen un historial de 30 días.
+**Nota:** Exportar es una función Pro, sea cual sea el propósito o el formato. La única ruta de exportación detrás de esa página rechaza una cuenta gratuita con un 403 antes incluso de leer el formato solicitado. Pro también carga un historial más largo: una cuenta gratuita carga 30 días de saldos, recompensas y transferencias, Pro carga 90 días.
 

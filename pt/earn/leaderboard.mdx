@@ -5,7 +5,7 @@ description: "Como a tabela de classificação classifica os usuários e o que d
 
 ## Como funcionam as classificações
 
-A tabela de classificação classifica os usuários pelo total de XP ganho. Sua posição é atualizada em tempo real.
+A tabela de classificação classifica os usuários pelo total de XP ganho. A posição não é atualizada em tempo real: as tabelas de todos os tempos vêm de um cache curto, então o XP novo aparece alguns minutos depois. As tabelas semanal e mensal funcionam de outro jeito, elas leem um snapshot pré-calculado que é reconstruído uma vez por semana (na segunda-feira) e uma vez por mês (no dia 1), e a tabela semanal cobre a semana que acabou de fechar, não a que está em andamento.
 
 A tabela de classificação exibe:
 
@@ -14,18 +14,29 @@ A tabela de classificação exibe:
 - Nível e título do nível
 - XP total
 - Sequência atual
-- Os 5 emblemas mais raros
+- Seus 3 emblemas mais raros
 - Contagem de referências confirmadas
 
-Existem várias visualizações do placar:
+## Tabelas e ordenações
 
-- **Padrão** - XP total de todos os tempos
-- **Semanalmente** - XP ganho nos últimos 7 dias
-- **Parêntese** - XP ganho nos últimos 30 dias
+A página tem quatro tabelas:
 
-## Temporadas (em breve)
+- **User** - membros individuais
+- **Validators** - classificação de recompensas de validadores
+- **Featured Apps** - classificação de recompensas de aplicativos
+- **Ecosystem** - engajamento combinado do ecossistema
 
-No futuro, o CCTools apresentará tabelas de classificação sazonais que serão redefinidas periodicamente. Isso dá a todos um novo começo e recompensa o envolvimento consistente ao longo do tempo.
+Dentro da tabela **User** você escolhe como ordenar:
 
-As recompensas da temporada podem incluir emblemas exclusivos, recursos de acesso antecipado e muito mais.
+- **XP** - total de XP ganho
+- **Referral** - referências confirmadas (apenas todos os tempos)
+- **Streak** - sequência atual de check-ins diários (apenas todos os tempos)
+
+A ordenação por **XP** adiciona um filtro de período com três opções: **All-time**, **This Month** e **This Week**. Referral e Streak não têm filtro de período, são sempre de todos os tempos.
+
+## O XP é zerado em algum momento?
+
+Não. XP e emblemas são permanentes, e não há nenhuma redefinição sazonal planejada. O CCTools é uma plataforma de reputação, então zerar a tabela puniria justamente quem construiu o histórico mais longo.
+
+Se você quer uma janela mais curta, a ordenação por **XP** já oferece **This Month** e **This Week**, que classificam a atividade recente sem mexer no total de todos os tempos de ninguém.
 

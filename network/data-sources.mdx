@@ -49,7 +49,7 @@ This is **read-only** - CCTools only ever needs your public wallet address and n
 Different surfaces update on different schedules, tuned to how fast each kind of data actually changes:
 
 - **Prices** - refreshed every few minutes
-- **News feed** - new items ingested and summarized every 10 minutes
+- **News feed** - ingestion runs every 10 minutes, with the Google News queries throttled to roughly hourly
 - **New-content scan (new projects, opportunities, campaigns, posts, learn paths)** - every 30 minutes
 
 If a number ever looks momentarily out of date, a refresh shortly after will usually pick up the latest values.

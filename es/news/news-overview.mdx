@@ -14,7 +14,7 @@ Cada pestaña muestra un recuento en vivo de cuántos elementos existen en ese c
 
 ## Con qué frecuencia se actualiza
 
-La ingesta de noticias se realiza **cada 10 minutos**. El oleoducto:
+La ingesta de noticias se realiza **cada 10 minutos**. Las fuentes RSS seleccionadas se consultan en cada ejecución, mientras que las consultas a Google News (vía Serper) se limitan a aproximadamente una vez por hora para respetar la cuota diaria del proveedor. El pipeline:
 
 1. Consulta en Google News (a través de Serper) palabras clave relacionadas con Cantón.
 2. Combina elementos de fuentes RSS seleccionadas

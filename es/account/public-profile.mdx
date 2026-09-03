@@ -15,9 +15,9 @@ Tu perfil público funciona como tu tarjeta de identidad de Canton Network, most
 
 El encabezado de tu perfil muestra:
 
-- **Nombre visible** - El nombre que estableces en **Settings > Profile**
+- **Nombre visible** - El nombre que estableces en **Profile > Identity**
 - **Avatar** - Tu foto de perfil
-- **Burbuja de nivel** - Tu nivel actual (0-50+) mostrado como un número en la parte superior derecha del anillo de tu avatar
+- **Burbuja de nivel** - Tu nivel actual (del 1 al 50, el tope) mostrado como un número en la parte superior derecha del anillo de tu avatar
 - **Nombre y color del nivel** - Tu tier (por ejemplo, "Validator", "Architect", "Canton OG") representado con el color de tu nivel
 - **Miembro desde** - El mes y el año en que te uniste a CCTools
 - **Insignia de era** - Insignia de la era Genesis o Discovery, mostrada en la parte superior derecha del banner
@@ -106,13 +106,13 @@ En la página del perfil público, haz clic en el botón **Share** en la parte s
 2. **Post on X** - Abre un tweet predefinido con tu nombre visible, nivel, tier, rango y XP, con un enlace a tu perfil
 3. **Save Image** - Descarga un PNG de tarjeta de perfil con tu avatar, nombre, nivel, tier y estadísticas principales
 
-### Personalizar el Slug de tu URL
+### El Slug de tu URL
 
-El slug de tu URL es de forma predeterminada tu nombre de usuario. Puedes personalizarlo en **Settings > Identity** para hacerlo más corto o más memorable (por ejemplo, `/u/alice` en lugar de `/u/alice.smith`). Al cambiar tu slug, la URL antigua se redirige automáticamente.
+El slug de tu URL se deriva automáticamente de tu nombre visible cuando se crea la cuenta: todo en minúsculas, sin acentos, cualquier otro carácter se convierte en guion, con un límite de 32 caracteres y un sufijo numérico si choca con un slug existente. Una vez asignado, es estable. No hay un campo de slug para editar en **Profile > Identity**, y cambiar el nombre de tu cuenta después no modifica tu URL.
 
 ## Controles de Privacidad
 
-Visita **Settings > Privacy** para gestionar lo que otros ven en tu perfil público. Todos los interruptores están activados (**ON**) de forma predeterminada. Desactivar un ajuste elimina de inmediato esa sección de la vista de tu perfil público:
+Visita **Profile > Privacy** para gestionar lo que otros ven en tu perfil público. Todos los interruptores están activados (**ON**) de forma predeterminada. Desactivar un ajuste elimina de inmediato esa sección de la vista de tu perfil público:
 
 - **Public profile** (interruptor maestro) - Cuando está en OFF, tu perfil devuelve "This profile is private" a todos los visitantes. Tú siempre ves tu perfil completo. Esta es la principal barrera de privacidad.
 - **Show activity stats** - Controla la visibilidad del nivel, XP, racha, insignias, calendario y estadísticas (Rango, Acciones, Referencias, Votos positivos, Intereses)

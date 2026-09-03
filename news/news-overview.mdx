@@ -14,7 +14,7 @@ Each tab shows a live count of how many items exist in that channel so you alway
 
 ## How Often It Updates
 
-News ingestion runs **every 10 minutes**. The pipeline:
+News ingestion runs **every 10 minutes**. Curated RSS feeds are pulled on every run, while the Google News (Serper) queries are throttled to roughly once an hour to stay inside the provider's daily quota. The pipeline:
 
 1. Queries Google News (via Serper) for Canton-related keywords
 2. Merges items from curated RSS feeds

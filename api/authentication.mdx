@@ -14,7 +14,7 @@ curl -H "X-API-Key: cck_your_key_here" \
 ```
 
 Keys are strings of the form `cck_` followed by 56 hex characters. There is no
-`Authorization: Bearer` support — sending a Bearer token returns `401`.
+`Authorization: Bearer` support. Sending a Bearer token returns `401`.
 
 Create, list, and revoke keys at
 [cctools.network/profile/api](https://cctools.network/profile/api). The
@@ -86,7 +86,7 @@ All errors share the shape `{ "error": "...", "code": "..." }`.
     you control. A leaked key can be used up to its rate limit until you revoke it.
   </Accordion>
   <Accordion title="Rotate on suspicion" icon="rotate">
-    Revoking is immediate — the key starts returning `401` right away. Mint a
+    Revoking is immediate: the key starts returning `401` right away. Mint a
     replacement first, cut over, then revoke the old one.
   </Accordion>
   <Accordion title="Handle 429 gracefully" icon="clock">

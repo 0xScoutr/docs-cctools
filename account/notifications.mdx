@@ -1,28 +1,37 @@
 ---
 title: "Notifications"
-description: "Control which updates reach you in-app and by email - new content, referrals, moderation, and more."
+description: "Control which updates reach you in-app and by email: portfolio alerts, new content, referrals, API access, and more."
 ---
 
 ## Notification Categories
 
 CCTools sends notifications for several distinct events:
 
-- **New content** - New projects, Earn opportunities, campaigns, Academy posts, and Learn paths
-- **Your submissions** - Status updates when your submitted project, opportunity, or post is approved / rejected / needs changes
-- **Upvotes & engagement** - When your content receives upvotes or comments
-- **Referrals** - When a referred user completes tasks or confirms their referral
-- **Governance alerts** - When new Super Validator proposals open or close
-- **System** - Account security events (new login, password change, 2FA changes)
+- **Portfolio alert** - Balance moves and stalled rewards on the wallets you track
+- **New content** - New projects, Earn opportunities, and Learn paths published on CCTools
+- **Campaign update** - When an Earn campaign you marked interest in is updated. Sent to everyone who marked interest, whatever the Earn preference says
+- **New governance proposal** - When a new Super Validator proposal opens, and when one is approved or rejected
+- **Badge earned** - When you unlock a new badge
+- **Referral completed** - When a referred user confirms their referral
+- **Announcement** - Platform-wide messages from the CCTools team, always delivered in-app
+- **Canton News** - Curated articles about Canton Network. Pro only, and off by default
+- **Community** - Forum announcements and governance posts. Pro only, and off by default
+- **API access** - The status of your public API application, always delivered in-app
+
+Decisions on your submissions (project, opportunity, or post approved / rejected / needs changes) and account security events (password reset, 2FA login code, account lock) are **not** part of this system. They are sent as separate direct emails, never appear in the bell dropdown, and have no toggle.
 
 ## In-App vs Email
 
-Every notification appears in the **bell dropdown** in the top bar. You can additionally enable **email delivery** per category in **Settings → Notifications**.
+Every notification appears in the **bell dropdown** in the top bar. **Settings > Notifications** controls that bell.
 
-Emails are **batched every 10 minutes** - you'll never get a flood of separate emails. Each batch is a single digest covering everything that happened in that window.
+Most categories are in-app only. The only ones that can produce an email are **portfolio alerts** and **referral completed**, and that email is a **Pro** feature: free accounts never receive it, whatever the stored email preference says. **API access** replies are the exception. They answer something you submitted, so they go to every applicant, free accounts included. The Settings page currently exposes only the in-app column.
 
-Security-sensitive notifications (login from new device, password reset) are always sent by email and cannot be disabled.
+When emails do go out, the delivery job runs every 10 minutes and sends **one email per notification**, not a combined digest.
+
+Security-sensitive emails (password reset, 2FA login code, account lock) are always sent and cannot be disabled.
 
 ## Turning Things Off
 
-Go to **Settings → Notifications** to toggle each category independently. You can also use the **Unsubscribe** link at the bottom of any email to quickly turn off the category that sent it.
+**Settings > Notifications** has six toggles: Ecosystem updates, Governance alerts, Learn paths, Earn & Campaigns, Canton News and Community. Canton News, Community and Earn & Campaigns are marked Pro, and their toggles are disabled on a free account. Portfolio alerts, badge earned, referral completed, announcements and API access replies have no toggle at all, so they cannot be muted.
 
+The **Unsubscribe** link at the bottom of a notification email opens the **Account** tab of your settings. The per-category toggles are one tab over, on **Settings > Notifications**. There is no one-click per-category unsubscribe.

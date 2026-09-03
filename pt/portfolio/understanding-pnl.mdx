@@ -1,17 +1,17 @@
 ---
 title: "Compreendendo o lucro e prejuízo"
-description: "Como o CCTools calcula seus lucros e perdas em seu portfólio."
+description: "O que o portfólio calcula e o que ele não calcula para você, e como exportar seus registros da Canton."
 ---
 
 ## Como funciona o P&L
 
-CCTools calcula seus lucros e perdas com base em seu histórico de transações. Para cada token:
+O CCTools nunca vê quanto você pagou pelos seus CC, então não existe base de custo nem preço de aquisição no produto. O que o portfólio mostra no lugar disso:
 
-- **A base de custo** é calculada utilizando o preço médio de aquisição
-- **Valor atual** usa preços de mercado em tempo real
-- **P&L** = Valor Atual - Base de Custo
+- **Valor atual** - o seu saldo de CC calculado pelo preço de mercado ao vivo do CC
+- **Variação** - quanto o seu saldo mudou nas últimas 24 horas, 7 dias ou 30 dias, medida contra o seu próprio histórico de saldo
+- **Recompensas e queimas** - a página de cada carteira lista os CC que ela recebeu e os CC que ela queimou, que é de onde vem a variação do saldo
 
-O P&L é mostrado em termos absolutos em dólares americanos e como porcentagem.
+O valor aparece em dólares e a variação em porcentagem.
 
 ## Opções de exportação
 
@@ -21,7 +21,7 @@ Você pode exportar os dados do seu portfólio em formato CSV para:
 - Manutenção de registros pessoais
 - Análise de planilha
 
-Acesse **Portfólio** e clique no botão **Exportar** no canto superior direito.
+Acesse **Portfólio** e clique no botão **Exportar** no canto superior direito. Ele não exporta na hora: abre a [página dedicada de exportação fiscal e de dados](https://cctools.network/exports), onde você escolhe a carteira, o intervalo de datas e o formato.
 
-**Observação:** O histórico completo e a exportação de relatórios fiscais são recursos Pro. Os usuários gratuitos obtêm um histórico de saldo de 7 dias, os usuários Pro obtêm um histórico de 30 dias.
+**Observação:** Exportar é um recurso Pro, qualquer que seja a finalidade ou o formato. A única rota de exportação por trás dessa página recusa uma conta gratuita com 403 antes mesmo de ler o formato pedido. O Pro também carrega um histórico maior: a conta gratuita carrega 30 dias de saldos, recompensas e transferências, o Pro carrega 90 dias.
 

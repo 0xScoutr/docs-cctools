@@ -1,17 +1,17 @@
 ---
 title: "Understanding P&L"
-description: "How CCTools calculates your profit and loss across your portfolio."
+description: "What the portfolio does and does not compute for you, and how to export your Canton records."
 ---
 
 ## How P&L Works
 
-CCTools calculates your Profit & Loss based on your transaction history. For each token:
+CCTools never sees what you paid for your CC, so there is no cost basis and no acquisition price in the product. What the Portfolio shows instead:
 
-- **Cost basis** is calculated using the average acquisition price
-- **Current value** uses real-time market prices
-- **P&L** = Current Value - Cost Basis
+- **Current value** - your CC balance priced at the live CC market price
+- **Change** - how your balance moved over the last 24 hours, 7 days or 30 days, measured against your own balance history
+- **Rewards and burns** - each wallet page lists the CC it received and the CC it burned, which is where a balance change comes from
 
-P&L is shown both in absolute USD terms and as a percentage.
+The value is shown in USD and the change as a percentage.
 
 ## Export Options
 
@@ -21,7 +21,7 @@ You can export your portfolio data in CSV format for:
 - Personal record keeping
 - Spreadsheet analysis
 
-Go to **Portfolio** and click the **Export** button in the top right.
+Go to **Portfolio** and click the **Export** button in the top right. It does not export on the spot: it opens the dedicated [Tax & Data Export page](https://cctools.network/exports), where you choose the wallet, the date range and the format.
 
-**Note:** Full history and tax report export are Pro features. Free users get 7-day balance history, Pro users get 30-day history.
+**Note:** Exporting is a Pro feature, whichever purpose or format you pick. The one export route behind that page refuses a non-Pro account with a 403 before it even reads the requested format. Pro also loads a longer history: a free account loads 30 days of balances, rewards and transfers, Pro loads 90 days.
 

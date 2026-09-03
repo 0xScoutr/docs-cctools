@@ -1,6 +1,6 @@
 ---
 title: "CCTools Public API"
-description: "A read-only REST API for the Canton Network ecosystem — projects, campaigns, leaderboards, users, and network stats."
+description: "A read-only REST API for the Canton Network ecosystem: projects, campaigns, leaderboards, users, and network stats."
 icon: "plug"
 ---
 
@@ -20,7 +20,7 @@ Every endpoint lives under the `/api/v1/public/` prefix and returns JSON.
 ## Authentication
 
 All requests require an API key, sent in the **`X-API-Key`** header. There is
-no `Authorization: Bearer` scheme — a Bearer header is rejected.
+no `Authorization: Bearer` scheme, and a Bearer header is rejected.
 
 ```bash
 curl -H "X-API-Key: cck_your_key_here" \
@@ -42,10 +42,10 @@ Successful responses share one shape:
 }
 ```
 
-- `data` — the payload (object or array, depending on the endpoint).
-- `pagination` — present on list endpoints; `null` otherwise.
-- `meta.tier` — your key's tier.
-- `meta.rate_limit_remaining` — your per-minute ceiling.
+- `data`: the payload (object or array, depending on the endpoint).
+- `pagination`: present on list endpoints; `null` otherwise.
+- `meta.tier`: your key's tier.
+- `meta.rate_limit_remaining`: your per-minute ceiling.
 
 Errors are `{ "error": "message", "code": "..." }` with an HTTP status of
 `400`, `401`, `404`, `429`, or `503`. A `503` with code `warming_up` means a

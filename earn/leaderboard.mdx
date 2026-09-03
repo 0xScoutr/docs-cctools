@@ -5,7 +5,7 @@ description: "How the leaderboard ranks users and what determines your position.
 
 ## How Rankings Work
 
-The leaderboard ranks users by total XP earned. Your position is updated in real-time.
+The leaderboard ranks users by total XP earned. Positions are not live to the second: the all-time boards are served from a short cache, so new XP shows up a couple of minutes later. The weekly and monthly boards work differently, they read a pre-computed snapshot that is rebuilt once a week (on Monday) and once a month (on the 1st), and the weekly board covers the week that has just closed rather than the one in progress.
 
 The leaderboard displays:
 
@@ -14,18 +14,29 @@ The leaderboard displays:
 - Level and level title
 - Total XP
 - Current streak
-- Top 5 rarest badges
+- Your 3 rarest badges
 - Confirmed referral count
 
-There are multiple leaderboard views:
+## Boards and Sorts
 
-- **Standard** - All-time total XP
-- **Weekly** - XP earned in the last 7 days
-- **Bracket** - XP earned in the last 30 days
+The page has four boards:
 
-## Seasons (Coming Soon)
+- **User** - individual members
+- **Validators** - validator rewards ranking
+- **Featured Apps** - app rewards ranking
+- **Ecosystem** - combined ecosystem engagement
 
-In the future, CCTools will introduce seasonal leaderboards that reset periodically. This gives everyone a fresh start and rewards consistent engagement over time.
+Inside the **User** board you choose how to sort:
 
-Season rewards may include exclusive badges, early access features, and more.
+- **XP** - total XP earned
+- **Referral** - confirmed referrals (all-time only)
+- **Streak** - current daily check-in streak (all-time only)
+
+The **XP** sort adds a period filter with three options: **All-time**, **This Month** and **This Week**. Referral and Streak have no period filter, they are always all-time.
+
+## Does XP Ever Reset?
+
+No. XP and badges are permanent, and there is no seasonal reset planned. CCTools is built as a reputation platform, so wiping the board would punish the members who built the longest history.
+
+If you want a shorter window, the **XP** sort already gives you **This Month** and **This Week**, which rank recent activity without touching anyone's all-time total.
 

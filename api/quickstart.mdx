@@ -15,19 +15,19 @@ Go to [cctools.network/profile/api](https://cctools.network/profile/api).
 
 ## 3. Get a key
 
-- **Free tier** — if your Human Score is verified (connect a Canton wallet),
+- **Free tier**, if your Human Score is verified (connect a Canton wallet),
   you'll see **Get a free key**. Click it, then **New key**. The free tier
   allows 60 requests per minute.
-- **Pro** — a [CCTools Pro](https://cctools.network/pro) subscription includes
+- **Pro**: a [CCTools Pro](https://cctools.network/pro) subscription includes
   600 requests per minute. The button is on the same page and grants instantly.
-- **Validator** — submit your Canton validator party ID. Operators we already
+- **Validator**: submit your Canton validator party ID. Operators we already
   recognise are approved automatically; the rest go to a short manual review,
   usually the same day. Free for 12 months either way.
-- **Builder / fund / partner** — fill out the short application and tell us what
+- **Builder / fund / partner**: fill out the short application and tell us what
   you are building. Higher limits are arranged per account.
 
 The cleartext key (`cck_…`) is shown **once**. Copy it and store it somewhere
-safe — you can't see it again, only revoke it and mint a new one.
+safe: you can't see it again, only revoke it and mint a new one.
 
 <Warning>
 Never expose a key in client-side code. Proxy calls through a server you
@@ -55,6 +55,6 @@ That's it. Browse every route in the [endpoint reference](/api/endpoints).
 
 <Tip>
 Testing with `curl`, `python-requests`, or any default client works out of the
-box — as long as the `X-API-Key` header is present. Keyless requests from tool
+box, as long as the `X-API-Key` header is present. Keyless requests from tool
 clients are blocked; keyed requests are not.
 </Tip>
