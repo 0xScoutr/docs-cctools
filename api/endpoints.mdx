@@ -8,12 +8,21 @@ icon: "list"
     Regenerate with: node cctools2/backend/scripts/gen-docs-endpoints.mjs
     Source of truth: cctools2/backend/src/lib/api/openapi-spec.ts */}
 
-All 46 endpoints live under `https://api.cctools.network`, return the
+All 48 endpoints live under `https://api.cctools.network`, return the
 standard `{ data, pagination, meta }` envelope, and require the `X-API-Key`
 header. The one exception is `/api/v1/public/status`, which needs no key and
 answers with its payload directly.
 
-List endpoints accept `?limit=` (1-200, default 50) and `?offset=`.
+List endpoints accept `?limit=` and `?offset=`. The common shape is a
+default of 50 and a maximum of 200, but several lists cap lower (50 or 100)
+and a few ignore `limit` entirely. Read the `limit` echoed back in
+`pagination` rather than assuming. A value outside the accepted range is
+clamped to the nearest valid one silently; it never returns an error.
+
+`pagination.total` is the real total on most lists. On `/news` and
+`/markets/tokens` it is only the size of the page you got back, so paginate
+until you receive fewer items than your `limit` instead of comparing against
+`total`.
 
 <Note>
 Replace `cck_...` with one of your keys from
@@ -22,9 +31,20 @@ with a live Send button is at [cctools.network/api-docs](https://cctools.network
 </Note>
 
 <Warning>
-Endpoints served from a cron-warmed cache answer `503` with code
-`warming_up` on a cold cache, rather than returning an empty body. Treat that
-as a retry, not as an empty result.
+**Cold cache.** Most endpoints served from a cron-warmed cache answer `503`
+with code `warming_up` rather than returning an empty body. Treat that as a
+retry, not as an empty result. Three behave differently and are worth knowing
+before you build on them: `/governance` and `/network/stats` answer `200`
+with null or zero fields, and `/featured-apps/{slug}` answers `404`, which is
+indistinguishable from a slug that does not exist.
+</Warning>
+
+<Warning>
+**There is a per-IP ceiling on top of your key's limit.** Every request to
+`/api/`, on every tier including Validator, counts against 600 requests per
+minute per IP address. Sustained breaches escalate to a temporary IP block, so
+back off when you see a `429` instead of retrying immediately. If you need a
+higher ceiling for a backfill, ask before you run it.
 </Warning>
 
 ## Ecosystem
@@ -53,6 +73,8 @@ Canton network data: validators, Super Validators, Featured Apps, governance, bu
 
 | Endpoint | Description |
 |---|---|
+| `GET /api/v1/public/assets` | Canton assets |
+| `GET /api/v1/public/assets/{slug}` | Canton asset detail |
 | `GET /api/v1/public/cips` | CIP reference corpus |
 | `GET /api/v1/public/featured-apps` | Featured App registry |
 | `GET /api/v1/public/featured-apps/{slug}` | Featured App detail |
@@ -70,7 +92,7 @@ Canton network data: validators, Super Validators, Featured Apps, governance, bu
 
 ```bash
 curl -H "X-API-Key: cck_..." \
-  "https://api.cctools.network/api/v1/public/cips"
+  "https://api.cctools.network/api/v1/public/assets"
 ```
 
 ## Markets and DeFi

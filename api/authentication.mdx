@@ -14,7 +14,11 @@ curl -H "X-API-Key: cck_your_key_here" \
 ```
 
 Keys are strings of the form `cck_` followed by 56 hex characters. There is no
-`Authorization: Bearer` support. Sending a Bearer token returns `401`.
+`Authorization: Bearer` support. From a browser a Bearer token returns `401`.
+From a command-line client such as curl or python-requests it is rejected one
+layer earlier, as `403 {"error":"Forbidden"}` with no `code` field, because a
+request carrying no `X-API-Key` is not recognised as an API client at all.
+Always send `X-API-Key`.
 
 Create, list, and revoke keys at
 [cctools.network/profile/api](https://cctools.network/profile/api). The
@@ -35,11 +39,27 @@ rate limit and is echoed on every response as `meta.tier`.
 |---|---|---|
 | **Free** | 60 req/min | A verified Human Score (connect a Canton wallet). Granted instantly, no review. |
 | **Pro** | 600 req/min | Included with a [CCTools Pro](https://cctools.network/pro) subscription. Granted instantly, and runs for as long as the subscription does. |
-| **Validator** | Unlimited | A Canton validator party ID. Auto-approved when the party is a known operator, otherwise reviewed. 12-month term, free. |
+| **Validator** | No per-key limit | A Canton validator party ID. Every submission is reviewed by a person, usually within one business day. 12-month term, free. |
+
+<Warning>
+No per-key limit is not the same as no limit. Every request to `/api/`, on
+every tier including Validator, also counts against a ceiling of **600
+requests per minute per IP address**. Sustained breaches escalate to a
+temporary block on the IP, so back off on a `429` rather than retrying at
+once. Planning a backfill that needs more than that? Ask us first.
+</Warning>
 
 Free and Pro are self-service: open [/profile/api](https://cctools.network/profile/api)
 and the button appears if you qualify. Validators submit a party ID on the same
 page.
+
+**Eligibility is checked when a key is issued, never on the requests you make
+with it.** A verified Human Score is what unlocks the self-service button; it is
+not re-tested per call. Keys we issue directly to an organisation are attached to
+that organisation rather than to a person, so there is no account to verify and
+nothing for a server-to-server integration to keep alive. A key stops working for
+exactly three reasons: it is revoked, it expires, or it is called outside its
+scopes.
 
 Building something that needs more than this? Apply on the same page and tell us
 what you are building. Higher and custom limits exist; they are arranged per
@@ -51,7 +71,7 @@ a validator or a negotiated tier, it stays.
 
 ## Rate limits
 
-Limits are counted per key, per minute, **per connection**. The API runs as a
+Limits are counted per key, per endpoint, per minute, **per process**. The API runs as a
 multi-process cluster where each process keeps its own counter, so a client
 spreading requests across many connections can exceed the stated figure before
 anything pushes back. Treat the number as the sustained rate to design for
@@ -64,19 +84,29 @@ When you do exceed it you get `429` with a `Retry-After: 60` header:
 ```
 
 Every successful response also carries your ceiling in
-`meta.rate_limit_remaining`, so you can back off before you hit the wall.
+`meta.rate_limit_remaining`, so you can back off before you hit the wall. On
+tiers with no per-key limit it is `null`, so type it as nullable.
 
 ## Errors
 
 | Status | `code` | Meaning |
 |---|---|---|
-| `400` | `bad_request` | Malformed parameter. |
+| `400` | endpoint-specific | Malformed parameter, e.g. `invalid_slug`, `invalid_window`, `invalid_party_id`. |
 | `401` | `unauthorized` | Missing, malformed, revoked, or expired key. |
-| `404` | `not_found` | No such resource (e.g. unknown slug). |
+| `403` | `forbidden` | The resource exists but is not public, e.g. a private profile. |
+| `404` | endpoint-specific | No such resource, e.g. `project_not_found`, `post_not_found`. |
+| `422` | `unsupported_token` | The project has no token to report on. |
 | `429` | `rate_limited` | Over your per-minute limit. Retry after the header. |
+| `500` | `internal` / `query_failed` | Our fault. Safe to retry. |
+| `502` | `upstream_unavailable` | A market data source we depend on is down. |
 | `503` | `warming_up` | A cron-warmed dataset has a cold cache. Retry in a minute; this is not an empty result. |
 
-All errors share the shape `{ "error": "...", "code": "..." }`.
+Most errors carry `{ "error": "...", "code": "..." }`, but the `code` is
+specific to the endpoint rather than drawn from a fixed list. **Branch on the
+HTTP status, which is stable, and treat `code` as detail.** Two responses come
+from the edge layer before the handler runs and carry only `{ "error" }` with
+no `code` at all: the `403` for a keyless tool client, and the `429` for the
+per-IP ceiling.
 
 ## Good practice
 
