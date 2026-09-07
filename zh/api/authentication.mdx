@@ -1,0 +1,132 @@
+---
+title: "认证与速率限制"
+description: "CCTools 公共 API 的 API 密钥、套餐、速率限制与错误处理。"
+icon: "key"
+---
+
+## API 密钥
+
+每个请求都通过 **`X-API-Key`** header 中的密钥进行认证：
+
+```bash
+curl -H "X-API-Key: cck_your_key_here" \
+  "https://api.cctools.network/api/v1/public/status"
+```
+
+密钥是形如 `cck_` 后接 56 个十六进制字符的字符串。不支持
+`Authorization: Bearer`。在浏览器中，Bearer token 会返回 `401`。
+在 curl 或 python-requests 这类命令行客户端中，请求会在更前面的一层被拒绝，
+返回 `403 {"error":"Forbidden"}` 且没有 `code` 字段，因为没有携带
+`X-API-Key` 的请求根本不会被识别为 API 客户端。
+请始终发送 `X-API-Key`。
+
+你可以在 [cctools.network/profile/api](https://cctools.network/profile/api)
+创建、列出和吊销密钥。
+明文密钥只在创建时显示一次，
+之后就只能看到前缀。
+
+你能同时持有多少个有效密钥取决于你的套餐：**Free 为 2 个**，
+**Validator 和 Pro 为 10 个**。速率限制按密钥计算而不是按账户计算，
+因此这个上限实际上是吞吐量上限；经过审核的套餐拿到更高的数量，
+是因为有人为持有者做了担保。
+
+## 套餐
+
+你的密钥会从账户资格继承一个套餐。该套餐决定你的速率限制，
+并在每个响应中以 `meta.tier` 的形式返回。
+
+| 套餐 | 速率限制 | 资格条件 |
+|---|---|---|
+| **Free** | 每分钟 60 次请求 | 已验证的 Human Score（连接一个 Canton 钱包）。即时授予，无需审核。 |
+| **Pro** | 每分钟 600 次请求 | 包含在 [CCTools Pro](https://cctools.network/pro) 订阅中。即时授予，并在订阅有效期内持续有效。 |
+| **Validator** | 无按密钥限制 | 一个 Canton 验证者 party ID。每份提交都由人工审核，通常在一个工作日内完成。有效期 12 个月，免费。 |
+
+<Warning>
+没有按密钥限制并不等于没有限制。在所有套餐（包括 Validator）上，
+每一个发往 `/api/` 的请求也都计入 **每个 IP 每分钟 600 次请求** 的上限。
+持续超限会升级为对该 IP 的临时封禁，因此遇到 `429` 时应当退避，
+而不是立即重试。如果你计划的数据回填需要超过这个量，
+请先联系我们。
+</Warning>
+
+Free 和 Pro 是自助的：打开 [/profile/api](https://cctools.network/profile/api)，
+如果你符合条件，按钮就会出现。
+验证者则在同一页面提交 party ID。
+
+**资格只在签发密钥时检查，绝不会在你用它发出的请求上检查。**
+解锁自助按钮的是一个已验证的 Human Score，它不会在每次调用时重新校验。
+我们直接签发给组织的密钥归属于该组织而不是某个人，
+因此没有需要验证的账户，
+服务器到服务器的集成也不需要维持任何东西。
+密钥停止工作只有三个原因：被吊销、已过期，
+或者在其 scope 之外被调用。
+
+如果你要构建的东西需要比这更高的额度，请在同一页面提交申请，
+并告诉我们你在构建什么。更高的额度和自定义额度是存在的，
+它们按账户单独商定，而不是从列表中挑选。
+
+续订的 Pro 订阅者可以再次点击同一个按钮，
+把 API 访问权限延长到与订阅一致。点击它永远不会降级任何东西：
+如果你已经持有验证者套餐或谈定的套餐，它会保持不变。
+
+## 速率限制
+
+限制按密钥、按 endpoint、按分钟、**并且按进程**计算。
+API 以多进程集群的方式运行，每个进程各自维护自己的计数器，
+因此把请求分散到多个连接上的客户端，可能在触发任何拦截之前就超过标称数值。
+请把这个数字当作设计时应遵循的持续速率，
+而不是一个可以去试探的上限。
+
+当你确实超限时，你会收到 `429` 以及 `Retry-After: 60` header：
+
+```json
+{ "error": "Rate limit exceeded", "code": "rate_limited" }
+```
+
+每个成功的响应也会在 `meta.rate_limit_remaining` 中携带你的上限。
+在没有按密钥限制的套餐上，该字段为 `null`，因此请把它的类型定义为可空。
+
+<Warning>
+尽管名字叫 remaining，`rate_limit_remaining` 实际上是你的**上限**，而不是倒数。
+它在每个响应中返回相同的数字，从不递减，因为精确的逐请求计数会在热路径上
+多出一次数据库读取。不要把逻辑建立在它逐渐接近零上，因为那永远不会发生。
+请把 `429` 及其 `Retry-After` header 作为你真正的退避信号。
+</Warning>
+
+## 错误
+
+| 状态码 | `code` | 含义 |
+|---|---|---|
+| `400` | 因 endpoint 而异 | 参数格式错误，例如 `invalid_slug`、`invalid_window`、`invalid_party_id`。 |
+| `401` | `unauthorized` | 密钥缺失、格式错误、已吊销或已过期。 |
+| `403` | `forbidden` | 资源存在但不公开，例如私密的个人资料。 |
+| `404` | 因 endpoint 而异 | 没有该资源，例如 `project_not_found`、`post_not_found`。 |
+| `422` | `unsupported_token` | 该项目没有可供报告的代币。 |
+| `429` | `rate_limited` | 超过了你的每分钟限制。请在 header 指定的时间之后重试。 |
+| `500` | `internal` / `query_failed` | 我们这边的问题。可以安全重试。 |
+| `502` | `upstream_unavailable` | 我们依赖的某个市场数据源已宕机。 |
+| `503` | `warming_up` | 由 cron 预热的数据集处于冷缓存状态。请一分钟后重试；这不是空结果。 |
+
+大多数错误都带有 `{ "error": "...", "code": "..." }`，但 `code` 是针对具体
+endpoint 的，而不是取自一个固定列表。
+**请基于稳定的 HTTP 状态码来分支，把 `code` 当作细节信息。**
+有两种响应来自处理程序运行之前的边缘层，它们只带 `{ "error" }`，
+完全没有 `code`：面向无密钥工具客户端的 `403`，
+以及针对每个 IP 上限的 `429`。
+
+## 良好实践
+
+<AccordionGroup>
+  <Accordion title="把密钥保存在服务端" icon="server">
+    绝不要把密钥打包进浏览器端代码或移动应用。请通过你自己控制的后端代理。
+    泄露的密钥在你吊销它之前，可以一直被用到其速率限制的上限。
+  </Accordion>
+  <Accordion title="有疑虑就轮换" icon="rotate">
+    吊销是立即生效的：密钥会马上开始返回 `401`。
+    请先生成一个替换密钥，完成切换，然后再吊销旧的那个。
+  </Accordion>
+  <Accordion title="优雅地处理 429" icon="clock">
+    请遵守 `Retry-After`。对于稳定的工作负载，
+    应保持在你的套餐上限之下，而不是先突发再退避。
+  </Accordion>
+</AccordionGroup>

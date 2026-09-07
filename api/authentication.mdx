@@ -84,8 +84,16 @@ When you do exceed it you get `429` with a `Retry-After: 60` header:
 ```
 
 Every successful response also carries your ceiling in
-`meta.rate_limit_remaining`, so you can back off before you hit the wall. On
-tiers with no per-key limit it is `null`, so type it as nullable.
+`meta.rate_limit_remaining`. On tiers with no per-key limit it is `null`, so
+type it as nullable.
+
+<Warning>
+Despite the name, `rate_limit_remaining` is your **ceiling**, not a countdown.
+It returns the same number on every response and never decrements, because an
+exact per-request count would cost a database read on the hot path. Do not
+branch on it dropping toward zero, since it never will. Use the `429` and its
+`Retry-After` header as your real backoff signal.
+</Warning>
 
 ## Errors
 

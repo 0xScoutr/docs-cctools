@@ -1,0 +1,49 @@
+---
+title: "快速开始"
+description: "两分钟内从零完成你的第一次 CCTools API 调用。"
+icon: "rocket"
+---
+
+## 1. 登录
+
+打开 [cctools.network](https://cctools.network) 并登录（或创建一个免费账户）。
+
+## 2. 打开开发者面板
+
+前往 [cctools.network/profile/api](https://cctools.network/profile/api)。
+
+## 3. 获取密钥
+
+- **Free 套餐**：如果你的 Human Score 已验证（关联一个 Canton 钱包），你会看到 **Get a free key**。点击它，然后点击 **New key**。Free 套餐允许每分钟 60 次请求。
+- **Pro**：[CCTools Pro](https://cctools.network/pro) 订阅包含每分钟 600 次请求。按钮在同一页面上，点击后立即生效。
+- **Validator**：提交你的 Canton 验证者 party ID。每份提交都由人工审核，通常在一个工作日内完成。获批的密钥没有单个密钥的速率限制，并且 12 个月内免费。每个 IP 每分钟 600 次请求的上限依然适用，所有套餐都不例外。
+- **构建者 / 基金 / 合作伙伴**：填写简短的申请表，并告诉我们你正在构建什么。更高的限额按账户单独商定。
+
+明文密钥（`cck_…`）只会显示**一次**。请复制并妥善保存：你无法再次查看它，只能吊销它并生成一个新的。
+
+<Warning>
+切勿在客户端代码中暴露密钥。请通过你自己控制的服务器代理这些调用。任何拿到你密钥的人都能以你的身份调用 API，直到用满你的速率限制。
+</Warning>
+
+## 4. 发起你的第一次调用
+
+```bash
+curl -H "X-API-Key: cck_your_key_here" \
+  "https://api.cctools.network/api/v1/public/ecosystem/projects?limit=5"
+```
+
+你应该会收到一个 JSON 信封：
+
+```json
+{
+  "data": [ { "slug": "…", "name": "…", "ai_score": 87 } ],
+  "pagination": { "limit": 5, "offset": 0, "total": 491 },
+  "meta": { "tier": "free", "rate_limit_remaining": 60 }
+}
+```
+
+就是这样。你可以在 [endpoint 参考](/zh/api/endpoints) 中浏览全部路由。
+
+<Tip>
+只要带上 `X-API-Key` header，使用 `curl`、`python-requests` 或任何默认客户端进行测试都可以开箱即用。来自工具类客户端的无密钥请求会被拦截，带密钥的请求不会。
+</Tip>

@@ -1,0 +1,82 @@
+---
+title: "API pública do CCTools"
+description: "Uma API REST somente leitura para o ecossistema da Canton Network: projetos, campanhas, leaderboards, usuários e estatísticas da rede."
+icon: "plug"
+---
+
+A API pública do CCTools oferece acesso programático e somente leitura aos
+mesmos dados da Canton Network que alimentam o cctools.network: o diretório do
+ecossistema, as campanhas de earn, os leaderboards, os perfis públicos de
+usuários, a governança, as notícias e as estatísticas da rede em tempo real.
+
+## URL base
+
+```
+https://api.cctools.network
+```
+
+Todos os endpoints ficam sob o prefixo `/api/v1/public/` e retornam JSON.
+
+## Autenticação
+
+Todas as requisições exigem uma chave de API, enviada no header **`X-API-Key`**.
+Não existe esquema `Authorization: Bearer`, e um header Bearer é rejeitado.
+
+```bash
+curl -H "X-API-Key: cck_your_key_here" \
+  "https://api.cctools.network/api/v1/public/network/stats"
+```
+
+Gere e gerencie suas chaves em [cctools.network/profile/api](https://cctools.network/profile/api).
+Veja [Autenticação](/pt/api/authentication) para o fluxo completo.
+
+## Envelope de resposta
+
+As respostas bem-sucedidas compartilham um mesmo formato:
+
+```json
+{
+  "data": { "...": "..." },
+  "pagination": { "limit": 50, "offset": 0, "total": 491 },
+  "meta": { "tier": "free", "rate_limit_remaining": 60 }
+}
+```
+
+- `data`: o payload (objeto ou array, dependendo do endpoint).
+- `pagination`: presente nos endpoints de listagem; `null` nos demais.
+- `meta.tier`: o tier da sua chave.
+- `meta.rate_limit_remaining`: seu teto por minuto.
+
+Os erros vêm como `{ "error": "message", "code": "..." }` com status HTTP
+`400`, `401`, `404`, `429` ou `503`. Um `503` com o código `warming_up` indica que
+um conjunto de dados aquecido por cron está com o cache frio: tente de novo em um
+minuto, em vez de tratar isso como um resultado vazio.
+
+## Tiers em resumo
+
+| Tier | Limite de requisições | Para quem | Como |
+|---|---|---|---|
+| **Free** | 60 req/min | Human Score verificado | Autoatendimento instantâneo em /profile/api |
+| **Pro** | 600 req/min | Assinantes do CCTools Pro | Autoatendimento instantâneo em /profile/api |
+| **Validator** | Sem limite por chave | Validadores da Canton | Envie o party ID; revisado por uma pessoa, normalmente em até um dia útil |
+| **Custom** | Definido por conta | Builders, fundos, parceiros | Candidate-se e conte o que você está construindo |
+
+Todos os tiers, incluindo o Validator, também estão sujeitos a um teto de 600
+requisições por minuto por endereço IP em toda a API.
+
+## Próximos passos
+
+<CardGroup cols={2}>
+  <Card title="Início rápido" icon="rocket" href="/pt/api/quickstart">
+    Obtenha uma chave gratuita e faça sua primeira chamada em dois minutos.
+  </Card>
+  <Card title="Autenticação" icon="key" href="/pt/api/authentication">
+    Chaves, tiers, limites de requisições e códigos de erro.
+  </Card>
+  <Card title="Endpoints" icon="list" href="/pt/api/endpoints">
+    Todos os endpoints somente leitura com um exemplo pronto para copiar e colar.
+  </Card>
+  <Card title="Gerenciar chaves" icon="gear" href="https://cctools.network/profile/api">
+    Crie, liste e revogue suas chaves.
+  </Card>
+</CardGroup>

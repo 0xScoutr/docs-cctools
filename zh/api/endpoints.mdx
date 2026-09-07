@@ -1,6 +1,6 @@
 ---
-title: "Endpoint reference"
-description: "Every endpoint on the CCTools Public API, with a copy-paste example."
+title: "Endpoint 参考"
+description: "CCTools 公共 API 的全部 endpoint，附可直接复制的示例。"
 icon: "list"
 ---
 
@@ -8,50 +8,44 @@ icon: "list"
     Regenerate with: node cctools2/backend/scripts/gen-docs-endpoints.mjs
     Source of truth: cctools2/backend/src/lib/api/openapi-spec.ts */}
 
-All 48 endpoints live under `https://api.cctools.network`, return the
-standard `{ data, pagination, meta }` envelope, and require the `X-API-Key`
-header. The one exception is `/api/v1/public/status`, which needs no key and
-answers with its payload directly.
+全部 48 个 endpoint 都位于 `https://api.cctools.network` 下，返回标准的
+`{ data, pagination, meta }` 信封结构，并且需要 `X-API-Key` header。唯一的例外是
+`/api/v1/public/status`，它无需密钥，直接返回自身的 payload。
 
-List endpoints accept `?limit=` and `?offset=`. The common shape is a
-default of 50 and a maximum of 200, but several lists cap lower (50 or 100)
-and a few ignore `limit` entirely. Read the `limit` echoed back in
-`pagination` rather than assuming. A value outside the accepted range is
-clamped to the nearest valid one silently; it never returns an error.
+列表类 endpoint 接受 `?limit=` 和 `?offset=`。常见形式是默认 50、最大 200，但有几个
+列表的上限更低（50 或 100），还有几个完全忽略 `limit`。请读取 `pagination` 中回传的
+`limit`，不要凭假设。超出可接受范围的值会被静默地调整为最接近的有效值，而不会返回错误。
 
-`pagination.total` is the real total on most lists. On `/news` and
-`/markets/tokens` it is only the size of the page you got back, so paginate
-until you receive fewer items than your `limit` instead of comparing against
-`total`.
+在大多数列表中，`pagination.total` 是真实总数。但在 `/news` 和
+`/markets/tokens` 中，它只是你这一页拿到的条数，所以请分页直到收到的条目少于你的
+`limit`，而不要拿它和 `total` 比较。
 
 <Note>
-Replace `cck_...` with one of your keys from
-[/profile/api](https://cctools.network/profile/api). An interactive explorer
-with a live Send button is at [cctools.network/api-docs](https://cctools.network/api-docs).
+把 `cck_...` 替换为你在
+[/profile/api](https://cctools.network/profile/api) 中的任意一个密钥。
+[cctools.network/api-docs](https://cctools.network/api-docs) 提供了带实时发送按钮的
+交互式浏览器。
 </Note>
 
 <Warning>
-**Cold cache.** Most endpoints served from a cron-warmed cache answer `503`
-with code `warming_up` rather than returning an empty body. Treat that as a
-retry, not as an empty result. Three behave differently and are worth knowing
-before you build on them: `/governance` and `/network/stats` answer `200`
-with null or zero fields, and `/featured-apps/{slug}` answers `404`, which is
-indistinguishable from a slug that does not exist.
+**冷缓存。** 大多数由 cron 预热缓存提供的 endpoint 在缓存为空时会返回 `503` 并带上
+`warming_up` 代码，而不是返回空内容。请把它当作需要重试，而不是空结果。有三个的行为
+不同，在基于它们开发之前值得了解：`/governance` 和 `/network/stats` 会返回 `200`，
+字段为 null 或 0；`/featured-apps/{slug}` 会返回 `404`，这与 slug 不存在无法区分。
 </Warning>
 
 <Warning>
-**There is a per-IP ceiling on top of your key's limit.** Every request to
-`/api/`, on every tier including Validator, counts against 600 requests per
-minute per IP address. Sustained breaches escalate to a temporary IP block, so
-back off when you see a `429` instead of retrying immediately. If you need a
-higher ceiling for a backfill, ask before you run it.
+**除了密钥自身的限制之外，还有一个按 IP 的上限。** 对 `/api/` 的每一次请求，在包括
+Validator 在内的所有套餐上，都会计入每个 IP 地址每分钟 600 次请求的上限。持续超限会
+升级为对该 IP 的临时封禁，所以看到 `429` 时请退避，不要立即重试。如果你需要更高的
+上限来做一次历史回填，请先告诉我们再执行。
 </Warning>
 
-## Ecosystem
+## 生态系统
 
 Projects, categories, rankings, trending.
 
-| Endpoint | Description |
+| Endpoint | 说明 |
 |---|---|
 | `GET /api/v1/public/ecosystem/categories` | List categories with counts |
 | `GET /api/v1/public/ecosystem/projects` | List projects |
@@ -67,11 +61,11 @@ curl -H "X-API-Key: cck_..." \
   "https://api.cctools.network/api/v1/public/ecosystem/categories"
 ```
 
-## Canton network
+## Canton 网络
 
 Canton network data: validators, Super Validators, Featured Apps, governance, burn and mint, CIPs.
 
-| Endpoint | Description |
+| Endpoint | 说明 |
 |---|---|
 | `GET /api/v1/public/assets` | Canton assets |
 | `GET /api/v1/public/assets/{slug}` | Canton asset detail |
@@ -95,11 +89,11 @@ curl -H "X-API-Key: cck_..." \
   "https://api.cctools.network/api/v1/public/assets"
 ```
 
-## Markets and DeFi
+## 市场与 DeFi
 
 DeFi and trading: protocol TVL, token registry, liquidity pools, tickers and trades.
 
-| Endpoint | Description |
+| Endpoint | 说明 |
 |---|---|
 | `GET /api/v1/public/markets/pools/oneswap` | OneSwap liquidity pools |
 | `GET /api/v1/public/markets/pools/send` | Send liquidity pools |
@@ -114,11 +108,11 @@ curl -H "X-API-Key: cck_..." \
   "https://api.cctools.network/api/v1/public/markets/pools/oneswap"
 ```
 
-## Content and directories
+## 内容与目录
 
 Academy posts, learn paths, news, developer tooling and the badge catalog.
 
-| Endpoint | Description |
+| Endpoint | 说明 |
 |---|---|
 | `GET /api/v1/public/academy/posts` | List Academy posts |
 | `GET /api/v1/public/academy/posts/{slug}` | Academy post by slug |
@@ -133,11 +127,11 @@ curl -H "X-API-Key: cck_..." \
   "https://api.cctools.network/api/v1/public/academy/posts"
 ```
 
-## Public profiles
+## 公开资料
 
 Public profiles, badges, contributions, activity.
 
-| Endpoint | Description |
+| Endpoint | 说明 |
 |---|---|
 | `GET /api/v1/public/users/{username}` | Public profile |
 | `GET /api/v1/public/users/{username}/activity` | Recent XP events |
@@ -153,7 +147,7 @@ curl -H "X-API-Key: cck_..." \
 
 Opportunities (campaigns, app rewards, community).
 
-| Endpoint | Description |
+| Endpoint | 说明 |
 |---|---|
 | `GET /api/v1/public/earn` | List opportunities |
 | `GET /api/v1/public/earn/{slug}` | Opportunity by slug |
@@ -163,11 +157,11 @@ curl -H "X-API-Key: cck_..." \
   "https://api.cctools.network/api/v1/public/earn"
 ```
 
-## Leaderboards
+## 排行榜
 
 Top users by XP.
 
-| Endpoint | Description |
+| Endpoint | 说明 |
 |---|---|
 | `GET /api/v1/public/leaderboard` | Top users by total XP |
 | `GET /api/v1/public/leaderboard/projects` | Project leaderboard |
@@ -178,11 +172,11 @@ curl -H "X-API-Key: cck_..." \
   "https://api.cctools.network/api/v1/public/leaderboard"
 ```
 
-## Status
+## 状态
 
 Service health and incidents. The only keyless endpoint on this API.
 
-| Endpoint | Description |
+| Endpoint | 说明 |
 |---|---|
 | `GET /api/v1/public/status` | Service status |
 

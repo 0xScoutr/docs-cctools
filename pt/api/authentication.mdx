@@ -1,0 +1,135 @@
+---
+title: "Autenticação e limites de requisições"
+description: "Chaves de API, tiers, limites de requisições e tratamento de erros da API pública do CCTools."
+icon: "key"
+---
+
+## Chaves de API
+
+Cada requisição se autentica com uma chave no cabeçalho **`X-API-Key`**:
+
+```bash
+curl -H "X-API-Key: cck_your_key_here" \
+  "https://api.cctools.network/api/v1/public/status"
+```
+
+As chaves são strings no formato `cck_` seguido de 56 caracteres
+hexadecimais. Não há suporte a `Authorization: Bearer`. Em um navegador, um
+token Bearer devolve `401`. Em um cliente de linha de comando como curl ou
+python-requests, ele é recusado uma camada antes, como
+`403 {"error":"Forbidden"}` sem o campo `code`, porque uma requisição sem
+`X-API-Key` não é reconhecida como cliente de API. Sempre envie `X-API-Key`.
+
+Crie, liste e revogue chaves em
+[cctools.network/profile/api](https://cctools.network/profile/api). O texto
+em claro é exibido exatamente uma vez, na criação; depois disso apenas o
+prefixo fica visível.
+
+Quantas chaves ativas você pode manter depende do seu tier: **2 no Free** e
+**10 no Validator e no Pro**. O limite de requisições (rate limit) é contado
+por chave, e não por conta, então o teto é na verdade um teto de vazão, e os
+tiers revisados recebem o maior porque alguém respondeu pelo titular.
+
+## Tiers
+
+Sua chave herda um tier da elegibilidade da sua conta. O tier define o seu
+limite de requisições e é devolvido em toda resposta como `meta.tier`.
+
+| Tier | Limite de requisições | Elegibilidade |
+|---|---|---|
+| **Free** | 60 req/min | Um Human Score verificado (conecte uma carteira Canton). Concedido na hora, sem revisão. |
+| **Pro** | 600 req/min | Incluído na assinatura [CCTools Pro](https://cctools.network/pro). Concedido na hora, e vale enquanto durar a assinatura. |
+| **Validator** | Sem limite por chave | Um party ID de validador da Canton. Cada envio é revisado por uma pessoa, normalmente em até um dia útil. Vigência de 12 meses, gratuito. |
+
+<Warning>
+Sem limite por chave não é o mesmo que sem limite. Toda requisição para
+`/api/`, em qualquer tier, inclusive o Validator, também conta para um teto de
+**600 requisições por minuto por endereço IP**. Violações sustentadas escalam
+para um bloqueio temporário do IP, então recue diante de um `429` em vez de
+repetir na hora. Planeja um backfill que precise de mais? Fale conosco antes.
+</Warning>
+
+Free e Pro são self-service: abra [/profile/api](https://cctools.network/profile/api)
+e o botão aparece se você se qualificar. Validadores enviam um party ID na
+mesma página.
+
+**A elegibilidade é verificada quando a chave é emitida, nunca nas requisições
+que você faz com ela.** Um Human Score verificado é o que libera o botão de
+self-service; ele não é reavaliado a cada chamada. As chaves que emitimos
+diretamente para uma organização ficam ligadas a essa organização, e não a uma
+pessoa, então não há conta a verificar nem nada que uma integração
+servidor-a-servidor precise manter viva. Uma chave para de funcionar por
+exatamente três motivos: ela é revogada, ela expira, ou é usada fora dos escopos.
+
+Está construindo algo que precisa de mais do que isso? Inscreva-se na mesma
+página e conte o que você está construindo. Existem limites maiores e
+personalizados; eles são combinados por conta, não escolhidos de uma lista.
+
+Um assinante Pro que renova pode apertar o mesmo botão de novo para estender o
+seu acesso à API na mesma medida. Nada é rebaixado ao apertá-lo: se você já
+tem um tier Validator ou negociado, ele permanece.
+
+## Limites de requisições
+
+Os limites são contados por chave, por endpoint, por minuto, **por processo**. A
+API roda como um cluster multiprocesso em que cada processo mantém o próprio
+contador, então um cliente que espalha requisições por muitas conexões pode
+ultrapassar o número informado antes que algo o barre. Trate o número como a
+taxa sustentada para a qual projetar, não como um teto a ser testado.
+
+Quando você de fato ultrapassa, recebe `429` com um cabeçalho `Retry-After: 60`:
+
+```json
+{ "error": "Rate limit exceeded", "code": "rate_limited" }
+```
+
+Toda resposta bem-sucedida também traz o seu teto em
+`meta.rate_limit_remaining`. Em tiers sem limite por chave ele vem `null`,
+então tipe-o como nullable.
+
+<Warning>
+Apesar do nome, `rate_limit_remaining` é o seu **teto**, não uma contagem
+regressiva. Ele devolve o mesmo número em toda resposta e nunca decrementa,
+porque uma contagem exata por requisição custaria uma leitura de banco no
+caminho crítico. Não condicione sua lógica a ele cair em direção a zero, porque
+isso nunca vai acontecer. Use o `429` e o header `Retry-After` dele como o seu
+sinal real de recuo.
+</Warning>
+
+## Erros
+
+| Status | `code` | Significado |
+|---|---|---|
+| `400` | específico do endpoint | Parâmetro malformado, por exemplo `invalid_slug`, `invalid_window`, `invalid_party_id`. |
+| `401` | `unauthorized` | Chave ausente, malformada, revogada ou expirada. |
+| `403` | `forbidden` | O recurso existe, mas não é público, por exemplo um perfil privado. |
+| `404` | específico do endpoint | Recurso inexistente, por exemplo `project_not_found`, `post_not_found`. |
+| `422` | `unsupported_token` | O projeto não tem token sobre o qual reportar. |
+| `429` | `rate_limited` | Acima do seu limite por minuto. Tente de novo após o cabeçalho. |
+| `500` | `internal` / `query_failed` | Culpa nossa. Seguro tentar de novo. |
+| `502` | `upstream_unavailable` | Uma fonte de dados de mercado da qual dependemos está fora do ar. |
+| `503` | `warming_up` | Um conjunto de dados aquecido por cron está com cache frio. Tente de novo em um minuto; isto não é um resultado vazio. |
+
+A maioria dos erros traz `{ "error": "...", "code": "..." }`, mas o `code` é
+específico do endpoint, e não retirado de uma lista fixa. **Ramifique pelo
+status HTTP, que é estável, e trate o `code` como detalhe.** Duas respostas vêm
+da camada de borda antes de o handler rodar e trazem apenas `{ "error" }`, sem
+nenhum `code`: o `403` para um cliente de ferramenta sem chave, e o `429` do
+teto por IP.
+
+## Boas práticas
+
+<AccordionGroup>
+  <Accordion title="Mantenha as chaves no servidor" icon="server">
+    Nunca publique uma chave em um bundle de navegador ou app mobile. Passe por um
+    backend que você controla. Uma chave vazada pode ser usada até o limite dela até você revogá-la.
+  </Accordion>
+  <Accordion title="Rotacione ao suspeitar" icon="rotate">
+    A revogação é imediata: a chave passa a devolver `401` na hora. Gere a
+    substituta primeiro, migre o tráfego e só então revogue a antiga.
+  </Accordion>
+  <Accordion title="Trate o 429 com elegância" icon="clock">
+    Respeite o `Retry-After`. Para cargas constantes, fique abaixo do teto do seu
+    tier em vez de disparar rajadas e depois recuar.
+  </Accordion>
+</AccordionGroup>

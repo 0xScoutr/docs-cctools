@@ -1,6 +1,6 @@
 ---
-title: "Endpoint reference"
-description: "Every endpoint on the CCTools Public API, with a copy-paste example."
+title: "Referencia de endpoints"
+description: "Todos los endpoints de la API pública de CCTools, con un ejemplo listo para copiar."
 icon: "list"
 ---
 
@@ -8,50 +8,54 @@ icon: "list"
     Regenerate with: node cctools2/backend/scripts/gen-docs-endpoints.mjs
     Source of truth: cctools2/backend/src/lib/api/openapi-spec.ts */}
 
-All 48 endpoints live under `https://api.cctools.network`, return the
-standard `{ data, pagination, meta }` envelope, and require the `X-API-Key`
-header. The one exception is `/api/v1/public/status`, which needs no key and
-answers with its payload directly.
+Los 48 endpoints viven bajo `https://api.cctools.network`, devuelven el
+envoltorio estándar `{ data, pagination, meta }` y requieren el header
+`X-API-Key`. La única excepción es `/api/v1/public/status`, que no necesita
+clave y responde directamente con su payload.
 
-List endpoints accept `?limit=` and `?offset=`. The common shape is a
-default of 50 and a maximum of 200, but several lists cap lower (50 or 100)
-and a few ignore `limit` entirely. Read the `limit` echoed back in
-`pagination` rather than assuming. A value outside the accepted range is
-clamped to the nearest valid one silently; it never returns an error.
+Los endpoints de listado aceptan `?limit=` y `?offset=`. Lo habitual es un
+valor por defecto de 50 y un máximo de 200, pero varias listas tienen topes más
+bajos (50 o 100) y algunas ignoran `limit` por completo. Lee el `limit` que
+viene de vuelta en `pagination` en lugar de darlo por sentado. Un valor fuera
+del rango aceptado se ajusta en silencio al valor válido más cercano; nunca
+devuelve un error.
 
-`pagination.total` is the real total on most lists. On `/news` and
-`/markets/tokens` it is only the size of the page you got back, so paginate
-until you receive fewer items than your `limit` instead of comparing against
+`pagination.total` es el total real en la mayoría de las listas. En `/news` y
+`/markets/tokens` es solo el tamaño de la página que recibiste, así que pagina
+hasta recibir menos elementos que tu `limit` en vez de compararlo con
 `total`.
 
 <Note>
-Replace `cck_...` with one of your keys from
-[/profile/api](https://cctools.network/profile/api). An interactive explorer
-with a live Send button is at [cctools.network/api-docs](https://cctools.network/api-docs).
+Sustituye `cck_...` por una de tus claves de
+[/profile/api](https://cctools.network/profile/api). Hay un explorador
+interactivo con botón de envío en vivo en
+[cctools.network/api-docs](https://cctools.network/api-docs).
 </Note>
 
 <Warning>
-**Cold cache.** Most endpoints served from a cron-warmed cache answer `503`
-with code `warming_up` rather than returning an empty body. Treat that as a
-retry, not as an empty result. Three behave differently and are worth knowing
-before you build on them: `/governance` and `/network/stats` answer `200`
-with null or zero fields, and `/featured-apps/{slug}` answers `404`, which is
-indistinguishable from a slug that does not exist.
+**Caché en frío.** La mayoría de los endpoints servidos desde una caché
+calentada por cron responden `503` con el código `warming_up` en lugar de
+devolver un cuerpo vacío. Trátalo como un reintento, no como un resultado
+vacío. Tres se comportan de otra manera y conviene saberlo antes de construir
+sobre ellos: `/governance` y `/network/stats` responden `200` con campos
+nulos o en cero, y `/featured-apps/{slug}` responde `404`, indistinguible de
+un slug que no existe.
 </Warning>
 
 <Warning>
-**There is a per-IP ceiling on top of your key's limit.** Every request to
-`/api/`, on every tier including Validator, counts against 600 requests per
-minute per IP address. Sustained breaches escalate to a temporary IP block, so
-back off when you see a `429` instead of retrying immediately. If you need a
-higher ceiling for a backfill, ask before you run it.
+**Hay un tope por IP además del límite de tu clave.** Cada solicitud a
+`/api/`, en todos los tiers incluido Validator, cuenta contra un tope de 600
+solicitudes por minuto por dirección IP. Los excesos sostenidos escalan a un
+bloqueo temporal de la IP, así que retrocede cuando veas un `429` en lugar de
+reintentar de inmediato. Si necesitas un tope mayor para una carga histórica,
+avísanos antes de ejecutarla.
 </Warning>
 
-## Ecosystem
+## Ecosistema
 
 Projects, categories, rankings, trending.
 
-| Endpoint | Description |
+| Endpoint | Descripción |
 |---|---|
 | `GET /api/v1/public/ecosystem/categories` | List categories with counts |
 | `GET /api/v1/public/ecosystem/projects` | List projects |
@@ -67,11 +71,11 @@ curl -H "X-API-Key: cck_..." \
   "https://api.cctools.network/api/v1/public/ecosystem/categories"
 ```
 
-## Canton network
+## Red Canton
 
 Canton network data: validators, Super Validators, Featured Apps, governance, burn and mint, CIPs.
 
-| Endpoint | Description |
+| Endpoint | Descripción |
 |---|---|
 | `GET /api/v1/public/assets` | Canton assets |
 | `GET /api/v1/public/assets/{slug}` | Canton asset detail |
@@ -95,11 +99,11 @@ curl -H "X-API-Key: cck_..." \
   "https://api.cctools.network/api/v1/public/assets"
 ```
 
-## Markets and DeFi
+## Mercados y DeFi
 
 DeFi and trading: protocol TVL, token registry, liquidity pools, tickers and trades.
 
-| Endpoint | Description |
+| Endpoint | Descripción |
 |---|---|
 | `GET /api/v1/public/markets/pools/oneswap` | OneSwap liquidity pools |
 | `GET /api/v1/public/markets/pools/send` | Send liquidity pools |
@@ -114,11 +118,11 @@ curl -H "X-API-Key: cck_..." \
   "https://api.cctools.network/api/v1/public/markets/pools/oneswap"
 ```
 
-## Content and directories
+## Contenido y directorios
 
 Academy posts, learn paths, news, developer tooling and the badge catalog.
 
-| Endpoint | Description |
+| Endpoint | Descripción |
 |---|---|
 | `GET /api/v1/public/academy/posts` | List Academy posts |
 | `GET /api/v1/public/academy/posts/{slug}` | Academy post by slug |
@@ -133,11 +137,11 @@ curl -H "X-API-Key: cck_..." \
   "https://api.cctools.network/api/v1/public/academy/posts"
 ```
 
-## Public profiles
+## Perfiles públicos
 
 Public profiles, badges, contributions, activity.
 
-| Endpoint | Description |
+| Endpoint | Descripción |
 |---|---|
 | `GET /api/v1/public/users/{username}` | Public profile |
 | `GET /api/v1/public/users/{username}/activity` | Recent XP events |
@@ -153,7 +157,7 @@ curl -H "X-API-Key: cck_..." \
 
 Opportunities (campaigns, app rewards, community).
 
-| Endpoint | Description |
+| Endpoint | Descripción |
 |---|---|
 | `GET /api/v1/public/earn` | List opportunities |
 | `GET /api/v1/public/earn/{slug}` | Opportunity by slug |
@@ -163,11 +167,11 @@ curl -H "X-API-Key: cck_..." \
   "https://api.cctools.network/api/v1/public/earn"
 ```
 
-## Leaderboards
+## Clasificaciones
 
 Top users by XP.
 
-| Endpoint | Description |
+| Endpoint | Descripción |
 |---|---|
 | `GET /api/v1/public/leaderboard` | Top users by total XP |
 | `GET /api/v1/public/leaderboard/projects` | Project leaderboard |
@@ -178,11 +182,11 @@ curl -H "X-API-Key: cck_..." \
   "https://api.cctools.network/api/v1/public/leaderboard"
 ```
 
-## Status
+## Estado
 
 Service health and incidents. The only keyless endpoint on this API.
 
-| Endpoint | Description |
+| Endpoint | Descripción |
 |---|---|
 | `GET /api/v1/public/status` | Service status |
 

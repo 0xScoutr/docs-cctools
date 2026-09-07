@@ -1,0 +1,82 @@
+---
+title: "CCTools 公共 API"
+description: "面向 Canton Network 生态系统的只读 REST API：项目、活动、排行榜、用户与网络统计。"
+icon: "plug"
+---
+
+CCTools 公共 API 让你以编程方式只读访问驱动
+cctools.network 的同一份 Canton Network 数据：
+生态系统目录、赚取活动、排行榜、
+公开用户资料、治理、新闻，以及实时网络统计。
+
+## 基础地址
+
+```
+https://api.cctools.network
+```
+
+每个 endpoint 都位于 `/api/v1/public/` 前缀之下，并返回 JSON。
+
+## 认证
+
+所有请求都需要 API 密钥，通过 **`X-API-Key`** header 发送。不存在
+`Authorization: Bearer` 方案，携带 Bearer header 的调用会被拒绝。
+
+```bash
+curl -H "X-API-Key: cck_your_key_here" \
+  "https://api.cctools.network/api/v1/public/network/stats"
+```
+
+在 [cctools.network/profile/api](https://cctools.network/profile/api) 生成和管理密钥。
+完整流程见[认证](/zh/api/authentication)。
+
+## 响应结构
+
+成功的响应都采用同一种结构：
+
+```json
+{
+  "data": { "...": "..." },
+  "pagination": { "limit": 50, "offset": 0, "total": 491 },
+  "meta": { "tier": "free", "rate_limit_remaining": 60 }
+}
+```
+
+- `data`：payload（对象或数组，取决于 endpoint）。
+- `pagination`：在列表 endpoint 上出现，其他情况为 `null`。
+- `meta.tier`：你的密钥所属套餐。
+- `meta.rate_limit_remaining`：你的每分钟上限。
+
+错误响应为 `{ "error": "message", "code": "..." }`，HTTP 状态码为
+`400`、`401`、`404`、`429` 或 `503`。
+带有 `warming_up` 代码的 `503` 表示由 cron 预热的数据集处于冷缓存状态：
+请在一分钟后重试，而不要将其视为空结果。
+
+## 套餐一览
+
+| 套餐 | 速率限制 | 适用对象 | 获取方式 |
+|---|---|---|---|
+| **Free** | 60 次请求/分钟 | 已验证的 Human Score | 在 /profile/api 即时自助获取 |
+| **Pro** | 600 次请求/分钟 | CCTools Pro 订阅者 | 在 /profile/api 即时自助获取 |
+| **Validator** | 无按密钥限制 | Canton 验证者 | 提交 party ID；由人工审核，通常在一个工作日内完成 |
+| **Custom** | 按账户单独商定 | 构建者、基金、合作伙伴 | 提交申请并告诉我们你正在构建什么 |
+
+所有套餐（Validator 也不例外）在整个 API 范围内还受到一个上限约束：
+每个 IP 地址每分钟 600 次请求。
+
+## 下一步
+
+<CardGroup cols={2}>
+  <Card title="快速开始" icon="rocket" href="/zh/api/quickstart">
+    获取免费密钥，两分钟内完成第一次调用。
+  </Card>
+  <Card title="认证" icon="key" href="/zh/api/authentication">
+    密钥、套餐、速率限制与错误代码。
+  </Card>
+  <Card title="Endpoints" icon="list" href="/zh/api/endpoints">
+    每个只读 endpoint 都附带可直接复制粘贴的示例。
+  </Card>
+  <Card title="管理密钥" icon="gear" href="https://cctools.network/profile/api">
+    创建、列出并撤销你的密钥。
+  </Card>
+</CardGroup>

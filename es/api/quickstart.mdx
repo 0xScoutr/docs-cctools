@@ -1,0 +1,61 @@
+---
+title: "Inicio rápido"
+description: "De cero a tu primera llamada a la API de CCTools en dos minutos."
+icon: "rocket"
+---
+
+## 1. Inicia sesión
+
+Abre [cctools.network](https://cctools.network) e inicia sesión (o crea una
+cuenta gratuita).
+
+## 2. Abre el panel de desarrollador
+
+Ve a [cctools.network/profile/api](https://cctools.network/profile/api).
+
+## 3. Obtén una clave
+
+- **Tier Free**: si tu Human Score está verificado (conecta una billetera
+  Canton), verás **Get a free key**. Haz clic ahí y luego en **New key**. El tier
+  Free permite 60 solicitudes por minuto.
+- **Pro**: una suscripción a [CCTools Pro](https://cctools.network/pro) incluye 600
+  solicitudes por minuto. El botón está en la misma página y se concede al instante.
+- **Validator**: envía el party ID de tu validador de Canton. Cada solicitud de
+  clave la revisa una persona, normalmente en un día hábil. Las claves aprobadas
+  no tienen límite de solicitudes por clave y son gratuitas durante 12 meses. Un
+  tope de 600 solicitudes por minuto por IP sigue aplicándose, en todos los tiers.
+- **Builder / fondo / socio**: completa el formulario breve y cuéntanos qué estás
+  construyendo. Los límites más altos se acuerdan por cuenta.
+
+La clave en texto plano (`cck_…`) se muestra **una sola vez**. Cópiala y guárdala
+en un lugar seguro: no podrás volver a verla, solo revocarla y generar una nueva.
+
+<Warning>
+Nunca expongas una clave en código del lado del cliente. Enruta las llamadas por un servidor
+que controles. Cualquiera con tu clave puede llamar a la API en tu nombre, hasta tu límite de solicitudes.
+</Warning>
+
+## 4. Haz tu primera llamada
+
+```bash
+curl -H "X-API-Key: cck_your_key_here" \
+  "https://api.cctools.network/api/v1/public/ecosystem/projects?limit=5"
+```
+
+Deberías recibir un envoltorio JSON:
+
+```json
+{
+  "data": [ { "slug": "…", "name": "…", "ai_score": 87 } ],
+  "pagination": { "limit": 5, "offset": 0, "total": 491 },
+  "meta": { "tier": "free", "rate_limit_remaining": 60 }
+}
+```
+
+Eso es todo. Explora todas las rutas en la [referencia de endpoints](/es/api/endpoints).
+
+<Tip>
+Probar con `curl`, `python-requests` o cualquier cliente por defecto funciona sin
+configuración adicional, siempre que el header `X-API-Key` esté presente. Las solicitudes
+sin clave desde clientes de herramientas se bloquean; las solicitudes con clave, no.
+</Tip>
