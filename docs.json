@@ -769,7 +769,7 @@
                 ]
               },
               {
-                "group": "文件夹",
+                "group": "投资组合",
                 "icon": "wallet",
                 "pages": [
                   "zh/portfolio/adding-wallets",
