@@ -5,7 +5,7 @@ description: "Browse validators, understand Super Validators, and track governan
 
 ## Validators Page
 
-The **Validators** page lists all active validators on the Canton Network. For each validator you can see:
+The **Validators** page lists validators on the Canton Network ranked by the rewards they have minted, grouped by the ecosystem project they are linked to when CCTools knows the link. For each validator you can see:
 
 - Validator name and identity
 - Role (Super Validator or regular Validator)
@@ -13,13 +13,12 @@ The **Validators** page lists all active validators on the Canton Network. For e
 
 ## Super Validators
 
-Super Validators are major financial institutions that validate transactions and have additional governance rights:
+Super Validators operate the Global Synchronizer, the shared infrastructure that orders and confirms Canton Network transactions, and they govern it:
 
-- Voting on protocol changes and network parameters
-- Proposing network upgrades
-- Setting fee structures
+- Voting on Canton Improvement Proposals (CIPs), which cover protocol changes, tokenomics, standards, and Super Validator membership and weights
+- Voting on-ledger on network configuration, such as synchronizer traffic fees and the CC/USD conversion rate used in each mining round
 
-Examples include major banks and financial institutions that participate in the Canton Network consortium.
+CIPs and their status are public at [github.com/canton-foundation/cips](https://github.com/canton-foundation/cips).
 
 ## Governance
 

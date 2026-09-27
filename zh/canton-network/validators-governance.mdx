@@ -5,7 +5,7 @@ description: "浏览验证器、了解超级验证器并跟踪治理提案。"
 
 ## 验证器页面
 
-**验证者**页面列出了 Canton 网络上所有活跃的验证者。对于每个验证器，您可以看到：
+**验证者**页面列出 Canton Network 上的验证者，按其已铸造的奖励排序；当 CCTools 知道其关联的生态项目时，会按项目分组。对于每个验证者，您可以看到：
 
 - 验证者姓名和身份
 - 角色（超级验证者或普通验证者）
@@ -13,13 +13,12 @@ description: "浏览验证器、了解超级验证器并跟踪治理提案。"
 
 ## 超级验证者
 
-超级验证者是验证交易并拥有额外治理权利的主要金融机构：
+超级验证者运营 Global Synchronizer（为 Canton Network 交易排序并确认的共享基础设施），并负责其治理：
 
-- 对协议更改和网络参数进行投票
-- 建议网络升级
-- 设定费用结构
+- 对 Canton Improvement Proposals（CIP）投票，CIP 涵盖协议变更、代币经济、标准，以及超级验证者的成员资格和权重
+- 通过链上投票决定网络配置，例如同步器流量费用，以及每个铸币轮次使用的 CC/USD 兑换率
 
-例如参与 Canton Network 联盟的主要银行和金融机构。
+CIP 及其状态公开于 [github.com/canton-foundation/cips](https://github.com/canton-foundation/cips)。
 
 ## 治理
 
