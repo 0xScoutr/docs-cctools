@@ -9,19 +9,19 @@ La página **Estadísticas de la red** muestra datos históricos y en tiempo rea
 
 - **Precio CC**: precio actual, cambio de 24 horas, capitalización de mercado y volumen
 - **Validadores**: número total de supervalidadores y validadores regulares
-- **Ratio Burn/Mint**: si la red es actualmente deflacionaria (más quemaduras que acuñaciones)
+- **Burn / App Rewards**: CC quemado frente al CC pagado como recompensas de apps destacadas
 - **Transacciones diarias** - Volumen de transacciones en la red
 - **Gobernanza** - Propuestas totales, tasa de aprobación, ejecutadas versus rechazadas
 - **Tasas de emisión**: tasas de cupón por supervalidador, validador y aplicación
 - **Gráfico de precio** - Historial de precio del CC en 24 horas, 7 días o 30 días, desde el feed agregado de precios
 
-## Quemar vs menta
+## Quema y recompensas de apps
 
-CCTools rastrea los datos de grabación y acuñación por hora para el token CC:
+CCTools registra cada hora el CC quemado y las recompensas de apps destacadas:
 
-- **Burns** - Tokens CC quemados como tarifas de transacción
-- **Mints**: tokens CC acuñados como recompensas del validador
-- **Proporción**: cuando la proporción es superior a 1,0, se queman más CC de los que se acuñan (deflacionario).
+- **Burned**: CC quemado para pagar el tráfico del sincronizador
+- **App Rewards**: CC pagado como recompensas de apps destacadas. Es solo una parte de la emisión: no incluye las recompensas de validadores, supervalidadores ni del Development Fund
+- **Ratio**: CC quemado dividido por las recompensas de apps en la ventana seleccionada, con el promedio de 7 días al lado
 
 Estos datos se muestran en un gráfico de barras dual que cubre una ventana seleccionable de 24 horas, 7 días o 30 días, lo que le ayuda a comprender la dinámica de suministro del token en tiempo real.
 

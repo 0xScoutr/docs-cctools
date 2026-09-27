@@ -9,19 +9,19 @@ The **Network Stats** page shows real-time and historical data about the Canton 
 
 - **CC Price** - Current price, 24h change, market cap, and volume
 - **Validators** - Total number of Super Validators and regular validators
-- **Burn/Mint Ratio** - Whether the network is currently deflationary (more burns than mints)
+- **Burn / App Rewards** - CC burned compared with CC paid out as featured app rewards
 - **Daily Transactions** - Transaction volume on the network
 - **Governance** - Total proposals, approval rate, executed vs rejected
 - **Issuance Rates** - Per Super Validator, Validator, and App coupon rates
 - **Price chart** - CC price history over 24 hours, 7 days or 30 days, from the aggregated price feed
 
-## Burn vs Mint
+## Burn and app rewards
 
-CCTools tracks hourly burn and mint data for the CC token:
+CCTools records CC burned and featured app rewards every hour:
 
-- **Burns** - CC tokens burned as transaction fees
-- **Mints** - CC tokens minted as validator rewards
-- **Ratio** - When the ratio is above 1.0, more CC is being burned than minted (deflationary)
+- **Burned** - CC burned to pay for synchronizer traffic
+- **App Rewards** - CC paid out as featured app rewards. This is one part of issuance: rewards to validators, Super Validators and the Development Fund are not included
+- **Ratio** - CC burned divided by app rewards over the selected window, with the 7-day average beside it
 
 This data is shown in a dual bar chart covering a selectable 24-hour, 7-day or 30-day window, helping you understand the token's supply dynamics in real-time.
 

@@ -9,19 +9,19 @@ A página **Estatísticas da rede** mostra dados históricos e em tempo real sob
 
 - **Preço CC** - Preço atual, variação de 24 horas, valor de mercado e volume
 - **Validadores** - Número total de Super Validadores e validadores regulares
-- **Proporção de queima/hortelã** - Se a rede está atualmente deflacionária (mais queimadas do que balas)
+- **Burn / App Rewards** - CC queimado comparado com o CC pago como recompensas de apps em destaque
 - **Transações Diárias** - Volume de transações na rede
 - **Governança** - Total de propostas, taxa de aprovação, executadas versus rejeitadas
 - **Taxas de emissão** - Por taxas de supervalidador, validador e cupom de aplicativo
 - **Gráfico de preço** - Histórico de preço do CC em 24 horas, 7 dias ou 30 dias, a partir do feed agregado de preços
 
-## Queimar vs Menta
+## Queima e recompensas de apps
 
-CCTools rastreia dados de gravação e criação de hora em hora para o token CC:
+A CCTools registra, de hora em hora, o CC queimado e as recompensas de apps em destaque:
 
-- **Queimas** - Tokens CC queimados como taxas de transação
-- **Mints** - Tokens CC cunhados como recompensas do validador
-- **Proporção** - Quando a proporção está acima de 1,0, mais CC está sendo queimado do que cunhado (deflacionário)
+- **Burned** - CC queimado para pagar o tráfego do sincronizador
+- **App Rewards** - CC pago como recompensas de apps em destaque. É só uma parte da emissão: não inclui as recompensas de validadores, Super Validadores nem do Development Fund
+- **Ratio** - CC queimado dividido pelas recompensas de apps na janela selecionada, com a média de 7 dias ao lado
 
 Esses dados são mostrados em um gráfico de barras duplo que cobre uma janela selecionável de 24 horas, 7 dias ou 30 dias, ajudando você a entender a dinâmica de fornecimento do token em tempo real.
 

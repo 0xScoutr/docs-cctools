@@ -8,10 +8,9 @@ description: "Understand CC token economics, supply, burns, and halving schedule
 The **CC token** is the native currency of Canton Network.
 
 - **Ten-year issuance cap**: 100 billion CC. Canton has no fixed max supply; CC is emitted continuously on a halving schedule, and this cap is what the network stats page measures circulating supply and FDV against.
-- **Mechanism**: Burn/mint model - tokens are burned for transaction fees and minted as validator rewards
+- **Issuance**: CC is minted every mining round (roughly every 2.5 minutes) as rewards to Super Validators, validators and featured apps, and 5% of each mint goes to the Development Fund (CIP-0082)
+- **Burn**: CC is burned when validators buy synchronizer traffic, the fee Canton Network charges for submitting transactions
 - **Halving**: Minting rewards are reduced periodically following a halving schedule
-
-The deflationary mechanism means that as network usage increases, more CC is burned while minting rewards decrease over time.
 
 ## Where to Track CC
 
@@ -20,6 +19,6 @@ CCTools provides real-time CC token data on the **Network Stats** page:
 - Current price and 24h change
 - Market cap and circulating supply
 - Historical price charts
-- Burn and mint rates
+- CC burned and featured app rewards
 - Halving countdown
 
