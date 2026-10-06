@@ -6,11 +6,11 @@ icon: "key"
 
 ## API 密钥
 
-每个请求都通过 **`X-API-Key`** header 中的密钥进行认证：
+除发往 `/api/v1/public/status` 的请求（无需密钥）外，每个请求都通过 **`X-API-Key`** header 中的密钥进行认证：
 
 ```bash
 curl -H "X-API-Key: cck_your_key_here" \
-  "https://api.cctools.network/api/v1/public/status"
+  "https://api.cctools.network/api/v1/public/network/stats"
 ```
 
 密钥是形如 `cck_` 后接 56 个十六进制字符的字符串。不支持

@@ -19,7 +19,7 @@ Todos los endpoints viven bajo el prefijo `/api/v1/public/` y devuelven JSON.
 
 ## Autenticación
 
-Todas las solicitudes requieren una clave de API, enviada en la cabecera **`X-API-Key`**.
+Todos los endpoints, excepto `/api/v1/public/status`, requieren una clave de API, enviada en la cabecera **`X-API-Key`**.
 No existe un esquema `Authorization: Bearer`, y una cabecera Bearer se rechaza.
 
 ```bash

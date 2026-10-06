@@ -6,11 +6,11 @@ icon: "key"
 
 ## Chaves de API
 
-Cada requisição se autentica com uma chave no cabeçalho **`X-API-Key`**:
+Cada requisição se autentica com uma chave no cabeçalho **`X-API-Key`**, exceto as requisições a `/api/v1/public/status`, que não precisa de chave:
 
 ```bash
 curl -H "X-API-Key: cck_your_key_here" \
-  "https://api.cctools.network/api/v1/public/status"
+  "https://api.cctools.network/api/v1/public/network/stats"
 ```
 
 As chaves são strings no formato `cck_` seguido de 56 caracteres

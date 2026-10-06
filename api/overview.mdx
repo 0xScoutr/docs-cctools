@@ -19,8 +19,9 @@ Every endpoint lives under the `/api/v1/public/` prefix and returns JSON.
 
 ## Authentication
 
-All requests require an API key, sent in the **`X-API-Key`** header. There is
-no `Authorization: Bearer` scheme, and a Bearer header is rejected.
+Every endpoint except `/api/v1/public/status` requires an API key, sent in the
+**`X-API-Key`** header. There is no `Authorization: Bearer` scheme, and a
+Bearer header is rejected.
 
 ```bash
 curl -H "X-API-Key: cck_your_key_here" \

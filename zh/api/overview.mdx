@@ -19,7 +19,7 @@ https://api.cctools.network
 
 ## 认证
 
-所有请求都需要 API 密钥，通过 **`X-API-Key`** header 发送。不存在
+除 `/api/v1/public/status` 外，所有 endpoint 都需要 API 密钥，通过 **`X-API-Key`** header 发送。不存在
 `Authorization: Bearer` 方案，携带 Bearer header 的调用会被拒绝。
 
 ```bash

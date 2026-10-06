@@ -6,11 +6,11 @@ icon: "key"
 
 ## Claves de API
 
-Cada solicitud se autentica con una clave en el header **`X-API-Key`**:
+Cada solicitud se autentica con una clave en el header **`X-API-Key`**, salvo las solicitudes a `/api/v1/public/status`, que no la necesita:
 
 ```bash
 curl -H "X-API-Key: cck_your_key_here" \
-  "https://api.cctools.network/api/v1/public/status"
+  "https://api.cctools.network/api/v1/public/network/stats"
 ```
 
 Las claves son cadenas con la forma `cck_` seguida de 56 caracteres
