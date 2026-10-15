@@ -1,0 +1,126 @@
+---
+title: "通过 x402 按次付费"
+description: "用 Canton 上的 x402 支付调用 CCTools 的付费路由，可用 CC、USDCx 或 cETH 支付：无需 API 密钥，也无需账户。"
+icon: "coins"
+---
+
+[x402](https://x402.org) 是一个建立在 HTTP 状态码 `402 Payment Required` 之上的开放支付标准：服务器对第一次调用返回价格，客户端付款后带着付款证明再次调用，服务器随后返回数据。CCTools 有一条路由以这种方式工作，与使用 API 密钥的路由并存。你不需要密钥，也不需要账户，只需要一个能够付款的 Canton 钱包。
+
+## 付费路由
+
+| | 详情 |
+|---|---|
+| 路由 | `GET https://api.cctools.network/api/v1/x402/markets/tickers` |
+| 返回内容 | Temple Digital Group 在 Canton 上的交易所的现货交易对，每个交易对一行：`ticker_id`、`base_currency`、`target_currency`、`last_price`、`base_volume`、`target_volume`、`high`、`low`、`bid`、`ask`。CCTools 每 5 分钟读取一次列表，并提供最近一次成功读取的结果。与使用密钥的 `/api/v1/public/markets/tickers` 返回相同的行。 |
+| 网络与方案 | `canton:mainnet`，x402 `exact` |
+| Facilitator | FTP，`https://facilitator.ftptech.xyz` |
+| 每次调用价格 | 0.1 CC、0.01 USDCx 或 0.000004 cETH，即该路由在 2026 年 10 月 15 日要求的价格 |
+
+<Note>
+价格位于该路由自己的 `402` 响应中，以该响应为准。付款前请从中读取价格，而不要依赖上面的数字。
+</Note>
+
+每一行中的所有值都是字符串。价格和成交量是十进制数；成交量、最高价和最低价覆盖 24 小时；`"0"` 表示交易所未报告任何数值。
+
+```json
+{
+  "data": [
+    {
+      "ticker_id": "CC_USDCx",
+      "base_currency": "CC",
+      "target_currency": "USDCx",
+      "last_price": "0.10826",
+      "base_volume": "31561781.700233933",
+      "target_volume": "3682113.4302826356",
+      "bid": "0.1082",
+      "ask": "0.10826",
+      "high": "0.12537",
+      "low": "0.10804"
+    }
+  ],
+  "pagination": null,
+  "meta": { "tier": "paid", "rate_limit_remaining": null }
+}
+```
+
+上面这一行是格式示例，为 Temple 在 2026 年 10 月 15 日 04:12 UTC 返回的数据，不是当前价格。
+
+## 一次付费调用的流程
+
+<Steps>
+  <Step title="不付款直接调用">
+    路由返回 `402` 和一个 `PAYMENT-REQUIRED` header：一段 base64 编码的 JSON，其 `accepts` 数组为每一种可用于付款的资产各列出一个条目。每个条目的 `amount` 以原子单位表示，带十位小数，因此 `1000000000` 即 0.1。
+  </Step>
+  <Step title="为其中一个条目签署转账">
+    你的客户端签署一笔与某一个条目完全匹配的 Canton 转账，然后把它放在 `PAYMENT-SIGNATURE` header 中再次调用，并原样带上该条目。x402 客户端会替你完成这一步。
+  </Step>
+  <Step title="收到数据和收据">
+    Facilitator 校验这笔转账并在账本上完成结算，路由随后返回 `200`，附带数据和一个携带结算收据的 `PAYMENT-RESPONSE` header。
+  </Step>
+</Steps>
+
+自己读取价格：
+
+```bash
+curl -s -D - -o /dev/null "https://api.cctools.network/api/v1/x402/markets/tickers" \
+  | grep -i '^payment-required:' | cut -d' ' -f2 | tr -d '\r' \
+  | base64 -d | jq '.accepts[] | {asset, amount}'
+```
+
+## 从智能体付款
+
+运营该 facilitator 的 FTP 发布了一个自托管的智能体钱包及其命令行客户端 [`@ftptech/canton-agent-wallet`](https://www.npmjs.com/package/@ftptech/canton-agent-wallet)。以下步骤依据 [FTP 的智能体指南](https://ftp-tech.mintlify.site/x402-agent) 和该包的 README（版本 2.3.1，于 2026 年 10 月 15 日查阅）：
+
+```bash
+npm i -g @ftptech/canton-agent-wallet@latest
+export CANTON_AGENT_NETWORK=canton:mainnet
+export CANTON_AGENT_RELAY_URL=https://facilitator.ftptech.xyz
+
+canton-agent-wallet create      # 创建钱包及其 Canton party
+# 向它打印出的 party id 转入 CC，然后：
+canton-agent-wallet claim       # 接收转入的 CC
+canton-agent-wallet pay --max 0.1 https://api.cctools.network/api/v1/x402/markets/tickers
+```
+
+`pay` 读取 `402`，为其中一个条目付款并打印响应。`--max` 限制单次付款的最高金额，除非你选择其他资产，否则以 CC 计；超出这个金额时，钱包会在签名之前拒绝。若要改用 USDCx 或 cETH 付款，请加上 `--asset USDCx`（或 `cETH`），并先按照 FTP 指南的说明，通过 `CANTON_AGENT_PAYABLE_INSTRUMENTS` 同意花费该代币。
+
+<Warning>
+CLI 默认使用 `canton:testnet`。如果没有设置 `CANTON_AGENT_NETWORK=canton:mainnet`，付款会因网络不匹配而失败。它创建的钱包文件 `~/.canton-agent/wallet.json` 保存着你资金的密钥：请务必备份。
+</Warning>
+
+在代码中，同一个包导出了 `makePayingFetch`，这是一个会为遇到的任何 `402` 自动付款的 `fetch`：
+
+```typescript
+import { makePayingFetch } from "@ftptech/canton-agent-wallet";
+
+const payFetch = await makePayingFetch({
+  relayUrl: "https://facilitator.ftptech.xyz",
+  network: "canton:mainnet",
+});
+
+const res = await payFetch("https://api.cctools.network/api/v1/x402/markets/tickers");
+const { data } = await res.json();
+```
+
+## 机器可读的信息
+
+- `402` 响应以 x402 Bazaar 发现格式描述该路由：`extensions.bazaar` 包含调用方式（一个无参数的 `GET`）、响应的 JSON Schema 和一行示例数据，`resource` 中带有一段包含各资产价格的描述。
+- [OpenAPI 规范](https://api.cctools.network/api/v1/openapi.json)用 `x-x402` 块标注该路由：方案、网络、facilitator、三个 header，以及各资产的价格和读取时间。
+- [cctools.network/llms.txt](https://cctools.network/llms.txt) 为语言模型列出了该路由。
+
+## 响应与限制
+
+| 响应 | 含义 |
+|---|---|
+| `402`，首次调用 | 未附带付款。价格列表在 `PAYMENT-REQUIRED` header 中。 |
+| `402`，附带付款 | 被拒绝，并给出原因：条目与价格不符、facilitator 认定转账无效，或未能结算。 |
+| `400` | `PAYMENT-SIGNATURE` header 不是 base64 JSON。 |
+| `429` | 同一 IP 在整个 API 上每分钟超过 600 次请求，在路由运行之前就被拒绝，因此不会要求也不会结算任何付款。`Retry-After: 60`。持续超限的 IP 会被封禁一段时间（`403`）。 |
+| `502` | Facilitator 在校验或结算时没有响应，或者付款结算后数据源没有响应。再次付款前请先检查你的钱包。 |
+| `503` | 数据或付款配置不可用。不会要求也不会结算任何付款。 |
+| `200` | 已付款并返回数据，附带 `PAYMENT-RESPONSE` 收据。 |
+
+- **一条路由。** 目前 tickers 路由是唯一的付费路由。
+- **先付款。** 付款在数据发送之前完成结算。数据缺失时，路由会在要求任何付款之前返回 `503`。
+- **延迟。** 据 FTP 介绍，在 mainnet 上，首次之后的付款通常在 10 到 25 秒内完成；冷启动后的第一次付款耗时更长。
+- **按次计费。** 每次调用单独定价、单独付款。CCTools 这边没有订阅，也没有预付余额。

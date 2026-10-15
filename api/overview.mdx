@@ -21,8 +21,8 @@ One more route, paid per call over x402 instead of a key, lives under
 
 ## Authentication
 
-Every endpoint except `/api/v1/public/status` requires an API key, sent in the
-**`X-API-Key`** header. There is no `Authorization: Bearer` scheme, and a
+Every `/api/v1/public/` endpoint except `/api/v1/public/status` requires an API
+key, sent in the **`X-API-Key`** header. There is no `Authorization: Bearer` scheme, and a
 Bearer header is rejected.
 
 ```bash

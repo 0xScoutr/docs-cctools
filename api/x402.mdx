@@ -15,7 +15,7 @@ need no key and no account, only a Canton wallet that can pay.
 | | Details |
 |---|---|
 | Route | `GET https://api.cctools.network/api/v1/x402/markets/tickers` |
-| Answer | Spot trading pairs on Temple Digital Group's exchange on Canton, one row per pair: `ticker_id`, `base_currency`, `target_currency`, `last_price`, `base_volume`, `target_volume`, `high`, `low`, `bid`, `ask`. CCTools refreshes the list every 5 minutes. Same body as the key-based `/api/v1/public/markets/tickers`. |
+| Answer | Spot trading pairs on Temple Digital Group's exchange on Canton, one row per pair: `ticker_id`, `base_currency`, `target_currency`, `last_price`, `base_volume`, `target_volume`, `high`, `low`, `bid`, `ask`. CCTools reads the list every 5 minutes and serves the last good read. Same rows as the key-based `/api/v1/public/markets/tickers`. |
 | Network and scheme | `canton:mainnet`, x402 `exact` |
 | Facilitator | FTP, `https://facilitator.ftptech.xyz` |
 | Price per call | 0.1 CC, 0.01 USDCx or 0.000004 cETH, as the route asked on 15 October 2026 |

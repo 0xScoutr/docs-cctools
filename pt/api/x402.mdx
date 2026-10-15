@@ -1,0 +1,164 @@
+---
+title: "Pague por chamada com x402"
+description: "Chame a rota paga do CCTools com um pagamento x402 na Canton, em CC, USDCx ou cETH: sem chave de API e sem conta."
+icon: "coins"
+---
+
+[x402](https://x402.org) é um padrão aberto de pagamento construído sobre o
+status HTTP `402 Payment Required`: o servidor responde à primeira chamada com
+o preço, o cliente paga e chama de novo com a prova do pagamento, e o servidor
+responde com os dados. No CCTools, uma rota funciona assim, ao lado das rotas
+com chave de API. Você não precisa de chave nem de conta, só de uma carteira
+Canton que possa pagar.
+
+## A rota paga
+
+| | Detalhes |
+|---|---|
+| Rota | `GET https://api.cctools.network/api/v1/x402/markets/tickers` |
+| Resposta | Pares de negociação à vista na exchange da Temple Digital Group na Canton, uma linha por par: `ticker_id`, `base_currency`, `target_currency`, `last_price`, `base_volume`, `target_volume`, `high`, `low`, `bid`, `ask`. O CCTools lê a lista a cada 5 minutos e serve a última leitura bem-sucedida. As mesmas linhas da rota com chave `/api/v1/public/markets/tickers`. |
+| Rede e esquema | `canton:mainnet`, x402 `exact` |
+| Facilitador | FTP, `https://facilitator.ftptech.xyz` |
+| Preço por chamada | 0,1 CC, 0,01 USDCx ou 0,000004 cETH, como a rota pediu em 15 de outubro de 2026 |
+
+<Note>
+O preço fica na própria resposta `402` da rota, e essa resposta é a referência.
+Leia o preço nela antes de pagar, em vez de confiar nos valores acima.
+</Note>
+
+Cada valor de uma linha é uma string. Preços e volumes são decimais, volume,
+máxima e mínima cobrem 24 horas, e `"0"` significa que a exchange não informou
+nenhum valor.
+
+```json
+{
+  "data": [
+    {
+      "ticker_id": "CC_USDCx",
+      "base_currency": "CC",
+      "target_currency": "USDCx",
+      "last_price": "0.10826",
+      "base_volume": "31561781.700233933",
+      "target_volume": "3682113.4302826356",
+      "bid": "0.1082",
+      "ask": "0.10826",
+      "high": "0.12537",
+      "low": "0.10804"
+    }
+  ],
+  "pagination": null,
+  "meta": { "tier": "paid", "rate_limit_remaining": null }
+}
+```
+
+A linha acima é um exemplo do formato, como a Temple a retornou em 15 de
+outubro de 2026 às 04:12 UTC. Não é um preço atual.
+
+## Como funciona uma chamada paga
+
+<Steps>
+  <Step title="Chame sem pagar">
+    A rota responde `402` com um header `PAYMENT-REQUIRED`: JSON codificado em
+    base64 cujo array `accepts` traz uma entrada por ativo em que você pode
+    pagar. O `amount` de cada entrada está em unidades atômicas com dez casas
+    decimais, então `1000000000` é 0,1.
+  </Step>
+  <Step title="Assine uma transferência para uma entrada">
+    Seu cliente assina uma transferência na Canton que corresponde exatamente a
+    uma entrada e chama de novo com ela no header `PAYMENT-SIGNATURE`,
+    repetindo essa entrada. Um cliente x402 faz esse passo por você.
+  </Step>
+  <Step title="Receba os dados e o recibo">
+    O facilitador confere a transferência e a liquida no ledger, e a rota
+    responde `200` com os dados e um header `PAYMENT-RESPONSE` que traz o
+    recibo da liquidação.
+  </Step>
+</Steps>
+
+Para ler o preço você mesmo:
+
+```bash
+curl -s -D - -o /dev/null "https://api.cctools.network/api/v1/x402/markets/tickers" \
+  | grep -i '^payment-required:' | cut -d' ' -f2 | tr -d '\r' \
+  | base64 -d | jq '.accepts[] | {asset, amount}'
+```
+
+## Pague a partir de um agente
+
+A FTP, que opera o facilitador, publica uma carteira de agente com
+autocustódia e um cliente de linha de comando,
+[`@ftptech/canton-agent-wallet`](https://www.npmjs.com/package/@ftptech/canton-agent-wallet).
+Estes passos seguem o
+[guia de agentes da FTP](https://ftp-tech.mintlify.site/x402-agent) e o README
+do pacote (versão 2.3.1, lido em 15 de outubro de 2026):
+
+```bash
+npm i -g @ftptech/canton-agent-wallet@latest
+export CANTON_AGENT_NETWORK=canton:mainnet
+export CANTON_AGENT_RELAY_URL=https://facilitator.ftptech.xyz
+
+canton-agent-wallet create      # cria a carteira e a party dela na Canton
+# envie CC para o party id que ele imprime e depois:
+canton-agent-wallet claim       # aceita o CC recebido
+canton-agent-wallet pay --max 0.1 https://api.cctools.network/api/v1/x402/markets/tickers
+```
+
+`pay` lê o `402`, paga uma entrada e imprime a resposta. `--max` limita quanto
+um pagamento pode custar, em CC a menos que você escolha outro ativo, e a
+carteira recusa antes de assinar qualquer valor acima dele. Para pagar em USDCx
+ou cETH, adicione `--asset USDCx` (ou `cETH`) e antes autorize o gasto desse
+token com `CANTON_AGENT_PAYABLE_INSTRUMENTS`, como o guia da FTP descreve.
+
+<Warning>
+O CLI usa `canton:testnet` por padrão. Sem `CANTON_AGENT_NETWORK=canton:mainnet`,
+o pagamento falha por divergência de rede. O arquivo de carteira que ele cria,
+`~/.canton-agent/wallet.json`, guarda a chave dos seus fundos: faça backup dele.
+</Warning>
+
+No código, o mesmo pacote exporta `makePayingFetch`, um `fetch` que paga
+qualquer `402` que encontrar:
+
+```typescript
+import { makePayingFetch } from "@ftptech/canton-agent-wallet";
+
+const payFetch = await makePayingFetch({
+  relayUrl: "https://facilitator.ftptech.xyz",
+  network: "canton:mainnet",
+});
+
+const res = await payFetch("https://api.cctools.network/api/v1/x402/markets/tickers");
+const { data } = await res.json();
+```
+
+## Detalhes legíveis por máquina
+
+- A resposta `402` descreve a rota no formato de descoberta x402 Bazaar:
+  `extensions.bazaar` traz a chamada (um `GET` sem parâmetros), um JSON Schema
+  da resposta e uma linha de exemplo, e `resource` traz uma descrição com o
+  preço por ativo.
+- A [especificação OpenAPI](https://api.cctools.network/api/v1/openapi.json)
+  marca a rota com um bloco `x-x402`: esquema, rede, facilitador, os três
+  headers e o preço por ativo com o horário em que foi lido.
+- [cctools.network/llms.txt](https://cctools.network/llms.txt) lista a rota
+  para modelos de linguagem.
+
+## Respostas e limites
+
+| Resposta | Significado |
+|---|---|
+| `402`, primeira chamada | Nenhum pagamento anexado. A lista de preços está no header `PAYMENT-REQUIRED`. |
+| `402`, com pagamento | Recusado, com o motivo: a entrada não corresponde ao preço, o facilitador considerou a transferência inválida ou ela não foi liquidada. |
+| `400` | O header `PAYMENT-SIGNATURE` não é JSON em base64. |
+| `429` | Mais de 600 requisições por minuto de um mesmo IP em toda a API, recusadas antes de a rota rodar, então nenhum pagamento é pedido nem liquidado. `Retry-After: 60`. Um IP que insiste fica bloqueado por um tempo (`403`). |
+| `502` | O facilitador não respondeu ao conferir ou liquidar, ou a fonte de dados não respondeu depois que o pagamento foi liquidado. Confira sua carteira antes de pagar de novo. |
+| `503` | Os dados ou a configuração de pagamento estão indisponíveis. Nenhum pagamento é pedido nem liquidado. |
+| `200` | Pago e entregue, com um recibo `PAYMENT-RESPONSE`. |
+
+- **Uma rota.** A rota de tickers é a única rota paga hoje.
+- **Pagamento primeiro.** O pagamento é liquidado antes de os dados serem
+  enviados. Quando os dados não estão disponíveis, a rota responde `503` antes
+  de pedir qualquer pagamento.
+- **Latência.** A FTP informa que um pagamento depois do primeiro costuma levar
+  de 10 a 25 segundos na mainnet; o primeiro após um início a frio demora mais.
+- **Por chamada.** Cada chamada tem preço e pagamento próprios. Não há
+  assinatura nem saldo pré-pago do lado do CCTools.

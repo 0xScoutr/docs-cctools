@@ -599,7 +599,8 @@
                   "es/api/overview",
                   "es/api/quickstart",
                   "es/api/authentication",
-                  "es/api/endpoints"
+                  "es/api/endpoints",
+                  "es/api/x402"
                 ]
               }
             ]
@@ -746,7 +747,8 @@
                   "pt/api/overview",
                   "pt/api/quickstart",
                   "pt/api/authentication",
-                  "pt/api/endpoints"
+                  "pt/api/endpoints",
+                  "pt/api/x402"
                 ]
               }
             ]
@@ -893,7 +895,8 @@
                   "zh/api/overview",
                   "zh/api/quickstart",
                   "zh/api/authentication",
-                  "zh/api/endpoints"
+                  "zh/api/endpoints",
+                  "zh/api/x402"
                 ]
               }
             ]

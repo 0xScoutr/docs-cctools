@@ -15,11 +15,13 @@ gobernanza, las noticias y las estadísticas de la red en vivo.
 https://api.cctools.network
 ```
 
-Todos los endpoints viven bajo el prefijo `/api/v1/public/` y devuelven JSON.
+Los endpoints con clave viven bajo el prefijo `/api/v1/public/` y devuelven JSON.
+Una ruta más, de pago por llamada con x402 en lugar de una clave, vive bajo
+`/api/v1/x402/`: consulta [Paga por llamada con x402](/es/api/x402).
 
 ## Autenticación
 
-Todos los endpoints, excepto `/api/v1/public/status`, requieren una clave de API, enviada en la cabecera **`X-API-Key`**.
+Todos los endpoints de `/api/v1/public/`, excepto `/api/v1/public/status`, requieren una clave de API, enviada en la cabecera **`X-API-Key`**.
 No existe un esquema `Authorization: Bearer`, y una cabecera Bearer se rechaza.
 
 ```bash

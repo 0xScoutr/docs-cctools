@@ -15,11 +15,13 @@ usuários, a governança, as notícias e as estatísticas da rede em tempo real.
 https://api.cctools.network
 ```
 
-Todos os endpoints ficam sob o prefixo `/api/v1/public/` e retornam JSON.
+Os endpoints com chave ficam sob o prefixo `/api/v1/public/` e retornam JSON.
+Mais uma rota, paga por chamada com x402 em vez de uma chave, fica sob
+`/api/v1/x402/`: veja [Pague por chamada com x402](/pt/api/x402).
 
 ## Autenticação
 
-Todos os endpoints, exceto `/api/v1/public/status`, exigem uma chave de API, enviada no header **`X-API-Key`**.
+Todos os endpoints de `/api/v1/public/`, exceto `/api/v1/public/status`, exigem uma chave de API, enviada no header **`X-API-Key`**.
 Não existe esquema `Authorization: Bearer`, e um header Bearer é rejeitado.
 
 ```bash

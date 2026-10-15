@@ -15,11 +15,11 @@ cctools.network 的同一份 Canton Network 数据：
 https://api.cctools.network
 ```
 
-每个 endpoint 都位于 `/api/v1/public/` 前缀之下，并返回 JSON。
+需要密钥的 endpoint 都位于 `/api/v1/public/` 前缀之下，并返回 JSON。另有一条路由按次通过 x402 付费、无需密钥，位于 `/api/v1/x402/` 之下：见[通过 x402 按次付费](/zh/api/x402)。
 
 ## 认证
 
-除 `/api/v1/public/status` 外，所有 endpoint 都需要 API 密钥，通过 **`X-API-Key`** header 发送。不存在
+除 `/api/v1/public/status` 外，所有 `/api/v1/public/` endpoint 都需要 API 密钥，通过 **`X-API-Key`** header 发送。不存在
 `Authorization: Bearer` 方案，携带 Bearer header 的调用会被拒绝。
 
 ```bash
