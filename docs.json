@@ -451,7 +451,8 @@
                   "api/overview",
                   "api/quickstart",
                   "api/authentication",
-                  "api/endpoints"
+                  "api/endpoints",
+                  "api/x402"
                 ]
               }
             ]
