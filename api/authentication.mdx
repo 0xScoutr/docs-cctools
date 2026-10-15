@@ -6,8 +6,8 @@ icon: "key"
 
 ## API keys
 
-Every request authenticates with a key in the **`X-API-Key`** header, except
-requests to `/api/v1/public/status`, which needs none:
+Every request to a `/api/v1/public/` endpoint authenticates with a key in the **`X-API-Key`** header, except
+requests to `/api/v1/public/status`, which needs none. The pay-per-call route under `/api/v1/x402/` needs no key (see [Pay per call with x402](/api/x402)):
 
 ```bash
 curl -H "X-API-Key: cck_your_key_here" \

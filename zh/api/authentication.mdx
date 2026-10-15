@@ -6,7 +6,7 @@ icon: "key"
 
 ## API 密钥
 
-除发往 `/api/v1/public/status` 的请求（无需密钥）外，每个请求都通过 **`X-API-Key`** header 中的密钥进行认证：
+除发往 `/api/v1/public/status` 的请求（无需密钥）外，每个发往 `/api/v1/public/` 端点的请求都通过 **`X-API-Key`** header 中的密钥进行认证。`/api/v1/x402/` 下按次付费的路由不需要密钥（见[通过 x402 按次付费](/zh/api/x402)）：
 
 ```bash
 curl -H "X-API-Key: cck_your_key_here" \

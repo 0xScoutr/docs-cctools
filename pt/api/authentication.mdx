@@ -6,7 +6,7 @@ icon: "key"
 
 ## Chaves de API
 
-Cada requisição se autentica com uma chave no cabeçalho **`X-API-Key`**, exceto as requisições a `/api/v1/public/status`, que não precisa de chave:
+Cada requisição a um endpoint `/api/v1/public/` se autentica com uma chave no cabeçalho **`X-API-Key`**, exceto as requisições a `/api/v1/public/status`, que não precisa de chave. A rota paga por chamada em `/api/v1/x402/` não usa chave (veja [Pague por chamada com x402](/pt/api/x402)):
 
 ```bash
 curl -H "X-API-Key: cck_your_key_here" \
