@@ -10,10 +10,10 @@ Tu Human Score es una señal de credibilidad que ayuda a la comunidad de Canton 
 El Human Score combina múltiples señales de corroboración para responder a una sola pregunta: "¿Es este un humano único?". Se nutre de tres categorías principales.
 
 - **Identidad y seguridad**: verificación de correo electrónico, autenticación de dos factores y un avatar cargado
-- **Prueba on-chain y social**: conexión de una billetera Canton, cuentas sociales vinculadas (X, Discord, Telegram), antigüedad de la cuenta y patrones de actividad
-- **Señales de la comunidad**: consistencia de la interacción (rachas diarias de 7 días o más, o 10 acciones o más en 30 días), haber sido referido por un usuario de confianza
+- **Prueba on-chain y social**: conexión de una billetera Canton, cuentas sociales vinculadas (X, Discord, Telegram, GitHub), antigüedad de la cuenta y patrones de actividad
+- **Señales de la comunidad**: consistencia de la interacción (una racha diaria de 8 días o más, o 11 acciones o más en los últimos 30 días)
 
-La puntuación se calcula mediante una vista materializada que se actualiza cada cuatro horas y bajo demanda cuando agregas o quitas un sello. Las cuentas baneadas tienen un tope estricto de 0 y nunca son Verified, sin importar las demás señales.
+La puntuación se calcula mediante una vista materializada que se actualiza cada cuatro horas. Las cuentas baneadas tienen un tope estricto de 0 y nunca son Verified, sin importar las demás señales.
 
 ## Niveles de puntuación
 
@@ -24,7 +24,7 @@ Tu puntuación corresponde a uno de cuatro niveles. Cada sello se valora por lo 
 | Restricted | 0 | No | Cuenta baneada (contacta a soporte si crees que es un error) |
 | Newcomer | Cualquiera | No | Sin billetera Canton conectada, o puntuación por debajo del piso |
 | Verified | 26-54 | Sí | Billetera Canton conectada Y puntuación igual o superior a 26 |
-| Elite | 55-73 | Sí | Puntuación de 55 o más, inalcanzable sin historial on-chain |
+| Elite | 55-73 | Sí | Puntuación de 55 o más, inalcanzable sin tener CC o una billetera Canton cuya primera transferencia tenga 90 días o más |
 
 El **piso de Verified es 26**: necesitas tanto una billetera Canton conectada (el ancla) COMO una puntuación de al menos 26 para ser Verified. Esta verificación de dos partes (ancla más corroboración) garantiza que una billetera por sí sola no sea suficiente, y que los factores blandos por sí solos nunca sean suficientes.
 
@@ -76,4 +76,4 @@ No. Los sellos se ganan automáticamente cuando completas la acción (vincular u
 No. Tu puntuación persiste hasta que banees tu cuenta o tu cuenta sea baneada. Quitar sellos individuales (por ejemplo, desvincular una red social) reducirá tu puntuación, pero no la reiniciará a cero.
 
 **¿Con qué frecuencia se actualiza mi puntuación?**
-La puntuación se recalcula cada cuatro horas según una programación de cron, y al instante cuando agregas o quitas un sello desde la interfaz (la API de desglose refleja el cambio de inmediato).
+La puntuación se recalcula cada cuatro horas según una programación de cron. La lista de sellos en /profile/score se lee en directo, así que un sello que agregas o quitas aparece ahí de inmediato, mientras que tu puntuación y tu nivel se actualizan en el siguiente recálculo.

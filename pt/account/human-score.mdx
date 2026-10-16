@@ -10,10 +10,10 @@ Seu Human Score é um sinal de credibilidade que ajuda a comunidade da Canton Ne
 O Human Score combina vários sinais de corroboração para responder a uma única pergunta: "Este é um humano único?". Ele se baseia em três categorias principais.
 
 - **Identidade e segurança**: verificação de e-mail, autenticação de dois fatores e um avatar enviado
-- **Prova on-chain e social**: conexão de uma carteira Canton, contas sociais vinculadas (X, Discord, Telegram), idade da conta e padrões de atividade
-- **Sinais da comunidade**: consistência de engajamento (sequências diárias de 7 dias ou mais, ou 10 ações ou mais em 30 dias), ter sido indicado por um usuário de confiança
+- **Prova on-chain e social**: conexão de uma carteira Canton, contas sociais vinculadas (X, Discord, Telegram, GitHub), idade da conta e padrões de atividade
+- **Sinais da comunidade**: consistência de engajamento (uma sequência diária de 8 dias ou mais, ou 11 ações ou mais nos últimos 30 dias)
 
-A pontuação é calculada por uma visão materializada que é atualizada a cada quatro horas e sob demanda quando você adiciona ou remove um selo. Contas banidas têm teto rígido de 0 e nunca são Verified, independentemente dos demais sinais.
+A pontuação é calculada por uma visão materializada que é atualizada a cada quatro horas. Contas banidas têm teto rígido de 0 e nunca são Verified, independentemente dos demais sinais.
 
 ## Níveis de pontuação
 
@@ -24,7 +24,7 @@ Sua pontuação corresponde a um de quatro níveis. Cada selo é precificado pel
 | Restricted | 0 | Não | Conta banida (contate o suporte se achar que é um engano) |
 | Newcomer | Qualquer | Não | Nenhuma carteira Canton conectada, ou pontuação abaixo do piso |
 | Verified | 26-54 | Sim | Carteira Canton conectada E pontuação igual ou superior a 26 |
-| Elite | 55-73 | Sim | Pontuação de 55 ou mais, inalcançável sem histórico on-chain |
+| Elite | 55-73 | Sim | Pontuação de 55 ou mais, inalcançável sem possuir CC ou uma carteira Canton cuja primeira transferência tenha 90 dias ou mais |
 
 O **piso do Verified é 26**: você precisa tanto de uma carteira Canton conectada (a âncora) QUANTO de uma pontuação de pelo menos 26 para ser Verified. Essa verificação em duas partes (âncora mais corroboração) garante que uma carteira sozinha não seja suficiente, e que fatores leves sozinhos nunca sejam suficientes.
 
@@ -76,4 +76,4 @@ Não. Os selos são conquistados automaticamente quando você completa a ação 
 Não. Sua pontuação persiste até que você banha sua conta ou sua conta seja banida. Remover selos individuais (por exemplo, desvincular uma rede social) reduzirá sua pontuação, mas não a redefinirá para zero.
 
 **Com que frequência minha pontuação é atualizada?**
-A pontuação é recalculada a cada quatro horas em uma programação de cron, e instantaneamente quando você adiciona ou remove um selo pela interface (a API de detalhamento reflete a mudança de imediato).
+A pontuação é recalculada a cada quatro horas em uma programação de cron. A lista de selos em /profile/score é lida em tempo real, então um selo que você adiciona ou remove aparece ali na hora, enquanto sua pontuação e seu nível só mudam no próximo recálculo.

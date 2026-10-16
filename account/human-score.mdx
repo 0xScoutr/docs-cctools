@@ -10,10 +10,10 @@ Your Human Score is a credibility signal that helps the Canton Network community
 The Human Score combines multiple corroboration signals to answer a single question: "Is this a unique human?" It pulls from three main categories.
 
 - **Identity and security**: Email verification, two-factor authentication, and an uploaded avatar
-- **On-chain and social proof**: Canton wallet connection, linked social accounts (X, Discord, Telegram), account age, and activity patterns
-- **Community signals**: Engagement consistency (daily streaks of 7+ days or 10+ actions in 30 days), being referred by a trusted user
+- **On-chain and social proof**: Canton wallet connection, linked social accounts (X, Discord, Telegram, GitHub), account age, and activity patterns
+- **Community signals**: Engagement consistency (a daily streak of 8 days or more, or 11 or more actions in the last 30 days)
 
-The score is computed by a materialized view that refreshes every four hours and on-demand when you add or remove a stamp. Banned accounts are hard-capped at a score of 0 and never Verified, regardless of other signals.
+The score is computed by a materialized view that refreshes every four hours. Banned accounts are hard-capped at a score of 0 and never Verified, regardless of other signals.
 
 ## Score tiers
 
@@ -24,7 +24,7 @@ Your score maps to one of four tiers. Every stamp is priced by how expensive it 
 | Restricted | 0 | No | Account banned (contact support if you think this is a mistake) |
 | Newcomer | Any | No | No Canton wallet connected, or score below the floor |
 | Verified | 26-54 | Yes | Connected Canton wallet AND score at or above 26 |
-| Elite | 55-73 | Yes | Score 55 or higher, which is out of reach without on-chain history |
+| Elite | 55-73 | Yes | Score 55 or higher, which is out of reach without holding CC or a Canton wallet whose first transfer is 90 or more days old |
 
 The **Verified floor is 26**: you need both a connected Canton wallet (the anchor) AND a score of at least 26 to be Verified. This two-part gate (anchor plus corroboration) ensures that a wallet alone is not sufficient, and soft factors alone are never sufficient.
 
@@ -76,4 +76,4 @@ No. Stamps are earned automatically when you complete the action (link a social,
 No. Your score persists until you either ban your account or your account is banned. Removing individual stamps (e.g. unlinking a social) will lower your score, but it will not reset to zero.
 
 **How often does my score update?**
-The score recomputes every four hours on a cron schedule, and instantly when you add or remove a stamp via the UI (the breakdown API reflects the change immediately).
+The score recomputes every four hours on a cron schedule. The stamp list on /profile/score is read live, so a stamp you add or remove shows there right away, while your score and tier follow at the next recompute.
