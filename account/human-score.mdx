@@ -22,7 +22,7 @@ Your score maps to one of four tiers. Every stamp is priced by how expensive it 
 | Tier | Range | Verified? | Meaning |
 |------|-------|-----------|---------|
 | Restricted | 0 | No | Account banned (contact support if you think this is a mistake) |
-| Newcomer | Any | No | No Canton wallet connected, or score below the floor |
+| Newcomer | Any | No | No Canton wallet connected, or score below the floor (your own Score tab shows Unverified until a wallet is connected) |
 | Verified | 26-54 | Yes | Connected Canton wallet AND score at or above 26 |
 | Elite | 55-73 | Yes | Score 55 or higher, which is out of reach without holding CC or a Canton wallet whose first transfer is 90 or more days old |
 
@@ -76,4 +76,4 @@ No. Stamps are earned automatically when you complete the action (link a social,
 Only if you delete your account. Until then your score is kept: removing individual stamps (e.g. unlinking a social) will lower it, but it will not reset to zero. A banned account scores 0.
 
 **How often does my score update?**
-The score recomputes every four hours on a cron schedule. The stamp list on /profile/score is read live, so a stamp you add or remove shows there right away, while your score and tier follow at the next recompute.
+The score recomputes every four hours on a cron schedule. The stamp list on /profile/score is read live, so a stamp you add or remove shows there right away, while your score, and the tier others see, follow at the next recompute.

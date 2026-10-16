@@ -22,7 +22,7 @@ Sua pontuação corresponde a um de quatro níveis. Cada selo é precificado pel
 | Nível | Faixa | Verified? | Significado |
 |------|-------|-----------|---------|
 | Restricted | 0 | Não | Conta banida (contate o suporte se achar que é um engano) |
-| Newcomer | Qualquer | Não | Nenhuma carteira Canton conectada, ou pontuação abaixo do piso |
+| Newcomer | Qualquer | Não | Nenhuma carteira Canton conectada, ou pontuação abaixo do piso (a sua própria aba Score mostra Unverified até você conectar uma carteira) |
 | Verified | 26-54 | Sim | Carteira Canton conectada E pontuação igual ou superior a 26 |
 | Elite | 55-73 | Sim | Pontuação de 55 ou mais, inalcançável sem possuir CC ou uma carteira Canton cuja primeira transferência tenha 90 dias ou mais |
 
@@ -76,4 +76,4 @@ Não. Os selos são conquistados automaticamente quando você completa a ação 
 Somente se você excluir a sua conta. Até lá, a sua pontuação é mantida: remover selos individuais (por exemplo, desvincular uma rede social) vai reduzi-la, mas não vai redefini-la para zero. Uma conta banida tem pontuação 0.
 
 **Com que frequência minha pontuação é atualizada?**
-A pontuação é recalculada a cada quatro horas em uma programação de cron. A lista de selos em /profile/score é lida em tempo real, então um selo que você adiciona ou remove aparece ali na hora, enquanto sua pontuação e seu nível só mudam no próximo recálculo.
+A pontuação é recalculada a cada quatro horas em uma programação de cron. A lista de selos em /profile/score é lida em tempo real, então um selo que você adiciona ou remove aparece ali na hora, enquanto sua pontuação, e o nível que os outros veem, só mudam no próximo recálculo.

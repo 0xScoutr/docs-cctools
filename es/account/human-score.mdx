@@ -22,7 +22,7 @@ Tu puntuación corresponde a uno de cuatro niveles. Cada sello se valora por lo 
 | Nivel | Rango | ¿Verified? | Significado |
 |------|-------|-----------|---------|
 | Restricted | 0 | No | Cuenta baneada (contacta a soporte si crees que es un error) |
-| Newcomer | Cualquiera | No | Sin billetera Canton conectada, o puntuación por debajo del piso |
+| Newcomer | Cualquiera | No | Sin billetera Canton conectada, o puntuación por debajo del piso (tu propia pestaña Score muestra Unverified hasta que conectes una billetera) |
 | Verified | 26-54 | Sí | Billetera Canton conectada Y puntuación igual o superior a 26 |
 | Elite | 55-73 | Sí | Puntuación de 55 o más, inalcanzable sin tener CC o una billetera Canton cuya primera transferencia tenga 90 días o más |
 
@@ -76,4 +76,4 @@ No. Los sellos se ganan automáticamente cuando completas la acción (vincular u
 Solo si eliminas tu cuenta. Hasta entonces tu puntuación se conserva: quitar sellos individuales (por ejemplo, desvincular una red social) la reducirá, pero no la reiniciará a cero. Una cuenta baneada puntúa 0.
 
 **¿Con qué frecuencia se actualiza mi puntuación?**
-La puntuación se recalcula cada cuatro horas según una programación de cron. La lista de sellos en /profile/score se lee en directo, así que un sello que agregas o quitas aparece ahí de inmediato, mientras que tu puntuación y tu nivel se actualizan en el siguiente recálculo.
+La puntuación se recalcula cada cuatro horas según una programación de cron. La lista de sellos en /profile/score se lee en directo, así que un sello que agregas o quitas aparece ahí de inmediato, mientras que tu puntuación, y el nivel que ven los demás, se actualizan en el siguiente recálculo.
