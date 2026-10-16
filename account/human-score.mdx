@@ -37,7 +37,7 @@ Verified is a formal gate: your account is only Verified if you have BOTH of the
 1. A connected Canton wallet (Send, 5N Loop, or another Canton client)
 2. A Human Score of 26 or higher
 
-This mirrors the "anchor plus corroboration" pattern used by Gitcoin Passport and other credibility platforms. On Canton, this design is stronger because party-IDs are not free: a single human cannot easily create many verified accounts.
+This mirrors the "anchor plus corroboration" pattern used by Gitcoin Passport and other credibility platforms.
 
 Your Human Score never blocks you from joining a campaign or completing its tasks, and first-come-first-served code and link rewards never depend on it. Some raffles require the Verified or Elite tier, which is checked when the winners are published.
 
@@ -73,7 +73,7 @@ No. The raw score, which tops out at 73, is internal and only surfaces as a tier
 No. Stamps are earned automatically when you complete the action (link a social, enable 2FA, stay active). The /profile/score page just shows you the breakdown.
 
 **Is my score ever deleted?**
-No. Your score persists until you either ban your account or your account is banned. Removing individual stamps (e.g. unlinking a social) will lower your score, but it will not reset to zero.
+Only if you delete your account. Until then your score is kept: removing individual stamps (e.g. unlinking a social) will lower it, but it will not reset to zero. A banned account scores 0.
 
 **How often does my score update?**
 The score recomputes every four hours on a cron schedule. The stamp list on /profile/score is read live, so a stamp you add or remove shows there right away, while your score and tier follow at the next recompute.

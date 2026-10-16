@@ -37,7 +37,7 @@ Verified es una verificación formal: tu cuenta solo es Verified si cumples AMBA
 1. Una billetera Canton conectada (Send, 5N Loop u otro cliente de Canton)
 2. Un Human Score de 26 o más
 
-Esto refleja el patrón de "ancla más corroboración" usado por Gitcoin Passport y otras plataformas de credibilidad. En Canton, este diseño es más sólido porque los party-IDs no son gratuitos: un solo humano no puede crear fácilmente muchas cuentas verificadas.
+Esto refleja el patrón de "ancla más corroboración" usado por Gitcoin Passport y otras plataformas de credibilidad.
 
 Tu Human Score nunca te impide unirte a una campaña ni completar sus tareas, y las recompensas de código o enlace por orden de llegada nunca dependen de él. Algunos sorteos exigen el nivel Verified o Elite, que se comprueba cuando se publican los ganadores.
 
@@ -73,7 +73,7 @@ No. La puntuación cruda, que llega como máximo a 73, es interna y solo se mues
 No. Los sellos se ganan automáticamente cuando completas la acción (vincular una red social, activar 2FA, mantenerte activo). La página /profile/score solo te muestra el desglose.
 
 **¿Se elimina alguna vez mi puntuación?**
-No. Tu puntuación persiste hasta que banees tu cuenta o tu cuenta sea baneada. Quitar sellos individuales (por ejemplo, desvincular una red social) reducirá tu puntuación, pero no la reiniciará a cero.
+Solo si eliminas tu cuenta. Hasta entonces tu puntuación se conserva: quitar sellos individuales (por ejemplo, desvincular una red social) la reducirá, pero no la reiniciará a cero. Una cuenta baneada puntúa 0.
 
 **¿Con qué frecuencia se actualiza mi puntuación?**
 La puntuación se recalcula cada cuatro horas según una programación de cron. La lista de sellos en /profile/score se lee en directo, así que un sello que agregas o quitas aparece ahí de inmediato, mientras que tu puntuación y tu nivel se actualizan en el siguiente recálculo.
