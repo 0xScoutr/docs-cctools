@@ -16,7 +16,7 @@ Canton que pueda pagar.
 | | Detalles |
 |---|---|
 | Ruta | `GET https://api.cctools.network/api/v1/x402/markets/tickers` |
-| Respuesta | Pares de trading al contado en el exchange de Temple Digital Group en Canton, una fila por par: `ticker_id`, `base_currency`, `target_currency`, `last_price`, `base_volume`, `target_volume`, `high`, `low`, `bid`, `ask`. CCTools lee la lista cada 5 minutos y sirve la última lectura correcta. Las mismas filas que la ruta con clave `/api/v1/public/markets/tickers`. |
+| Respuesta | Pares de trading al contado en el exchange de Temple Digital Group en Canton, una fila por par: `ticker_id`, `base_currency`, `target_currency`, `last_price`, `base_volume`, `target_volume`, `high`, `low`, `bid`, `ask`. CCTools lee la lista cada 5 minutos; cuando la última lectura correcta tiene más de 30 minutos, la ruta responde `503` y no pide ningún pago. Las mismas filas que la ruta con clave `/api/v1/public/markets/tickers`. |
 | Red y esquema | `canton:mainnet`, x402 `exact` |
 | Facilitador | FTP, `https://facilitator.ftptech.xyz` |
 | Precio por llamada | 0,1 CC, 0,01 USDCx o 0,000004 cETH, según lo que pedía la ruta el 15 de octubre de 2026 |
@@ -152,12 +152,13 @@ const { data } = await res.json();
 | `400` | La cabecera `PAYMENT-SIGNATURE` no es JSON en base64. |
 | `429` | Más de 600 solicitudes por minuto desde una misma IP en toda la API, rechazadas antes de que la ruta se ejecute, así que no se pide ni se liquida ningún pago. `Retry-After: 60`. Una IP que insiste queda bloqueada durante un tiempo (`403`). |
 | `502` | El facilitador no respondió al comprobar o liquidar, o la fuente de datos no respondió después de liquidarse el pago. Revisa tu billetera antes de volver a pagar. |
-| `503` | Los datos o la configuración de pago no están disponibles. No se pide ni se liquida ningún pago. |
+| `503` | Faltan los datos, o la última lectura correcta tiene más de 30 minutos (`Retry-After: 60`), o la configuración de pago no está disponible (tras una configuración fallida, `Retry-After` indica los segundos hasta el próximo intento). No se pide ni se liquida ningún pago. |
 | `200` | Pagado y servido, con un recibo `PAYMENT-RESPONSE`. |
 
 - **Una ruta.** La ruta de tickers es la única ruta de pago por ahora.
 - **Primero el pago.** El pago se liquida antes de enviar los datos. Cuando
-  faltan los datos, la ruta responde `503` antes de pedir ningún pago.
+  faltan los datos o la última lectura correcta tiene más de 30 minutos, la
+  ruta responde `503` antes de pedir ningún pago.
 - **Latencia.** FTP indica que un pago posterior al primero suele completarse
   en 10 a 25 segundos en mainnet; el primero tras un arranque en frío tarda más.
 - **Por llamada.** Cada llamada tiene su propio precio y su propio pago. No hay

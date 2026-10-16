@@ -11,7 +11,7 @@ icon: "coins"
 | | 详情 |
 |---|---|
 | 路由 | `GET https://api.cctools.network/api/v1/x402/markets/tickers` |
-| 返回内容 | Temple Digital Group 在 Canton 上的交易所的现货交易对，每个交易对一行：`ticker_id`、`base_currency`、`target_currency`、`last_price`、`base_volume`、`target_volume`、`high`、`low`、`bid`、`ask`。CCTools 每 5 分钟读取一次列表，并提供最近一次成功读取的结果。与使用密钥的 `/api/v1/public/markets/tickers` 返回相同的行。 |
+| 返回内容 | Temple Digital Group 在 Canton 上的交易所的现货交易对，每个交易对一行：`ticker_id`、`base_currency`、`target_currency`、`last_price`、`base_volume`、`target_volume`、`high`、`low`、`bid`、`ask`。CCTools 每 5 分钟读取一次列表；当最近一次成功读取已超过 30 分钟时，路由返回 `503`，不要求任何付款。与使用密钥的 `/api/v1/public/markets/tickers` 返回相同的行。 |
 | 网络与方案 | `canton:mainnet`，x402 `exact` |
 | Facilitator | FTP，`https://facilitator.ftptech.xyz` |
 | 每次调用价格 | 0.1 CC、0.01 USDCx 或 0.000004 cETH，即该路由在 2026 年 10 月 15 日要求的价格 |
@@ -117,10 +117,10 @@ const { data } = await res.json();
 | `400` | `PAYMENT-SIGNATURE` header 不是 base64 JSON。 |
 | `429` | 同一 IP 在整个 API 上每分钟超过 600 次请求，在路由运行之前就被拒绝，因此不会要求也不会结算任何付款。`Retry-After: 60`。持续超限的 IP 会被封禁一段时间（`403`）。 |
 | `502` | Facilitator 在校验或结算时没有响应，或者付款结算后数据源没有响应。再次付款前请先检查你的钱包。 |
-| `503` | 数据或付款配置不可用。不会要求也不会结算任何付款。 |
+| `503` | 数据缺失，或最近一次成功读取已超过 30 分钟（`Retry-After: 60`），或付款配置不可用（配置失败后，`Retry-After` 给出距离下次尝试的秒数）。不会要求也不会结算任何付款。 |
 | `200` | 已付款并返回数据，附带 `PAYMENT-RESPONSE` 收据。 |
 
 - **一条路由。** 目前 tickers 路由是唯一的付费路由。
-- **先付款。** 付款在数据发送之前完成结算。数据缺失时，路由会在要求任何付款之前返回 `503`。
+- **先付款。** 付款在数据发送之前完成结算。数据缺失或最近一次成功读取已超过 30 分钟时，路由会在要求任何付款之前返回 `503`。
 - **延迟。** 据 FTP 介绍，在 mainnet 上，首次之后的付款通常在 10 到 25 秒内完成；冷启动后的第一次付款耗时更长。
 - **按次计费。** 每次调用单独定价、单独付款。CCTools 这边没有订阅，也没有预付余额。
