@@ -151,7 +151,7 @@ const { data } = await res.json();
 | `400` | O header `PAYMENT-SIGNATURE` não é JSON em base64. |
 | `429` | Mais de 600 requisições por minuto de um mesmo IP em toda a API, recusadas antes de a rota rodar, então nenhum pagamento é pedido nem liquidado. `Retry-After: 60`. Um IP que insiste fica bloqueado por um tempo (`403`). |
 | `502` | O facilitador não respondeu ao conferir ou liquidar, ou a fonte de dados não respondeu depois que o pagamento foi liquidado. Confira sua carteira antes de pagar de novo. |
-| `503` | Os dados não estão disponíveis, ou a última leitura bem-sucedida tem mais de 30 minutos (`Retry-After: 60`), ou a configuração de pagamento está indisponível (depois de uma configuração que falhou, `Retry-After` dá os segundos até a próxima tentativa). Nenhum pagamento é pedido nem liquidado. |
+| `503` | Os dados não estão disponíveis ou a última leitura bem-sucedida tem mais de 30 minutos (`Retry-After: 60`), ou a configuração de pagamento está indisponível (após uma falha na configuração, `Retry-After` informa os segundos até a próxima tentativa). Nenhum pagamento é pedido nem liquidado. |
 | `200` | Pago e entregue, com um recibo `PAYMENT-RESPONSE`. |
 
 - **Uma rota.** A rota de tickers é a única rota paga hoje.

@@ -149,7 +149,7 @@ const { data } = await res.json();
 | `400` | The `PAYMENT-SIGNATURE` header is not base64 JSON. |
 | `429` | More than 600 requests a minute from one IP across the API, refused before the route runs, so nothing is requested or settled. `Retry-After: 60`. An IP that keeps going is blocked for a while (`403`). |
 | `502` | The facilitator did not answer while checking or settling, or the data source did not answer after the payment settled. Check your wallet before you pay again. |
-| `503` | The data is missing, or its last good read is more than 30 minutes old (`Retry-After: 60`), or the payment setup is unavailable (after a failed setup, `Retry-After` gives the seconds until it is tried again). Nothing is requested or settled. |
+| `503` | The data is missing or its last good read is more than 30 minutes old (`Retry-After: 60`), or the payment setup is unavailable (after a failed setup, `Retry-After` gives the seconds until it is tried again). Nothing is requested or settled. |
 | `200` | Paid and served, with a `PAYMENT-RESPONSE` receipt. |
 
 - **One route.** The tickers route is the only paid route today.
