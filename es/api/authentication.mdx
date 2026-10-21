@@ -68,14 +68,13 @@ los precios en [Planes y límites](/es/api/plans).
 
 El plan Free ya terminó. Una clave creada con él responde `401` con el código
 `tier_retired` y un `renew_url` que apunta a los planes: elige un plan y crea
-una clave nueva. Un periodo de Pro que pagaste antes de que cambiaran los planes
-conserva 600 solicitudes por minuto y ningún tope diario hasta que ese periodo
-termine.
+una clave nueva. Pro pagado antes de las 15:30 UTC del 22 de octubre de 2026 conserva 600
+solicitudes por minuto y ningún tope diario hasta que termine ese periodo pagado.
 
 ## Cómo obtener un plan
 
 Abre [/profile/api](https://cctools.network/profile/api). El panel de planes
-muestra lo que tu cuenta puede tomar, y **New key** sigue desactivado hasta que
+muestra lo que tu cuenta puede contratar, y **New key** sigue desactivado hasta que
 tenga un plan.
 
 - **Pro**: con una suscripción a [CCTools Pro](https://cctools.network/pro), la tarjeta de Pro concede Pro al instante (**Unlock Pro access**).
@@ -84,9 +83,9 @@ tenga un plan.
 - **Validator**: envía un party ID en la misma página.
 - **Enterprise**: [contáctanos](https://cctools.network/contact).
 
-¿Estás construyendo algo que necesita más que esto? Solicítalo en la misma página
-y cuéntanos qué estás construyendo. Existen límites más altos y personalizados; se
-acuerdan por cuenta en lugar de elegirse de una lista.
+¿Necesitas más de lo que da un plan? Habla con nosotros sobre Enterprise en
+[cctools.network/contact](https://cctools.network/contact); una cuenta sin plan
+también puede solicitarlo en la misma página.
 
 **La comprobación de la prueba se hace cuando la inicias, nunca en las solicitudes
 que haces con ella.** Las claves que emitimos directamente a una organización
@@ -95,9 +94,11 @@ comprobar ni nada que una integración servidor a servidor deba mantener viva.
 Una clave deja de funcionar por estas razones: se revoca, expira o el plan que la
 respalda termina (`401` con el código `plan_ended`), o se llama fuera de sus scopes.
 
-**Tus claves siguen el plan de tu cuenta.** Una clave que creas toma los límites
-del plan que tiene tu cuenta y funciona hasta que termina la cobertura de ese
-plan. Cuando renuevas Pro, compras un plan Data o inicias la prueba, tus claves
+**Tus claves siguen el plan de tu cuenta, hasta el número de claves del plan.**
+Una clave que creas toma los límites del plan que tiene tu cuenta y funciona
+hasta que termina la cobertura de ese plan. Si tienes más claves de las que
+permite el plan, se mantienen las que usaste más recientemente y las demás
+terminan. Cuando renuevas Pro, compras un plan Data o inicias la prueba, tus claves
 existentes toman la nueva cobertura, así que no hace falta crear otra: tras
 renovar Pro, pulsa **Extend access** en [/profile/api](https://cctools.network/profile/api)
 y tus claves se extienden en consecuencia. Pulsarlo nunca degrada nada: un plan
@@ -129,14 +130,21 @@ cuenta. Por encima del tope recibes un `429` con el código `daily_limit`, un
 `X-RateLimit-Remaining-Day: 0`:
 
 ```json
-{ "error": "Rate limit exceeded", "code": "daily_limit" }
+{ "error": "Daily limit reached. It resets at 00:00 UTC.", "code": "daily_limit" }
 ```
 
-Una clave con tope diario recibe `X-RateLimit-Limit-Day` y
-`X-RateLimit-Remaining-Day` en cada respuesta correcta y en el `429`
-`daily_limit` (el `429` por minuto no los lleva). La prueba también usa un
+Un rechazo por minuto en un día que ya se agotó también responde `daily_limit`,
+con el mismo `Retry-After`. Una clave con tope diario recibe
+`X-RateLimit-Limit-Day` y `X-RateLimit-Remaining-Day` en cada respuesta correcta
+y en los dos `429`, `rate_limited` y `daily_limit`; si no se puede leer el
+contador, solo se envía `X-RateLimit-Limit-Day`. La prueba también usa un
 presupuesto compartido por todas las cuentas en prueba: cuando se agota, la
-respuesta es el mismo `429` `daily_limit`, hasta las 00:00 UTC.
+respuesta es un `429` con el mismo código `daily_limit`, hasta las 00:00 UTC, y
+con su propio mensaje:
+
+```json
+{ "error": "The trial's shared daily budget is used up today. It resets at 00:00 UTC.", "code": "daily_limit" }
+```
 
 Cada respuesta correcta también lleva tu techo en
 `meta.rate_limit_remaining`. En los planes sin límite por clave es `null`, así
@@ -193,3 +201,5 @@ del techo por IP.
     los límites de tu plan en lugar de hacer ráfagas y luego frenar.
   </Accordion>
 </AccordionGroup>
+
+Canton es una marca registrada de Digital Asset (Switzerland) GmbH. Digital Asset no está afiliada a CCTools, y no lo ha patrocinado ni respaldado.

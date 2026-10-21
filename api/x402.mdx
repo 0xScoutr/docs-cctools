@@ -10,6 +10,8 @@ client pays and calls again with proof of payment, and the server answers with
 the data. On CCTools one route works this way, next to the API-key routes. You
 need no key and no account, only a Canton wallet that can pay.
 
+Keyed use is separate: get a key at [cctools.network/profile/api](https://cctools.network/profile/api) and try every keyed endpoint at [cctools.network/api-docs](https://cctools.network/api-docs).
+
 ## The paid route
 
 | | Details |
@@ -45,7 +47,7 @@ high and low cover 24 hours, and `"0"` means the exchange reported none.
     }
   ],
   "pagination": null,
-  "meta": { "tier": "paid", "rate_limit_remaining": null }
+  "meta": { "tier": "x402", "rate_limit_remaining": null }
 }
 ```
 
@@ -160,3 +162,5 @@ const { data } = await res.json();
   10 to 25 seconds on mainnet; the first one after a cold start takes longer.
 - **Per call.** Each call is priced and paid on its own. There is no
   subscription and no prepaid balance on the CCTools side.
+
+Canton is a registered trademark of Digital Asset (Switzerland) GmbH. Digital Asset is not affiliated with, and has not sponsored or endorsed, CCTools.

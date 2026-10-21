@@ -11,6 +11,8 @@ responde com os dados. No CCTools, uma rota funciona assim, ao lado das rotas
 com chave de API. Você não precisa de chave nem de conta, só de uma carteira
 Canton que possa pagar.
 
+O uso com chave é separado: consiga uma chave em [cctools.network/profile/api](https://cctools.network/profile/api) e teste cada endpoint com chave em [cctools.network/api-docs](https://cctools.network/api-docs).
+
 ## A rota paga
 
 | | Detalhes |
@@ -47,7 +49,7 @@ nenhum valor.
     }
   ],
   "pagination": null,
-  "meta": { "tier": "paid", "rate_limit_remaining": null }
+  "meta": { "tier": "x402", "rate_limit_remaining": null }
 }
 ```
 
@@ -163,3 +165,5 @@ const { data } = await res.json();
   de 10 a 25 segundos na mainnet; o primeiro após um início a frio demora mais.
 - **Por chamada.** Cada chamada tem preço e pagamento próprios. Não há
   assinatura nem saldo pré-pago do lado do CCTools.
+
+Canton é uma marca registrada da Digital Asset (Switzerland) GmbH. A Digital Asset não é afiliada ao CCTools e não o patrocinou nem o endossou.

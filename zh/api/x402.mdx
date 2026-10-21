@@ -6,6 +6,8 @@ icon: "coins"
 
 [x402](https://x402.org) 是一个建立在 HTTP 状态码 `402 Payment Required` 之上的开放支付标准：服务器对第一次调用返回价格，客户端付款后带着付款证明再次调用，服务器随后返回数据。CCTools 有一条路由以这种方式工作，与使用 API 密钥的路由并存。你不需要密钥，也不需要账户，只需要一个能够付款的 Canton 钱包。
 
+使用密钥是另一回事：在 [cctools.network/profile/api](https://cctools.network/profile/api) 获取密钥，并在 [cctools.network/api-docs](https://cctools.network/api-docs) 试用每个需要密钥的 endpoint。
+
 ## 付费路由
 
 | | 详情 |
@@ -39,7 +41,7 @@ icon: "coins"
     }
   ],
   "pagination": null,
-  "meta": { "tier": "paid", "rate_limit_remaining": null }
+  "meta": { "tier": "x402", "rate_limit_remaining": null }
 }
 ```
 
@@ -124,3 +126,5 @@ const { data } = await res.json();
 - **先付款。** 付款在数据发送之前完成结算。数据缺失或最近一次成功读取已超过 30 分钟时，路由会在要求任何付款之前返回 `503`。
 - **延迟。** 据 FTP 介绍，在 mainnet 上，首次之后的付款通常在 10 到 25 秒内完成；冷启动后的第一次付款耗时更长。
 - **按次计费。** 每次调用单独定价、单独付款。CCTools 这边没有订阅，也没有预付余额。
+
+Canton 是 Digital Asset (Switzerland) GmbH 的注册商标。Digital Asset 与 CCTools 没有关联，也未赞助或认可 CCTools。

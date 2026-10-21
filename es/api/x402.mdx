@@ -11,6 +11,8 @@ servidor responde con los datos. En CCTools una ruta funciona así, junto a las
 rutas con clave de API. No necesitas clave ni cuenta, solo una billetera de
 Canton que pueda pagar.
 
+El uso con clave es aparte: consigue una clave en [cctools.network/profile/api](https://cctools.network/profile/api) y prueba cada endpoint con clave en [cctools.network/api-docs](https://cctools.network/api-docs).
+
 ## La ruta de pago
 
 | | Detalles |
@@ -47,7 +49,7 @@ exchange no informó ninguno.
     }
   ],
   "pagination": null,
-  "meta": { "tier": "paid", "rate_limit_remaining": null }
+  "meta": { "tier": "x402", "rate_limit_remaining": null }
 }
 ```
 
@@ -163,3 +165,5 @@ const { data } = await res.json();
   en 10 a 25 segundos en mainnet; el primero tras un arranque en frío tarda más.
 - **Por llamada.** Cada llamada tiene su propio precio y su propio pago. No hay
   suscripción ni saldo prepagado del lado de CCTools.
+
+Canton es una marca registrada de Digital Asset (Switzerland) GmbH. Digital Asset no está afiliada a CCTools, y no lo ha patrocinado ni respaldado.

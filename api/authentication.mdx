@@ -68,8 +68,8 @@ and prices at [Plans and limits](/api/plans).
 
 The Free plan has ended. A key made on it answers `401` with the code
 `tier_retired` and a `renew_url` that points to the plans: take a plan, then
-create a new key. A Pro period you paid for before the plans changed keeps 600
-requests per minute and no daily cap until that period ends.
+create a new key. Pro paid before 15:30 UTC on 22 October 2026 keeps 600
+requests a minute and no daily cap until that paid period ends.
 
 ## Getting a plan
 
@@ -82,9 +82,9 @@ what your account can take, and **New key** stays off until it holds a plan.
 - **Validator**: submit a party ID on the same page.
 - **Enterprise**: [contact us](https://cctools.network/contact).
 
-Building something that needs more than this? Apply on the same page and tell us
-what you are building. Higher and custom limits exist; they are arranged per
-account rather than picked from a list.
+Need more than a plan gives? Talk to us about Enterprise at
+[cctools.network/contact](https://cctools.network/contact); an account without a
+plan can also apply on the same page.
 
 **The trial's check runs when you start it, never on the requests you make with
 it.** Keys we issue directly to an organisation are attached to that
@@ -93,8 +93,10 @@ nothing for a server-to-server integration to keep alive. A key stops working
 for these reasons: it is revoked, it expires or the plan behind it ends (`401`
 with the code `plan_ended`), or it is called outside its scopes.
 
-**Your keys follow your account's plan.** A key you make takes the limits of the
-plan your account holds, and it runs until that plan's coverage ends. When you
+**Your keys follow your account's plan, up to the plan's number of keys.** A key
+you make takes the limits of the plan your account holds, and it runs until that
+plan's coverage ends. If you hold more keys than the plan allows, the most
+recently used stay and the others end. When you
 renew Pro, buy a Data plan or start the trial, your existing keys take the new
 coverage, so there is no new key to make: after renewing Pro, press **Extend access**
 on [/profile/api](https://cctools.network/profile/api) and your keys are
@@ -125,14 +127,20 @@ get `429` with the code `daily_limit`, a `Retry-After` set to the seconds left
 until 00:00 UTC, and `X-RateLimit-Remaining-Day: 0`:
 
 ```json
-{ "error": "Rate limit exceeded", "code": "daily_limit" }
+{ "error": "Daily limit reached. It resets at 00:00 UTC.", "code": "daily_limit" }
 ```
 
-A key under a daily cap gets `X-RateLimit-Limit-Day` and
-`X-RateLimit-Remaining-Day` on every successful response and on the
-`daily_limit` `429` (the per-minute `429` does not carry them). The trial also
-draws on a budget shared by all trial accounts: when it is spent, the answer is
-the same `429` `daily_limit`, until 00:00 UTC.
+A per-minute refusal on a day that is already spent answers `daily_limit` too,
+with the same `Retry-After`. A key under a daily cap gets `X-RateLimit-Limit-Day`
+and `X-RateLimit-Remaining-Day` on every successful response and on both `429`s,
+`rate_limited` and `daily_limit`; if the counter cannot be read, only
+`X-RateLimit-Limit-Day` is sent. The trial also draws on a budget shared by all
+trial accounts: when it is spent, the answer is `429` with the same code
+`daily_limit`, until 00:00 UTC, and with its own message:
+
+```json
+{ "error": "The trial's shared daily budget is used up today. It resets at 00:00 UTC.", "code": "daily_limit" }
+```
 
 Every successful response also carries your ceiling in
 `meta.rate_limit_remaining`. On plans with no per-key limit it is `null`, so
@@ -189,3 +197,5 @@ per-IP ceiling.
     rather than bursting and backing off.
   </Accordion>
 </AccordionGroup>
+
+Canton is a registered trademark of Digital Asset (Switzerland) GmbH. Digital Asset is not affiliated with, and has not sponsored or endorsed, CCTools.

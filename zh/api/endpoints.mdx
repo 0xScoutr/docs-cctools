@@ -75,19 +75,19 @@ Canton network data: validators, Super Validators, Featured Apps, governance, bu
 | `GET /api/v1/public/assets` | Canton assets | 个人使用 | Issuers' CIP-56 asset registries, read by CCTools; the CC supply is from Canton Network Scan |
 | `GET /api/v1/public/assets/{slug}` | Canton asset detail | 个人使用 | Issuers' CIP-56 asset registries, read by CCTools; the CC supply is from Canton Network Scan |
 | `GET /api/v1/public/cips` | CIP reference corpus | 个人使用 | Canton Improvement Proposals, a static reference corpus kept by CCTools |
-| `GET /api/v1/public/featured-apps` | Featured App registry | Data 套餐 | Canton Network Scan, read through api.cantonnodes.com. Reward totals are as of the round in rewards_as_of_round, closed at rewards_as_of; today that is round 101404 (22 Jun 2026), where the provider stopped aggregating. |
-| `GET /api/v1/public/featured-apps/{slug}` | Featured App detail | Data 套餐 | Canton Network Scan, read through api.cantonnodes.com. Reward totals are as of the round in rewards_as_of_round, closed at rewards_as_of; today that is round 101404 (22 Jun 2026), where the provider stopped aggregating. |
+| `GET /api/v1/public/featured-apps` | Featured App registry | Data 套餐 | Canton Network Scan, read through api.cantonnodes.com. Reward totals are frozen at the last round the provider aggregated, the round each response gives in rewards_as_of_round, closed at rewards_as_of. |
+| `GET /api/v1/public/featured-apps/{slug}` | Featured App detail | Data 套餐 | Canton Network Scan, read through api.cantonnodes.com. Reward totals are frozen at the last round the provider aggregated, the round each response gives in rewards_as_of_round, closed at rewards_as_of. |
 | `GET /api/v1/public/governance` | Governance proposals | 个人使用 | Loop Data (formerly Lighthouse) indexer data, cached by CCTools; the Super Validator count and the vote threshold are from Canton Network Scan |
 | `GET /api/v1/public/network/burn-mint` | Burn and mint volume | 个人使用 | Loop Data (formerly Lighthouse) indexer data, cached by CCTools |
 | `GET /api/v1/public/network/cc-price` | Canton Coin price | 个人使用 | CoinGecko, with CoinPaprika as the fallback, cached by CCTools |
 | `GET /api/v1/public/network/history` | Network history | 个人使用 | Loop Data (formerly Lighthouse) indexer data, cached by CCTools |
 | `GET /api/v1/public/network/stats` | Network stats | 个人使用 | Loop Data (formerly Lighthouse) indexer data, cached by CCTools; the CC price is from CoinGecko, with CoinPaprika as the fallback |
-| `GET /api/v1/public/validators` | List validators | Data 套餐 | Canton Network Scan, read through api.cantonnodes.com. Reward totals are as of the round in rewards_as_of_round, closed at rewards_as_of; today that is round 101404 (22 Jun 2026), where the provider stopped aggregating. |
+| `GET /api/v1/public/validators` | List validators | Data 套餐 | Canton Network Scan, read through api.cantonnodes.com. Reward totals are frozen at the last round the provider aggregated, the round each response gives in rewards_as_of_round, closed at rewards_as_of. |
 | `GET /api/v1/public/validators/{partyId}` | Validator detail | 个人使用 | Loop Data (formerly Lighthouse) indexer data, cached by CCTools; the ranking is from Canton Network Scan |
 | `GET /api/v1/public/validators/super-validators` | Super Validators | Data 套餐 | Canton Network Scan, read through api.cantonnodes.com |
 | `GET /api/v1/public/validators/sv-votes` | Super Validator price votes | Data 套餐 | Canton Network Scan, read through api.cantonnodes.com |
-| `GET /api/v1/public/validators/top-app-rewards` | Top app providers by reward | Data 套餐 | Canton Network Scan, read through api.cantonnodes.com. Reward totals are as of the round in rewards_as_of_round, closed at rewards_as_of; today that is round 101404 (22 Jun 2026), where the provider stopped aggregating. |
-| `GET /api/v1/public/validators/top-rewards` | Top validators by reward | Data 套餐 | Canton Network Scan, read through api.cantonnodes.com. Reward totals are as of the round in rewards_as_of_round, closed at rewards_as_of; today that is round 101404 (22 Jun 2026), where the provider stopped aggregating. |
+| `GET /api/v1/public/validators/top-app-rewards` | Top app providers by reward | Data 套餐 | Canton Network Scan, read through api.cantonnodes.com. Reward totals are frozen at the last round the provider aggregated, the round each response gives in rewards_as_of_round, closed at rewards_as_of. |
+| `GET /api/v1/public/validators/top-rewards` | Top validators by reward | Data 套餐 | Canton Network Scan, read through api.cantonnodes.com. Reward totals are frozen at the last round the provider aggregated, the round each response gives in rewards_as_of_round, closed at rewards_as_of. |
 
 ```bash
 curl -H "X-API-Key: cck_..." \
@@ -170,7 +170,7 @@ Top users by XP.
 |---|---|---|---|
 | `GET /api/v1/public/leaderboard` | Top users by total XP | 个人使用 | CCTools community profiles |
 | `GET /api/v1/public/leaderboard/projects` | Project leaderboard | 个人使用 | CCTools engagement analytics |
-| `GET /api/v1/public/leaderboard/validators` | Validator leaderboard | Data 套餐 | Canton Network Scan, read through api.cantonnodes.com. Reward totals are as of the round in rewards_as_of_round, closed at rewards_as_of; today that is round 101404 (22 Jun 2026), where the provider stopped aggregating. |
+| `GET /api/v1/public/leaderboard/validators` | Validator leaderboard | Data 套餐 | Canton Network Scan, read through api.cantonnodes.com. Reward totals are frozen at the last round the provider aggregated, the round each response gives in rewards_as_of_round, closed at rewards_as_of. |
 
 ```bash
 curl -H "X-API-Key: cck_..." \
