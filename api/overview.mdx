@@ -30,6 +30,7 @@ curl -H "X-API-Key: cck_your_key_here" \
   "https://api.cctools.network/api/v1/public/network/stats"
 ```
 
+A key comes with a plan on your account: see Plans at a glance below.
 Generate and manage keys at [cctools.network/profile/api](https://cctools.network/profile/api).
 See [Authentication](/api/authentication) for the full flow.
 
@@ -41,48 +42,77 @@ Successful responses share one shape:
 {
   "data": { "...": "..." },
   "pagination": { "limit": 50, "offset": 0, "total": 491 },
-  "meta": { "tier": "free", "rate_limit_remaining": 60 }
+  "meta": { "tier": "pro", "rate_limit_remaining": 60, "daily_limit_remaining": 999 }
 }
 ```
 
 - `data`: the payload (object or array, depending on the endpoint).
 - `pagination`: present on list endpoints; `null` otherwise.
-- `meta.tier`: your key's tier.
+- `meta.tier`: the plan of your key: `evaluation`, `pro`, `data`, `data_team`, `validator`, or `paid` for Enterprise.
 - `meta.rate_limit_remaining`: your per-minute ceiling.
+- `meta.daily_limit_remaining`: the calls you have left today under your plan's daily cap; `null` when your plan has none.
 
 Errors are `{ "error": "message", "code": "..." }` with an HTTP status of
 `400`, `401`, `404`, `429`, or `503`. A `503` with code `warming_up` means a
 cron-warmed dataset has a cold cache: retry in a minute rather than treating it
 as an empty result.
 
-## Tiers at a glance
+## Plans at a glance
 
-| Tier | Rate limit | Who | How |
-|---|---|---|---|
-| **Free** | 60 req/min | Verified Human Score | Instant self-serve at /profile/api |
-| **Pro** | 600 req/min | CCTools Pro subscribers | Instant self-serve at /profile/api |
-| **Validator** | No per-key limit | Canton validators | Submit party ID; reviewed by a person, usually within one business day |
-| **Custom** | Arranged per account | Builders, funds, partners | Apply and tell us what you are building |
+A key has the plan of the account that made it. The per-minute limit counts requests for each key and endpoint; the
+daily limit counts calls for the whole account over a UTC day.
 
-Every tier, Validator included, also sits under a ceiling of 600 requests per
+| Plan | Use | Per minute | Per day | How |
+|---|---|---|---|---|
+| **Trial or Evaluation** | Testing only | 60 a minute | 1,000 a day | The trial, open once per account to accounts with a connected wallet that pass the CCTools human check, or an evaluation key from our team |
+| **Pro** | Personal use | 60 a minute | 1,000 a day | Included with [CCTools Pro](https://cctools.network/pro). Instant, self-service at /profile/api |
+| **Data Starter** | Commercial use, with attribution | 120 a minute | 20,000 a day | Bought in Canton Coin at /profile/api, monthly or annual |
+| **Data Team** | Commercial use, with attribution | 600 a minute | No daily cap | Bought in Canton Coin at /profile/api, monthly or annual |
+| **Validator** | As approved by the Development Fund Committee | No per-key limit | No daily cap | Submit your party ID; reviewed by a person, usually within one business day. Free for 12 months |
+| **Enterprise** | Commercial use inside your product, under an agreed order | No per-key limit | No daily cap | Contact us |
+
+Every plan, Validator included, also sits under a ceiling of 600 requests per
 minute per IP address across the whole API.
+
+Prices, the number of keys each plan allows and the full table are in
+[Plans and limits](/api/plans), generated from the API spec. The same figures are at
+[cctools.network/api-docs](https://cctools.network/api-docs), and the terms that
+apply to every plan are at [cctools.network/terms/api](https://cctools.network/terms/api).
+
+## Free with no key
+
+These need no key and no account, and all of them are served from `https://api.cctools.network`:
+
+- The open daily network record, under `/api/open/network-record/v1/`, published under CC BY 4.0.
+- The feeds aggregators read, under `/api/markets/`.
+- The status endpoint, `/api/v1/public/status`.
+- The OpenAPI file, `/api/v1/openapi.json`.
+- The MCP server, `/api/mcp`.
+
+Everything else under `/api/v1/public/` needs a key.
 
 ## Next steps
 
 <CardGroup cols={2}>
   <Card title="Quickstart" icon="rocket" href="/api/quickstart">
-    Get a free key and make your first call in two minutes.
+    Get a plan and a key, and make your first call in two minutes.
   </Card>
   <Card title="Authentication" icon="key" href="/api/authentication">
-    Keys, tiers, rate limits, and error codes.
+    Keys, plans, rate limits, and error codes.
+  </Card>
+  <Card title="Plans and limits" icon="layer-group" href="/api/plans">
+    Prices, limits and what each plan may be used for.
   </Card>
   <Card title="Endpoints" icon="list" href="/api/endpoints">
     Every read-only endpoint with a copy-paste example.
   </Card>
   <Card title="Manage keys" icon="gear" href="https://cctools.network/profile/api">
-    Create, list, and revoke your keys.
+    Take a plan, then create, list, and revoke your keys.
   </Card>
   <Card title="Try it live" icon="play" href="https://cctools.network/api-docs">
     Run any endpoint against your own key in the browser.
+  </Card>
+  <Card title="API terms" icon="file-lines" href="https://cctools.network/terms/api">
+    What each plan allows, attribution, and payment.
   </Card>
 </CardGroup>

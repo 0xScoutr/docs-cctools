@@ -1,0 +1,27 @@
+---
+title: "Planes y límites"
+description: "Los planes de la API pública de CCTools, con sus límites y precios."
+icon: "layer-group"
+---
+
+{/* GENERATED FILE. Do not edit by hand, in any language.
+    Regenerate with: node cctools2/backend/scripts/gen-docs-endpoints.mjs --spec <file>
+    (the spec the tree builds: see the header of that script; without --spec it reads the live API)
+    Source of truth: cctools2/backend/src/lib/api/openapi-spec.ts */}
+
+Cada plan fija cuántas solicitudes por minuto puede hacer una clave (contadas por clave y endpoint), cuántas llamadas puede hacer una cuenta en un día UTC y si los datos pueden usarse en un producto comercial. La tabla se genera a partir de la spec de la API.
+
+El uso comercial se aplica a los endpoints marcados como Planes Data en la [referencia de endpoints](/es/api/endpoints).
+
+| Plan | Precio | Solicitudes por minuto (por clave y endpoint) | Llamadas por día (por cuenta) | Claves | Uso comercial | Cómo obtenerlo |
+|---|---|---|---|---|---|---|
+| Trial or Evaluation | - | 60 | 1.000 | 1 | No | A 30-day trial, once per account, or an evaluation key from our team. |
+| Pro | - | 60 | 1.000 | 10 | No | Included with a CCTools Pro subscription. Self-service. |
+| Data Starter | US$49 al mes, US$490 al año | 120 | 20.000 | 10 | Sí | Commercial use, with attribution. Checkout in Canton Coin. |
+| Data Team | US$199 al mes, US$1.990 al año | 600 | Sin tope diario | 10 | Sí | Commercial use, with attribution. Checkout in Canton Coin. |
+| Validator | - | Sin límite por clave | Sin tope diario | 10 | Sí | Canton validator operators, verified. Free for 12 months. |
+| Enterprise | Desde US$499 al mes | Sin límite por clave | Sin tope diario | 10 | Sí | Commercial use inside your product, under an agreed order. Contact us. |
+
+<Note>
+Sin límite por clave y Sin tope diario significan que el plan no fija ninguno. Cada clave sigue contando contra 600 solicitudes por minuto por dirección IP. Un precio marcado como Desde es el precio inicial de un plan negociado.
+</Note>

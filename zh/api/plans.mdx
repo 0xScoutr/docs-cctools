@@ -1,0 +1,27 @@
+---
+title: "套餐与限制"
+description: "CCTools 公共 API 的套餐、限制与价格。"
+icon: "layer-group"
+---
+
+{/* GENERATED FILE. Do not edit by hand, in any language.
+    Regenerate with: node cctools2/backend/scripts/gen-docs-endpoints.mjs --spec <file>
+    (the spec the tree builds: see the header of that script; without --spec it reads the live API)
+    Source of truth: cctools2/backend/src/lib/api/openapi-spec.ts */}
+
+每个套餐规定一个密钥每分钟可发出多少请求（按密钥和 endpoint 计数）、一个账户在一个 UTC 日内可发出多少次调用，以及数据能否用于商业产品。此表由 API spec 生成。
+
+商业使用适用于 [endpoint 参考](/zh/api/endpoints) 中标为 "Data 套餐" 的 endpoint。
+
+| 套餐 | 价格 | 每分钟请求数（按密钥和 endpoint） | 每日调用数（按账户） | 密钥数 | 商业使用 | 获取方式 |
+|---|---|---|---|---|---|---|
+| Trial or Evaluation | - | 60 | 1,000 | 1 | 否 | A 30-day trial, once per account, or an evaluation key from our team. |
+| Pro | - | 60 | 1,000 | 10 | 否 | Included with a CCTools Pro subscription. Self-service. |
+| Data Starter | US$49 每月, US$490 每年 | 120 | 20,000 | 10 | 是 | Commercial use, with attribution. Checkout in Canton Coin. |
+| Data Team | US$199 每月, US$1,990 每年 | 600 | 无每日上限 | 10 | 是 | Commercial use, with attribution. Checkout in Canton Coin. |
+| Validator | - | 无按密钥限制 | 无每日上限 | 10 | 是 | Canton validator operators, verified. Free for 12 months. |
+| Enterprise | 起价 US$499 每月 | 无按密钥限制 | 无每日上限 | 10 | 是 | Commercial use inside your product, under an agreed order. Contact us. |
+
+<Note>
+无按密钥限制 和 无每日上限 表示该套餐不设此限制。每个密钥仍计入每个 IP 地址每分钟 600 次请求的上限。标为 起价 的价格是议价套餐的起始价格。
+</Note>

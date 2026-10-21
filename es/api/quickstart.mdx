@@ -7,28 +7,43 @@ icon: "rocket"
 ## 1. Inicia sesión
 
 Abre [cctools.network](https://cctools.network) e inicia sesión (o crea una
-cuenta gratuita).
+cuenta).
 
 ## 2. Abre el panel de desarrollador
 
 Ve a [cctools.network/profile/api](https://cctools.network/profile/api).
 
-## 3. Obtén una clave
+## 3. Consigue un plan y una clave
 
-- **Tier Free**: si tu Human Score está verificado (26 puntos o más; se requiere una billetera
-  Canton conectada, pero no basta por sí sola), verás **Get a free key**. Haz clic ahí y luego en **New key**. El tier
-  Free permite 60 solicitudes por minuto.
-- **Pro**: una suscripción a [CCTools Pro](https://cctools.network/pro) incluye 600
-  solicitudes por minuto. El botón está en la misma página y se concede al instante.
+Una clave necesita un plan en tu cuenta. El panel de planes de esa página muestra
+lo que puedes tomar:
+
+- **Pro**: una suscripción a [CCTools Pro](https://cctools.network/pro) incluye
+  acceso a la API para uso personal, con 60 solicitudes por minuto en cada
+  endpoint y 1.000 llamadas por día. La tarjeta de Pro lo concede al instante
+  (**Unlock Pro access**).
+- **Prueba**: **Start the trial** si quieres probar primero la API. Se abre una
+  sola vez por cuenta a las cuentas con una billetera conectada que superan la
+  verificación de persona real de CCTools, solo para pruebas, con 60
+  solicitudes por minuto y 1.000 llamadas por día.
+- **Data Starter o Data Team**: para un producto o servicio que muestra los datos
+  a otras personas. **Buy Data Starter** o **Buy Data Team** y paga en Canton
+  Coin. Data Starter permite 120 solicitudes por minuto y 20.000 llamadas por
+  día; Data Team permite 600 solicitudes por minuto y no tiene tope diario. Los
+  precios están en [Planes y límites](/es/api/plans), y los términos en
+  [cctools.network/terms/api](https://cctools.network/terms/api).
 - **Validator**: envía el party ID de tu validador de Canton. Cada solicitud de
   clave la revisa una persona, normalmente en un día hábil. Las claves aprobadas
-  no tienen límite de solicitudes por clave y son gratuitas durante 12 meses. Un
-  tope de 600 solicitudes por minuto por IP sigue aplicándose, en todos los tiers.
+  no tienen límite de solicitudes por clave y son gratuitas durante 12 meses.
 - **Builder / fondo / socio**: completa el formulario breve y cuéntanos qué estás
-  construyendo. Los límites más altos se acuerdan por cuenta.
+  construyendo, o [contáctanos](https://cctools.network/contact) por Enterprise.
+  Los límites más altos se acuerdan por cuenta.
 
-La clave en texto plano (`cck_…`) se muestra **una sola vez**. Cópiala y guárdala
-en un lugar seguro: no podrás volver a verla, solo revocarla y generar una nueva.
+Un tope de 600 solicitudes por minuto por IP se aplica en todos los planes.
+
+Con un plan en tu cuenta, haz clic en **New key**. La clave en texto plano
+(`cck_…`) se muestra **una sola vez**. Cópiala y guárdala en un lugar seguro: no
+podrás volver a verla, solo revocarla y generar una nueva.
 
 <Warning>
 Nunca expongas una clave en código del lado del cliente. Enruta las llamadas por un servidor
@@ -48,7 +63,7 @@ Deberías recibir un envoltorio JSON:
 {
   "data": [ { "slug": "…", "name": "…", "ai_score": 87 } ],
   "pagination": { "limit": 5, "offset": 0, "total": 491 },
-  "meta": { "tier": "free", "rate_limit_remaining": 60 }
+  "meta": { "tier": "pro", "rate_limit_remaining": 60, "daily_limit_remaining": 999 }
 }
 ```
 

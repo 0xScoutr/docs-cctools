@@ -1,0 +1,27 @@
+---
+title: "Planos e limites"
+description: "Os planos da API pública do CCTools, com seus limites e preços."
+icon: "layer-group"
+---
+
+{/* GENERATED FILE. Do not edit by hand, in any language.
+    Regenerate with: node cctools2/backend/scripts/gen-docs-endpoints.mjs --spec <file>
+    (the spec the tree builds: see the header of that script; without --spec it reads the live API)
+    Source of truth: cctools2/backend/src/lib/api/openapi-spec.ts */}
+
+Cada plano define quantas requisições por minuto uma chave pode fazer (contadas por chave e endpoint), quantas chamadas uma conta pode fazer em um dia UTC e se os dados podem ser usados em um produto comercial. A tabela é gerada a partir da spec da API.
+
+O uso comercial vale para os endpoints marcados como Planos Data na [referência de endpoints](/pt/api/endpoints).
+
+| Plano | Preço | Requisições por minuto (por chave e endpoint) | Chamadas por dia (por conta) | Chaves | Uso comercial | Como obter |
+|---|---|---|---|---|---|---|
+| Trial or Evaluation | - | 60 | 1.000 | 1 | Não | A 30-day trial, once per account, or an evaluation key from our team. |
+| Pro | - | 60 | 1.000 | 10 | Não | Included with a CCTools Pro subscription. Self-service. |
+| Data Starter | US$49 por mês, US$490 por ano | 120 | 20.000 | 10 | Sim | Commercial use, with attribution. Checkout in Canton Coin. |
+| Data Team | US$199 por mês, US$1.990 por ano | 600 | Sem limite diário | 10 | Sim | Commercial use, with attribution. Checkout in Canton Coin. |
+| Validator | - | Sem limite por chave | Sem limite diário | 10 | Sim | Canton validator operators, verified. Free for 12 months. |
+| Enterprise | A partir de US$499 por mês | Sem limite por chave | Sem limite diário | 10 | Sim | Commercial use inside your product, under an agreed order. Contact us. |
+
+<Note>
+Sem limite por chave e Sem limite diário significam que o plano não define nenhum. Cada chave continua contando contra 600 requisições por minuto por endereço IP. Um preço marcado como A partir de é o preço inicial de um plano negociado.
+</Note>

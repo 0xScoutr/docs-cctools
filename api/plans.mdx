@@ -1,0 +1,27 @@
+---
+title: "Plans and limits"
+description: "The plans of the CCTools Public API, with their limits and prices."
+icon: "layer-group"
+---
+
+{/* GENERATED FILE. Do not edit by hand, in any language.
+    Regenerate with: node cctools2/backend/scripts/gen-docs-endpoints.mjs --spec <file>
+    (the spec the tree builds: see the header of that script; without --spec it reads the live API)
+    Source of truth: cctools2/backend/src/lib/api/openapi-spec.ts */}
+
+Each plan sets how many requests a key may make a minute (counted per key and endpoint), how many calls an account may make in a UTC day, and whether the data may be used in a commercial product. The table is generated from the API spec.
+
+Commercial use applies to the endpoints marked Data plans in the [endpoint reference](/api/endpoints).
+
+| Plan | Price | Requests per minute (per key and endpoint) | Calls per day (per account) | Keys | Commercial use | How to get it |
+|---|---|---|---|---|---|---|
+| Trial or Evaluation | - | 60 | 1,000 | 1 | No | A 30-day trial, once per account, or an evaluation key from our team. |
+| Pro | - | 60 | 1,000 | 10 | No | Included with a CCTools Pro subscription. Self-service. |
+| Data Starter | US$49 a month, US$490 a year | 120 | 20,000 | 10 | Yes | Commercial use, with attribution. Checkout in Canton Coin. |
+| Data Team | US$199 a month, US$1,990 a year | 600 | No daily cap | 10 | Yes | Commercial use, with attribution. Checkout in Canton Coin. |
+| Validator | - | No per-key limit | No daily cap | 10 | Yes | Canton validator operators, verified. Free for 12 months. |
+| Enterprise | From US$499 a month | No per-key limit | No daily cap | 10 | Yes | Commercial use inside your product, under an agreed order. Contact us. |
+
+<Note>
+No per-key limit and No daily cap mean the plan sets none. Every key still counts against 600 requests per minute per IP address. A price marked From is where a negotiated plan starts.
+</Note>

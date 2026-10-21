@@ -6,29 +6,44 @@ icon: "rocket"
 
 ## 1. Entre na sua conta
 
-Abra [cctools.network](https://cctools.network) e entre na sua conta (ou crie uma
-conta gratuita).
+Abra [cctools.network](https://cctools.network) e entre na sua conta (ou crie
+uma).
 
 ## 2. Abra o painel do desenvolvedor
 
 Acesse [cctools.network/profile/api](https://cctools.network/profile/api).
 
-## 3. Obtenha uma chave
+## 3. Consiga um plano e uma chave
 
-- **Tier Free**: se o seu Human Score estiver verificado (26 pontos ou mais; é preciso ter uma carteira
-  Canton conectada, mas ela sozinha não basta), você verá **Get a free key**. Clique nele e depois em **New key**. O
-  tier Free permite 60 requisições por minuto.
+Uma chave precisa de um plano na sua conta. O painel de planos dessa página mostra
+o que você pode assumir:
+
 - **Pro**: uma assinatura do [CCTools Pro](https://cctools.network/pro) inclui
-  600 requisições por minuto. O botão fica na mesma página e libera na hora.
+  acesso à API para uso pessoal, com 60 requisições por minuto em cada endpoint
+  e 1.000 chamadas por dia. O cartão do Pro concede o acesso na hora
+  (**Unlock Pro access**).
+- **Teste**: **Start the trial** se você quiser experimentar a API primeiro. Fica
+  disponível uma vez por conta, para contas com uma carteira conectada que passam
+  na verificação de pessoa real do CCTools, somente para testes, com 60
+  requisições por minuto e 1.000 chamadas por dia.
+- **Data Starter ou Data Team**: para um produto ou serviço que mostra os dados a
+  outras pessoas. **Buy Data Starter** ou **Buy Data Team** e pague em Canton
+  Coin. O Data Starter permite 120 requisições por minuto e 20.000 chamadas por
+  dia; o Data Team permite 600 requisições por minuto e não tem limite diário. Os
+  preços estão em [Planos e limites](/pt/api/plans), e os termos em
+  [cctools.network/terms/api](https://cctools.network/terms/api).
 - **Validator**: envie o party ID do seu validador na Canton. Cada envio é
   revisado por uma pessoa, normalmente em até um dia útil. As chaves aprovadas
-  não têm limite de requisições por chave e são gratuitas por 12 meses. Um teto
-  de 600 requisições por minuto por endereço IP continua valendo em todos os tiers.
+  não têm limite de requisições por chave e são gratuitas por 12 meses.
 - **Construtor / fundo / parceiro**: preencha o formulário curto e conte o que
-  você está construindo. Limites maiores são definidos por conta.
+  você está construindo, ou [fale conosco](https://cctools.network/contact) sobre
+  o Enterprise. Limites maiores são definidos por conta.
 
-A chave em texto puro (`cck_…`) é exibida **uma única vez**. Copie e guarde em um
-lugar seguro: você não consegue vê-la de novo, apenas revogá-la e gerar uma nova.
+Um teto de 600 requisições por minuto por endereço IP vale em todos os planos.
+
+Com um plano na sua conta, clique em **New key**. A chave em texto puro
+(`cck_…`) é exibida **uma única vez**. Copie e guarde em um lugar seguro: você
+não consegue vê-la de novo, apenas revogá-la e gerar uma nova.
 
 <Warning>
 Nunca exponha uma chave em código do lado do cliente. Faça as chamadas por um servidor
@@ -48,7 +63,7 @@ Você deve receber de volta um envelope JSON:
 {
   "data": [ { "slug": "…", "name": "…", "ai_score": 87 } ],
   "pagination": { "limit": 5, "offset": 0, "total": 491 },
-  "meta": { "tier": "free", "rate_limit_remaining": 60 }
+  "meta": { "tier": "pro", "rate_limit_remaining": 60, "daily_limit_remaining": 999 }
 }
 ```
 

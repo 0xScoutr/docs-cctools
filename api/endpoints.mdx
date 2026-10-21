@@ -5,7 +5,8 @@ icon: "list"
 ---
 
 {/* GENERATED FILE. Do not edit by hand, in any language.
-    Regenerate with: node cctools2/backend/scripts/gen-docs-endpoints.mjs
+    Regenerate with: node cctools2/backend/scripts/gen-docs-endpoints.mjs --spec <file>
+    (the spec the tree builds: see the header of that script; without --spec it reads the live API)
     Source of truth: cctools2/backend/src/lib/api/openapi-spec.ts */}
 
 All 48 endpoints live under `https://api.cctools.network`, return the
@@ -47,20 +48,24 @@ back off when you see a `429` instead of retrying immediately. If you need a
 higher ceiling for a backfill, ask before you run it.
 </Warning>
 
+<Note>
+The Use column says whether the endpoint's data may be used in a commercial product (Data plans) or is for personal use, and the Source column where the data comes from. The plans and their limits are in [Plans and limits](/api/plans).
+</Note>
+
 ## Ecosystem
 
 Projects, categories, rankings, trending.
 
-| Endpoint | Description |
-|---|---|
-| `GET /api/v1/public/ecosystem/categories` | List categories with counts |
-| `GET /api/v1/public/ecosystem/projects` | List projects |
-| `GET /api/v1/public/ecosystem/projects/{slug}` | Get project by slug |
-| `GET /api/v1/public/ecosystem/projects/{slug}/analytics` | Engagement analytics for a project |
-| `GET /api/v1/public/ecosystem/projects/{slug}/campaigns` | Project campaigns |
-| `GET /api/v1/public/ecosystem/projects/{slug}/token` | Project token stats |
-| `GET /api/v1/public/ecosystem/rankings` | Projects ranked by metric |
-| `GET /api/v1/public/ecosystem/trending` | Top 20 trending projects this epoch |
+| Endpoint | Description | Use | Source |
+|---|---|---|---|
+| `GET /api/v1/public/ecosystem/categories` | List categories with counts | Data plans | CCTools ecosystem directory |
+| `GET /api/v1/public/ecosystem/projects` | List projects | Data plans | CCTools ecosystem directory |
+| `GET /api/v1/public/ecosystem/projects/{slug}` | Get project by slug | Data plans | CCTools ecosystem directory |
+| `GET /api/v1/public/ecosystem/projects/{slug}/analytics` | Engagement analytics for a project | Personal use | CCTools engagement analytics |
+| `GET /api/v1/public/ecosystem/projects/{slug}/campaigns` | Project campaigns | Data plans | CCTools ecosystem directory |
+| `GET /api/v1/public/ecosystem/projects/{slug}/token` | Project token stats | Personal use | DexScreener, cached by CCTools |
+| `GET /api/v1/public/ecosystem/rankings` | Projects ranked by metric | Personal use | CCTools ecosystem directory, ranked by upvotes, views and clicks |
+| `GET /api/v1/public/ecosystem/trending` | Top 20 trending projects this epoch | Data plans | CCTools ecosystem directory, scored from upvotes, views and clicks |
 
 ```bash
 curl -H "X-API-Key: cck_..." \
@@ -71,24 +76,24 @@ curl -H "X-API-Key: cck_..." \
 
 Canton network data: validators, Super Validators, Featured Apps, governance, burn and mint, CIPs.
 
-| Endpoint | Description |
-|---|---|
-| `GET /api/v1/public/assets` | Canton assets |
-| `GET /api/v1/public/assets/{slug}` | Canton asset detail |
-| `GET /api/v1/public/cips` | CIP reference corpus |
-| `GET /api/v1/public/featured-apps` | Featured App registry |
-| `GET /api/v1/public/featured-apps/{slug}` | Featured App detail |
-| `GET /api/v1/public/governance` | Governance proposals |
-| `GET /api/v1/public/network/burn-mint` | Burn and mint volume |
-| `GET /api/v1/public/network/cc-price` | Canton Coin price |
-| `GET /api/v1/public/network/history` | Network history |
-| `GET /api/v1/public/network/stats` | Network stats |
-| `GET /api/v1/public/validators` | List validators |
-| `GET /api/v1/public/validators/{partyId}` | Validator detail |
-| `GET /api/v1/public/validators/super-validators` | Super Validators |
-| `GET /api/v1/public/validators/sv-votes` | Super Validator price votes |
-| `GET /api/v1/public/validators/top-app-rewards` | Top app providers by reward |
-| `GET /api/v1/public/validators/top-rewards` | Top validators by reward |
+| Endpoint | Description | Use | Source |
+|---|---|---|---|
+| `GET /api/v1/public/assets` | Canton assets | Personal use | Issuers' CIP-56 asset registries, read by CCTools; the CC supply is from Canton Network Scan |
+| `GET /api/v1/public/assets/{slug}` | Canton asset detail | Personal use | Issuers' CIP-56 asset registries, read by CCTools; the CC supply is from Canton Network Scan |
+| `GET /api/v1/public/cips` | CIP reference corpus | Personal use | Canton Improvement Proposals, a static reference corpus kept by CCTools |
+| `GET /api/v1/public/featured-apps` | Featured App registry | Data plans | Canton Network Scan, read through api.cantonnodes.com. Reward totals are as of the round in rewards_as_of_round, closed at rewards_as_of; today that is round 101404 (22 Jun 2026), where the provider stopped aggregating. |
+| `GET /api/v1/public/featured-apps/{slug}` | Featured App detail | Data plans | Canton Network Scan, read through api.cantonnodes.com. Reward totals are as of the round in rewards_as_of_round, closed at rewards_as_of; today that is round 101404 (22 Jun 2026), where the provider stopped aggregating. |
+| `GET /api/v1/public/governance` | Governance proposals | Personal use | Loop Data (formerly Lighthouse) indexer data, cached by CCTools; the Super Validator count and the vote threshold are from Canton Network Scan |
+| `GET /api/v1/public/network/burn-mint` | Burn and mint volume | Personal use | Loop Data (formerly Lighthouse) indexer data, cached by CCTools |
+| `GET /api/v1/public/network/cc-price` | Canton Coin price | Personal use | CoinGecko, with CoinPaprika as the fallback, cached by CCTools |
+| `GET /api/v1/public/network/history` | Network history | Personal use | Loop Data (formerly Lighthouse) indexer data, cached by CCTools |
+| `GET /api/v1/public/network/stats` | Network stats | Personal use | Loop Data (formerly Lighthouse) indexer data, cached by CCTools; the CC price is from CoinGecko, with CoinPaprika as the fallback |
+| `GET /api/v1/public/validators` | List validators | Data plans | Canton Network Scan, read through api.cantonnodes.com. Reward totals are as of the round in rewards_as_of_round, closed at rewards_as_of; today that is round 101404 (22 Jun 2026), where the provider stopped aggregating. |
+| `GET /api/v1/public/validators/{partyId}` | Validator detail | Personal use | Loop Data (formerly Lighthouse) indexer data, cached by CCTools; the ranking is from Canton Network Scan |
+| `GET /api/v1/public/validators/super-validators` | Super Validators | Data plans | Canton Network Scan, read through api.cantonnodes.com |
+| `GET /api/v1/public/validators/sv-votes` | Super Validator price votes | Data plans | Canton Network Scan, read through api.cantonnodes.com |
+| `GET /api/v1/public/validators/top-app-rewards` | Top app providers by reward | Data plans | Canton Network Scan, read through api.cantonnodes.com. Reward totals are as of the round in rewards_as_of_round, closed at rewards_as_of; today that is round 101404 (22 Jun 2026), where the provider stopped aggregating. |
+| `GET /api/v1/public/validators/top-rewards` | Top validators by reward | Data plans | Canton Network Scan, read through api.cantonnodes.com. Reward totals are as of the round in rewards_as_of_round, closed at rewards_as_of; today that is round 101404 (22 Jun 2026), where the provider stopped aggregating. |
 
 ```bash
 curl -H "X-API-Key: cck_..." \
@@ -99,15 +104,15 @@ curl -H "X-API-Key: cck_..." \
 
 DeFi and trading: protocol TVL, token registry, liquidity pools, tickers and trades.
 
-| Endpoint | Description |
-|---|---|
-| `GET /api/v1/public/markets/pools/oneswap` | OneSwap liquidity pools |
-| `GET /api/v1/public/markets/pools/send` | Send liquidity pools |
-| `GET /api/v1/public/markets/pools/tradecraft` | Tradecraft liquidity pools |
-| `GET /api/v1/public/markets/protocols` | Canton DeFi protocols |
-| `GET /api/v1/public/markets/tickers` | Trading pairs |
-| `GET /api/v1/public/markets/tokens` | Token registry |
-| `GET /api/v1/public/markets/trades` | Recent trades |
+| Endpoint | Description | Use | Source |
+|---|---|---|---|
+| `GET /api/v1/public/markets/pools/oneswap` | OneSwap liquidity pools | Personal use | OneSwap, cached by CCTools |
+| `GET /api/v1/public/markets/pools/send` | Send liquidity pools | Personal use | Send, cached by CCTools |
+| `GET /api/v1/public/markets/pools/tradecraft` | Tradecraft liquidity pools | Personal use | Tradecraft, cached by CCTools |
+| `GET /api/v1/public/markets/protocols` | Canton DeFi protocols | Personal use | DefiLlama, cached by CCTools |
+| `GET /api/v1/public/markets/tickers` | Trading pairs | Personal use | Temple, cached by CCTools |
+| `GET /api/v1/public/markets/tokens` | Token registry | Data plans | CCTools token registry |
+| `GET /api/v1/public/markets/trades` | Recent trades | Personal use | Temple |
 
 ```bash
 curl -H "X-API-Key: cck_..." \
@@ -118,15 +123,15 @@ curl -H "X-API-Key: cck_..." \
 
 Academy posts, learn paths, news, developer tooling and the badge catalog.
 
-| Endpoint | Description |
-|---|---|
-| `GET /api/v1/public/academy/posts` | List Academy posts |
-| `GET /api/v1/public/academy/posts/{slug}` | Academy post by slug |
-| `GET /api/v1/public/badges` | Badge catalog |
-| `GET /api/v1/public/devtools` | Developer tooling directory |
-| `GET /api/v1/public/learn/paths` | Learn path catalog |
-| `GET /api/v1/public/learn/paths/{slug}` | Learn path by slug |
-| `GET /api/v1/public/news` | Canton news |
+| Endpoint | Description | Use | Source |
+|---|---|---|---|
+| `GET /api/v1/public/academy/posts` | List Academy posts | Personal use | CCTools Academy |
+| `GET /api/v1/public/academy/posts/{slug}` | Academy post by slug | Personal use | CCTools Academy |
+| `GET /api/v1/public/badges` | Badge catalog | Data plans | CCTools badge catalog |
+| `GET /api/v1/public/devtools` | Developer tooling directory | Personal use | CCTools developer tooling directory, with repository data from GitHub |
+| `GET /api/v1/public/learn/paths` | Learn path catalog | Personal use | CCTools Learn |
+| `GET /api/v1/public/learn/paths/{slug}` | Learn path by slug | Personal use | CCTools Learn |
+| `GET /api/v1/public/news` | Canton news | Personal use | News publishers, named on each item (source and source_url) |
 
 ```bash
 curl -H "X-API-Key: cck_..." \
@@ -137,12 +142,12 @@ curl -H "X-API-Key: cck_..." \
 
 Public profiles, badges, contributions, activity.
 
-| Endpoint | Description |
-|---|---|
-| `GET /api/v1/public/users/{username}` | Public profile |
-| `GET /api/v1/public/users/{username}/activity` | Recent XP events |
-| `GET /api/v1/public/users/{username}/badges` | Badges earned |
-| `GET /api/v1/public/users/{username}/contributions` | Approved submissions + edits |
+| Endpoint | Description | Use | Source |
+|---|---|---|---|
+| `GET /api/v1/public/users/{username}` | Public profile | Personal use | CCTools community profiles |
+| `GET /api/v1/public/users/{username}/activity` | Recent XP events | Personal use | CCTools community profiles |
+| `GET /api/v1/public/users/{username}/badges` | Badges earned | Personal use | CCTools community profiles |
+| `GET /api/v1/public/users/{username}/contributions` | Approved submissions + edits | Personal use | CCTools community profiles |
 
 ```bash
 curl -H "X-API-Key: cck_..." \
@@ -153,10 +158,10 @@ curl -H "X-API-Key: cck_..." \
 
 Opportunities (campaigns, app rewards, community).
 
-| Endpoint | Description |
-|---|---|
-| `GET /api/v1/public/earn` | List opportunities |
-| `GET /api/v1/public/earn/{slug}` | Opportunity by slug |
+| Endpoint | Description | Use | Source |
+|---|---|---|---|
+| `GET /api/v1/public/earn` | List opportunities | Data plans | CCTools earn opportunities |
+| `GET /api/v1/public/earn/{slug}` | Opportunity by slug | Data plans | CCTools earn opportunities |
 
 ```bash
 curl -H "X-API-Key: cck_..." \
@@ -167,11 +172,11 @@ curl -H "X-API-Key: cck_..." \
 
 Top users by XP.
 
-| Endpoint | Description |
-|---|---|
-| `GET /api/v1/public/leaderboard` | Top users by total XP |
-| `GET /api/v1/public/leaderboard/projects` | Project leaderboard |
-| `GET /api/v1/public/leaderboard/validators` | Validator leaderboard |
+| Endpoint | Description | Use | Source |
+|---|---|---|---|
+| `GET /api/v1/public/leaderboard` | Top users by total XP | Personal use | CCTools community profiles |
+| `GET /api/v1/public/leaderboard/projects` | Project leaderboard | Personal use | CCTools engagement analytics |
+| `GET /api/v1/public/leaderboard/validators` | Validator leaderboard | Data plans | Canton Network Scan, read through api.cantonnodes.com. Reward totals are as of the round in rewards_as_of_round, closed at rewards_as_of; today that is round 101404 (22 Jun 2026), where the provider stopped aggregating. |
 
 ```bash
 curl -H "X-API-Key: cck_..." \
@@ -182,9 +187,9 @@ curl -H "X-API-Key: cck_..." \
 
 Service health and incidents. No key needed.
 
-| Endpoint | Description |
-|---|---|
-| `GET /api/v1/public/status` | Service status |
+| Endpoint | Description | Use | Source |
+|---|---|---|---|
+| `GET /api/v1/public/status` | Service status | - | - |
 
 ```bash
 curl -H "X-API-Key: cck_..." \

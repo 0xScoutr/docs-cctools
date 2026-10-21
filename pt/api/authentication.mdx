@@ -1,6 +1,6 @@
 ---
 title: "Autenticação e limites de requisições"
-description: "Chaves de API, tiers, limites de requisições e tratamento de erros da API pública do CCTools."
+description: "Chaves de API, planos, limites de requisições e tratamento de erros da API pública do CCTools."
 icon: "key"
 ---
 
@@ -27,53 +27,89 @@ prefixo fica visível. Com uma chave em mãos,
 [cctools.network/api-docs](https://cctools.network/api-docs) roda qualquer
 endpoint com ela direto no navegador.
 
-Quantas chaves ativas você pode manter depende do seu tier: **2 no Free** e
-**10 no Validator e no Pro**. O limite de requisições (rate limit) é contado
-por chave, e não por conta, então o teto é na verdade um teto de vazão, e os
-tiers revisados recebem o maior porque alguém respondeu pelo titular.
+Quantas chaves ativas você pode manter depende do seu plano; o número de cada um
+está em [Planos e limites](/pt/api/plans). O limite por minuto é contado por
+chave e endpoint, então cada chave extra soma vazão, enquanto o limite diário é
+contado para a conta inteira e não cresce com o número de chaves.
 
-## Tiers
+## Planos
 
-Sua chave herda um tier da elegibilidade da sua conta. O tier define o seu
-limite de requisições e é devolvido em toda resposta como `meta.tier`.
+Sua chave tem o plano da sua conta, e o plano define os seus limites de
+requisições. Ele é devolvido em toda resposta como `meta.tier`.
 
-| Tier | Limite de requisições | Elegibilidade |
+| Plano | Limite de requisições | Quem pode ter |
 |---|---|---|
-| **Free** | 60 req/min | Um Human Score verificado (26 pontos ou mais; é preciso ter uma carteira Canton conectada, mas ela sozinha não basta). Concedido na hora, sem revisão. |
-| **Pro** | 600 req/min | Incluído na assinatura [CCTools Pro](https://cctools.network/pro). Concedido na hora, e vale enquanto durar a assinatura. |
-| **Validator** | Sem limite por chave | Um party ID de validador da Canton. Cada envio é revisado por uma pessoa, normalmente em até um dia útil. Vigência de 12 meses, gratuito. |
+| **Trial or Evaluation** | 60 requisições por minuto, 1.000 chamadas por dia | O teste, disponível uma vez por conta, para contas com uma carteira conectada que passam na verificação de pessoa real do CCTools, ou uma chave de avaliação da nossa equipe. Somente para testes. |
+| **Pro** | 60 requisições por minuto, 1.000 chamadas por dia | Incluído na assinatura [CCTools Pro](https://cctools.network/pro), para uso pessoal. Concedido na hora, e vale enquanto durar a assinatura. |
+| **Data Starter** | 120 requisições por minuto, 20.000 chamadas por dia | Comprado em Canton Coin, mensal ou anual. Uso comercial, com atribuição. |
+| **Data Team** | 600 requisições por minuto, sem limite diário | Comprado em Canton Coin, mensal ou anual. Uso comercial, com atribuição. |
+| **Validator** | Sem limite por chave, sem limite diário | Um party ID de validador da Canton. Cada envio é revisado por uma pessoa, normalmente em até um dia útil. Vigência de 12 meses, gratuito. |
+| **Enterprise** | Sem limite por chave, sem limite diário | Uso comercial dentro do seu produto, conforme o pedido que combinarmos. Fale conosco. |
 
 <Warning>
 Sem limite por chave não é o mesmo que sem limite. Toda requisição para
-`/api/`, em qualquer tier, inclusive o Validator, também conta para um teto de
+`/api/`, em qualquer plano, inclusive o Validator, também conta para um teto de
 **600 requisições por minuto por endereço IP**. Violações sustentadas escalam
 para um bloqueio temporário do IP, então recue diante de um `429` em vez de
 repetir na hora. Planeja um backfill que precise de mais? Fale conosco antes.
 </Warning>
 
-Free e Pro são self-service: abra [/profile/api](https://cctools.network/profile/api)
-e o botão aparece se você se qualificar. Validadores enviam um party ID na
-mesma página.
+Os limites são contados de formas diferentes. O limite por minuto é por chave e
+endpoint. O limite diário é por conta, ao longo de um dia UTC, e as chamadas de
+todas as suas chaves se somam.
 
-**A elegibilidade é verificada quando a chave é emitida, nunca nas requisições
-que você faz com ela.** Um Human Score verificado é o que libera o botão de
-self-service; ele não é reavaliado a cada chamada. As chaves que emitimos
-diretamente para uma organização ficam ligadas a essa organização, e não a uma
-pessoa, então não há conta a verificar nem nada que uma integração
-servidor-a-servidor precise manter viva. Uma chave para de funcionar por
-exatamente três motivos: ela é revogada, ela expira, ou é usada fora dos escopos.
+**Para que cada plano pode ser usado.** O teste é para testar e o Pro é para uso
+pessoal. Os planos Data permitem o uso comercial, com atribuição, dos endpoints
+marcados como **Planos Data** na coluna Uso da
+[referência de endpoints](/pt/api/endpoints). Os endpoints marcados como **Uso
+pessoal** são de uso pessoal em todos os planos. Os termos estão em
+[cctools.network/terms/api](https://cctools.network/terms/api), e os números e os
+preços em [Planos e limites](/pt/api/plans).
+
+O plano Free acabou. Uma chave criada nele responde `401` com o código
+`tier_retired` e um `renew_url` que aponta para os planos: escolha um plano e
+crie uma chave nova. Um período de Pro que você pagou antes de os planos mudarem
+mantém 600 requisições por minuto e nenhum limite diário até esse período
+terminar.
+
+## Como obter um plano
+
+Abra [/profile/api](https://cctools.network/profile/api). O painel de planos
+mostra o que a sua conta pode assumir, e **New key** fica desativado até ela ter
+um plano.
+
+- **Pro**: com uma assinatura do [CCTools Pro](https://cctools.network/pro), o cartão do Pro concede o Pro na hora (**Unlock Pro access**).
+- **Teste**: **Start the trial** fica disponível uma vez por conta, para contas com uma carteira conectada que passam na verificação de pessoa real do CCTools. É somente para testes e usa um orçamento diário compartilhado por todas as contas em teste.
+- **Data Starter e Data Team**: **Buy Data Starter** ou **Buy Data Team** e pague em Canton Coin, por um mês ou por um ano. Você aceita os [termos da API](https://cctools.network/terms/api) ao pagar. Um plano não se renova sozinho: o acesso termina no fim do período, a menos que você renove. Um plano maior começa na hora e o que sobrar de um menor continua depois dele; um plano menor comprado durante um maior espera a sua vez.
+- **Validator**: envie um party ID na mesma página.
+- **Enterprise**: [fale conosco](https://cctools.network/contact).
 
 Está construindo algo que precisa de mais do que isso? Inscreva-se na mesma
 página e conte o que você está construindo. Existem limites maiores e
 personalizados; eles são combinados por conta, não escolhidos de uma lista.
 
-Um assinante Pro que renova pode apertar o mesmo botão de novo para estender o
-seu acesso à API na mesma medida. Nada é rebaixado ao apertá-lo: se você já
-tem um tier Validator ou negociado, ele permanece.
+**A verificação do teste acontece quando você o inicia, nunca nas requisições que
+você faz com ele.** As chaves que emitimos diretamente para uma organização ficam
+ligadas a essa organização, e não a uma pessoa, então não há conta a verificar
+nem nada que uma integração servidor-a-servidor precise manter viva. Uma chave
+para de funcionar por estes motivos: ela é revogada, ela expira ou o plano por
+trás dela termina (`401` com o código `plan_ended`), ou é usada fora dos escopos.
+
+**Suas chaves seguem o plano da sua conta.** Uma chave que você cria assume os
+limites do plano que a sua conta tem e vale até a cobertura desse plano acabar.
+Quando você renova o Pro, compra um plano Data ou inicia o teste, suas chaves
+existentes assumem a nova cobertura, então não há chave nova a criar: depois de
+renovar o Pro, aperte **Extend access** em [/profile/api](https://cctools.network/profile/api)
+e suas chaves são estendidas na mesma medida. Apertá-lo nunca rebaixa nada: um
+plano Validator ou Enterprise concedido à sua conta permanece. Quando não resta
+nenhum plano, suas chaves respondem `401` com o código `plan_ended` e um
+`renew_url`, e renovar as traz de volta.
 
 ## Limites de requisições
 
-Os limites são contados por chave, por endpoint, por minuto, **por processo**. A
+Dois limites contam as suas chamadas.
+
+O **limite por minuto** é contado por chave, por endpoint, por minuto, **por processo**. A
 API roda como um cluster multiprocesso em que cada processo mantém o próprio
 contador, então um cliente que espalha requisições por muitas conexões pode
 ultrapassar o número informado antes que algo o barre. Trate o número como a
@@ -85,9 +121,28 @@ Quando você de fato ultrapassa, recebe `429` com um cabeçalho `Retry-After: 60
 { "error": "Rate limit exceeded", "code": "rate_limited" }
 ```
 
+O **limite diário** é contado por conta ao longo de um dia UTC, das 00:00 às
+24:00 UTC. As chamadas de todas as suas chaves se somam (uma chave emitida pela
+nossa equipe tem um teto próprio), e uma chamada que um limite recusa não é
+contada. Acima do teto você recebe `429` com o código `daily_limit`, um
+`Retry-After` com os segundos que faltam até as 00:00 UTC e
+`X-RateLimit-Remaining-Day: 0`:
+
+```json
+{ "error": "Rate limit exceeded", "code": "daily_limit" }
+```
+
+Uma chave sob um teto diário recebe `X-RateLimit-Limit-Day` e
+`X-RateLimit-Remaining-Day` em toda resposta bem-sucedida e no `429`
+`daily_limit` (o `429` por minuto não os traz). O teste também usa um orçamento
+compartilhado por todas as contas em teste: quando ele acaba, a resposta é o
+mesmo `429` `daily_limit`, até as 00:00 UTC.
+
 Toda resposta bem-sucedida também traz o seu teto em
-`meta.rate_limit_remaining`. Em tiers sem limite por chave ele vem `null`,
-então tipe-o como nullable.
+`meta.rate_limit_remaining`. Em planos sem limite por chave ele vem `null`,
+então tipe-o como nullable. `meta.daily_limit_remaining` são as chamadas que
+restam hoje; vem `null` quando o seu plano não tem limite diário ou o contador
+não pôde ser lido.
 
 <Warning>
 Apesar do nome, `rate_limit_remaining` é o seu **teto**, não uma contagem
@@ -95,7 +150,7 @@ regressiva. Ele devolve o mesmo número em toda resposta e nunca decrementa,
 porque uma contagem exata por requisição custaria uma leitura de banco no
 caminho crítico. Não condicione sua lógica a ele cair em direção a zero, porque
 isso nunca vai acontecer. Use o `429` e o header `Retry-After` dele como o seu
-sinal real de recuo.
+sinal real de recuo. `daily_limit_remaining` é a exceção: ele conta para baixo.
 </Warning>
 
 ## Erros
@@ -104,10 +159,13 @@ sinal real de recuo.
 |---|---|---|
 | `400` | específico do endpoint | Parâmetro malformado, por exemplo `invalid_slug`, `invalid_window`, `invalid_party_id`. |
 | `401` | `unauthorized` | Chave ausente, malformada, revogada ou expirada. |
+| `401` | `plan_ended` | O plano por trás da chave terminou. O `renew_url` diz onde renovar; ao renovar, a chave volta a funcionar. |
+| `401` | `tier_retired` | A chave foi criada no plano Free, que acabou. O `renew_url` aponta para os planos. |
 | `403` | `forbidden` | O recurso existe, mas não é público, por exemplo um perfil privado. |
 | `404` | específico do endpoint | Recurso inexistente, por exemplo `project_not_found`, `post_not_found`. |
 | `422` | `unsupported_token` | O projeto não tem token sobre o qual reportar. |
 | `429` | `rate_limited` | Acima do seu limite por minuto. Tente de novo após o cabeçalho. |
+| `429` | `daily_limit` | Acima do seu limite diário, ou o orçamento do teste acabou. Tente de novo depois das 00:00 UTC. |
 | `500` | `internal` / `query_failed` | Culpa nossa. Seguro tentar de novo. |
 | `502` | `upstream_unavailable` | Uma fonte de dados de mercado da qual dependemos está fora do ar. |
 | `503` | `warming_up` | Um conjunto de dados aquecido por cron está com cache frio. Tente de novo em um minuto; isto não é um resultado vazio. |
@@ -131,7 +189,7 @@ teto por IP.
     substituta primeiro, migre o tráfego e só então revogue a antiga.
   </Accordion>
   <Accordion title="Trate o 429 com elegância" icon="clock">
-    Respeite o `Retry-After`. Para cargas constantes, fique abaixo do teto do seu
-    tier em vez de disparar rajadas e depois recuar.
+    Respeite o `Retry-After`. Para cargas constantes, fique dentro dos limites do
+    seu plano em vez de disparar rajadas e depois recuar.
   </Accordion>
 </AccordionGroup>

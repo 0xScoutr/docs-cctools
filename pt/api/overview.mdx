@@ -29,6 +29,7 @@ curl -H "X-API-Key: cck_your_key_here" \
   "https://api.cctools.network/api/v1/public/network/stats"
 ```
 
+Uma chave vem com um plano da sua conta: veja Os planos em resumo, mais abaixo.
 Gere e gerencie suas chaves em [cctools.network/profile/api](https://cctools.network/profile/api).
 Veja [Autenticação](/pt/api/authentication) para o fluxo completo.
 
@@ -40,48 +41,79 @@ As respostas bem-sucedidas compartilham um mesmo formato:
 {
   "data": { "...": "..." },
   "pagination": { "limit": 50, "offset": 0, "total": 491 },
-  "meta": { "tier": "free", "rate_limit_remaining": 60 }
+  "meta": { "tier": "pro", "rate_limit_remaining": 60, "daily_limit_remaining": 999 }
 }
 ```
 
 - `data`: o payload (objeto ou array, dependendo do endpoint).
 - `pagination`: presente nos endpoints de listagem; `null` nos demais.
-- `meta.tier`: o tier da sua chave.
+- `meta.tier`: o plano da sua chave: `evaluation`, `pro`, `data`, `data_team`, `validator` ou `paid` para o Enterprise.
 - `meta.rate_limit_remaining`: seu teto por minuto.
+- `meta.daily_limit_remaining`: as chamadas que restam hoje sob o limite diário do seu plano; `null` quando o seu plano não tem nenhum.
 
 Os erros vêm como `{ "error": "message", "code": "..." }` com status HTTP
 `400`, `401`, `404`, `429` ou `503`. Um `503` com o código `warming_up` indica que
 um conjunto de dados aquecido por cron está com o cache frio: tente de novo em um
 minuto, em vez de tratar isso como um resultado vazio.
 
-## Tiers em resumo
+## Os planos em resumo
 
-| Tier | Limite de requisições | Para quem | Como |
-|---|---|---|---|
-| **Free** | 60 req/min | Human Score verificado | Autoatendimento instantâneo em /profile/api |
-| **Pro** | 600 req/min | Assinantes do CCTools Pro | Autoatendimento instantâneo em /profile/api |
-| **Validator** | Sem limite por chave | Validadores da Canton | Envie o party ID; revisado por uma pessoa, normalmente em até um dia útil |
-| **Custom** | Definido por conta | Builders, fundos, parceiros | Candidate-se e conte o que você está construindo |
+Uma chave tem o plano da conta que a criou. O limite por minuto conta as
+requisições de cada chave e endpoint; o limite diário conta as chamadas da conta
+inteira ao longo de um dia UTC.
 
-Todos os tiers, incluindo o Validator, também estão sujeitos a um teto de 600
+| Plano | Uso | Por minuto | Por dia | Como |
+|---|---|---|---|---|
+| **Trial or Evaluation** | Somente para testes | 60 por minuto | 1.000 por dia | O teste, disponível uma vez por conta, para contas com uma carteira conectada que passam na verificação de pessoa real do CCTools, ou uma chave de avaliação da nossa equipe |
+| **Pro** | Uso pessoal | 60 por minuto | 1.000 por dia | Incluído no [CCTools Pro](https://cctools.network/pro). Na hora, em autoatendimento em /profile/api |
+| **Data Starter** | Uso comercial, com atribuição | 120 por minuto | 20.000 por dia | Comprado em Canton Coin em /profile/api, mensal ou anual |
+| **Data Team** | Uso comercial, com atribuição | 600 por minuto | Sem limite diário | Comprado em Canton Coin em /profile/api, mensal ou anual |
+| **Validator** | Conforme aprovado pelo Development Fund Committee | Sem limite por chave | Sem limite diário | Envie o party ID; revisado por uma pessoa, normalmente em até um dia útil. Gratuito por 12 meses |
+| **Enterprise** | Uso comercial dentro do seu produto, conforme o pedido combinado | Sem limite por chave | Sem limite diário | Fale conosco |
+
+Todos os planos, incluindo o Validator, também estão sujeitos a um teto de 600
 requisições por minuto por endereço IP em toda a API.
+
+Os preços, o número de chaves que cada plano permite e a tabela completa estão em
+[Planos e limites](/pt/api/plans), gerada a partir da spec da API. Os mesmos
+números estão em [cctools.network/api-docs](https://cctools.network/api-docs), e os
+termos que valem para todos os planos estão em
+[cctools.network/terms/api](https://cctools.network/terms/api).
+
+## Gratuito e sem chave
+
+Estes recursos não precisam de chave nem de conta, e todos são servidos em `https://api.cctools.network`:
+
+- O registro diário aberto da rede, em `/api/open/network-record/v1/`, publicado sob CC BY 4.0.
+- Os feeds que os agregadores leem, em `/api/markets/`.
+- O endpoint de status, `/api/v1/public/status`.
+- O arquivo OpenAPI, `/api/v1/openapi.json`.
+- O servidor MCP, `/api/mcp`.
+
+Todo o resto sob `/api/v1/public/` exige uma chave.
 
 ## Próximos passos
 
 <CardGroup cols={2}>
   <Card title="Início rápido" icon="rocket" href="/pt/api/quickstart">
-    Obtenha uma chave gratuita e faça sua primeira chamada em dois minutos.
+    Consiga um plano e uma chave, e faça sua primeira chamada em dois minutos.
   </Card>
   <Card title="Autenticação" icon="key" href="/pt/api/authentication">
-    Chaves, tiers, limites de requisições e códigos de erro.
+    Chaves, planos, limites de requisições e códigos de erro.
+  </Card>
+  <Card title="Planos e limites" icon="layer-group" href="/pt/api/plans">
+    Preços, limites e para que cada plano pode ser usado.
   </Card>
   <Card title="Endpoints" icon="list" href="/pt/api/endpoints">
     Todos os endpoints somente leitura com um exemplo pronto para copiar e colar.
   </Card>
   <Card title="Gerenciar chaves" icon="gear" href="https://cctools.network/profile/api">
-    Crie, liste e revogue suas chaves.
+    Escolha um plano e depois crie, liste e revogue suas chaves.
   </Card>
   <Card title="Teste ao vivo" icon="play" href="https://cctools.network/api-docs">
     Rode qualquer endpoint com a sua própria chave direto no navegador.
+  </Card>
+  <Card title="Termos da API" icon="file-lines" href="https://cctools.network/terms/api">
+    O que cada plano permite, a atribuição e o pagamento.
   </Card>
 </CardGroup>

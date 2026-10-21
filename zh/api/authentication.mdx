@@ -27,21 +27,23 @@ curl -H "X-API-Key: cck_your_key_here" \
 拿到密钥后，可以在 [cctools.network/api-docs](https://cctools.network/api-docs)
 用它在浏览器中调用任意 endpoint。
 
-你能同时持有多少个有效密钥取决于你的套餐：**Free 为 2 个**，
-**Validator 和 Pro 为 10 个**。速率限制按密钥计算而不是按账户计算，
-因此这个上限实际上是吞吐量上限；经过审核的套餐拿到更高的数量，
-是因为有人为持有者做了担保。
+你能同时持有多少个有效密钥取决于你的套餐；各套餐的数量见[套餐与限制](/zh/api/plans)。
+每分钟限制按密钥和 endpoint 计算，因此每多一个密钥就多一份吞吐量；
+每日限制则按整个账户计算，不会随密钥数量增加。
 
 ## 套餐
 
-你的密钥会从账户资格继承一个套餐。该套餐决定你的速率限制，
+你的密钥拥有你账户的套餐，套餐决定你的速率限制，
 并在每个响应中以 `meta.tier` 的形式返回。
 
-| 套餐 | 速率限制 | 资格条件 |
+| 套餐 | 速率限制 | 谁可以获得 |
 |---|---|---|
-| **Free** | 每分钟 60 次请求 | 已验证的 Human Score（26 分或以上；必须已连接 Canton 钱包，但仅有钱包并不足够）。即时授予，无需审核。 |
-| **Pro** | 每分钟 600 次请求 | 包含在 [CCTools Pro](https://cctools.network/pro) 订阅中。即时授予，并在订阅有效期内持续有效。 |
-| **Validator** | 无按密钥限制 | 一个 Canton 验证者 party ID。每份提交都由人工审核，通常在一个工作日内完成。有效期 12 个月，免费。 |
+| **Trial or Evaluation** | 每分钟 60 次请求，每天 1,000 次调用 | 试用：每个账户限开通一次，面向已连接钱包并通过 CCTools 真人验证的账户；或由我们团队签发的评估密钥。仅供测试。 |
+| **Pro** | 每分钟 60 次请求，每天 1,000 次调用 | 包含在 [CCTools Pro](https://cctools.network/pro) 订阅中，供个人使用。即时授予，并在订阅有效期内持续有效。 |
+| **Data Starter** | 每分钟 120 次请求，每天 20,000 次调用 | 用 Canton Coin 购买，按月或按年。商业使用，需署名。 |
+| **Data Team** | 每分钟 600 次请求，无每日上限 | 用 Canton Coin 购买，按月或按年。商业使用，需署名。 |
+| **Validator** | 无按密钥限制，无每日上限 | 一个 Canton 验证者 party ID。每份提交都由人工审核，通常在一个工作日内完成。有效期 12 个月，免费。 |
+| **Enterprise** | 无按密钥限制，无每日上限 | 在你的产品内商业使用，按我们约定的订单。请联系我们。 |
 
 <Warning>
 没有按密钥限制并不等于没有限制。在所有套餐（包括 Validator）上，
@@ -51,29 +53,54 @@ curl -H "X-API-Key: cck_your_key_here" \
 请先联系我们。
 </Warning>
 
-Free 和 Pro 是自助的：打开 [/profile/api](https://cctools.network/profile/api)，
-如果你符合条件，按钮就会出现。
-验证者则在同一页面提交 party ID。
+这两种限制的计数方式不同。每分钟限制按密钥和 endpoint 计算。
+每日限制按账户在一个 UTC 日内计算，你所有密钥的调用会累加。
 
-**资格只在签发密钥时检查，绝不会在你用它发出的请求上检查。**
-解锁自助按钮的是一个已验证的 Human Score，它不会在每次调用时重新校验。
-我们直接签发给组织的密钥归属于该组织而不是某个人，
-因此没有需要验证的账户，
-服务器到服务器的集成也不需要维持任何东西。
-密钥停止工作只有三个原因：被吊销、已过期，
-或者在其 scope 之外被调用。
+**每个套餐可以用来做什么。** 试用用于测试，Pro 供个人使用。Data 套餐允许对
+[endpoint 参考](/zh/api/endpoints)中“用途”列标为 **Data 套餐** 的 endpoint 进行商业使用，需署名；
+标为 **个人使用** 的 endpoint 在所有套餐上都只供个人使用。条款见
+[cctools.network/terms/api](https://cctools.network/terms/api)，数字和价格见
+[套餐与限制](/zh/api/plans)。
 
-如果你要构建的东西需要比这更高的额度，请在同一页面提交申请，
+Free 套餐已经结束。用它创建的密钥会返回 `401`，代码为 `tier_retired`，
+并带有指向各套餐的 `renew_url`：请选择一个套餐，然后创建新密钥。
+在套餐变更之前已付费的 Pro 周期，在该周期结束前仍保持每分钟 600 次请求且没有每日上限。
+
+## 如何获得套餐
+
+打开 [/profile/api](https://cctools.network/profile/api)。套餐面板会显示你的账户可以选择什么，
+在账户拥有套餐之前，**New key** 保持不可用。
+
+- **Pro**：拥有 [CCTools Pro](https://cctools.network/pro) 订阅时，Pro 卡片会即时授予 Pro（**Unlock Pro access**）。
+- **试用**：**Start the trial** 每个账户限开通一次，面向已连接钱包并通过 CCTools 真人验证的账户。仅供测试，并使用所有试用账户共享的每日额度。
+- **Data Starter 和 Data Team**：**Buy Data Starter** 或 **Buy Data Team**，用 Canton Coin 支付，按月或按年。付款时你需要接受 [API 条款](https://cctools.network/terms/api)。套餐不会自动续订：除非你续订，访问权限在周期结束时终止。较大的套餐立即开始，较小套餐剩余的部分在其后继续；在较大套餐期间购买的较小套餐需要等待轮到它。
+- **Validator**：在同一页面提交 party ID。
+- **Enterprise**：[联系我们](https://cctools.network/contact)。
+
+你要构建的东西需要比这更高的额度吗？请在同一页面提交申请，
 并告诉我们你在构建什么。更高的额度和自定义额度是存在的，
 它们按账户单独商定，而不是从列表中挑选。
 
-续订的 Pro 订阅者可以再次点击同一个按钮，
-把 API 访问权限延长到与订阅一致。点击它永远不会降级任何东西：
-如果你已经持有验证者套餐或谈定的套餐，它会保持不变。
+**试用的资格只在你开通时检查，绝不会在你用密钥发出的请求上检查。**
+我们直接签发给组织的密钥归属于该组织而不是某个人，
+因此没有需要检查的账户，
+服务器到服务器的集成也不需要维持任何东西。
+密钥停止工作有这几个原因：被吊销、已过期或其背后的套餐已结束（`401`，代码为 `plan_ended`），
+或者在其 scope 之外被调用。
+
+**你的密钥跟随你账户的套餐。** 你创建的密钥采用你账户当前套餐的限制，
+并在该套餐的覆盖期结束前一直有效。当你续订 Pro、购买 Data 套餐或开通试用时，
+你现有的密钥会采用新的覆盖期，所以无需再创建新密钥：续订 Pro 之后，
+在 [/profile/api](https://cctools.network/profile/api) 点击 **Extend access**，
+你的密钥就会相应延长。点击它永远不会降级任何东西：授予你账户的 Validator 或
+Enterprise 套餐会保持不变。当没有任何套餐剩余时，你的密钥会返回 `401`，
+代码为 `plan_ended` 并带有 `renew_url`，续订后它们会恢复可用。
 
 ## 速率限制
 
-限制按密钥、按 endpoint、按分钟、**并且按进程**计算。
+有两种限制会计入你的调用。
+
+**每分钟限制**按密钥、按 endpoint、按分钟、**并且按进程**计算。
 API 以多进程集群的方式运行，每个进程各自维护自己的计数器，
 因此把请求分散到多个连接上的客户端，可能在触发任何拦截之前就超过标称数值。
 请把这个数字当作设计时应遵循的持续速率，
@@ -85,14 +112,31 @@ API 以多进程集群的方式运行，每个进程各自维护自己的计数�
 { "error": "Rate limit exceeded", "code": "rate_limited" }
 ```
 
+**每日限制**按账户在一个 UTC 日内计算，从 00:00 到 24:00 UTC。
+你所有密钥的调用会累加（由我们团队签发的密钥有自己的上限），
+被某个限制拒绝的调用不计数。超过上限时，你会收到 `429`，代码为 `daily_limit`，
+`Retry-After` 为距离 00:00 UTC 剩余的秒数，并带有 `X-RateLimit-Remaining-Day: 0`：
+
+```json
+{ "error": "Rate limit exceeded", "code": "daily_limit" }
+```
+
+有每日上限的密钥，在每个成功响应以及 `daily_limit` 的 `429` 上都会带有
+`X-RateLimit-Limit-Day` 和 `X-RateLimit-Remaining-Day`（每分钟限制的 `429` 不带这两个）。
+试用还使用所有试用账户共享的额度：额度用完后，返回的仍是同样的 `429` `daily_limit`，
+直到 00:00 UTC。
+
 每个成功的响应也会在 `meta.rate_limit_remaining` 中携带你的上限。
 在没有按密钥限制的套餐上，该字段为 `null`，因此请把它的类型定义为可空。
+`meta.daily_limit_remaining` 是你今天还剩的调用次数；当你的套餐没有每日上限，
+或计数器无法读取时为 `null`。
 
 <Warning>
 尽管名字叫 remaining，`rate_limit_remaining` 实际上是你的**上限**，而不是倒数。
 它在每个响应中返回相同的数字，从不递减，因为精确的逐请求计数会在热路径上
 多出一次数据库读取。不要把逻辑建立在它逐渐接近零上，因为那永远不会发生。
 请把 `429` 及其 `Retry-After` header 作为你真正的退避信号。
+`daily_limit_remaining` 是例外：它确实会递减。
 </Warning>
 
 ## 错误
@@ -101,10 +145,13 @@ API 以多进程集群的方式运行，每个进程各自维护自己的计数�
 |---|---|---|
 | `400` | 因 endpoint 而异 | 参数格式错误，例如 `invalid_slug`、`invalid_window`、`invalid_party_id`。 |
 | `401` | `unauthorized` | 密钥缺失、格式错误、已吊销或已过期。 |
+| `401` | `plan_ended` | 密钥背后的套餐已结束。`renew_url` 指明在哪里续订；续订后密钥恢复可用。 |
+| `401` | `tier_retired` | 该密钥是在已结束的 Free 套餐上创建的。`renew_url` 指向各套餐。 |
 | `403` | `forbidden` | 资源存在但不公开，例如私密的个人资料。 |
 | `404` | 因 endpoint 而异 | 没有该资源，例如 `project_not_found`、`post_not_found`。 |
 | `422` | `unsupported_token` | 该项目没有可供报告的代币。 |
 | `429` | `rate_limited` | 超过了你的每分钟限制。请在 header 指定的时间之后重试。 |
+| `429` | `daily_limit` | 超过了你的每日上限，或试用额度已用完。请在 00:00 UTC 之后重试。 |
 | `500` | `internal` / `query_failed` | 我们这边的问题。可以安全重试。 |
 | `502` | `upstream_unavailable` | 我们依赖的某个市场数据源已宕机。 |
 | `503` | `warming_up` | 由 cron 预热的数据集处于冷缓存状态。请一分钟后重试；这不是空结果。 |
@@ -129,6 +176,6 @@ endpoint 的，而不是取自一个固定列表。
   </Accordion>
   <Accordion title="优雅地处理 429" icon="clock">
     请遵守 `Retry-After`。对于稳定的工作负载，
-    应保持在你的套餐上限之下，而不是先突发再退避。
+    应保持在你的套餐限制之内，而不是先突发再退避。
   </Accordion>
 </AccordionGroup>

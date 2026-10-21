@@ -2,7 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "almond",
   "name": "CCTools",
-  "description": "CCTools documentation: the free public API for Canton Network data, portfolio and wallet tracking, validator tools, XP and campaigns.",
+  "description": "CCTools documentation: the public API for Canton Network data, portfolio and wallet tracking, validator tools, XP and campaigns.",
   "colors": {
     "primary": "#4d7c0f",
     "light": "#e6ff6a",
@@ -451,6 +451,7 @@
                   "api/overview",
                   "api/quickstart",
                   "api/authentication",
+                  "api/plans",
                   "api/endpoints",
                   "api/x402"
                 ]
@@ -599,6 +600,7 @@
                   "es/api/overview",
                   "es/api/quickstart",
                   "es/api/authentication",
+                  "es/api/plans",
                   "es/api/endpoints",
                   "es/api/x402"
                 ]
@@ -747,6 +749,7 @@
                   "pt/api/overview",
                   "pt/api/quickstart",
                   "pt/api/authentication",
+                  "pt/api/plans",
                   "pt/api/endpoints",
                   "pt/api/x402"
                 ]
@@ -895,6 +898,7 @@
                   "zh/api/overview",
                   "zh/api/quickstart",
                   "zh/api/authentication",
+                  "zh/api/plans",
                   "zh/api/endpoints",
                   "zh/api/x402"
                 ]

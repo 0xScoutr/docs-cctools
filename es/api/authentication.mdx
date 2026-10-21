@@ -1,6 +1,6 @@
 ---
 title: "Autenticación y límites de solicitudes"
-description: "Claves de API, tiers, límites de solicitudes y manejo de errores para la API pública de CCTools."
+description: "Claves de API, planes, límites de solicitudes y manejo de errores para la API pública de CCTools."
 icon: "key"
 ---
 
@@ -27,53 +27,89 @@ prefijo. Cuando ya tengas una,
 [cctools.network/api-docs](https://cctools.network/api-docs) ejecuta cualquier
 endpoint con ella desde el navegador.
 
-Cuántas claves activas puedes tener depende de tu tier: **2 en Free** y
-**10 en Validator y Pro**. El límite de solicitudes (rate limit) se cuenta por
-clave y no por cuenta, así que el tope es en realidad un tope de throughput, y
-los tiers revisados reciben el más alto porque alguien respondió por su titular.
+Cuántas claves activas puedes tener depende de tu plan; el número de cada uno
+está en [Planes y límites](/es/api/plans). El límite por minuto se cuenta por
+clave y endpoint, así que cada clave extra suma rendimiento, mientras que el
+límite diario se cuenta para toda la cuenta y no crece con el número de claves.
 
-## Tiers
+## Planes
 
-Tu clave hereda un tier según la elegibilidad de tu cuenta. El tier fija tu
-límite de solicitudes y se refleja en cada respuesta como `meta.tier`.
+Tu clave tiene el plan de tu cuenta, y el plan fija tus límites de solicitudes.
+Se refleja en cada respuesta como `meta.tier`.
 
-| Tier | Límite de solicitudes | Elegibilidad |
+| Plan | Límite de solicitudes | Quién puede tenerlo |
 |---|---|---|
-| **Free** | 60 req/min | Un Human Score verificado (26 puntos o más; se requiere una billetera Canton conectada, pero no basta por sí sola). Se concede al instante, sin revisión. |
-| **Pro** | 600 req/min | Incluido con una suscripción a [CCTools Pro](https://cctools.network/pro). Se concede al instante y dura lo mismo que la suscripción. |
-| **Validator** | Sin límite por clave | Un party ID de validador de Canton. Cada envío lo revisa una persona, normalmente en un día hábil. Plazo de 12 meses, gratis. |
+| **Trial or Evaluation** | 60 solicitudes por minuto, 1.000 llamadas por día | La prueba, que se abre una sola vez por cuenta a las cuentas con una billetera conectada que superan la verificación de persona real de CCTools, o una clave de evaluación de nuestro equipo. Solo para pruebas. |
+| **Pro** | 60 solicitudes por minuto, 1.000 llamadas por día | Incluido con una suscripción a [CCTools Pro](https://cctools.network/pro), para uso personal. Se concede al instante y dura lo mismo que la suscripción. |
+| **Data Starter** | 120 solicitudes por minuto, 20.000 llamadas por día | Se compra en Canton Coin, mensual o anual. Uso comercial, con atribución. |
+| **Data Team** | 600 solicitudes por minuto, sin tope diario | Se compra en Canton Coin, mensual o anual. Uso comercial, con atribución. |
+| **Validator** | Sin límite por clave, sin tope diario | Un party ID de validador de Canton. Cada envío lo revisa una persona, normalmente en un día hábil. Plazo de 12 meses, gratis. |
+| **Enterprise** | Sin límite por clave, sin tope diario | Uso comercial dentro de tu producto, según el pedido que acordemos. Contáctanos. |
 
 <Warning>
 Sin límite por clave no es lo mismo que sin límite. Cada solicitud a `/api/`,
-en todos los tiers incluido Validator, también cuenta contra un techo de **600
+en todos los planes incluido Validator, también cuenta contra un techo de **600
 solicitudes por minuto por dirección IP**. Los excesos sostenidos escalan a un
 bloqueo temporal de la IP, así que espera tras un `429` en lugar de reintentar
 de inmediato. ¿Planeas un backfill que necesite más que eso? Consúltanos antes.
 </Warning>
 
-Free y Pro son autoservicio: abre [/profile/api](https://cctools.network/profile/api)
-y el botón aparece si cumples los requisitos. Los validadores envían un party ID
-en la misma página.
+Los límites se cuentan de forma distinta. El límite por minuto es por clave y
+endpoint. El límite diario es por cuenta, durante un día UTC, y se suman las
+llamadas de todas tus claves.
 
-**La elegibilidad se comprueba cuando se emite una clave, nunca en las
-solicitudes que haces con ella.** Un Human Score verificado es lo que desbloquea
-el botón de autoservicio; no se vuelve a comprobar en cada llamada. Las claves
-que emitimos directamente a una organización quedan ligadas a esa organización y
-no a una persona, así que no hay cuenta que verificar ni nada que una integración
-servidor a servidor deba mantener viva. Una clave deja de funcionar por exactamente
-tres razones: se revoca, expira o se llama fuera de sus scopes.
+**Para qué puede usarse cada plan.** La prueba es para probar y Pro es para uso
+personal. Los planes Data permiten el uso comercial, con atribución, de los
+endpoints marcados como **Planes Data** en la columna Uso de la
+[referencia de endpoints](/es/api/endpoints). Los endpoints marcados como **Uso
+personal** son de uso personal en todos los planes. Los términos están en
+[cctools.network/terms/api](https://cctools.network/terms/api), y las cifras y
+los precios en [Planes y límites](/es/api/plans).
+
+El plan Free ya terminó. Una clave creada con él responde `401` con el código
+`tier_retired` y un `renew_url` que apunta a los planes: elige un plan y crea
+una clave nueva. Un periodo de Pro que pagaste antes de que cambiaran los planes
+conserva 600 solicitudes por minuto y ningún tope diario hasta que ese periodo
+termine.
+
+## Cómo obtener un plan
+
+Abre [/profile/api](https://cctools.network/profile/api). El panel de planes
+muestra lo que tu cuenta puede tomar, y **New key** sigue desactivado hasta que
+tenga un plan.
+
+- **Pro**: con una suscripción a [CCTools Pro](https://cctools.network/pro), la tarjeta de Pro concede Pro al instante (**Unlock Pro access**).
+- **Prueba**: **Start the trial** se abre una sola vez por cuenta a las cuentas con una billetera conectada que superan la verificación de persona real de CCTools. Es solo para pruebas y usa un presupuesto diario compartido por todas las cuentas en prueba.
+- **Data Starter y Data Team**: **Buy Data Starter** o **Buy Data Team** y paga en Canton Coin, por un mes o por un año. Aceptas los [términos de la API](https://cctools.network/terms/api) al pagar. Un plan no se renueva solo: el acceso termina al final del periodo salvo que lo renueves. Un plan mayor empieza de inmediato y lo que quede de uno menor continúa después; un plan menor comprado durante uno mayor espera su turno.
+- **Validator**: envía un party ID en la misma página.
+- **Enterprise**: [contáctanos](https://cctools.network/contact).
 
 ¿Estás construyendo algo que necesita más que esto? Solicítalo en la misma página
 y cuéntanos qué estás construyendo. Existen límites más altos y personalizados; se
 acuerdan por cuenta en lugar de elegirse de una lista.
 
-Un suscriptor Pro que renueva puede pulsar el mismo botón otra vez para extender
-su acceso a la API en consecuencia. Pulsarlo nunca degrada nada: si ya tienes un
-tier de validador o negociado, se mantiene.
+**La comprobación de la prueba se hace cuando la inicias, nunca en las solicitudes
+que haces con ella.** Las claves que emitimos directamente a una organización
+quedan ligadas a esa organización y no a una persona, así que no hay cuenta que
+comprobar ni nada que una integración servidor a servidor deba mantener viva.
+Una clave deja de funcionar por estas razones: se revoca, expira o el plan que la
+respalda termina (`401` con el código `plan_ended`), o se llama fuera de sus scopes.
+
+**Tus claves siguen el plan de tu cuenta.** Una clave que creas toma los límites
+del plan que tiene tu cuenta y funciona hasta que termina la cobertura de ese
+plan. Cuando renuevas Pro, compras un plan Data o inicias la prueba, tus claves
+existentes toman la nueva cobertura, así que no hace falta crear otra: tras
+renovar Pro, pulsa **Extend access** en [/profile/api](https://cctools.network/profile/api)
+y tus claves se extienden en consecuencia. Pulsarlo nunca degrada nada: un plan
+Validator o Enterprise concedido a tu cuenta se mantiene. Cuando no queda ningún
+plan, tus claves responden `401` con el código `plan_ended` y un `renew_url`, y
+renovar las devuelve a funcionar.
 
 ## Límites de solicitudes
 
-Los límites se cuentan por clave, por endpoint, por minuto, **por proceso**. La API
+Dos límites cuentan tus llamadas.
+
+El **límite por minuto** se cuenta por clave, por endpoint, por minuto, **por proceso**. La API
 corre como un clúster multiproceso donde cada proceso mantiene su propio contador,
 así que un cliente que reparte solicitudes entre muchas conexiones puede superar la
 cifra indicada antes de que algo lo frene. Trata el número como la tasa sostenida
@@ -85,9 +121,28 @@ Cuando lo superas recibes un `429` con un header `Retry-After: 60`:
 { "error": "Rate limit exceeded", "code": "rate_limited" }
 ```
 
+El **límite diario** se cuenta por cuenta durante un día UTC, de las 00:00 a las
+24:00 UTC. Se suman las llamadas de todas tus claves (una clave emitida por
+nuestro equipo tiene su propio tope), y una llamada que un límite rechaza no se
+cuenta. Por encima del tope recibes un `429` con el código `daily_limit`, un
+`Retry-After` con los segundos que faltan hasta las 00:00 UTC y
+`X-RateLimit-Remaining-Day: 0`:
+
+```json
+{ "error": "Rate limit exceeded", "code": "daily_limit" }
+```
+
+Una clave con tope diario recibe `X-RateLimit-Limit-Day` y
+`X-RateLimit-Remaining-Day` en cada respuesta correcta y en el `429`
+`daily_limit` (el `429` por minuto no los lleva). La prueba también usa un
+presupuesto compartido por todas las cuentas en prueba: cuando se agota, la
+respuesta es el mismo `429` `daily_limit`, hasta las 00:00 UTC.
+
 Cada respuesta correcta también lleva tu techo en
-`meta.rate_limit_remaining`. En los tiers sin límite por clave es `null`, así
-que decláralo como nullable.
+`meta.rate_limit_remaining`. En los planes sin límite por clave es `null`, así
+que decláralo como nullable. `meta.daily_limit_remaining` son las llamadas que te
+quedan hoy; es `null` cuando tu plan no tiene tope diario o no se pudo leer el
+contador.
 
 <Warning>
 A pesar del nombre, `rate_limit_remaining` es tu **techo**, no una cuenta
@@ -95,7 +150,7 @@ regresiva. Devuelve el mismo número en cada respuesta y nunca disminuye,
 porque un conteo exacto por solicitud costaría una lectura de base de datos en
 el camino crítico. No condiciones tu lógica a que baje hacia cero, porque
 nunca lo hará. Usa el `429` y su header `Retry-After` como tu señal real de
-retroceso.
+retroceso. `daily_limit_remaining` es la excepción: ese sí cuenta hacia atrás.
 </Warning>
 
 ## Errores
@@ -104,10 +159,13 @@ retroceso.
 |---|---|---|
 | `400` | específico del endpoint | Parámetro mal formado, por ejemplo `invalid_slug`, `invalid_window`, `invalid_party_id`. |
 | `401` | `unauthorized` | Clave ausente, mal formada, revocada o expirada. |
+| `401` | `plan_ended` | El plan que respalda la clave terminó. El `renew_url` indica dónde renovar; al renovar, la clave vuelve a funcionar. |
+| `401` | `tier_retired` | La clave se creó con el plan Free, que terminó. El `renew_url` apunta a los planes. |
 | `403` | `forbidden` | El recurso existe pero no es público, por ejemplo un perfil privado. |
 | `404` | específico del endpoint | No existe ese recurso, por ejemplo `project_not_found`, `post_not_found`. |
 | `422` | `unsupported_token` | El proyecto no tiene ningún token del que informar. |
 | `429` | `rate_limited` | Por encima de tu límite por minuto. Reintenta después del header. |
+| `429` | `daily_limit` | Por encima de tu tope diario, o el presupuesto de la prueba se agotó. Reintenta después de las 00:00 UTC. |
 | `500` | `internal` / `query_failed` | Culpa nuestra. Es seguro reintentar. |
 | `502` | `upstream_unavailable` | Una fuente de datos de mercado de la que dependemos está caída. |
 | `503` | `warming_up` | Un conjunto de datos precalentado por cron tiene la caché fría. Reintenta en un minuto; esto no es un resultado vacío. |
@@ -131,7 +189,7 @@ del techo por IP.
     primero una clave de reemplazo, migra a ella y luego revoca la antigua.
   </Accordion>
   <Accordion title="Maneja el 429 con elegancia" icon="clock">
-    Respeta `Retry-After`. Para cargas de trabajo constantes, mantente por debajo
-    del techo de tu tier en lugar de hacer ráfagas y luego frenar.
+    Respeta `Retry-After`. Para cargas de trabajo constantes, mantente dentro de
+    los límites de tu plan en lugar de hacer ráfagas y luego frenar.
   </Accordion>
 </AccordionGroup>

@@ -27,6 +27,7 @@ curl -H "X-API-Key: cck_your_key_here" \
   "https://api.cctools.network/api/v1/public/network/stats"
 ```
 
+密钥来自你账户的套餐：见下面的“套餐一览”。
 在 [cctools.network/profile/api](https://cctools.network/profile/api) 生成和管理密钥。
 完整流程见[认证](/zh/api/authentication)。
 
@@ -38,14 +39,15 @@ curl -H "X-API-Key: cck_your_key_here" \
 {
   "data": { "...": "..." },
   "pagination": { "limit": 50, "offset": 0, "total": 491 },
-  "meta": { "tier": "free", "rate_limit_remaining": 60 }
+  "meta": { "tier": "pro", "rate_limit_remaining": 60, "daily_limit_remaining": 999 }
 }
 ```
 
 - `data`：payload（对象或数组，取决于 endpoint）。
 - `pagination`：在列表 endpoint 上出现，其他情况为 `null`。
-- `meta.tier`：你的密钥所属套餐。
+- `meta.tier`：你的密钥所属套餐：`evaluation`、`pro`、`data`、`data_team`、`validator`，Enterprise 为 `paid`。
 - `meta.rate_limit_remaining`：你的每分钟上限。
+- `meta.daily_limit_remaining`：按你的套餐每日上限，今天还剩多少次调用；套餐没有每日上限时为 `null`。
 
 错误响应为 `{ "error": "message", "code": "..." }`，HTTP 状态码为
 `400`、`401`、`404`、`429` 或 `503`。
@@ -54,32 +56,58 @@ curl -H "X-API-Key: cck_your_key_here" \
 
 ## 套餐一览
 
-| 套餐 | 速率限制 | 适用对象 | 获取方式 |
-|---|---|---|---|
-| **Free** | 60 次请求/分钟 | 已验证的 Human Score | 在 /profile/api 即时自助获取 |
-| **Pro** | 600 次请求/分钟 | CCTools Pro 订阅者 | 在 /profile/api 即时自助获取 |
-| **Validator** | 无按密钥限制 | Canton 验证者 | 提交 party ID；由人工审核，通常在一个工作日内完成 |
-| **Custom** | 按账户单独商定 | 构建者、基金、合作伙伴 | 提交申请并告诉我们你正在构建什么 |
+密钥拥有创建它的账户的套餐。每分钟限制按每个密钥和 endpoint 计数；每日限制按整个账户在一个 UTC 日内的调用数计数。
+
+| 套餐 | 用途 | 每分钟 | 每天 | 获取方式 |
+|---|---|---|---|---|
+| **Trial or Evaluation** | 仅供测试 | 每分钟 60 次请求 | 每天 1,000 次调用 | 试用：每个账户限开通一次，面向已连接钱包并通过 CCTools 真人验证的账户；或由我们团队签发的评估密钥 |
+| **Pro** | 个人使用 | 每分钟 60 次请求 | 每天 1,000 次调用 | 包含在 [CCTools Pro](https://cctools.network/pro) 中。在 /profile/api 即时自助获取 |
+| **Data Starter** | 商业使用，需署名 | 每分钟 120 次请求 | 每天 20,000 次调用 | 在 /profile/api 用 Canton Coin 购买，按月或按年 |
+| **Data Team** | 商业使用，需署名 | 每分钟 600 次请求 | 无每日上限 | 在 /profile/api 用 Canton Coin 购买，按月或按年 |
+| **Validator** | 按 Development Fund Committee 批准的条件 | 无按密钥限制 | 无每日上限 | 提交 party ID；由人工审核，通常在一个工作日内完成。免费 12 个月 |
+| **Enterprise** | 在你的产品内商业使用，按约定的订单 | 无按密钥限制 | 无每日上限 | 联系我们 |
 
 所有套餐（Validator 也不例外）在整个 API 范围内还受到一个上限约束：
 每个 IP 地址每分钟 600 次请求。
+
+价格、各套餐允许的密钥数量和完整表格见[套餐与限制](/zh/api/plans)，该页由 API spec 生成。
+同样的数字也在 [cctools.network/api-docs](https://cctools.network/api-docs)，
+适用于所有套餐的条款在 [cctools.network/terms/api](https://cctools.network/terms/api)。
+
+## 无需密钥，免费使用
+
+以下内容无需密钥，也无需账户，全部由 `https://api.cctools.network` 提供：
+
+- 开放的每日网络记录，位于 `/api/open/network-record/v1/`，以 CC BY 4.0 发布。
+- 聚合器读取的数据源，位于 `/api/markets/`。
+- 状态 endpoint，`/api/v1/public/status`。
+- OpenAPI 文件，`/api/v1/openapi.json`。
+- MCP 服务器，`/api/mcp`。
+
+`/api/v1/public/` 下的其他所有内容都需要密钥。
 
 ## 下一步
 
 <CardGroup cols={2}>
   <Card title="快速开始" icon="rocket" href="/zh/api/quickstart">
-    获取免费密钥，两分钟内完成第一次调用。
+    选好套餐，拿到密钥，两分钟内完成第一次调用。
   </Card>
   <Card title="认证" icon="key" href="/zh/api/authentication">
     密钥、套餐、速率限制与错误代码。
+  </Card>
+  <Card title="套餐与限制" icon="layer-group" href="/zh/api/plans">
+    价格、限制，以及每个套餐可用于什么。
   </Card>
   <Card title="Endpoints" icon="list" href="/zh/api/endpoints">
     每个只读 endpoint 都附带可直接复制粘贴的示例。
   </Card>
   <Card title="管理密钥" icon="gear" href="https://cctools.network/profile/api">
-    创建、列出并撤销你的密钥。
+    选择套餐，然后创建、列出并撤销你的密钥。
   </Card>
   <Card title="在线试用" icon="play" href="https://cctools.network/api-docs">
     在浏览器中用你自己的密钥调用任意 endpoint。
+  </Card>
+  <Card title="API 条款" icon="file-lines" href="https://cctools.network/terms/api">
+    每个套餐允许什么、署名要求和付款。
   </Card>
 </CardGroup>
