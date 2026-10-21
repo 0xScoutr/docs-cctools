@@ -85,7 +85,7 @@ um plano.
 
 Precisa de mais do que um plano oferece? Fale conosco sobre o Enterprise em
 [cctools.network/contact](https://cctools.network/contact); uma conta sem plano
-também pode se candidatar na mesma página.
+também pode solicitar acesso na mesma página.
 
 **A verificação do teste acontece quando você o inicia, nunca nas requisições que
 você faz com ele.** As chaves que emitimos diretamente para uma organização ficam
@@ -133,7 +133,7 @@ contada. Acima do teto você recebe `429` com o código `daily_limit`, um
 { "error": "Daily limit reached. It resets at 00:00 UTC.", "code": "daily_limit" }
 ```
 
-Uma recusa por minuto em um dia que já se esgotou também responde `daily_limit`,
+Uma recusa por minuto em um dia cujo teto já se esgotou também responde `daily_limit`,
 com o mesmo `Retry-After`. Uma chave sob um teto diário recebe
 `X-RateLimit-Limit-Day` e `X-RateLimit-Remaining-Day` em toda resposta
 bem-sucedida e nos dois `429`, `rate_limited` e `daily_limit`; se o contador não

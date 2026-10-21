@@ -133,7 +133,7 @@ cuenta. Por encima del tope recibes un `429` con el código `daily_limit`, un
 { "error": "Daily limit reached. It resets at 00:00 UTC.", "code": "daily_limit" }
 ```
 
-Un rechazo por minuto en un día que ya se agotó también responde `daily_limit`,
+Un rechazo por minuto en un día cuyo tope ya se agotó también responde `daily_limit`,
 con el mismo `Retry-After`. Una clave con tope diario recibe
 `X-RateLimit-Limit-Day` y `X-RateLimit-Remaining-Day` en cada respuesta correcta
 y en los dos `429`, `rate_limited` y `daily_limit`; si no se puede leer el
