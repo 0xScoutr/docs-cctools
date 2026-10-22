@@ -50,7 +50,7 @@ curl -H "X-API-Key: cck_your_key_here" \
 - `meta.daily_limit_remaining`：按你的套餐每日上限，今天还剩多少次调用；套餐没有每日上限时为 `null`。
 
 错误响应为 `{ "error": "message", "code": "..." }`，HTTP 状态码为
-`400`、`401`、`404`、`429` 或 `503`。
+`400`、`401`、`403`、`404`、`422`、`429`、`500`、`502` 或 `503`；每个状态码的含义见[认证](/zh/api/authentication)中的表格。
 带有 `warming_up` 代码的 `503` 表示由 cron 预热的数据集处于冷缓存状态：
 请在一分钟后重试，而不要将其视为空结果。
 
@@ -64,7 +64,7 @@ curl -H "X-API-Key: cck_your_key_here" \
 | **Pro** | 个人使用 | 每分钟 60 次请求 | 每天 1,000 次调用 | 包含在 [CCTools Pro](https://cctools.network/pro) 中。在 /profile/api 即时自助获取 |
 | **Data Starter** | 商业使用，需署名 | 每分钟 120 次请求 | 每天 20,000 次调用 | 在 /profile/api 用 Canton Coin 购买，按月或按年 |
 | **Data Team** | 商业使用，需署名 | 每分钟 600 次请求 | 无每日上限 | 在 /profile/api 用 Canton Coin 购买，按月或按年 |
-| **Validator** | 按 Development Fund Committee 批准的条件 | 无按密钥限制 | 无每日上限 | 提交 party ID；由人工审核，通常在一个工作日内完成。免费 12 个月 |
+| **Validator** | 商业使用标为 Data 套餐的 endpoint，按我们的 Canton Development Fund 资助所批准的条件 | 无按密钥限制 | 无每日上限 | 提交 party ID；由人工审核，通常在一个工作日内完成。免费 12 个月 |
 | **Enterprise** | 在你的产品内商业使用，按约定的订单 | 无按密钥限制 | 无每日上限 | 联系我们 |
 
 所有套餐（Validator 也不例外）在整个 API 范围内还受到一个上限约束：

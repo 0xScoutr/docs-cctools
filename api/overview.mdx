@@ -53,7 +53,8 @@ Successful responses share one shape:
 - `meta.daily_limit_remaining`: the calls you have left today under your plan's daily cap; `null` when your plan has none.
 
 Errors are `{ "error": "message", "code": "..." }` with an HTTP status of
-`400`, `401`, `404`, `429`, or `503`. A `503` with code `warming_up` means a
+`400`, `401`, `403`, `404`, `422`, `429`, `500`, `502`, or `503`; the table in
+[Authentication](/api/authentication) says what each means. A `503` with code `warming_up` means a
 cron-warmed dataset has a cold cache: retry in a minute rather than treating it
 as an empty result.
 
@@ -68,7 +69,7 @@ daily limit counts calls for the whole account over a UTC day.
 | **Pro** | Personal use | 60 a minute | 1,000 a day | Included with [CCTools Pro](https://cctools.network/pro). Instant, self-service at /profile/api |
 | **Data Starter** | Commercial use, with attribution | 120 a minute | 20,000 a day | Bought in Canton Coin at /profile/api, monthly or annual |
 | **Data Team** | Commercial use, with attribution | 600 a minute | No daily cap | Bought in Canton Coin at /profile/api, monthly or annual |
-| **Validator** | As approved by the Development Fund Committee | No per-key limit | No daily cap | Submit your party ID; reviewed by a person, usually within one business day. Free for 12 months |
+| **Validator** | Commercial use of the endpoints marked Data plans, as approved in our Canton Development Fund grant | No per-key limit | No daily cap | Submit your party ID; reviewed by a person, usually within one business day. Free for 12 months |
 | **Enterprise** | Commercial use inside your product, under an agreed order | No per-key limit | No daily cap | Contact us |
 
 Every plan, Validator included, also sits under a ceiling of 600 requests per

@@ -52,7 +52,8 @@ Las respuestas correctas comparten una misma forma:
 - `meta.daily_limit_remaining`: las llamadas que te quedan hoy bajo el tope diario de tu plan; `null` cuando tu plan no tiene ninguno.
 
 Los errores son `{ "error": "message", "code": "..." }` con un estado HTTP
-`400`, `401`, `404`, `429` o `503`. Un `503` con el código `warming_up` significa que
+`400`, `401`, `403`, `404`, `422`, `429`, `500`, `502` o `503`; la tabla de
+[Autenticación](/es/api/authentication) explica qué significa cada uno. Un `503` con el código `warming_up` significa que
 un conjunto de datos precalentado por cron tiene la caché fría: reinténtalo en un minuto
 en lugar de tratarlo como un resultado vacío.
 
@@ -68,7 +69,7 @@ la cuenta durante un día UTC.
 | **Pro** | Uso personal | 60 por minuto | 1.000 por día | Incluido con [CCTools Pro](https://cctools.network/pro). Al instante, en autoservicio en /profile/api |
 | **Data Starter** | Uso comercial, con atribución | 120 por minuto | 20.000 por día | Se compra en Canton Coin en /profile/api, mensual o anual |
 | **Data Team** | Uso comercial, con atribución | 600 por minuto | Sin tope diario | Se compra en Canton Coin en /profile/api, mensual o anual |
-| **Validator** | Según lo aprobado por el Development Fund Committee | Sin límite por clave | Sin tope diario | Envía tu party ID; lo revisa una persona, normalmente en un día hábil. Gratis durante 12 meses |
+| **Validator** | Uso comercial de los endpoints marcados como Planes Data, según lo aprobado en nuestro grant del Canton Development Fund | Sin límite por clave | Sin tope diario | Envía tu party ID; lo revisa una persona, normalmente en un día hábil. Gratis durante 12 meses |
 | **Enterprise** | Uso comercial dentro de tu producto, según el pedido acordado | Sin límite por clave | Sin tope diario | Contáctanos |
 
 Todos los planes, incluido Validator, están además sujetos a un tope de 600 solicitudes

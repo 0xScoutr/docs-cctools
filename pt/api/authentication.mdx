@@ -76,21 +76,20 @@ Abra [/profile/api](https://cctools.network/profile/api). O painel de planos
 mostra o que a sua conta pode contratar, e **New key** fica desativado até ela ter
 um plano.
 
-- **Pro**: com uma assinatura do [CCTools Pro](https://cctools.network/pro), o card do Pro concede o Pro na hora (**Unlock Pro access**).
-- **Avaliação**: para testar a API antes de comprar, peça uma chave de avaliação à nossa equipe: faça o pedido na mesma página ou [fale conosco](https://cctools.network/contact). Nossa equipe a emite sob pedido, somente para testes; quanto tempo ela dura está em [Planos e limites](/pt/api/plans).
-- **Data Starter e Data Team**: **Buy Data Starter** ou **Buy Data Team** e pague em Canton Coin, por um mês ou por um ano. Você aceita os [termos da API](https://cctools.network/terms/api) ao pagar. Um plano não se renova sozinho: o acesso termina no fim do período, a menos que você renove. Um plano Data comprado enquanto o mesmo plano, ou um maior, está em curso começa quando esse termina. Um plano Data menor em curso fica em pausa enquanto um maior está em curso e continua depois dele.
+- **Pro**: com uma assinatura do [CCTools Pro](https://cctools.network/pro), o painel de planos mostra o Pro como o seu plano. Aperte **Set up keys** uma vez (uma conta que teve uma chave Free vê **Upgrade to Pro tier** no lugar) e depois **New key**.
+- **Evaluation**: para testar a API antes de comprar, peça uma chave de avaliação à nossa equipe. Uma conta que nunca teve um plano faz o pedido nessa página; qualquer outra conta [fala conosco](https://cctools.network/contact). Nossa equipe a emite sob pedido, somente para testes; quanto tempo ela dura está em [Planos e limites](/pt/api/plans).
+- **Data Starter e Data Team**: **Buy Data Starter** ou **Buy Data Team** e pague em Canton Coin, por um mês ou por um ano. Você aceita os [termos da API](https://cctools.network/terms/api) ao pagar. Os pagamentos dos planos Data não são reembolsados, exceto quando a lei exigir. Um plano não se renova sozinho: o acesso termina no fim do período, a menos que você renove. Um plano Data comprado enquanto o mesmo plano, ou um maior, está em curso começa quando esse termina. Um plano Data menor em curso fica em pausa enquanto um maior está em curso e continua depois dele.
 - **Validator**: envie um party ID na mesma página.
 - **Enterprise**: [fale conosco](https://cctools.network/contact).
 
 Precisa de mais do que um plano oferece? Fale conosco sobre o Enterprise em
-[cctools.network/contact](https://cctools.network/contact); uma conta sem plano
-também pode solicitar acesso na mesma página.
+[cctools.network/contact](https://cctools.network/contact).
 
 As chaves que emitimos diretamente para uma organização ficam
-ligadas a essa organização, e não a uma pessoa, então não há conta a verificar
-nem nada que uma integração servidor-a-servidor precise manter viva. Uma chave
-para de funcionar por estes motivos: ela é revogada, ela expira ou o plano por
-trás dela termina (`401` com o código `plan_ended`), ou é usada fora dos escopos.
+ligadas a essa organização, e não a uma pessoa, então não seguem o plano de
+nenhuma conta e não há nada que uma integração servidor-a-servidor precise
+manter viva. Uma chave para de funcionar quando é revogada ou quando expira; uma
+chave de plano expira quando o plano dela termina (`401` com o código `plan_ended`).
 
 **Suas chaves seguem o plano da sua conta, até o número de chaves do plano.**
 Uma chave que você cria assume os limites do plano que a sua conta tem e vale
@@ -102,7 +101,8 @@ renovar o Pro, aperte **Extend access** em [/profile/api](https://cctools.networ
 e suas chaves são estendidas na mesma medida. Apertá-lo nunca rebaixa nada: um
 plano Validator ou Enterprise concedido à sua conta permanece. Quando não resta
 nenhum plano, suas chaves respondem `401` com o código `plan_ended` e um
-`renew_url`, e renovar as traz de volta.
+`renew_url`. Renovar o Pro ou um plano Data as traz de volta; uma avaliação
+encerrada é estendida pela nossa equipe, então [fale conosco](https://cctools.network/contact).
 
 ## Limites de requisições
 
@@ -158,7 +158,7 @@ sinal real de recuo. `daily_limit_remaining` é a exceção: ele conta para baix
 |---|---|---|
 | `400` | específico do endpoint | Parâmetro malformado, por exemplo `invalid_slug`, `invalid_window`, `invalid_party_id`. |
 | `401` | `unauthorized` | Chave ausente, malformada, revogada ou expirada. |
-| `401` | `plan_ended` | O plano por trás da chave terminou. O `renew_url` diz onde renovar; ao renovar, a chave volta a funcionar. |
+| `401` | `plan_ended` | O plano por trás da chave terminou. Para o Pro ou um plano Data, o `renew_url` diz onde renovar, e ao renovar a chave volta a funcionar. Para uma chave de avaliação, a mensagem aponta para [fale conosco](https://cctools.network/contact): nossa equipe a estende. |
 | `401` | `tier_retired` | A chave foi criada no plano Free, que acabou. O `renew_url` aponta para os planos. |
 | `403` | `forbidden` | O recurso existe, mas não é público, por exemplo um perfil privado. |
 | `404` | específico do endpoint | Recurso inexistente, por exemplo `project_not_found`, `post_not_found`. |

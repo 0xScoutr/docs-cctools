@@ -75,21 +75,20 @@ create a new key.
 Open [/profile/api](https://cctools.network/profile/api). The plan panel shows
 what your account can take, and **New key** stays off until it holds a plan.
 
-- **Pro**: with a [CCTools Pro](https://cctools.network/pro) subscription, the Pro card grants Pro instantly (**Unlock Pro access**).
-- **Evaluation**: to test the API before you buy, ask our team for an evaluation key: apply on the same page, or [contact us](https://cctools.network/contact). Our team issues it on request, for testing only; how long it lasts is in [Plans and limits](/api/plans).
-- **Data Starter and Data Team**: **Buy Data Starter** or **Buy Data Team** and pay in Canton Coin, for a month or a year. You accept the [API terms](https://cctools.network/terms/api) at checkout. A plan does not renew by itself: access ends at the end of the period unless you renew. A Data plan bought while the same or a larger Data plan runs starts when that one ends. A smaller Data plan that is running pauses while a larger one runs and resumes after it.
+- **Pro**: with a [CCTools Pro](https://cctools.network/pro) subscription, the plan panel shows Pro as your plan. Press **Set up keys** once (an account that had a Free key sees **Upgrade to Pro tier** instead), then **New key**.
+- **Evaluation**: to test the API before you buy, ask our team for an evaluation key. An account that has never held a plan applies on that page; any other account [contacts us](https://cctools.network/contact). Our team issues it on request, for testing only; how long it lasts is in [Plans and limits](/api/plans).
+- **Data Starter and Data Team**: **Buy Data Starter** or **Buy Data Team** and pay in Canton Coin, for a month or a year. You accept the [API terms](https://cctools.network/terms/api) at checkout. Data plan payments are not refunded, except where the law requires it. A plan does not renew by itself: access ends at the end of the period unless you renew. A Data plan bought while the same or a larger Data plan runs starts when that one ends. A smaller Data plan that is running pauses while a larger one runs and resumes after it.
 - **Validator**: submit a party ID on the same page.
 - **Enterprise**: [contact us](https://cctools.network/contact).
 
 Need more than a plan gives? Talk to us about Enterprise at
-[cctools.network/contact](https://cctools.network/contact); an account without a
-plan can also apply on the same page.
+[cctools.network/contact](https://cctools.network/contact).
 
 Keys we issue directly to an organisation are attached to that
-organisation rather than to a person, so there is no account to check and
-nothing for a server-to-server integration to keep alive. A key stops working
-for these reasons: it is revoked, it expires or the plan behind it ends (`401`
-with the code `plan_ended`), or it is called outside its scopes.
+organisation rather than to a person, so they do not follow any account's plan
+and there is nothing for a server-to-server integration to keep alive. A key
+stops working when it is revoked or when it expires; a plan key expires when its
+plan ends (`401` with the code `plan_ended`).
 
 **Your keys follow your account's plan, up to the plan's number of keys.** A key
 you make takes the limits of the plan your account holds, and it runs until that
@@ -100,7 +99,7 @@ coverage, so there is no new key to make: after renewing Pro, press **Extend acc
 on [/profile/api](https://cctools.network/profile/api) and your keys are
 extended to match. Pressing it never lowers anything: a Validator or Enterprise
 plan granted to your account stays. When no plan is left, your keys answer `401`
-with the code `plan_ended` and a `renew_url`, and renewing brings them back.
+with the code `plan_ended` and a `renew_url`. Renewing Pro or a Data plan brings them back; an ended evaluation is extended by our team, so [contact us](https://cctools.network/contact).
 
 ## Rate limits
 
@@ -155,7 +154,7 @@ exception: it does count down.
 |---|---|---|
 | `400` | endpoint-specific | Malformed parameter, e.g. `invalid_slug`, `invalid_window`, `invalid_party_id`. |
 | `401` | `unauthorized` | Missing, malformed, revoked, or expired key. |
-| `401` | `plan_ended` | The plan behind the key has ended. The `renew_url` says where to renew; renewing brings the key back. |
+| `401` | `plan_ended` | The plan behind the key has ended. For Pro or a Data plan, the `renew_url` says where to renew, and renewing brings the key back. For an evaluation key, the message points to [contact us](https://cctools.network/contact): our team extends it. |
 | `401` | `tier_retired` | The key was made on the Free plan, which has ended. The `renew_url` points to the plans. |
 | `403` | `forbidden` | The resource exists but is not public, e.g. a private profile. |
 | `404` | endpoint-specific | No such resource, e.g. `project_not_found`, `post_not_found`. |

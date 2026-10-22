@@ -70,20 +70,19 @@ Free 套餐已经结束。用它创建的密钥会返回 `401`，代码为 `tier
 打开 [/profile/api](https://cctools.network/profile/api)。套餐面板会显示你的账户可以选择什么，
 在账户拥有套餐之前，**New key** 保持不可用。
 
-- **Pro**：拥有 [CCTools Pro](https://cctools.network/pro) 订阅时，Pro 卡片会即时授予 Pro 套餐（**Unlock Pro access**）。
-- **评估**：想在购买前测试 API，请向我们团队申请评估密钥：在同一页面提交申请，或[联系我们](https://cctools.network/contact)。评估密钥由我们团队按申请签发，仅供测试；有效期见[套餐与限制](/zh/api/plans)。
-- **Data Starter 和 Data Team**：**Buy Data Starter** 或 **Buy Data Team**，用 Canton Coin 支付，按月或按年。付款时你需要接受 [API 条款](https://cctools.network/terms/api)。套餐不会自动续订：除非你续订，访问权限在周期结束时终止。在相同或更大的 Data 套餐生效期间购买的 Data 套餐，在该套餐结束时开始。正在运行的较小 Data 套餐会在较大的 Data 套餐运行期间暂停，并在其结束后继续。
+- **Pro**：拥有 [CCTools Pro](https://cctools.network/pro) 订阅时，套餐面板会把 Pro 显示为你的套餐。点击一次 **Set up keys**（曾持有 Free 密钥的账户会看到 **Upgrade to Pro tier**），然后点击 **New key**。
+- **Evaluation**：想在购买前测试 API，请向我们团队申请评估密钥。从未持有过套餐的账户在该页面提交申请；其他账户请[联系我们](https://cctools.network/contact)。评估密钥由我们团队按申请签发，仅供测试；有效期见[套餐与限制](/zh/api/plans)。
+- **Data Starter 和 Data Team**：**Buy Data Starter** 或 **Buy Data Team**，用 Canton Coin 支付，按月或按年。付款时你需要接受 [API 条款](https://cctools.network/terms/api)。Data 套餐的付款不予退款，法律要求退款的情形除外。套餐不会自动续订：除非你续订，访问权限在周期结束时终止。在相同或更大的 Data 套餐生效期间购买的 Data 套餐，在该套餐结束时开始。正在运行的较小 Data 套餐会在较大的 Data 套餐运行期间暂停，并在其结束后继续。
 - **Validator**：在同一页面提交 party ID。
 - **Enterprise**：[联系我们](https://cctools.network/contact)。
 
 需要的比套餐提供的更多？请通过 [cctools.network/contact](https://cctools.network/contact)
-联系我们了解 Enterprise；没有套餐的账户也可以在同一页面提交申请。
+联系我们了解 Enterprise。
 
 我们直接签发给组织的密钥归属于该组织而不是某个人，
-因此没有需要检查的账户，
+因此它们不跟随任何账户的套餐，
 服务器到服务器的集成也不需要维持任何东西。
-密钥停止工作有这几个原因：被吊销、已过期或其背后的套餐已结束（`401`，代码为 `plan_ended`），
-或者在其 scope 之外被调用。
+密钥会在被吊销或到期时停止工作；套餐密钥在其套餐结束时到期（`401`，代码为 `plan_ended`）。
 
 **你的密钥跟随你账户的套餐，数量以该套餐允许的密钥数为限。** 你创建的密钥采用你账户当前套餐的限制，
 并在该套餐的覆盖期结束前一直有效。如果你持有的密钥超过套餐允许的数量，最近使用过的会保留，其余的会终止。当你续订 Pro 或购买 Data 套餐时，
@@ -91,7 +90,7 @@ Free 套餐已经结束。用它创建的密钥会返回 `401`，代码为 `tier
 在 [/profile/api](https://cctools.network/profile/api) 点击 **Extend access**，
 你的密钥就会相应延长。点击它永远不会降级任何东西：授予你账户的 Validator 或
 Enterprise 套餐会保持不变。当没有任何套餐剩余时，你的密钥会返回 `401`，
-代码为 `plan_ended` 并带有 `renew_url`，续订后它们会恢复可用。
+代码为 `plan_ended` 并带有 `renew_url`。续订 Pro 或 Data 套餐后它们会恢复可用；已结束的评估由我们团队延期，请[联系我们](https://cctools.network/contact)。
 
 ## 速率限制
 
@@ -142,7 +141,7 @@ API 以多进程集群的方式运行，每个进程各自维护自己的计数�
 |---|---|---|
 | `400` | 因 endpoint 而异 | 参数格式错误，例如 `invalid_slug`、`invalid_window`、`invalid_party_id`。 |
 | `401` | `unauthorized` | 密钥缺失、格式错误、已吊销或已过期。 |
-| `401` | `plan_ended` | 密钥背后的套餐已结束。`renew_url` 指明在哪里续订；续订后密钥恢复可用。 |
+| `401` | `plan_ended` | 密钥背后的套餐已结束。对于 Pro 或 Data 套餐，`renew_url` 指明在哪里续订，续订后密钥恢复可用。对于评估密钥，消息会指向[联系我们](https://cctools.network/contact)：由我们团队延期。 |
 | `401` | `tier_retired` | 该密钥是在已结束的 Free 套餐上创建的。`renew_url` 指向各套餐。 |
 | `403` | `forbidden` | 资源存在但不公开，例如私密的个人资料。 |
 | `404` | 因 endpoint 而异 | 没有该资源，例如 `project_not_found`、`post_not_found`。 |
