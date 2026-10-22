@@ -67,7 +67,7 @@ Projects, categories, rankings, trending.
 | `GET /api/v1/public/ecosystem/projects/{slug}/analytics` | Engagement analytics for a project | Uso pessoal | CCTools engagement analytics |
 | `GET /api/v1/public/ecosystem/projects/{slug}/campaigns` | Project campaigns | Planos Data | CCTools ecosystem directory |
 | `GET /api/v1/public/ecosystem/projects/{slug}/token` | Project token stats | Uso pessoal | DexScreener, cached by CCTools |
-| `GET /api/v1/public/ecosystem/rankings` | Projects ranked by metric | Uso pessoal | CCTools ecosystem directory, ranked by upvotes, views and clicks |
+| `GET /api/v1/public/ecosystem/rankings` | Projects ranked by metric | Planos Data | CCTools ecosystem directory, ranked by upvotes, views and clicks |
 | `GET /api/v1/public/ecosystem/trending` | Top 20 trending projects this epoch | Planos Data | CCTools ecosystem directory, scored from upvotes, views and clicks |
 
 ```bash
@@ -131,7 +131,7 @@ Academy posts, learn paths, news, developer tooling and the badge catalog.
 | `GET /api/v1/public/academy/posts` | List Academy posts | Uso pessoal | CCTools Academy |
 | `GET /api/v1/public/academy/posts/{slug}` | Academy post by slug | Uso pessoal | CCTools Academy |
 | `GET /api/v1/public/badges` | Badge catalog | Planos Data | CCTools badge catalog |
-| `GET /api/v1/public/devtools` | Developer tooling directory | Uso pessoal | CCTools developer tooling directory, with repository data from GitHub |
+| `GET /api/v1/public/devtools` | Developer tooling directory | Planos Data | CCTools developer tooling directory, with repository data from GitHub |
 | `GET /api/v1/public/learn/paths` | Learn path catalog | Uso pessoal | CCTools Learn |
 | `GET /api/v1/public/learn/paths/{slug}` | Learn path by slug | Uso pessoal | CCTools Learn |
 | `GET /api/v1/public/news` | Canton news | Uso pessoal | News publishers, named on each item (source and source_url) |
@@ -178,7 +178,7 @@ Top users by XP.
 | Endpoint | Descrição | Uso | Fonte |
 |---|---|---|---|
 | `GET /api/v1/public/leaderboard` | Top users by total XP | Uso pessoal | CCTools community profiles |
-| `GET /api/v1/public/leaderboard/projects` | Project leaderboard | Uso pessoal | CCTools engagement analytics |
+| `GET /api/v1/public/leaderboard/projects` | Project leaderboard | Planos Data | CCTools engagement analytics |
 | `GET /api/v1/public/leaderboard/validators` | Validator leaderboard | Planos Data | Canton Network Scan, read through api.cantonnodes.com. Reward totals are frozen at the last round the provider aggregated, the round each response gives in rewards_as_of_round, closed at rewards_as_of. |
 
 ```bash

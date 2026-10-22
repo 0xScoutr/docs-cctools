@@ -40,7 +40,7 @@ echoed on every response as `meta.tier`.
 
 | Plan | Rate limit | Who can have it |
 |---|---|---|
-| **Trial or Evaluation** | 60 requests per minute, 1,000 calls per day | The trial, open once per account to accounts with a connected wallet that pass the CCTools human check, or an evaluation key from our team. For testing only. |
+| **Evaluation** | 60 requests per minute, 1,000 calls per day | A key our team issues on request, for testing only. |
 | **Pro** | 60 requests per minute, 1,000 calls per day | Included with a [CCTools Pro](https://cctools.network/pro) subscription, for personal use. Granted instantly, and runs for as long as the subscription does. |
 | **Data Starter** | 120 requests per minute, 20,000 calls per day | Bought in Canton Coin, monthly or annual. Commercial use, with attribution. |
 | **Data Team** | 600 requests per minute, no daily cap | Bought in Canton Coin, monthly or annual. Commercial use, with attribution. |
@@ -58,7 +58,7 @@ once. Planning a backfill that needs more than that? Ask us first.
 The limits count differently. The per-minute limit is per key and endpoint. The
 daily limit is per account, over a UTC day, and the calls of all your own keys add up.
 
-**What each plan may be used for.** The trial is for testing and Pro is for
+**What each plan may be used for.** An evaluation key is for testing and Pro is for
 personal use. The Data plans allow commercial use, with attribution, of the
 endpoints marked **Data plans** in the Use column of the
 [endpoint reference](/api/endpoints). The endpoints marked **Personal use** are
@@ -76,8 +76,8 @@ Open [/profile/api](https://cctools.network/profile/api). The plan panel shows
 what your account can take, and **New key** stays off until it holds a plan.
 
 - **Pro**: with a [CCTools Pro](https://cctools.network/pro) subscription, the Pro card grants Pro instantly (**Unlock Pro access**).
-- **Trial**: **Start the trial** is open once per account to accounts with a connected wallet that pass the CCTools human check. It is for testing only, and it draws on a daily budget shared by all trial accounts.
-- **Data Starter and Data Team**: **Buy Data Starter** or **Buy Data Team** and pay in Canton Coin, for a month or a year. You accept the [API terms](https://cctools.network/terms/api) at checkout. A plan does not renew by itself: access ends at the end of the period unless you renew. A larger plan starts at once and the rest of a smaller one resumes after it; a smaller plan bought during a larger one waits its turn.
+- **Evaluation**: to test the API before you buy, ask our team for an evaluation key: apply on the same page, or [contact us](https://cctools.network/contact). Our team issues it on request, for testing only; how long it lasts is in [Plans and limits](/api/plans).
+- **Data Starter and Data Team**: **Buy Data Starter** or **Buy Data Team** and pay in Canton Coin, for a month or a year. You accept the [API terms](https://cctools.network/terms/api) at checkout. A plan does not renew by itself: access ends at the end of the period unless you renew. A Data plan bought while the same or a larger Data plan runs starts when that one ends. A smaller Data plan that is running pauses while a larger one runs and resumes after it.
 - **Validator**: submit a party ID on the same page.
 - **Enterprise**: [contact us](https://cctools.network/contact).
 
@@ -85,8 +85,7 @@ Need more than a plan gives? Talk to us about Enterprise at
 [cctools.network/contact](https://cctools.network/contact); an account without a
 plan can also apply on the same page.
 
-**The trial's check runs when you start it, never on the requests you make with
-it.** Keys we issue directly to an organisation are attached to that
+Keys we issue directly to an organisation are attached to that
 organisation rather than to a person, so there is no account to check and
 nothing for a server-to-server integration to keep alive. A key stops working
 for these reasons: it is revoked, it expires or the plan behind it ends (`401`
@@ -96,7 +95,7 @@ with the code `plan_ended`), or it is called outside its scopes.
 you make takes the limits of the plan your account holds, and it runs until that
 plan's coverage ends. If you hold more keys than the plan allows, the most
 recently used stay and the others end. When you
-renew Pro, buy a Data plan or start the trial, your existing keys take the new
+renew Pro or buy a Data plan, your existing keys take the new
 coverage, so there is no new key to make: after renewing Pro, press **Extend access**
 on [/profile/api](https://cctools.network/profile/api) and your keys are
 extended to match. Pressing it never lowers anything: a Validator or Enterprise
@@ -133,13 +132,7 @@ A per-minute refusal on a day that is already spent answers `daily_limit` too,
 with the same `Retry-After`. A key under a daily cap gets `X-RateLimit-Limit-Day`
 and `X-RateLimit-Remaining-Day` on every successful response and on both `429`s,
 `rate_limited` and `daily_limit`; if the counter cannot be read, only
-`X-RateLimit-Limit-Day` is sent. The trial also draws on a budget shared by all
-trial accounts: when it is spent, the answer is `429` with the same code
-`daily_limit`, until 00:00 UTC, and with its own message:
-
-```json
-{ "error": "The trial's shared daily budget is used up today. It resets at 00:00 UTC.", "code": "daily_limit" }
-```
+`X-RateLimit-Limit-Day` is sent.
 
 Every successful response also carries your ceiling in
 `meta.rate_limit_remaining`. On plans with no per-key limit it is `null`, so
@@ -168,7 +161,7 @@ exception: it does count down.
 | `404` | endpoint-specific | No such resource, e.g. `project_not_found`, `post_not_found`. |
 | `422` | `unsupported_token` | The project has no token to report on. |
 | `429` | `rate_limited` | Over your per-minute limit. Retry after the header. |
-| `429` | `daily_limit` | Over your daily cap, or the trial budget is spent. Retry after 00:00 UTC. |
+| `429` | `daily_limit` | Over your daily cap. Retry after 00:00 UTC. |
 | `500` | `internal` / `query_failed` | Our fault. Safe to retry. |
 | `502` | `upstream_unavailable` | A market data source we depend on is down. |
 | `503` | `warming_up` | A cron-warmed dataset has a cold cache. Retry in a minute; this is not an empty result. |

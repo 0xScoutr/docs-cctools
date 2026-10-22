@@ -58,7 +58,7 @@ Projects, categories, rankings, trending.
 | `GET /api/v1/public/ecosystem/projects/{slug}/analytics` | Engagement analytics for a project | 个人使用 | CCTools engagement analytics |
 | `GET /api/v1/public/ecosystem/projects/{slug}/campaigns` | Project campaigns | Data 套餐 | CCTools ecosystem directory |
 | `GET /api/v1/public/ecosystem/projects/{slug}/token` | Project token stats | 个人使用 | DexScreener, cached by CCTools |
-| `GET /api/v1/public/ecosystem/rankings` | Projects ranked by metric | 个人使用 | CCTools ecosystem directory, ranked by upvotes, views and clicks |
+| `GET /api/v1/public/ecosystem/rankings` | Projects ranked by metric | Data 套餐 | CCTools ecosystem directory, ranked by upvotes, views and clicks |
 | `GET /api/v1/public/ecosystem/trending` | Top 20 trending projects this epoch | Data 套餐 | CCTools ecosystem directory, scored from upvotes, views and clicks |
 
 ```bash
@@ -122,7 +122,7 @@ Academy posts, learn paths, news, developer tooling and the badge catalog.
 | `GET /api/v1/public/academy/posts` | List Academy posts | 个人使用 | CCTools Academy |
 | `GET /api/v1/public/academy/posts/{slug}` | Academy post by slug | 个人使用 | CCTools Academy |
 | `GET /api/v1/public/badges` | Badge catalog | Data 套餐 | CCTools badge catalog |
-| `GET /api/v1/public/devtools` | Developer tooling directory | 个人使用 | CCTools developer tooling directory, with repository data from GitHub |
+| `GET /api/v1/public/devtools` | Developer tooling directory | Data 套餐 | CCTools developer tooling directory, with repository data from GitHub |
 | `GET /api/v1/public/learn/paths` | Learn path catalog | 个人使用 | CCTools Learn |
 | `GET /api/v1/public/learn/paths/{slug}` | Learn path by slug | 个人使用 | CCTools Learn |
 | `GET /api/v1/public/news` | Canton news | 个人使用 | News publishers, named on each item (source and source_url) |
@@ -169,7 +169,7 @@ Top users by XP.
 | Endpoint | 说明 | 用途 | 来源 |
 |---|---|---|---|
 | `GET /api/v1/public/leaderboard` | Top users by total XP | 个人使用 | CCTools community profiles |
-| `GET /api/v1/public/leaderboard/projects` | Project leaderboard | 个人使用 | CCTools engagement analytics |
+| `GET /api/v1/public/leaderboard/projects` | Project leaderboard | Data 套餐 | CCTools engagement analytics |
 | `GET /api/v1/public/leaderboard/validators` | Validator leaderboard | Data 套餐 | Canton Network Scan, read through api.cantonnodes.com. Reward totals are frozen at the last round the provider aggregated, the round each response gives in rewards_as_of_round, closed at rewards_as_of. |
 
 ```bash

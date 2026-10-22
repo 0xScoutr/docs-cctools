@@ -39,7 +39,7 @@ requisições. Ele é devolvido em toda resposta como `meta.tier`.
 
 | Plano | Limite de requisições | Quem pode ter |
 |---|---|---|
-| **Trial or Evaluation** | 60 requisições por minuto, 1.000 chamadas por dia | O teste, disponível uma vez por conta, para contas com uma carteira conectada que passam na verificação de pessoa real do CCTools, ou uma chave de avaliação da nossa equipe. Somente para testes. |
+| **Evaluation** | 60 requisições por minuto, 1.000 chamadas por dia | Uma chave que nossa equipe emite sob pedido, somente para testes. |
 | **Pro** | 60 requisições por minuto, 1.000 chamadas por dia | Incluído na assinatura [CCTools Pro](https://cctools.network/pro), para uso pessoal. Concedido na hora, e vale enquanto durar a assinatura. |
 | **Data Starter** | 120 requisições por minuto, 20.000 chamadas por dia | Comprado em Canton Coin, mensal ou anual. Uso comercial, com atribuição. |
 | **Data Team** | 600 requisições por minuto, sem limite diário | Comprado em Canton Coin, mensal ou anual. Uso comercial, com atribuição. |
@@ -58,7 +58,7 @@ Os limites são contados de formas diferentes. O limite por minuto é por chave 
 endpoint. O limite diário é por conta, ao longo de um dia UTC, e as chamadas de
 todas as suas chaves se somam.
 
-**Para que cada plano pode ser usado.** O teste é para testar e o Pro é para uso
+**Para que cada plano pode ser usado.** Uma chave de avaliação é para testes e o Pro é para uso
 pessoal. Os planos Data permitem o uso comercial, com atribuição, dos endpoints
 marcados como **Planos Data** na coluna Uso da
 [referência de endpoints](/pt/api/endpoints). Os endpoints marcados como **Uso
@@ -77,8 +77,8 @@ mostra o que a sua conta pode contratar, e **New key** fica desativado até ela 
 um plano.
 
 - **Pro**: com uma assinatura do [CCTools Pro](https://cctools.network/pro), o card do Pro concede o Pro na hora (**Unlock Pro access**).
-- **Teste**: **Start the trial** fica disponível uma vez por conta, para contas com uma carteira conectada que passam na verificação de pessoa real do CCTools. É somente para testes e usa um orçamento diário compartilhado por todas as contas em teste.
-- **Data Starter e Data Team**: **Buy Data Starter** ou **Buy Data Team** e pague em Canton Coin, por um mês ou por um ano. Você aceita os [termos da API](https://cctools.network/terms/api) ao pagar. Um plano não se renova sozinho: o acesso termina no fim do período, a menos que você renove. Um plano maior começa na hora e o que sobrar de um menor continua depois dele; um plano menor comprado durante um maior espera a sua vez.
+- **Avaliação**: para testar a API antes de comprar, peça uma chave de avaliação à nossa equipe: faça o pedido na mesma página ou [fale conosco](https://cctools.network/contact). Nossa equipe a emite sob pedido, somente para testes; quanto tempo ela dura está em [Planos e limites](/pt/api/plans).
+- **Data Starter e Data Team**: **Buy Data Starter** ou **Buy Data Team** e pague em Canton Coin, por um mês ou por um ano. Você aceita os [termos da API](https://cctools.network/terms/api) ao pagar. Um plano não se renova sozinho: o acesso termina no fim do período, a menos que você renove. Um plano Data comprado enquanto o mesmo plano, ou um maior, está em curso começa quando esse termina. Um plano Data menor em curso fica em pausa enquanto um maior está em curso e continua depois dele.
 - **Validator**: envie um party ID na mesma página.
 - **Enterprise**: [fale conosco](https://cctools.network/contact).
 
@@ -86,8 +86,7 @@ Precisa de mais do que um plano oferece? Fale conosco sobre o Enterprise em
 [cctools.network/contact](https://cctools.network/contact); uma conta sem plano
 também pode solicitar acesso na mesma página.
 
-**A verificação do teste acontece quando você o inicia, nunca nas requisições que
-você faz com ele.** As chaves que emitimos diretamente para uma organização ficam
+As chaves que emitimos diretamente para uma organização ficam
 ligadas a essa organização, e não a uma pessoa, então não há conta a verificar
 nem nada que uma integração servidor-a-servidor precise manter viva. Uma chave
 para de funcionar por estes motivos: ela é revogada, ela expira ou o plano por
@@ -97,7 +96,7 @@ trás dela termina (`401` com o código `plan_ended`), ou é usada fora dos esco
 Uma chave que você cria assume os limites do plano que a sua conta tem e vale
 até a cobertura desse plano acabar. Se você tem mais chaves do que o plano
 permite, ficam as usadas mais recentemente e as demais terminam. Quando você
-renova o Pro, compra um plano Data ou inicia o teste, suas chaves
+renova o Pro ou compra um plano Data, suas chaves
 existentes assumem a nova cobertura, então não há chave nova a criar: depois de
 renovar o Pro, aperte **Extend access** em [/profile/api](https://cctools.network/profile/api)
 e suas chaves são estendidas na mesma medida. Apertá-lo nunca rebaixa nada: um
@@ -136,14 +135,7 @@ Uma recusa por minuto em um dia cujo teto já se esgotou também responde `daily
 com o mesmo `Retry-After`. Uma chave sob um teto diário recebe
 `X-RateLimit-Limit-Day` e `X-RateLimit-Remaining-Day` em toda resposta
 bem-sucedida e nos dois `429`, `rate_limited` e `daily_limit`; se o contador não
-puder ser lido, só `X-RateLimit-Limit-Day` é enviado. O teste também usa um
-orçamento compartilhado por todas as contas em teste: quando ele acaba, a
-resposta é um `429` com o mesmo código `daily_limit`, até as 00:00 UTC, e com
-uma mensagem própria:
-
-```json
-{ "error": "The trial's shared daily budget is used up today. It resets at 00:00 UTC.", "code": "daily_limit" }
-```
+puder ser lido, só `X-RateLimit-Limit-Day` é enviado.
 
 Toda resposta bem-sucedida também traz o seu teto em
 `meta.rate_limit_remaining`. Em planos sem limite por chave ele vem `null`,
@@ -172,7 +164,7 @@ sinal real de recuo. `daily_limit_remaining` é a exceção: ele conta para baix
 | `404` | específico do endpoint | Recurso inexistente, por exemplo `project_not_found`, `post_not_found`. |
 | `422` | `unsupported_token` | O projeto não tem token sobre o qual reportar. |
 | `429` | `rate_limited` | Acima do seu limite por minuto. Tente de novo após o cabeçalho. |
-| `429` | `daily_limit` | Acima do seu limite diário, ou o orçamento do teste acabou. Tente de novo depois das 00:00 UTC. |
+| `429` | `daily_limit` | Acima do seu limite diário. Tente de novo depois das 00:00 UTC. |
 | `500` | `internal` / `query_failed` | Culpa nossa. Seguro tentar de novo. |
 | `502` | `upstream_unavailable` | Uma fonte de dados de mercado da qual dependemos está fora do ar. |
 | `503` | `warming_up` | Um conjunto de dados aquecido por cron está com cache frio. Tente de novo em um minuto; isto não é um resultado vazio. |
