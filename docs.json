@@ -49,7 +49,7 @@
     },
     {
       "source": "/en/earn",
-      "destination": "/earn/earn-opportunities"
+      "destination": "/campaigns/how-campaigns-work"
     },
     {
       "source": "/en/academy",
@@ -137,19 +137,19 @@
     },
     {
       "source": "/earn",
-      "destination": "/earn/earn-opportunities"
+      "destination": "/campaigns/how-campaigns-work"
     },
     {
       "source": "/es/earn",
-      "destination": "/es/earn/earn-opportunities"
+      "destination": "/es/campaigns/how-campaigns-work"
     },
     {
       "source": "/pt/earn",
-      "destination": "/pt/earn/earn-opportunities"
+      "destination": "/pt/campaigns/how-campaigns-work"
     },
     {
       "source": "/zh/earn",
-      "destination": "/zh/earn/earn-opportunities"
+      "destination": "/zh/campaigns/how-campaigns-work"
     },
     {
       "source": "/academy",
@@ -322,6 +322,70 @@
     {
       "source": "/zh/account/human-score",
       "destination": "/zh/account/verified"
+    },
+    {
+      "source": "/earn/leaderboard",
+      "destination": "/earn/xp-system"
+    },
+    {
+      "source": "/es/earn/leaderboard",
+      "destination": "/es/earn/xp-system"
+    },
+    {
+      "source": "/pt/earn/leaderboard",
+      "destination": "/pt/earn/xp-system"
+    },
+    {
+      "source": "/zh/earn/leaderboard",
+      "destination": "/zh/earn/xp-system"
+    },
+    {
+      "source": "/earn/badges",
+      "destination": "/earn/xp-system"
+    },
+    {
+      "source": "/es/earn/badges",
+      "destination": "/es/earn/xp-system"
+    },
+    {
+      "source": "/pt/earn/badges",
+      "destination": "/pt/earn/xp-system"
+    },
+    {
+      "source": "/zh/earn/badges",
+      "destination": "/zh/earn/xp-system"
+    },
+    {
+      "source": "/earn/referral-program",
+      "destination": "/account/profile-settings"
+    },
+    {
+      "source": "/es/earn/referral-program",
+      "destination": "/es/account/profile-settings"
+    },
+    {
+      "source": "/pt/earn/referral-program",
+      "destination": "/pt/account/profile-settings"
+    },
+    {
+      "source": "/zh/earn/referral-program",
+      "destination": "/zh/account/profile-settings"
+    },
+    {
+      "source": "/earn/earn-opportunities",
+      "destination": "/campaigns/how-campaigns-work"
+    },
+    {
+      "source": "/es/earn/earn-opportunities",
+      "destination": "/es/campaigns/how-campaigns-work"
+    },
+    {
+      "source": "/pt/earn/earn-opportunities",
+      "destination": "/pt/campaigns/how-campaigns-work"
+    },
+    {
+      "source": "/zh/earn/earn-opportunities",
+      "destination": "/zh/campaigns/how-campaigns-work"
     }
   ],
   "navigation": {
@@ -364,22 +428,11 @@
                 ]
               },
               {
-                "group": "Earn & XP",
-                "icon": "zap",
-                "pages": [
-                  "earn/earn-opportunities",
-                  "earn/xp-system",
-                  "earn/badges",
-                  "earn/referral-program",
-                  "earn/leaderboard",
-                  "earn/learn-paths"
-                ]
-              },
-              {
                 "group": "Academy",
                 "icon": "graduation-cap",
                 "pages": [
                   "academy/academy-overview",
+                  "earn/learn-paths",
                   "academy/reading-upvoting-posts",
                   "academy/writing-posts"
                 ]
@@ -400,6 +453,7 @@
                   "account/profile-settings",
                   "account/public-profile",
                   "account/verified",
+                  "earn/xp-system",
                   "account/activity-and-connections",
                   "account/security",
                   "account/notifications",
@@ -513,22 +567,11 @@
                 ]
               },
               {
-                "group": "Gana y XP",
-                "icon": "zap",
-                "pages": [
-                  "es/earn/earn-opportunities",
-                  "es/earn/xp-system",
-                  "es/earn/badges",
-                  "es/earn/referral-program",
-                  "es/earn/leaderboard",
-                  "es/earn/learn-paths"
-                ]
-              },
-              {
                 "group": "Academia",
                 "icon": "graduation-cap",
                 "pages": [
                   "es/academy/academy-overview",
+                  "es/earn/learn-paths",
                   "es/academy/reading-upvoting-posts",
                   "es/academy/writing-posts"
                 ]
@@ -549,6 +592,7 @@
                   "es/account/profile-settings",
                   "es/account/public-profile",
                   "es/account/verified",
+                  "es/earn/xp-system",
                   "es/account/activity-and-connections",
                   "es/account/security",
                   "es/account/notifications",
@@ -662,22 +706,11 @@
                 ]
               },
               {
-                "group": "Ganhe e XP",
-                "icon": "zap",
-                "pages": [
-                  "pt/earn/earn-opportunities",
-                  "pt/earn/xp-system",
-                  "pt/earn/badges",
-                  "pt/earn/referral-program",
-                  "pt/earn/leaderboard",
-                  "pt/earn/learn-paths"
-                ]
-              },
-              {
                 "group": "Academia",
                 "icon": "graduation-cap",
                 "pages": [
                   "pt/academy/academy-overview",
+                  "pt/earn/learn-paths",
                   "pt/academy/reading-upvoting-posts",
                   "pt/academy/writing-posts"
                 ]
@@ -698,6 +731,7 @@
                   "pt/account/profile-settings",
                   "pt/account/public-profile",
                   "pt/account/verified",
+                  "pt/earn/xp-system",
                   "pt/account/activity-and-connections",
                   "pt/account/security",
                   "pt/account/notifications",
@@ -811,22 +845,11 @@
                 ]
               },
               {
-                "group": "赚取和经验值",
-                "icon": "zap",
-                "pages": [
-                  "zh/earn/earn-opportunities",
-                  "zh/earn/xp-system",
-                  "zh/earn/badges",
-                  "zh/earn/referral-program",
-                  "zh/earn/leaderboard",
-                  "zh/earn/learn-paths"
-                ]
-              },
-              {
                 "group": "学院",
                 "icon": "graduation-cap",
                 "pages": [
                   "zh/academy/academy-overview",
+                  "zh/earn/learn-paths",
                   "zh/academy/reading-upvoting-posts",
                   "zh/academy/writing-posts"
                 ]
@@ -847,6 +870,7 @@
                   "zh/account/profile-settings",
                   "zh/account/public-profile",
                   "zh/account/verified",
+                  "zh/earn/xp-system",
                   "zh/account/activity-and-connections",
                   "zh/account/security",
                   "zh/account/notifications",
