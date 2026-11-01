@@ -1,69 +1,33 @@
 ---
 title: "添加钱包"
-description: "连接 Canton 和跨链钱包，追踪你的统一投资组合。"
+description: "将 Canton、EVM 和 Solana 钱包连接到你的 Portfolio，并进行管理。"
 ---
 
 ## 添加 Canton 钱包
 
-如果尚未关联 Canton 钱包，**Portfolio** 会显示 **Connect a wallet to unlock your Portfolio** 入口页：在那里点击 **Connect Canton wallet**。关联一个钱包后，从 Portfolio 顶部打开 **My Wallets**，并在 Canton 区域点击 **+ Add**。两条路径都会打开 **Connect a wallet** 选择器（Send、5N Loop 和 Cantor8 都在其中）。Cantor8 目前仅支持桌面端连接。
+你的 Portfolio 从你连接的一个 Canton 钱包开始。在连接之前，**Portfolio** 会显示 **Connect a Canton wallet**：点击 **Connect Canton wallet**，然后在 **Connect a wallet** 选择器中选择你的钱包（Send、5N Loop 和 Cantor8 都在可选范围内）。目前 Cantor8 仅支持在桌面端连接。
 
-关联后，CCTools 会自动扫描你的钱包并显示：
+## 添加 EVM 和 Solana 钱包
 
-- CC 和 USD 余额
-- 已解锁和已锁定金额
-- 7 天价格变动
-- 30 天奖励估算
+连接 Canton 钱包后，在你的 Portfolio 或 **Settings > Plan and preferences** 中打开 **Manage wallets**，然后使用 **Connect an EVM wallet** 或 **Connect a Solana wallet**。EVM 和 Solana 钱包只需签署一条消息即可连接：不产生交易，也不收取费用。CCTools 只读取余额和活动，不读取其他内容。
 
-## 连接跨链钱包
+钱包始终通过钱包应用本身连接，从不需要粘贴地址，因此你的助记词永远不会被分享。一个钱包只能关联到一个 CCTools 账户。
 
-你还可以将 EVM（Ethereum、Base、Polygon 等）和 Solana 钱包连接到你的投资组合。在 **My Wallets** 弹窗中，点击对应链区块下的 **+ Connect** 来添加 EVM 或 Solana 钱包。
+## 各方案的钱包上限
 
-你连接的每个钱包：
+- **Free**：每条链 1 个钱包（Canton、EVM、Solana）
+- **Pro**：每条链最多 5 个钱包，共 15 个
 
-- 通过签名验证进行关联（不共享助记词）
-- 显示持仓和实时余额
-- 计入你的统一投资组合净资产
-- 为你的 Canton 资料添加跨链评分加成
-
-## 各套餐的钱包数量上限
-
-Free 和 Pro 用户的每条链钱包上限不同：
-
-- **Free 套餐**：每条链 1 个钱包（Canton、EVM、Solana）
-- **Pro 套餐**：每条链最多 5 个钱包
-
-如果你达到了 Free 套餐的上限，可升级到 Pro 以添加更多钱包。
+当你达到方案上限时，Manage wallets 会提示你。[Pro](/zh/account/pro-subscription) 可以提高上限。
 
 ## 管理你的钱包
 
-在 **My Wallets** 弹窗中，你可以：
+在 **Manage wallets** 中，你可以重命名钱包、将某个钱包设为该链的主钱包，以及断开钱包。断开只会让 CCTools 停止追踪它，不会影响钱包本身。
 
-- **重命名**钱包（最多 40 个字符）- 点击铅笔图标
-- **设为主钱包** - 用星形图标将某个钱包标记为你的主钱包
-- **断开连接** - 用解除关联图标移除对任意钱包的追踪
+## 你的 Portfolio 显示什么
 
-断开连接只会移除 CCTools 中的追踪，不会影响你实际的钱包。
+你的 Portfolio 在一个只读视图中汇集你在 Canton、EVM 和 Solana 上的钱包：你的净资产及其随时间的变化、你的钱包、你的持仓和 NFT，以及最近的活动。每个钱包都有自己的页面。免费账户加载 30 天的历史记录，Pro 账户加载 90 天。
 
-## 你的投资组合显示的内容
+## 只是看看？
 
-你的统一投资组合会显示：
-
-**总净资产**
-- 所有 Canton、EVM 和 Solana 钱包以 USD 汇总
-- 显示余额分布的各链分配条
-- 30 天 CC 奖励估算（仅限 Canton 钱包）
-- 最后更新时间戳
-
-**单个钱包详情页**
-点击任意钱包卡片可查看：
-- 已锁定和已解锁 CC 明细
-- 已支付的持有费用
-- 每日奖励历史图表（如果你运行验证者或 Featured App）
-- 最近的转账和交易对手
-- 钱包统计（奖励/销毁比、主要交易伙伴）
-
-**注意：** Free 账户会加载每个已连接钱包 30 天的余额、奖励和转账，Pro 账户加载 90 天。
-
-## 只是想先看看？
-
-如果你还不想连接钱包，可以使用 **Tracker** 以只读方式查看任意 Canton party ID 或钱包地址。点击 My Wallets 中的 **Track any Party ID** 链接，或前往 **Tracker** 开始使用。
+如果你还不想连接钱包，可以使用 **Party lookup**（地址为 [cctools.network/tracker](https://cctools.network/tracker)，页脚中也有入口），无需登录即可以只读方式打开任何 Canton party。

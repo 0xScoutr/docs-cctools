@@ -1,69 +1,33 @@
 ---
 title: "Adding Wallets"
-description: "Connect Canton and cross-chain wallets to track your unified portfolio."
+description: "Connect Canton, EVM and Solana wallets to your Portfolio, and manage them."
 ---
 
-## Add a Canton Wallet
+## Add a Canton wallet
 
-If no Canton wallet is linked yet, **Portfolio** shows the **Connect a wallet to unlock your Portfolio** gate: click **Connect Canton wallet** there. Once a wallet is linked, open **My Wallets** from the Portfolio header and click **+ Add** in the Canton section. Both paths open the **Connect a wallet** picker (Send, 5N Loop and Cantor8 among the options). Cantor8 connects on desktop only for now.
+Your Portfolio starts with a Canton wallet you connect. Until one is connected, **Portfolio** shows **Connect a Canton wallet**: click **Connect Canton wallet**, then pick your wallet in the **Connect a wallet** picker (Send, 5N Loop and Cantor8 are among the options). Cantor8 connects on desktop only for now.
 
-Once linked, CCTools automatically scans your wallet and displays:
+## Add EVM and Solana wallets
 
-- Balance in CC and USD
-- Unlocked and locked amounts
-- 7-day price change
-- 30-day reward estimate
+Once your Canton wallet is in, open **Manage wallets** on your Portfolio, or in **Settings > Plan and preferences**, and use **Connect an EVM wallet** or **Connect a Solana wallet**. EVM and Solana wallets sign one message to connect: no transaction and no fee. CCTools reads balances and activity, nothing else.
 
-## Connect Cross-Chain Wallets
+Wallets are always connected through the wallet app itself, never by pasting an address, so no seed phrase is ever shared. A wallet can be linked to one CCTools account only.
 
-You can also connect EVM (Ethereum, Base, Polygon, etc.) and Solana wallets to your portfolio. In the **My Wallets** modal, add an EVM or Solana wallet by clicking **+ Connect** under the corresponding chain section.
+## Wallet limits by plan
 
-Each wallet you connect:
+- **Free**: 1 wallet per chain (Canton, EVM, Solana)
+- **Pro**: up to 5 wallets per chain, 15 in all
 
-- Is linked via signature verification (no seed phrases shared)
-- Shows holdings and real-time balance
-- Contributes to your unified portfolio net worth
-- Adds a cross-chain score bonus to your Canton profile
+When you reach your plan's limit, Manage wallets says so. [Pro](/account/pro-subscription) raises it.
 
-## Wallet Limits by Plan
+## Manage your wallets
 
-Free and Pro users have different wallet caps per chain:
+In **Manage wallets** you can rename a wallet, set one as the primary wallet of its chain, and disconnect a wallet. Disconnecting only stops CCTools from tracking it and does not touch the wallet itself.
 
-- **Free plan**: 1 wallet per chain (Canton, EVM, Solana)
-- **Pro plan**: Up to 5 wallets per chain
+## What your Portfolio shows
 
-If you hit the free limit, upgrade to Pro to add more wallets.
+Your Portfolio puts your Canton, EVM and Solana wallets in one read-only view: your net worth and its value over time, your wallets, your positions and NFTs, and recent activity. Each wallet opens its own page. Free accounts load 30 days of history and Pro accounts 90 days.
 
-## Manage Your Wallets
+## Just exploring?
 
-In the **My Wallets** modal, you can:
-
-- **Rename** a wallet (up to 40 characters) - click the pencil icon
-- **Set as primary** - mark a wallet as your main one with the star icon
-- **Disconnect** - remove tracking from any wallet with the link-off icon
-
-Disconnecting only removes tracking in CCTools and does not affect your actual wallet.
-
-## What Your Portfolio Shows
-
-Your unified portfolio displays:
-
-**Total net worth**
-- All Canton, EVM, and Solana wallets summed in USD
-- Per-chain allocation bar showing balance distribution
-- 30-day CC rewards estimate (Canton wallets only)
-- Last updated timestamp
-
-**Per-wallet detail pages**
-Click any wallet card to see:
-- Locked and unlocked CC breakdown
-- Holding fees paid
-- Daily rewards history chart (if you're running a validator or Featured App)
-- Recent transfers and counterparties
-- Wallet stats (reward/burn ratio, top trading partners)
-
-**Note:** Free accounts load 30 days of balances, rewards and transfers for every connected wallet, and Pro accounts load 90 days.
-
-## Just Exploring?
-
-If you don't want to connect a wallet yet, use the **Tracker** to inspect any Canton party ID or wallet address read-only. Click the **Track any Party ID** link in My Wallets or go to **Tracker** to get started.
+If you don't want to connect a wallet yet, **Party lookup**, at [cctools.network/tracker](https://cctools.network/tracker) and in the footer, opens any Canton party read-only, without signing in.

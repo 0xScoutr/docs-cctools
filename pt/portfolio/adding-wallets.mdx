@@ -1,69 +1,33 @@
 ---
 title: "Adicionando Wallets"
-description: "Conecte wallets da Canton e de outras chains para acompanhar seu portfólio unificado."
+description: "Conecte carteiras Canton, EVM e Solana ao seu Portfolio e gerencie-as."
 ---
 
-## Adicionar uma wallet da Canton
+## Adicione uma carteira Canton
 
-Se nenhuma wallet da Canton estiver vinculada, o **Portfolio** mostra o bloqueio **Connect a wallet to unlock your Portfolio**: clique em **Connect Canton wallet** ali. Depois que uma wallet estiver vinculada, abra **My Wallets** no cabeçalho do Portfolio e clique em **+ Add** na seção Canton. Os dois caminhos abrem o seletor **Connect a wallet** (Send, 5N Loop e Cantor8 entre as opções). Por enquanto, a Cantor8 conecta apenas no desktop.
+O seu Portfolio começa com uma carteira Canton que você conecta. Enquanto nenhuma estiver conectada, o **Portfolio** mostra **Connect a Canton wallet**: clique em **Connect Canton wallet** e escolha a sua carteira no seletor **Connect a wallet** (Send, 5N Loop e Cantor8 estão entre as opções). Por enquanto, a Cantor8 conecta só no desktop.
 
-Depois de vinculada, o CCTools escaneia automaticamente sua wallet e exibe:
+## Adicione carteiras EVM e Solana
 
-- Saldo em CC e USD
-- Valores desbloqueados e bloqueados
-- Variação de preço de 7 dias
-- Estimativa de recompensas de 30 dias
+Com a sua carteira Canton conectada, abra **Manage wallets** no seu Portfolio, ou em **Settings > Plan and preferences**, e use **Connect an EVM wallet** ou **Connect a Solana wallet**. Carteiras EVM e Solana assinam uma mensagem para conectar: sem transação e sem taxa. A CCTools lê saldos e atividade, e nada mais.
 
-## Conectar wallets de outras chains
+As carteiras são sempre conectadas pelo próprio app da carteira, nunca colando um endereço, então nenhuma frase-semente é compartilhada. Uma carteira pode estar vinculada a uma única conta da CCTools.
 
-Você também pode conectar wallets de EVM (Ethereum, Base, Polygon, etc.) e Solana ao seu portfólio. No modal **My Wallets**, adicione uma wallet de EVM ou Solana clicando em **+ Connect** na seção da chain correspondente.
+## Limites de carteiras por plano
 
-Cada wallet que você conecta:
+- **Free**: 1 carteira por chain (Canton, EVM, Solana)
+- **Pro**: até 5 carteiras por chain, 15 no total
 
-- É vinculada por verificação de assinatura (nenhuma frase semente é compartilhada)
-- Mostra as posições e o saldo em tempo real
-- Contribui para o patrimônio líquido do seu portfólio unificado
-- Adiciona um bônus de pontuação de outras chains ao seu perfil da Canton
+Quando você chega ao limite do seu plano, o Manage wallets avisa. O [Pro](/pt/account/pro-subscription) aumenta esse limite.
 
-## Limites de wallets por plano
+## Gerencie as suas carteiras
 
-Usuários Free e Pro têm limites diferentes de wallets por chain:
+No **Manage wallets** você pode renomear uma carteira, defini-la como a principal da sua chain e desconectá-la. Desconectar só faz a CCTools parar de acompanhá-la e não mexe na carteira em si.
 
-- **Plano Free**: 1 wallet por chain (Canton, EVM, Solana)
-- **Plano Pro**: Até 5 wallets por chain
+## O que o seu Portfolio mostra
 
-Se você atingir o limite do plano Free, faça upgrade para o Pro para adicionar mais wallets.
+O seu Portfolio reúne as suas carteiras Canton, EVM e Solana numa visão somente leitura: o seu patrimônio líquido e o valor dele ao longo do tempo, as suas carteiras, as suas posições e NFTs, e a atividade recente. Cada carteira abre a sua própria página. Contas gratuitas carregam 30 dias de histórico, e contas Pro, 90 dias.
 
-## Gerencie suas wallets
+## Só explorando?
 
-No modal **My Wallets**, você pode:
-
-- **Renomear** uma wallet (até 40 caracteres) - clique no ícone de lápis
-- **Definir como principal** - marque uma wallet como a sua principal com o ícone de estrela
-- **Desconectar** - remova o acompanhamento de qualquer wallet com o ícone de desvincular
-
-Desconectar apenas remove o acompanhamento no CCTools e não afeta sua wallet real.
-
-## O que seu portfólio mostra
-
-Seu portfólio unificado exibe:
-
-**Patrimônio líquido total**
-- Todas as wallets de Canton, EVM e Solana somadas em USD
-- Barra de alocação por chain mostrando a distribuição do saldo
-- Estimativa de recompensas em CC de 30 dias (apenas wallets da Canton)
-- Marca de data/hora da última atualização
-
-**Páginas de detalhes por wallet**
-Clique em qualquer cartão de wallet para ver:
-- Detalhamento de CC bloqueado e desbloqueado
-- Taxas de manutenção pagas
-- Gráfico do histórico de recompensas diárias (se você executa um validador ou uma Featured App)
-- Transferências recentes e contrapartes
-- Estatísticas da wallet (relação recompensa/queima, principais parceiros de negociação)
-
-**Nota:** Contas Free carregam 30 dias de saldos, recompensas e transferências de cada wallet conectada, e contas Pro carregam 90 dias.
-
-## Só dando uma olhada?
-
-Se você ainda não quer conectar uma wallet, use o **Tracker** para inspecionar qualquer party ID da Canton ou endereço de wallet em modo somente leitura. Clique no link **Track any Party ID** em My Wallets ou vá até o **Tracker** para começar.
+Se ainda não quiser conectar uma carteira, o **Party lookup**, em [cctools.network/tracker](https://cctools.network/tracker) e no rodapé, abre qualquer party da Canton em modo de leitura, sem login.
