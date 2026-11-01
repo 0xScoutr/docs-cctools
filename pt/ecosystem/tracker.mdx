@@ -1,90 +1,27 @@
 ---
-title: "Usando o Tracker"
-description: "Inspetor publico de parties para Canton - pesquise e inspecione qualquer wallet por nome ou party-id."
+title: "Party Lookup"
+description: "Consulte qualquer party da Canton pelo nome ou pelo party id: o saldo em CC, as transferências e as contrapartes em 30 dias, sem login."
 ---
 
-## O que e o Tracker
+## O que é o Party lookup
 
-**Tracker** e um inspetor publico de parties da Canton. Pesquise qualquer party por nome no diretorio de party-labels, ou cole um party-id diretamente para inspecionar saldos, atividade, validators, featured apps e nomes ANS. Nao e necessario fazer login.
+O **Party lookup**, em [cctools.network/tracker](https://cctools.network/tracker) e no rodapé, abre qualquer party da Canton em modo de leitura. Não é preciso login, e nada é salvo numa conta.
 
-Pense nele como uma visao somente leitura do que o Scan torna publico: saldos de CC e transferencias de CC, alem de ha quanto tempo uma party esta ativa. O restante da atividade na Canton e privado para as partes envolvidas, entao nao aparece aqui.
+Ele mostra o que a rede torna público: saldos de CC, transferências de CC e há quanto tempo uma party está ativa. As outras atividades na Canton são privadas às parties envolvidas, então não aparecem aqui.
 
-## Pesquisando uma Party
+## Encontre uma party
 
-A pesquisa do Tracker funciona de duas maneiras:
+Pesquise pelo nome de um projeto ou de um ANS, ou cole um party id: um nome, dois pontos duas vezes e depois 68 caracteres hexadecimais. Cada sugestão diz o que é a correspondência: **Validator**, **Featured app**, **Validator and featured app**, **ANS name** ou **Project**. Clique em **Look up** para abrir a party. Você também pode colar um party id completo na busca do site.
 
-**Por nome** - Comece a digitar o nome de um projeto, validator, app ou nome ANS. A pesquisa exibe resultados do diretorio de party-labels, ordenados por relevancia da correspondencia:
-- Projetos e featured apps mostram seu logo e o rotulo de categoria
-- Validators exibem uma tag "Validator"
-- Nomes ANS aparecem com um rotulo "ANS"
-- Cada resultado mostra o endereco curto para uma verificacao rapida
+**Recent lookups** guarda as últimas 8 parties que você abriu, só neste navegador, e **Clear** limpa a lista.
 
-**Por party-id** - Cole ou digite um party-id completo (formato: hint::fingerprint) diretamente na caixa de pesquisa. Pressione Enter ou clique em Inspect para ir direto a pagina de detalhes. Nenhum menu suspenso de sugestoes aparece para party-ids.
+## O que você vê
 
-Use as teclas de seta para navegar pelas sugestoes, Enter para selecionar ou Escape para fechar o menu suspenso.
+- **O cabeçalho** - o nome da party ou o id curto, o que ela é (por exemplo Validator ou Featured app), o party id com botão de copiar e **Look up another party**
+- **Balance** - o total em CC e o valor em USD, **Unlocked**, **Locked**, **Rewards, last 30 days** e **Active since**, o nó em que ela está hospedada e o projeto do diretório com o qual está listada, quando for o caso
+- **Balance, last 30 days** - um gráfico, desenhado quando todas as leituras estão completas e o saldo está ao vivo; caso contrário, a página diz por quê
+- **Activity, last 30 days** - transferências, recebido, enviado e contrapartes, marcados com "at least" quando uma leitura foi parcial
+- **Latest transfers** - horário (UTC), valor, direção e contraparte, com CSV
+- **Top counterparties** - as cinco parties com quem ela mais trocou em 30 dias, cada uma abrindo a sua própria consulta
 
-## O que Voce Ve
-
-Quando voce inspeciona uma party, o Tracker exibe:
-
-### Identidade e Saldo
-- Nome da party (se registrada) e party-id completo
-- Saldo atual em CC e o equivalente em USD
-- **Selos**:
-  - Indicador de dados desatualizados (mostra a idade do cache se os dados forem mais antigos do que os dados ao vivo)
-  - Selos de perfil (por exemplo, Validator, Featured App)
-  - Data de atividade desde e dias na rede
-
-### Grafico de Saldo de 30 Dias
-Um grafico de linhas que mostra o historico de saldo dos ultimos 30 dias, com valores em CC e USD ao passar o cursor. Se existir menos de 2 dias de historico, o grafico nao e exibido.
-
-### Detalhamento do Saldo
-Quatro estatisticas de relance:
-- CC desbloqueado
-- CC bloqueado
-- Recompensas estimadas (projecao de 30 dias)
-- Hospedado em (validator ou provedor de infraestrutura)
-
-### Estatisticas de Atividade (Ultimos 30 Dias)
-Um resumo da movimentacao on-chain:
-- Numero total de transferencias
-- Volume recebido (em CC)
-- Volume enviado (em CC)
-- Numero de contrapartes unicas
-
-### Atividade Recente
-As 10 transferencias mais recentes de ou para esta party. Cada linha mostra:
-- Direcao (enviado/recebido, indicado por uma seta vermelha para cima ou uma seta verde para baixo)
-- Endereco da contraparte (link clicavel para inspeciona-la)
-- Quantia transferida
-- Marca de tempo
-
-Clique em qualquer endereco de contraparte para inspeciona-la no Tracker.
-
-### Principais Contrapartes
-As parties com as quais esta wallet mais trocou nos ultimos 30 dias, classificadas por frequencia e volume:
-- Numero de transferencias com cada party
-- Total de CC trocado
-- Clique para ir a pagina de detalhes daquela party
-
-### Projeto Vinculado
-Se a party inspecionada for um projeto da Canton (validator, featured app ou membro do ecossistema), um cartao exibe:
-- Logo e nome do projeto
-- Link para ver os detalhes completos do projeto no Ecossistema
-
-## Pesquisas Recentes
-
-Todas as inspecoes bem-sucedidas sao salvas localmente no seu navegador em um cartao de "Pesquisas recentes" na pagina principal do Tracker:
-- Armazenadas apenas no **localStorage do navegador** - nao na sua conta CCTools
-- Mostra ate 8 parties mais recentes
-- Clique para voltar a uma inspecao anterior
-- Limpe todo o historico com o botao "Clear"
-
-Este e apenas um historico de conveniencia do lado do navegador, semelhante a lista de favoritos de um explorador. Cada navegador e dispositivo mantem sua propria lista.
-
-## Dicas para uma Navegacao Eficaz
-
-- **Dicas de pesquisa**: A pesquisa exige pelo menos 2 caracteres. Party-ids completos (que contem ::) pulam a busca por nome e vao direto para a pagina de detalhes.
-- **Navegacao**: Use o botao voltar para retornar a pagina principal do Tracker. As pesquisas recentes permitem que voce alterne entre varias inspecoes sem precisar pesquisar novamente.
-- **Contexto de atividade**: Todas as estatisticas voltam a zero se nenhuma atividade ocorreu na janela de 30 dias. Transferencias recentes podem mostrar uma contraparte chamada "network" se foi um mint ou burn direto.
-- **Dados desatualizados**: Os dados de saldo sao atualizados conforme uma programacao de cache. O selo de dados desatualizados no cartao de identidade mostra ha quanto tempo o saldo em cache foi armazenado.
+Os saldos vêm da Loop Data API, ou de um provedor reserva cujo snapshot pode ter mais de 3 horas, e a página diz qual fonte respondeu e quando. As consultas são limitadas por visitante, e uma resposta fica guardada por até dois minutos.
