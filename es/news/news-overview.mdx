@@ -1,30 +1,22 @@
 ---
-title: "Noticias y feed de la comunidad"
-description: "Dos fuentes paralelas: noticias seleccionadas de Canton y publicaciones enviadas por la comunidad, actualizadas cada 10 minutos."
+title: "Noticias"
+description: "Todas las noticias sobre Canton que reúne el índice de noticias de CCTools, cada una abriéndose en su fuente y enlazada a los proyectos que nombra."
 ---
 
-## Dos feeds en una página
+## Qué muestra News
 
-La página **Noticias** tiene dos canales detrás de un selector de pestañas en la parte superior:
+**News**, en el menú **Ecosystem** en [cctools.network/news](https://cctools.network/news), lista todas las noticias sobre Canton que reúne el índice de noticias de CCTools, y las noticias sobre proyectos de su ecosistema. Cada titular abre la noticia en su fuente, en una pestaña nueva.
 
-- **Noticias**: cobertura seleccionada de Canton Network desde la web. Los artículos se extraen de fuentes de Google News y RSS y luego un LLM los resume para que pueda obtener lo esencial en una o dos oraciones sin hacer clic.
-- **Comunidad**: publicaciones enviadas por miembros: anuncios, tomas, hilos, reseñas y actualizaciones compartidas por otros usuarios de CCTools.
+Tres pestañas dividen la lista: **All stories**, **About Canton** y **Ecosystem**. Una noticia está en Ecosystem cuando su titular nombra un proyecto del directorio por su nombre completo.
 
-Cada pestaña muestra un recuento en vivo de cuántos elementos existen en ese canal para que siempre sepas cuánto hay para leer.
+## De dónde vienen las noticias
 
-## Con qué frecuencia se actualiza
+El índice lee CantonNews y el Canton Network Blog cada 10 minutos, y las búsquedas de Google News aproximadamente una vez por hora.
 
-La ingesta de noticias se realiza **cada 10 minutos**. Las fuentes RSS seleccionadas se consultan en cada ejecución, mientras que las consultas a Google News (vía Serper) se limitan a aproximadamente una vez por hora para respetar la cuota diaria del proveedor. El pipeline:
+Los titulares que dicen lo mismo en un plazo de tres días son una sola fila, que dice por ejemplo "Same story from 3 sources". La noticia destacada es la que más medios contaron esta semana, y un gráfico de cobertura cuenta las noticias de cada una de las últimas 12 semanas.
 
-1. Consulta en Google News (a través de Serper) palabras clave relacionadas con Canton.
-2. Combina elementos de fuentes RSS seleccionadas
-3. **Deduplicaciones** entre editores usando una clave de título normalizada: la misma historia de dos medios solo aparece una vez
-4. Ejecuta un resumen de LLM sobre cada artículo nuevo.
-5. Publica en el feed.
+## Proyectos en una noticia
 
-El feed de la comunidad se actualiza en tiempo real a medida que se envían y aprueban nuevas publicaciones.
+Una etiqueta rellena significa que el titular nombra un proyecto del directorio de CCTools; una etiqueta con borde, que el texto de la noticia lo nombra, contado solo para nombres que no son palabras de uso diario. La coincidencia es por nombre, así que un proyecto cuyo nombre también es una frase común puede asociarse por error: **Report a wrong match** en la página nos avisa.
 
-## Leer un artículo
-
-Haga clic en cualquier elemento para abrir su página de detalles, que muestra el resumen completo, el enlace de la fuente, la fecha de publicación y cualquier proyecto relacionado de Canton mencionado. Para las publicaciones de la comunidad, también verá el nivel del autor: la misma tarjeta de autor que se muestra en las publicaciones de la Academia.
-
+Los hilos del foro no están en News: están en las [listas de la Global Synchronizer Foundation](https://lists.sync.global/).

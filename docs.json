@@ -468,7 +468,7 @@
                 ]
               },
               {
-                "group": "News & Feed",
+                "group": "News",
                 "icon": "newspaper",
                 "pages": [
                   "news/news-overview",
@@ -605,7 +605,7 @@
                 ]
               },
               {
-                "group": "Noticias y feeds",
+                "group": "Noticias",
                 "icon": "newspaper",
                 "pages": [
                   "es/news/news-overview",
@@ -742,7 +742,7 @@
                 ]
               },
               {
-                "group": "Notícias e feed",
+                "group": "Notícias",
                 "icon": "newspaper",
                 "pages": [
                   "pt/news/news-overview",
@@ -879,7 +879,7 @@
                 ]
               },
               {
-                "group": "新闻与动态",
+                "group": "新闻",
                 "icon": "newspaper",
                 "pages": [
                   "zh/news/news-overview",

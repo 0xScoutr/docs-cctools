@@ -1,30 +1,22 @@
 ---
-title: "News & Community Feed"
-description: "Two parallel feeds: curated Canton news and community-submitted posts, refreshed every 10 minutes."
+title: "News"
+description: "Every story about Canton the CCTools news index holds, each opening at its source and linked to the projects it names."
 ---
 
-## Two Feeds in One Page
+## What News shows
 
-The **News** page has two channels behind a tab switcher at the top:
+**News**, in the **Ecosystem** menu at [cctools.network/news](https://cctools.network/news), lists every story about Canton that the CCTools news index holds, and the stories about projects in its ecosystem. Each headline opens the story at its source, in a new tab.
 
-- **News** - Curated Canton Network coverage from the web. Items are pulled from Google News and RSS sources, then summarized by an LLM so you can get the essentials in a sentence or two without clicking through.
-- **Community** - Member-submitted posts: announcements, takes, threads, write-ups, and updates shared by other CCTools users.
+Three tabs split the list: **All stories**, **About Canton** and **Ecosystem**. A story is under Ecosystem when its headline names a directory project by its full name.
 
-Each tab shows a live count of how many items exist in that channel so you always know how much there is to read.
+## Where the stories come from
 
-## How Often It Updates
+The index reads CantonNews and the Canton Network Blog every 10 minutes, and Google News searches about once an hour.
 
-News ingestion runs **every 10 minutes**. Curated RSS feeds are pulled on every run, while the Google News (Serper) queries are throttled to roughly once an hour to stay inside the provider's daily quota. The pipeline:
+Headlines that say the same thing within three days are one row, which reads for example "Same story from 3 sources". The lead story is the one the most outlets told this week, and a coverage chart counts the stories of each of the last 12 weeks.
 
-1. Queries Google News (via Serper) for Canton-related keywords
-2. Merges items from curated RSS feeds
-3. **Deduplicates** across publishers using a normalized title key - the same story from two outlets only appears once
-4. Runs an LLM summary on each new article
-5. Publishes to the feed
+## Projects in a story
 
-The community feed updates in real time as new posts are submitted and approved.
+A solid chip means the headline names a project in the CCTools directory; an outlined chip, that the story's text names it, counted only for a name that is no everyday word. A match is by name, so a project whose name is also an everyday phrase can be matched by mistake: **Report a wrong match** on the page tells us.
 
-## Reading an Item
-
-Click any item to open its detail page, which shows the full summary, source link, publication date, and any related Canton projects mentioned. For community posts, you also see the author's Level - the same author card shown on Academy posts.
-
+Forum threads are not in News: they are on the [Global Synchronizer Foundation lists](https://lists.sync.global/).
