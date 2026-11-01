@@ -2,7 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "almond",
   "name": "CCTools",
-  "description": "CCTools documentation: the public API for Canton Network data, portfolio and wallet tracking, validator tools, XP and campaigns.",
+  "description": "CCTools documentation: the public record of the Canton Network, with the open daily record, the public API, the project directory, markets, governance and portfolio tools.",
   "colors": {
     "primary": "#4d7c0f",
     "light": "#e6ff6a",
