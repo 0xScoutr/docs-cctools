@@ -2,7 +2,7 @@
 
 ## About this project
 
-- This is the public documentation for CCTools (cctools.network), a discovery, portfolio, and analytics platform for the Canton Network ecosystem
+- This is the public documentation for CCTools (cctools.network), the public record of the Canton Network: the open daily record, the public API, the project directory, markets, governance and portfolio tools
 - Pages are MDX files with YAML frontmatter; four locales: English at the root, plus `pt/`, `es/`, `zh/` mirrors
 - Configuration lives in `docs.json`
 - Run `mint dev` to preview locally
