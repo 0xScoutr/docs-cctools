@@ -1,126 +1,29 @@
 ---
 title: "Public Profile"
-description: "Share your Canton Network contributions with a public, shareable profile that showcases your level, XP, badges, and activity."
+description: "Your public page at cctools.network/u/your-handle: what visitors see, and the switches that decide it."
 ---
 
-## Overview
+## Your public page
 
-Every CCTools user has a public profile at `cctools.network/u/{slug}`. Your profile is publicly viewable and shareable, even without login. By default, your profile is set to public, but you control what appears on it through privacy toggles on the **Privacy** page.
+Every CCTools member has a public page at `cctools.network/u/{handle}`. Anyone with the link can open it, signed in or not.
 
-Your public profile acts as your Canton Network identity card, displaying your level, achievements, activity streak, badges, and favorite projects.
+It shows your display name, your handle, your photo and the month you joined, plus a **Verified** tag when you are Verified and have left it on. The tag never shows which wallet. Visitors can pass the page on with **Share**. Your public page does not show your badges or your activity lists.
 
-## What Appears on Your Profile
+To change your name or photo, or copy your page's address, use **Edit profile** on your Profile. See [Your Profile and Settings](/account/profile-settings).
 
-### Header Section
+## Privacy switches
 
-Your profile header shows:
+**Profile > Privacy** decides what others see. You always see your own full profile.
 
-- **Display name** - The name you set on **Profile > Identity**
-- **Avatar** - Your profile picture
-- **Level bubble** - Your current level (1 to 50, the cap) displayed as a number in the top right of your avatar ring
-- **Level name and color** - Your tier (e.g. "Validator", "Architect", "Canton OG") rendered in your level's color
-- **Member since** - The month and year you joined CCTools
-- **Era badge** - Genesis or Discovery era badge, displayed in the top right of the banner
-- **Human Score badge** - A trust-signal badge (Verified or Elite) appears below your name if you have a verified Score and have not hidden it (see Privacy controls below)
+- **Public page** - anyone with the link sees your page. Off, visitors see only "This profile is private", and the switches below wait.
+- **Verified on your public page** - the Verified tag, never which wallet
+- **Show activity stats** - your XP, level, current and longest streaks, check-in days, rank and counts in your public profile's data, and your level and XP in its link preview and search data
 
-### Activity Stats Grid
+The Privacy tab also previews your page as a visitor sees it, and the preview changes as each switch saves.
 
-When **Show activity stats** is enabled, your profile displays 8 cards:
+## What is never shown
 
-- **Total XP** - Cumulative XP earned (formatted as 1.2k for 1200+)
-- **Streak** - Current consecutive daily active days, or "-" if no active streak
-- **Badges** - Count of earned badges (excluding era badges)
-- **XP Rank** - Your global rank by total XP, or "-" if unranked
-- **Actions** - Total submissions, upvotes, interests, and referral completions
-- **Referrals** - Confirmed referral count
-- **Upvotes given** - Total project upvotes you have cast
-- **Interests** - Total opportunity interests you have marked
+- Your email address, your account settings and your ways to sign in
+- Which wallet made you Verified
 
-### Level Card
-
-Below the header stats, a card displays your progression:
-
-- **Level Crest** - Shows your current XP, progress bar toward the next level, and milestone indicator
-
-### Badge Gallery
-
-Your earned badges appear in two sections:
-
-- **Top Badges** - Your 3 rarest badges (sorted by rarity: Legendary, Epic, Rare, Uncommon, Common), displayed large with name and rarity level
-- **All Badges** - All remaining badges in a compact grid, up to 12 visible. A "more badges" button shows if you have earned more than 15
-- **Era badge** - A standalone section for your Genesis or Discovery era tier
-
-Click any badge to see its full name, description, rarity, and the exact date you earned it.
-
-### Activity Calendar
-
-A 90-day check-in calendar shows your daily activity across 3 months. This calendar:
-
-- Displays the last 90 days of your check-ins
-- Shows your current streak and best streak (lifetime)
-- Uses color-coded cells: level color for active days, amber for today, and light gray for inactive days
-- Lists the count of active days per month
-
-### Favorite Projects
-
-Your top 3 projects by upvote frequency appear as linked cards, each showing:
-
-- **Rank** (1st, 2nd, 3rd) in a colored pill
-- **Project logo and name**
-- **Category** tag
-- **Total votes** this project has received from all users
-- **Your votes** (×N voted) if you have upvoted it multiple times
-- A colored bar showing relative vote weight
-
-Clicking a favorite project takes you to its ecosystem profile.
-
-### Human Score Badge
-
-For verified-and-above users, a Human Score badge appears under your display name in the header (when enabled via privacy controls). The badge shows:
-
-- **Shield icon and tier name** (Verified or Elite) in green
-- A clickable button that opens an explainer showing what the score measures and how it is calculated
-
-The badge is a public trust signal. If your score is below the verification threshold (26 points), if you have not connected a Canton wallet, or if your account is restricted, the badge does not appear.
-
-For more detail on how the Human Score works, see the Human Score page.
-
-## What Is Hidden
-
-The following never appear on your public profile:
-
-- **Email address** - Only you can see it
-- **User ID** - Internal UUID not exposed
-- **Account settings** - Password, 2FA, session data
-- **Disabled sections** - Any section you toggle off in Privacy remains hidden
-- **Admin and operator accounts** - The profile returns "User not found"
-- **Private profiles** - Returns "This profile does not exist or is private"
-
-## Getting and Sharing Your URL
-
-### Copy Your URL
-
-On the public profile page, click the **Share** button at the top right to open the Share Modal. Use the three action buttons:
-
-1. **Copy URL** - Copies your full profile URL to the clipboard (e.g., `https://cctools.network/u/yourusername`)
-2. **Post on X** - Opens a pre-filled tweet with your display name, level, tier, rank, and XP, with a link to your profile
-3. **Save Image** - Downloads a profile card PNG with your avatar, name, level, tier, and top stats
-
-### Your URL Slug
-
-Your URL slug is derived automatically from your display name when your account is created: lowercased, accents folded, anything else turned into a hyphen, capped at 32 characters, with a numeric suffix if it collides with an existing slug. Once assigned it is stable. There is no slug field to edit on **Profile > Identity**, and renaming your account later does not change your URL.
-
-## Privacy Controls
-
-Visit **Profile > Privacy** to manage what others see on your public profile. All toggles default to **ON**. Toggling a setting off immediately removes that section from your public profile view:
-
-- **Public profile** (master toggle) - When OFF, your profile returns "This profile is private" to all visitors. You always see your full profile. This is the primary privacy gate.
-- **Show activity stats** - Controls visibility of level, XP, streak, badges, calendar, and stats (Rank, Actions, Referrals, Upvotes, Interests)
-- **Show Score** - Controls whether the Human Score badge appears in your header (note: requires Verified+ tier and an active score; Newcomer users see no badge regardless)
-
-**Note:** You always see your own full profile. Privacy toggles only affect what other visitors see.
-
-## Related
-
-- For information on what the Human Score measures and how to improve your score, see the Human Score page.
-- To share a profile card or manage your profile identity, see Profile Settings.
+See [Getting Verified](/account/verified) for what the Verified tag means.

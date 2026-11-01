@@ -1,64 +1,46 @@
 ---
-title: "个人资料设置"
-description: "管理你的显示名称、头像、已连接的账户以及钱包连接。"
+title: "你的个人资料与设置"
+description: "你 Profile 的 Overview、编辑名称和头像、你的邀请链接，以及 Settings 中的内容。"
 ---
 
-## 更新你的个人资料
+## 你的 Profile
 
-从侧边栏进入 **Profile**，然后选择 **Identity**。在这里你可以：
+从账户菜单打开 **Profile**。它有四个标签页：**Overview**、**Activity**、**API keys** 和 **Privacy**。
 
-- 更改你的显示名称
-- 上传头像
+**Overview** 显示：
 
-你的账户邮箱位于 **Settings > Account**，与密码和 2FA 放在一起。
+- 你的名称、你的用户名、你加入的月份以及你的 **Verified** 状态，并提供 **Edit profile** 和 **Share**
+- 四个数字：**Contributions accepted**、**Campaigns completed**、**Learn paths done** 和 **Level**，每个都会打开 [Activity](/zh/account/activity-and-connections) 中对应的部分
+- **Check-in** - 你的每日签到、你的连续记录以及本月的签到（参阅 [XP、等级与徽章](/zh/earn/xp-system)）
+- **Verified** - 你目前的状态和下一步（参阅 [获得 Verified](/zh/account/verified)）
+- **Invite** - 你的邀请链接
+- **Your record** - 先显示需要你处理的事项（待领取的奖品、仍有任务未完成的活动、进行中的 Learn 路径、被退回修改的贡献），再按从新到旧显示你做过的事
 
-## 已连接的账户
+## 编辑名称和头像
 
-你可以将社交账户连接到你的 CCTools 个人资料，用于活动任务和验证。
+点击 **Edit profile**：
 
-### 可用的连接
+- **显示名称** - 2 到 50 个字符：字母、数字、空格、点、连字符和下划线，不能包含链接。两个成员不能使用同一个名称。
+- **头像** - 不超过 2 MB 的 PNG、JPG 或 WebP 图片
+- **你的页面地址** - 指向你公开页面的链接，附有 **Copy**
 
-- **X (Twitter)** - X Follower 徽章以及关注、转发等活动任务所必需
-- **Discord** - 用于活动集成和服务器加入验证
-- **Telegram** - 用于活动集成和群组验证
-- **Google** - 备用登录方式
-- **GitHub** - 将你的 GitHub 账户关联到 CCTools 个人资料
+该面板还会预览你的公开页面。参阅 [公开资料](/zh/account/public-profile)。
 
-### 管理连接
+## 你的邀请链接
 
-进入 **Profile > Connections** 来添加或移除社交账户。 
+**Invite** 卡片包含你的链接，即 `https://cctools.network/ref/` 加上你的邀请码（`CC-` 加六个字母或数字），附有 **Copy link**，并统计通过该链接加入的人数。好友打开链接后会进入注册页面，你的邀请码已自动填好。同样的区块也在 [cctools.network/referral](https://cctools.network/referral)。
 
-- 你可以将多个社交账户连接到同一个 CCTools 个人资料
-- 你必须始终保留至少一种有效的登录方式（不能断开你唯一的身份）
-- 已连接的账户会显示其显示名称或用户名，方便你确认所连接的是哪个账户
+## Settings
 
-## 钱包连接
+从账户菜单打开 **Settings**。它分为四个部分：
 
-你可以将多条链上的区块链钱包关联到你的个人资料。
+- **Sign-in and security** - 你的登录方式、邮箱、密码、两步登录以及此浏览器的会话
+- **Connected accounts** - Google、X、Discord、Telegram 和 GitHub，并注明 CCTools 用它们做什么：Google、X 和 Discord 可用于登录；X、Discord、Telegram 和 GitHub 用于核验活动任务；Discord 还会在 CCTools 服务器上同步 Pro 身份组
+- **Plan and preferences** - 你的方案，附有指向 [Pro](/zh/account/pro-subscription) 的链接；你的钱包，附有 **Manage wallets**；你的通知；以及主题，保存在此浏览器中
+- **Delete account** - 在你确认之前说明删除会结束哪些内容
 
-### 支持的链
+你无法断开作为你唯一登录方式的账户。
 
-- **Canton** - 关联你的主要 Canton 钱包以进行验证。免费版支持 1 个钱包，Pro 最多支持 5 个
-- **EVM** - Ethereum 及兼容 EVM 的链（Arbitrum、Base、Polygon 等）
-- **Solana** - Solana（SVM）钱包，通过签名验证关联
+## 钱包
 
-### 管理钱包
-
-进入 **Profile > Connections** 来关联新钱包或管理现有钱包。
-
-- 只需单击一次即可将任意已关联的钱包设为主钱包
-- 为钱包添加标签，以便管理多个地址
-- 断开不再使用的钱包
-- 每条链都有各自的钱包数量上限，取决于你的套餐（免费版：每条链 1 个，Pro 版：每条链最多 5 个）
-- 跨链钱包连接会为你的 Canton 生态系统验证增加额外分数
-
-## 公开个人资料
-
-每位 CCTools 用户在 **cctools.network/u/your-username** 都有一个公开个人资料。你的公开个人资料会显示：
-
-- 显示名称和头像
-- 等级和等级称号
-- 你最稀有的三个徽章，自动展示
-- 当前连续打卡天数
-
-在社交媒体上分享你的个人资料链接，展示你对 Canton 生态系统的参与。
+钱包在 **Manage wallets** 中管理，可从你的 Portfolio 或 **Settings > Plan and preferences** 打开。免费账户每条链可连接 1 个钱包，Pro 账户每条链最多 5 个，支持 Canton、EVM 和 Solana。参阅 [添加钱包](/zh/portfolio/adding-wallets)。

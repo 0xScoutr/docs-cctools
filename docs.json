@@ -306,6 +306,22 @@
     {
       "source": "/zh/api",
       "destination": "/zh/api/overview"
+    },
+    {
+      "source": "/account/human-score",
+      "destination": "/account/verified"
+    },
+    {
+      "source": "/es/account/human-score",
+      "destination": "/es/account/verified"
+    },
+    {
+      "source": "/pt/account/human-score",
+      "destination": "/pt/account/verified"
+    },
+    {
+      "source": "/zh/account/human-score",
+      "destination": "/zh/account/verified"
     }
   ],
   "navigation": {
@@ -383,7 +399,7 @@
                 "pages": [
                   "account/profile-settings",
                   "account/public-profile",
-                  "account/human-score",
+                  "account/verified",
                   "account/activity-and-connections",
                   "account/security",
                   "account/notifications",
@@ -532,7 +548,7 @@
                 "pages": [
                   "es/account/profile-settings",
                   "es/account/public-profile",
-                  "es/account/human-score",
+                  "es/account/verified",
                   "es/account/activity-and-connections",
                   "es/account/security",
                   "es/account/notifications",
@@ -681,7 +697,7 @@
                 "pages": [
                   "pt/account/profile-settings",
                   "pt/account/public-profile",
-                  "pt/account/human-score",
+                  "pt/account/verified",
                   "pt/account/activity-and-connections",
                   "pt/account/security",
                   "pt/account/notifications",
@@ -830,7 +846,7 @@
                 "pages": [
                   "zh/account/profile-settings",
                   "zh/account/public-profile",
-                  "zh/account/human-score",
+                  "zh/account/verified",
                   "zh/account/activity-and-connections",
                   "zh/account/security",
                   "zh/account/notifications",

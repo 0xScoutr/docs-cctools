@@ -21,8 +21,9 @@
 ## Terminology
 
 - "Canton Network" (never "Canton blockchain"), "Canton Coin" / "CC"
-- "wallet picker" for the Canton connect modal; "My Wallets" for the management panel
-- "Human Score" (capitalized) for the anti-sybil verification score
+- "wallet picker" for the Canton connect modal; "Manage wallets" for the management panel
+- "Verified" (capitalized), a yes or no and never a score, for the check that a real person is behind an account. The old "Human Score" name is retired: do not bring it back
+- No person leaderboard: do not describe rankings of members
 - "Featured App rewards", never "staking rewards"
 
 ## Style preferences
