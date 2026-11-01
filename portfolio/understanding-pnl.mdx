@@ -1,17 +1,19 @@
 ---
 title: "Portfolio Value and Change"
-description: "What the portfolio does and does not compute for you."
+description: "What the Portfolio computes from your balances, and what it does not."
 ---
 
-## What the portfolio shows
+## What the Portfolio shows
 
 CCTools never sees what you paid for your CC, so there is no cost basis, no acquisition price and no P&L in the product. What the Portfolio shows instead:
 
-- **Current value** - your CC balance priced at the live CC market price
-- **Change** - how your balance moved over the last 24 hours, 7 days or 30 days, measured against your own balance history
-- **Rewards, transfers and burns** - each Canton wallet page lists the CC it earned in rewards, the CC it received and sent, and the CC it burned in fees, which is where a balance change comes from
+- **Net worth** - your wallets summed in USD, with how it splits across them, your rewards over the last 30 days and your locked CC
+- **24h change** - on wallet balances, against the wallets that have a reading from 24 hours ago
+- **Value over time** - over 24h, 7d or 30d, built from your balance snapshots: the Canton part repriced with the CC price at each point, the EVM and Solana part at the value it had when it was recorded
+- **Each Canton wallet's page** - what it received, its rewards, what it sent, what it burned in fees and its net change, which is where a balance change comes from
 
-The value is shown in USD and the change as a percentage.
+**Hide balances** hides every amount on the page, and **Refresh** reads your wallets again.
 
-**Note:** Pro loads a longer history than the free tier: a free account loads 30 days of balances, rewards and transfers, Pro loads 90 days.
+## Where the numbers come from
 
+Canton balances and rewards come from the Loop Data API, or from its backup provider, whose snapshot can be more than 3 hours old, priced with the CC price from CoinGecko (CoinPaprika when CoinGecko fails). EVM balances and their prices come from Alchemy, and Solana balances and their prices from Helius. Free accounts load 30 days of a wallet's history and Pro accounts 90 days. **About your portfolio**, at the foot of the page, gives the full rules.

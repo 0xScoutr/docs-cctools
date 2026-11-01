@@ -1,21 +1,16 @@
 ---
 title: "Rewards Tracking"
-description: "Track the app, validator and Super Validator reward coupons your Canton party earned."
+description: "The rewards your Canton wallets received, by kind and by UTC day."
 ---
 
-## Rewards Dashboard
+## Rewards on your Portfolio
 
-The Rewards section in your Portfolio shows all rewards earned from:
+The **Net worth** card counts your Canton wallets' rewards over the last 30 days. It counts each wallet's first page of reward events, so a busy wallet earned at least that much, and a wallet whose page could not be read counts in no sum.
 
-- **Validator rewards** - CC earned by the validator node that hosts your party, per round
-- **App rewards** - CC earned when your party is credited as a Featured App
-- **Super Validator rewards** - CC earned when your party belongs to a Super Validator
+## A wallet's rewards
 
-Rewards are tracked automatically once your wallet is connected.
+Open **Portfolio** and click a Canton wallet. Its page shows what moved over the period (**Received**, **Rewards**, **Sent**, **Burned in fees** and **Net change**) and splits the rewards into the three kinds a party can receive: **Validator**, **Featured app** and **Super validator**.
 
-## Historical Rewards
+**Rewards by UTC day** charts them day by day, and its menu downloads them as CSV. The same page draws the wallet's closing CC balance by day and lists its transfers: 50 on Free, more pages on Pro.
 
-The **Rewards** tab sits on a wallet's own page: open **Portfolio** and click a Canton wallet to reach it. It charts that wallet's daily rewards and lists each day under the chart. There are no filters for period, reward type or wallet, and the chart covers only the wallet you opened.
-
-How far back the chart goes depends on your plan. Free accounts load the last 30 days of a wallet's rewards, Pro accounts load the last 90 days.
-
+Rewards, transfers and burns come from the Loop Data API, for the last 30 days on Free and 90 on Pro. A read that stops at its page limit says so and counts "at least", and a read that fails says so instead of showing zero.

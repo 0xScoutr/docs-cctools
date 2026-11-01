@@ -1,16 +1,19 @@
 ---
 title: "Valor e variação do portfólio"
-description: "O que o portfólio calcula e o que ele não calcula para você."
+description: "O que o Portfolio calcula a partir dos seus saldos, e o que ele não calcula."
 ---
 
-## O que o portfólio mostra
+## O que o Portfolio mostra
 
-O CCTools nunca vê quanto você pagou pelos seus CC, então não existe base de custo, preço de aquisição nem cálculo de lucro e prejuízo no produto. O que o portfólio mostra no lugar disso:
+A CCTools nunca sabe quanto você pagou pelo seu CC, então não existe custo de aquisição, preço de compra nem cálculo de lucro e prejuízo no produto. O que o Portfolio mostra no lugar:
 
-- **Valor atual** - o seu saldo de CC calculado pelo preço de mercado ao vivo do CC
-- **Variação** - quanto o seu saldo mudou nas últimas 24 horas, 7 dias ou 30 dias, medida contra o seu próprio histórico de saldo
-- **Recompensas, transferências e queimas** - a página de cada carteira Canton lista os CC que ela ganhou em recompensas, os CC que recebeu e enviou e os CC que queimou em taxas, que é de onde vem a variação do saldo
+- **Net worth** - as suas carteiras somadas em USD, com a divisão entre elas, as suas recompensas dos últimos 30 dias e o seu CC bloqueado
+- **Variação de 24h** - sobre os saldos das carteiras, em comparação com as carteiras que têm uma leitura de 24 horas atrás
+- **Value over time** - em 24h, 7d ou 30d, montado a partir dos snapshots dos seus saldos: a parte Canton reprecificada com o preço do CC em cada ponto, e a parte EVM e Solana pelo valor que tinha quando foi registrada
+- **A página de cada carteira Canton** - o que ela recebeu, as recompensas, o que enviou, o que queimou em taxas e a variação líquida, que é de onde vem uma mudança de saldo
 
-O valor aparece em dólares e a variação em porcentagem.
+**Hide balances** esconde todos os valores da página, e **Refresh** lê as suas carteiras de novo.
 
-**Observação:** o Pro carrega um histórico maior que o gratuito: a conta gratuita carrega 30 dias de saldos, recompensas e transferências, o Pro carrega 90 dias.
+## De onde vêm os números
+
+Os saldos e as recompensas na Canton vêm da Loop Data API, ou do provedor reserva dela, cujo snapshot pode ter mais de 3 horas, com o preço do CC do CoinGecko (do CoinPaprika quando o CoinGecko falha). Os saldos EVM e os seus preços vêm da Alchemy, e os saldos Solana e os seus preços da Helius. Contas gratuitas carregam 30 dias do histórico de uma carteira, e contas Pro, 90 dias. **About your portfolio**, no fim da página, traz as regras completas.

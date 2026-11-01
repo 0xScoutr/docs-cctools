@@ -1,21 +1,16 @@
 ---
 title: "Acompanhamento de recompensas"
-description: "Acompanhe os cupons de recompensa de app, validador e Super Validator que a sua party na Canton ganhou."
+description: "As recompensas que as suas carteiras Canton receberam, por tipo e por dia UTC."
 ---
 
-## Painel de recompensas
+## Recompensas no seu Portfolio
 
-A seção Recompensas em seu portfólio mostra todas as recompensas obtidas em:
+O card **Net worth** conta as recompensas das suas carteiras Canton nos últimos 30 dias. Ele conta a primeira página de eventos de recompensa de cada carteira, então uma carteira muito movimentada ganhou pelo menos esse valor, e uma carteira cuja página não pôde ser lida não entra em nenhuma soma.
 
-- **Recompensas de validador** - CC ganho pelo nó validador que hospeda sua party, por rodada
-- **Recompensas de app** - CC ganho quando a sua party é creditada como Featured App
-- **Recompensas de Super Validator** - CC ganho quando a sua party pertence a um Super Validator
+## As recompensas de uma carteira
 
-As recompensas são rastreadas automaticamente assim que sua carteira estiver conectada.
+Abra **Portfolio** e clique numa carteira Canton. A página dela mostra o que se movimentou no período (**Received**, **Rewards**, **Sent**, **Burned in fees** e **Net change**) e divide as recompensas nos três tipos que uma party pode receber: **Validator**, **Featured app** e **Super validator**.
 
-## Recompensas Históricas
+**Rewards by UTC day** mostra as recompensas dia a dia num gráfico, e o menu dele as baixa em CSV. A mesma página desenha o saldo de fechamento em CC da carteira por dia e lista as transferências: 50 no Free, mais páginas no Pro.
 
-A aba **Recompensas** fica na página da própria carteira: abra o **Portfólio** e clique em uma carteira Canton para chegar nela. Ela mostra o gráfico das recompensas diárias daquela carteira e lista cada dia abaixo do gráfico. Não há filtros de período, de tipo de recompensa nem de carteira, e o gráfico cobre apenas a carteira que você abriu.
-
-O quanto o gráfico volta no tempo depende do seu plano. Contas gratuitas carregam os últimos 30 dias de recompensas de uma carteira, contas Pro carregam os últimos 90 dias.
-
+Recompensas, transferências e burns vêm da Loop Data API, dos últimos 30 dias no Free e 90 no Pro. Uma leitura que para no limite de páginas avisa e conta "at least", e uma leitura que falha avisa em vez de mostrar zero.
