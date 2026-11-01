@@ -1,34 +1,32 @@
 ---
 title: "Validadores y Gobernanza"
-description: "Explore los validadores, comprenda los supervalidadores y realice un seguimiento de las propuestas de gobernanza."
+description: "Las páginas Validators, Super validators, Featured apps, Governance y Upgrades del menú Network."
 ---
 
-## Página de validadores
+## Validators
 
-La página **Validadores** enumera los validadores de Canton Network ordenados por las recompensas que han acuñado, agrupados por el proyecto del ecosistema al que están vinculados cuando CCTools conoce el vínculo. Para cada validador puedes ver:
+**Validators**, en [cctools.network/validators](https://cctools.network/validators), empieza por el día más reciente del registro diario: **Validator licenses**, **Validator rewards**, el **Reward per CC of coupon** y el número de **Super validators**, con un gráfico de las licencias de validador por día. Una licencia no dice nada sobre si su validador estuvo activo.
 
-- Nombre e identidad del validador.
-- Rol (Super Validador o Validador regular)
-- Métricas de rendimiento y datos de recompensas.
+El **Validator rewards ranking** lista cada party de validador con licencia por sus recompensas de validador de los últimos 30 días UTC completos, o de toda su vida, a partir de Loop Data, medidas una vez al día. Puedes buscar en él y filtrarlo por súper validadores o por los demás, y por parties vinculadas o no a un proyecto del directorio. Cada fila muestra su posición, su proyecto cuando el directorio vincula uno, sus recompensas en CC y su parte del período. El ranking se descarga en CSV, y cada party abre una página propia.
 
-## Súper validadores
+## Super validators
 
-Los Super Validadores operan el Global Synchronizer, la infraestructura compartida que ordena y confirma las transacciones de Canton Network, y lo gobiernan:
+**Super validators**, en [cctools.network/super-validators](https://cctools.network/super-validators), muestra cuántos hay, los votos que necesita una propuesta, el peso total de recompensa y las recompensas de súper validador del día, antes del reparto de cada miembro entre sus beneficiarios. Cada miembro aparece con su peso de recompensa, su parte del peso, cuántas propuestas abiertas votó, su último voto de precio y la ronda en que se unió. **Votes on open proposals** muestra el voto de cada miembro en cada propuesta abierta.
 
-- Votan las Canton Improvement Proposals (CIPs), que abarcan cambios de protocolo, tokenomics, estándares y la membresía y el peso de los Super Validadores
-- Votan on-ledger la configuración de la red, como las tarifas de tráfico del sincronizador y la tasa de conversión CC/USD de cada ronda de minado
+Cada súper validador emite un voto, sea cual sea su peso, y las recompensas de súper validador de cada ronda se reparten según el peso de recompensa.
 
-Las CIPs y su estado son públicos en [github.com/canton-foundation/cips](https://github.com/canton-foundation/cips).
+## Featured apps
 
-## Gobernancia
+**Featured apps**, en [cctools.network/apps](https://cctools.network/apps), cuenta los featured app rights al final del día y sus recompensas de app, cuántos se destacaron por un voto de gobernanza y cuántos están vinculados a un proyecto del directorio. Muestra un gráfico de los rights por día y lista los votos de concesión y de retirada de los últimos 30 días. Los rights se conceden por party proveedora, así que una app que opera desde varias parties tiene varios.
 
-CCTools realiza un seguimiento de toda la actividad de gobernanza en la página **Gobernanza**:
+## Governance
 
-- Propuestas activas y pasadas.
-- Estado de la votación y resultados.
-- Participación del Súper Validador
-- Tasa de aprobación y estado de ejecución.
-- Cambios de parámetros de red.
+**Governance**, en [cctools.network/governance](https://cctools.network/governance), sigue las propuestas que votan los súper validadores: las votaciones en curso, la lista completa de propuestas (**Open**, **Executed**, **Rejected** o **Expired**) con una búsqueda por solicitante, app o motivo, los súper validadores, el reference price y sus votos junto al precio de mercado, el umbral de votación y los resultados. La tasa de aprobación cuenta las propuestas ejecutadas entre las decididas.
 
-Esto le da a la comunidad total transparencia sobre cómo se gobierna la red.
+Las propuestas y los resúmenes de los solicitantes vienen de Loop Data; cada voto, los súper validadores, sus pesos y sus votos de precio vienen de Canton Scan. Los CIP y su estado son públicos en [github.com/canton-foundation/cips](https://github.com/canton-foundation/cips).
 
+## Upgrades
+
+**Upgrades**, en [cctools.network/network/upgrades](https://cctools.network/network/upgrades), muestra la próxima actualización de MainNet (lo que exige, su versión de protocolo y su calendario on-chain), cuántos validadores activos están listos, los validadores activos por versión y las próximas actualizaciones del calendario. **Check your validator** recibe el party ID de tu validador.
+
+Cada bloque indica su fuente y cuándo se leyó, y la página [Methodology](https://cctools.network/methodology) explica cómo se recopila cada cifra.

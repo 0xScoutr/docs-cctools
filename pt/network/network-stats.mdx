@@ -1,26 +1,43 @@
 ---
-title: "Estatísticas de rede"
-description: "Quais dados são mostrados na página Estatísticas da rede e como eles são coletados."
+title: "O registro diário"
+description: "O registro diário aberto da Canton Network: o que um dia contém, de onde vem e como baixá-lo e citá-lo."
 ---
 
-## Visão geral
+## O que é o registro diário
 
-A página **Estatísticas da rede** mostra dados históricos e em tempo real sobre a Canton Network:
+O **Daily record**, primeiro item do menu **Network** em [cctools.network/network](https://cctools.network/network), é o registro público do estado da rede Canton: uma linha por dia UTC, derivada do Canton Scan. A página abre no dia mais recente, e o campo de data abre qualquer outro dia no seu próprio endereço, `cctools.network/network/AAAA-MM-DD`.
 
-- **Preço CC** - Preço atual, variação de 24 horas, valor de mercado e volume
-- **Validadores** - Número total de Super Validadores e validadores regulares
-- **Burn / App Rewards** - CC queimado comparado com o CC pago como recompensas de apps em destaque
-- **Transações Diárias** - Volume de transações na rede
-- **Governança** - Total de propostas, taxa de aprovação, executadas versus rejeitadas
-- **Taxas de emissão** - Por taxas de supervalidador, validador e cupom de aplicativo
-- **Gráfico de preço** - Histórico de preço do CC em 24 horas, 7 dias ou 30 dias, a partir do feed agregado de preços
+## O que um dia contém
 
-## Queima e recompensas de apps
+Os **Key figures** de um dia são:
 
-A CCTools registra, de hora em hora, o CC queimado e as recompensas de apps em destaque:
+- **Super validators** e o **Voting threshold**
+- **Featured app rights** e **Validator licenses**
+- **Supply**, **Net supply change** e **Issuance**
+- **Reference price**, o preço do CC votado pelos super validadores
 
-- **Burned** - CC queimado para pagar o tráfego do sincronizador
-- **App Rewards** - CC pago como recompensas de apps em destaque. É só uma parte da emissão: não inclui as recompensas de validadores, Super Validadores nem do Development Fund
+Um dia fecha às 00:00 UTC. Os valores dele são provisórios até o dia se assentar, depois finais, e um valor final só muda por uma revisão registrada. Um valor que não foi registrado fica vazio, nunca zero, e o motivo aparece junto com o dia. A página própria de cada dia mostra as lacunas e as revisões.
 
-Esses dados são mostrados em um gráfico de barras duplo que cobre uma janela selecionável de 24 horas, 7 dias ou 30 dias, ajudando você a comparar a queima com as recompensas de apps ao longo do tempo.
+O Canton Coin é emitido a cada rodada, num cronograma que diminui com o tempo. A emissão de um dia é o que as rodadas dele previam, e a divisão entre recompensas de apps, de validadores e de super validadores é lida de cada rodada, nunca digitada à mão.
 
+## O resto da página
+
+- **Issuance and app rewards** - os últimos 30 dias UTC
+- **Fees and rounds** - a taxa de transferência, a taxa de criação, a taxa de holding e a duração da rodada
+- **CC burned by UTC day** - o burn ainda não está no registro diário, então, até o registro medi-lo, este bloco mostra a série de burn da Loop Data, com fonte e horário
+- **Super validators** - o peso de recompensa de cada membro, a participação no peso e o último voto de preço
+- **Featured apps** e **Governance** - os featured app rights do dia e as propostas com a taxa de aprovação
+- **Data freshness** - quão atual está cada conjunto de dados da página
+
+As taxas, os super validadores e as propostas vêm do estado de governança que a CCTools lê a cada hora, cada bloco com a sua própria fonte e horário.
+
+## Baixar e citar
+
+O registro da página, os arquivos abertos e a API trazem os mesmos números. Os arquivos são públicos e não exigem chave, em `https://api.cctools.network/api/open/network-record/v1/`:
+
+- `daily.csv` e `daily.json` - uma linha por dia
+- `days/AAAA-MM-DD.json` - um arquivo por dia
+- `gaps.csv` - os valores que não foram registrados, com os motivos
+- `datapackage.json` - o que os arquivos contêm
+
+O botão **Cite**, ao lado do título de um dia, gera uma citação com o link permanente do dia, e a página informa a licença e a atribuição no rodapé.

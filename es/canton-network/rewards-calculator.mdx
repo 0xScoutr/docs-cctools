@@ -1,26 +1,24 @@
 ---
 title: "Calculadora de recompensas"
-description: "Cuatro calculadoras para CC: conversión del token, recompensas de Featured App, economía del nodo validador y objetivos de precio del inversor."
+description: "Estima lo que una featured app o un nodo validador recibe según las reglas de recompensa de Canton Network, y lo que tener CC obtiene del protocolo."
 ---
 
-## Cuatro calculadoras
+## Tres estimaciones
 
-CCTools proporciona cuatro calculadoras, seleccionables desde las pestañas en la parte superior de la página:
+La **Rewards calculator**, en el menú **Network** en [cctools.network/calculator](https://cctools.network/calculator), estima lo que dan las reglas de recompensa de la red, para uno de tres roles que eliges arriba de la página:
 
-- **$CC Token**: convierta entre CC y moneda fiduciaria en ambos sentidos al precio en vivo, con un modo avanzado para objetivos de break-even y escenarios de precio
-- **Featured App**: calcule sus recompensas mensuales en CC como Featured App de Canton en función de su número de usuarios y su volumen de transacciones
-- **Validator**: modela la economía de tu nodo: número de nodos, uptime, coste de instalación y de servidor, frente a la tasa de cupón de validador en vivo.
-- **Investor**: proyecte el valor de su cartera de CC en distintos objetivos de precio. Canton no tiene staking pasivo, así que el retorno viene de la revalorización del precio
+- **Featured app** - para tu app, escribe las transacciones marcadas al día, el peso de marcador por transacción, el tráfico por transacción en bytes y tu costo de alojamiento, y elige cuántos marcadores crean todas las demás apps. Obtienes las recompensas de app estimadas (la recompensa por transacción marcada, la tasa por CC de cupón, tu parte de los marcadores del día y el neto al día después de tráfico y alojamiento), y **Fee vs reward** para una transacción marcada: la comisión de la red, el peso del marcador, la recompensa de app y la relación entre peso y comisión que vigila la FA Overage Policy. Si tu propio nodo compra el tráfico, marca la casilla y la estimación suma la recompensa de validador sobre él.
+- **Validator** - para tu nodo, escribe el tráfico que compra en MB al día y tu costo de alojamiento, y elige cuánto tráfico compran todos los demás nodos. **What your node gets back** muestra la recompensa que vuelve sobre el CC que quema por tráfico, el costo neto por MB y la recompensa de liveness.
+- **CC holder** - para cualquier cantidad de CC, **What holding gets from the protocol** muestra su valor, su parte del suministro y cómo se movió el suministro. El protocolo no paga nada a quien solo tiene CC: el CC nuevo va a las featured apps, los validadores y los súper validadores por el trabajo que hacen en la red, así que la recompensa del protocolo por tener CC es 0 CC. La página también explica la comisión de tenencia, que nunca se descuenta de un saldo, y los bloqueos que exigen algunos roles, que no pagan nada por tener CC.
 
-Abra la calculadora desde el menú **Network** de la barra superior, en **Rewards calculator**.
+## Precios y datos de entrada
 
-## Cómo funcionan los cálculos
+Cada estimación usa el precio que eliges: el **reference price**, el precio de CC que votan los súper validadores y al que convierte la red; el **market price**, el que se negocia en los mercados; o **your price**, un escenario que escribes tú.
 
-Las calculadoras utilizan datos de red en tiempo real, incluidos:
+Los datos de entrada vienen de la propia red: el precio del tráfico, el valor del marcador y las reglas de recompensa de la lectura horaria de Canton Scan, y la emisión, los cupones y las recompensas del día más reciente del [registro diario](/es/network/network-stats), que se muestran en **Inputs from the record**. Cuando un dato no se puede leer, o es demasiado antiguo, la calculadora no da estimación en lugar de adivinar.
 
-- Tasas de emisión actuales por ronda (Super Validador, Validador, Cupones de Aplicación)
-- Número de mitades completadas
-- Precio CC actual
+Las recompensas de app se estiman a partir de los marcadores de actividad, mientras la lectura más reciente de la red los indique como su método de minting. Si cambia la versión de minting, la calculadora lo indica y no da cifra de recompensa de app hasta modelar el nuevo método.
 
-Los resultados son estimaciones basadas en las condiciones actuales de la red y pueden variar a medida que los parámetros de la red cambian con el tiempo.
+## Lo que deja fuera
 
+Cada rol termina con **What this estimate leaves out**: la tasa cambia en cada ronda, el estado de featured requiere un voto de los súper validadores y un bloqueo según la CIP-0116, las recompensas llegan como cupones que hay que acuñar a tiempo, y más. Los resultados son estimaciones, no un pronóstico ni un consejo. El enlace de la página guarda tus datos, así que puedes compartir un escenario.

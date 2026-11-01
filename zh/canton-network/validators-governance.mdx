@@ -1,34 +1,32 @@
 ---
 title: "验证者和治理"
-description: "浏览验证器、了解超级验证器并跟踪治理提案。"
+description: "Network 菜单中的 Validators、Super validators、Featured apps、Governance 和 Upgrades 页面。"
 ---
 
-## 验证器页面
+## Validators
 
-**验证者**页面列出 Canton Network 上的验证者，按其已铸造的奖励排序；当 CCTools 知道其关联的生态项目时，会按项目分组。对于每个验证者，您可以看到：
+**Validators** 位于 [cctools.network/validators](https://cctools.network/validators)，开头显示每日记录最新一天的数据：**Validator licenses**、**Validator rewards**、**Reward per CC of coupon** 以及 **Super validators** 的数量，并附有按天统计的验证者许可证图表。许可证本身并不能说明其验证者是否活跃。
 
-- 验证者姓名和身份
-- 角色（超级验证者或普通验证者）
-- 绩效指标和奖励数据
+**Validator rewards ranking** 按最近 30 个完整 UTC 日或整个生命周期的验证者奖励，列出每个持牌验证者 party，数据来自 Loop Data，每天测算一次。你可以搜索排名，并筛选超级验证者或其他验证者，以及是否关联了目录中的项目。每一行显示其排名、目录关联的项目（如有）、以 CC 计的奖励以及在该期间中的占比。排名可以下载为 CSV，每个 party 都有自己的页面。
 
-## 超级验证者
+## Super validators
 
-超级验证者运营 Global Synchronizer（为 Canton Network 交易排序并确认的共享基础设施），并负责其治理：
+**Super validators** 位于 [cctools.network/super-validators](https://cctools.network/super-validators)，显示超级验证者的数量、一项提案所需的票数、总奖励权重，以及当天的超级验证者奖励（在每个成员分配给其受益人之前）。每个成员都会列出其奖励权重、权重占比、对多少项进行中的提案投了票、最近一次价格投票以及加入时的轮次。**Votes on open proposals** 显示每个成员对每项进行中提案的投票。
 
-- 对 Canton Improvement Proposals（CIP）投票，CIP 涵盖协议变更、代币经济、标准，以及超级验证者的成员资格和权重
-- 通过链上投票决定网络配置，例如同步器流量费用，以及每个铸币轮次使用的 CC/USD 兑换率
+每个超级验证者无论权重大小都只有一票，每轮的超级验证者奖励按奖励权重分配。
 
-CIP 及其状态公开于 [github.com/canton-foundation/cips](https://github.com/canton-foundation/cips)。
+## Featured apps
 
-## 治理
+**Featured apps** 位于 [cctools.network/apps](https://cctools.network/apps)，统计当天结束时的 featured app rights 及其应用奖励、其中有多少是通过治理投票获得 featured 身份的，以及有多少关联到了目录中的项目。页面还按天绘制 rights 图表，并列出最近 30 天的授予和撤销投票。rights 按提供方 party 授予，因此由多个 party 运营的应用会持有多个 rights。
 
-CCTools 跟踪 **治理** 页面上的所有治理活动：
+## Governance
 
-- 当前和过去的提案
-- 投票状态和结果
-- 超级验证者参与
-- 批准率和执行情况
-- 网络参数更改
+**Governance** 位于 [cctools.network/governance](https://cctools.network/governance)，跟踪超级验证者投票的提案：进行中的投票、完整的提案列表（**Open**、**Executed**、**Rejected** 或 **Expired**，可按申请人、应用或理由搜索）、超级验证者、reference price 及其投票与市场价格的对比、投票门槛以及结果。通过率统计的是已决定提案中被执行的比例。
 
-这使社区能够完全透明地了解网络的治理方式。
+提案和申请人摘要来自 Loop Data；每一张投票、超级验证者、其权重和价格投票来自 Canton Scan。CIP 及其状态公开于 [github.com/canton-foundation/cips](https://github.com/canton-foundation/cips)。
 
+## Upgrades
+
+**Upgrades** 位于 [cctools.network/network/upgrades](https://cctools.network/network/upgrades)，显示下一次 MainNet 升级（其要求、协议版本和链上时间表）、已准备就绪的活跃验证者数量、按版本统计的活跃验证者，以及日程中的后续升级。在 **Check your validator** 中输入你的验证者 party ID 即可查询。
+
+每个区块都会注明其来源和读取时间，[Methodology](https://cctools.network/methodology) 页面解释了每项数据是如何收集的。

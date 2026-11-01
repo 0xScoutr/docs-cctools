@@ -1,26 +1,43 @@
 ---
-title: "Network Stats"
-description: "What data is shown on the Network Stats page and how it is collected."
+title: "The Daily Record"
+description: "The open daily record of the Canton Network: what a day holds, where it comes from, and how to download and cite it."
 ---
 
-## Overview
+## What the daily record is
 
-The **Network Stats** page shows real-time and historical data about the Canton Network:
+The **Daily record**, first in the **Network** menu at [cctools.network/network](https://cctools.network/network), is the public record of Canton network state: one row per UTC day, derived from Canton Scan. The page opens on the latest day, and its date field opens any other day at its own address, `cctools.network/network/YYYY-MM-DD`.
 
-- **CC Price** - Current price, 24h change, market cap, and volume
-- **Validators** - Total number of Super Validators and regular validators
-- **Burn / App Rewards** - CC burned compared with CC paid out as featured app rewards
-- **Daily Transactions** - Transaction volume on the network
-- **Governance** - Total proposals, approval rate, executed vs rejected
-- **Issuance Rates** - Per Super Validator, Validator, and App coupon rates
-- **Price chart** - CC price history over 24 hours, 7 days or 30 days, from the aggregated price feed
+## What a day holds
 
-## Burn and app rewards
+The **Key figures** of a day are:
 
-CCTools records CC burned and featured app rewards every hour:
+- **Super validators** and the **Voting threshold**
+- **Featured app rights** and **Validator licenses**
+- **Supply**, **Net supply change** and **Issuance**
+- **Reference price**, the CC price the super validators vote
 
-- **Burned** - CC burned to pay for synchronizer traffic
-- **App Rewards** - CC paid out as featured app rewards. This is one part of issuance: rewards to validators, Super Validators and the Development Fund are not included
+A day closes at 00:00 UTC. Its values are provisional until the day settles, then final, and a final value changes only through a logged revision. A value that was not recorded is empty, never zero, and its reason is listed with its day. A day's own page shows its gaps and revisions.
 
-This data is shown in a dual bar chart covering a selectable 24-hour, 7-day or 30-day window, helping you compare burn with app rewards over time.
+Canton Coin is issued every round on a schedule that steps down over time. The issuance of a day is what its rounds scheduled, and the split between app, validator and super validator rewards is read from each round, never typed by hand.
 
+## The rest of the page
+
+- **Issuance and app rewards** - the last 30 UTC days
+- **Fees and rounds** - the transfer fee, the create fee, the holding fee and the round length
+- **CC burned by UTC day** - burn is not in the daily record yet, so until the record measures it this block shows Loop Data's burn series, with its source and time
+- **Super validators** - each member's reward weight, share of the weight and latest price vote
+- **Featured apps** and **Governance** - the day's featured app rights, and the proposals with their approval rate
+- **Data freshness** - how current each dataset on the page is
+
+The fees, the super validators and the proposals come from the governance state CCTools reads every hour, each block with its own source and time.
+
+## Download and cite
+
+The record on the page, the open files and the API are the same numbers. The files are public and need no key, under `https://api.cctools.network/api/open/network-record/v1/`:
+
+- `daily.csv` and `daily.json` - one row per day
+- `days/YYYY-MM-DD.json` - one file per day
+- `gaps.csv` - the values that were not recorded, with their reasons
+- `datapackage.json` - what the files hold
+
+The **Cite** button beside a day's title gives a citation with the day's permalink, and the page names the license and the attribution at its foot.

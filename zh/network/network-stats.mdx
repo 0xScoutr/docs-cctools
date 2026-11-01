@@ -1,26 +1,43 @@
 ---
-title: "网络统计"
-description: "网络统计页面上显示哪些数据以及如何收集这些数据。"
+title: "每日记录"
+description: "Canton Network 的开放每日记录：每天包含什么、数据从何而来，以及如何下载和引用。"
 ---
 
-## 概述
+## 什么是每日记录
 
-**网络统计**页面显示有关 Canton Network 的实时和历史数据：
+**Daily record** 是 **Network** 菜单中的第一项，地址为 [cctools.network/network](https://cctools.network/network)，它是 Canton 网络状态的公共记录：每个 UTC 日一行，数据来自 Canton Scan。页面打开时显示最新一天，日期字段可以在其自己的地址 `cctools.network/network/YYYY-MM-DD` 打开任意其他一天。
 
-- **CC 价格** - 当前价格、24 小时变化、市值和交易量
-- **验证者** - 超级验证者和常规验证者的总数
-- **Burn / App Rewards** - 已销毁的 CC 与作为精选应用奖励发放的 CC 的对比
-- **每日交易** - 网络上的交易量
-- **治理** - 提案总数、批准率、执行与拒绝
-- **发行率** - 每个超级验证者、验证者和应用优惠券利率
-- **价格图表** - 来自聚合价格源的 CC 价格历史，可选 24 小时、7 天或 30 天
+## 每一天包含什么
 
-## 销毁与应用奖励
+一天的 **Key figures** 包括：
 
-CCTools 每小时记录 CC 的销毁量和精选应用奖励：
+- **Super validators** 和 **Voting threshold**
+- **Featured app rights** 和 **Validator licenses**
+- **Supply**、**Net supply change** 和 **Issuance**
+- **Reference price**，即超级验证者投票确定的 CC 价格
 
-- **Burned** - 为支付同步器流量而销毁的 CC
-- **App Rewards** - 作为精选应用奖励发放的 CC。这只是发行的一部分：不包括验证者、超级验证者和开发基金的奖励
+一天在 UTC 时间 00:00 结束。在当天数据稳定之前，其数值是临时的，之后成为最终值，最终值只能通过有记录的修订来更改。未被记录的数值会留空，绝不显示为零，原因会与当天一同列出。每一天自己的页面会显示其缺失项和修订。
 
-该数据以双条形图显示，涵盖可切换的 24 小时、7 天或 30 天窗口，帮助您比较销毁量与应用奖励随时间的变化。
+Canton Coin 在每一轮按照一个随时间递减的时间表发行。一天的发行量就是当天各轮计划发行的数量，应用、验证者和超级验证者奖励之间的分配从每一轮中读取，从不手动填写。
 
+## 页面的其他部分
+
+- **Issuance and app rewards** - 最近 30 个 UTC 日
+- **Fees and rounds** - 转账费、创建费、持有费以及每轮的时长
+- **CC burned by UTC day** - 每日记录尚未包含销毁量，因此在记录开始统计之前，该区块显示 Loop Data 的销毁数据序列，并注明来源和时间
+- **Super validators** - 每个成员的奖励权重、权重占比以及最近一次价格投票
+- **Featured apps** 和 **Governance** - 当天的 featured app rights，以及各项提案及其通过率
+- **Data freshness** - 页面上每个数据集的更新程度
+
+费用、超级验证者和提案来自 CCTools 每小时读取一次的治理状态，每个区块都注明自己的来源和时间。
+
+## 下载与引用
+
+页面上的记录、开放文件和 API 是同一组数字。这些文件是公开的，无需密钥，位于 `https://api.cctools.network/api/open/network-record/v1/`：
+
+- `daily.csv` 和 `daily.json` - 每天一行
+- `days/YYYY-MM-DD.json` - 每天一个文件
+- `gaps.csv` - 未被记录的数值及其原因
+- `datapackage.json` - 说明这些文件包含什么
+
+一天标题旁边的 **Cite** 按钮会生成带有该日永久链接的引用，页面底部注明了许可证和署名要求。
