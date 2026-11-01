@@ -24,15 +24,13 @@ Price data is refreshed frequently - on the order of every few minutes - so the 
 
 ## Network Data
 
-On-chain network data is read from the Canton Network through on-chain indexers:
+Network data comes from Canton Scan and Loop Data:
 
-- Validator and Super Validator counts
-- Daily transaction volume
-- CC burned and featured app rewards per round
-- Featured app count
-- Total network parties
+- **The daily record** - derived from Canton Scan, one row per UTC day: supply, issuance and its split between app, validator and super validator rewards, featured app rights, validator licenses, super validators and the voting threshold
+- **The governance state** - read every hour: the fees, the super validators with their weights and price votes from Canton Scan, and the proposals from Loop Data
+- **Burn** - Loop Data's burn series, until the daily record measures burn
 
-Network stats are synced regularly so the Network Stats page reflects current chain activity.
+Each block on a page names its source and when it was read. See [The Daily Record](/network/network-stats).
 
 ## Portfolio Data
 

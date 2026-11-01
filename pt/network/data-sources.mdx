@@ -24,15 +24,13 @@ Os dados de preço são atualizados com frequência - na ordem de cada poucos mi
 
 ## Dados da rede
 
-Os dados on-chain da rede são lidos da Canton Network por meio de indexadores on-chain:
+Os dados da rede vêm do Canton Scan e da Loop Data:
 
-- Contagens de validadores e Super Validators
-- Volume diário de transações
-- CC queimado e recompensas de apps em destaque por rodada
-- Contagem de featured apps
-- Total de parties da rede
+- **O registro diário** - derivado do Canton Scan, uma linha por dia UTC: oferta, emissão e a sua divisão entre recompensas de apps, de validadores e de super validadores, featured app rights, licenças de validador, super validadores e o limite de votação
+- **O estado de governança** - lido a cada hora: as taxas, os super validadores com os seus pesos e votos de preço, do Canton Scan, e as propostas, da Loop Data
+- **Burn** - a série de burn da Loop Data, até o registro diário medir o burn
 
-As estatísticas da rede são sincronizadas com regularidade para que a página de Network Stats reflita a atividade atual da cadeia.
+Cada bloco de uma página informa a sua fonte e quando foi lido. Veja [O registro diário](/pt/network/network-stats).
 
 ## Dados de portfólio
 
