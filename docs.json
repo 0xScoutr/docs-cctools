@@ -386,6 +386,38 @@
     {
       "source": "/zh/earn/earn-opportunities",
       "destination": "/zh/campaigns/how-campaigns-work"
+    },
+    {
+      "source": "/academy/writing-posts",
+      "destination": "/academy/academy-overview"
+    },
+    {
+      "source": "/es/academy/writing-posts",
+      "destination": "/es/academy/academy-overview"
+    },
+    {
+      "source": "/pt/academy/writing-posts",
+      "destination": "/pt/academy/academy-overview"
+    },
+    {
+      "source": "/zh/academy/writing-posts",
+      "destination": "/zh/academy/academy-overview"
+    },
+    {
+      "source": "/academy/reading-upvoting-posts",
+      "destination": "/academy/academy-overview"
+    },
+    {
+      "source": "/es/academy/reading-upvoting-posts",
+      "destination": "/es/academy/academy-overview"
+    },
+    {
+      "source": "/pt/academy/reading-upvoting-posts",
+      "destination": "/pt/academy/academy-overview"
+    },
+    {
+      "source": "/zh/academy/reading-upvoting-posts",
+      "destination": "/zh/academy/academy-overview"
     }
   ],
   "navigation": {
@@ -428,13 +460,11 @@
                 ]
               },
               {
-                "group": "Academy",
+                "group": "Library",
                 "icon": "graduation-cap",
                 "pages": [
                   "academy/academy-overview",
-                  "earn/learn-paths",
-                  "academy/reading-upvoting-posts",
-                  "academy/writing-posts"
+                  "earn/learn-paths"
                 ]
               },
               {
@@ -567,13 +597,11 @@
                 ]
               },
               {
-                "group": "Academia",
+                "group": "Biblioteca",
                 "icon": "graduation-cap",
                 "pages": [
                   "es/academy/academy-overview",
-                  "es/earn/learn-paths",
-                  "es/academy/reading-upvoting-posts",
-                  "es/academy/writing-posts"
+                  "es/earn/learn-paths"
                 ]
               },
               {
@@ -706,13 +734,11 @@
                 ]
               },
               {
-                "group": "Academia",
+                "group": "Biblioteca",
                 "icon": "graduation-cap",
                 "pages": [
                   "pt/academy/academy-overview",
-                  "pt/earn/learn-paths",
-                  "pt/academy/reading-upvoting-posts",
-                  "pt/academy/writing-posts"
+                  "pt/earn/learn-paths"
                 ]
               },
               {
@@ -845,13 +871,11 @@
                 ]
               },
               {
-                "group": "学院",
+                "group": "资料库",
                 "icon": "graduation-cap",
                 "pages": [
                   "zh/academy/academy-overview",
-                  "zh/earn/learn-paths",
-                  "zh/academy/reading-upvoting-posts",
-                  "zh/academy/writing-posts"
+                  "zh/earn/learn-paths"
                 ]
               },
               {
