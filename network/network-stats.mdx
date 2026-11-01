@@ -24,8 +24,8 @@ Canton Coin is issued every round on a schedule that steps down over time. The i
 
 - **Issuance and app rewards** - the last 30 UTC days
 - **Fees and rounds** - the transfer fee, the create fee, the holding fee and the round length
-- **CC burned by UTC day** - burn is not in the daily record yet, so until the record measures it this block shows Loop Data's burn series, with its source and time
-- **Super validators** - each member's reward weight, share of the weight and latest price vote
+- **CC burned** - burn is not in the daily record yet, so until the record measures it this block shows Loop Data's burn series over 24 hours, 7 days and 30 days, with daily bars, and its source and time
+- **Super validators** - each member's reward weight, its share of the weight and the round it joined, with the votes a proposal needs under the table
 - **Featured apps** and **Governance** - the day's featured app rights, and the proposals with their approval rate
 - **Data freshness** - how current each dataset on the page is
 
@@ -39,5 +39,9 @@ The record on the page, the open files and the API are the same numbers. The fil
 - `days/YYYY-MM-DD.json` - one file per day
 - `gaps.csv` - the values that were not recorded, with their reasons
 - `datapackage.json` - what the files hold
+- `values.csv` - each value with its day, its status, the Scan host it was read from and its time
+- `revisions.csv` - every change to a value after it became final
+- `methodology.json` - how each value is read
+- `status.json` - the latest final and provisional days
 
 The **Cite** button beside a day's title gives a citation with the day's permalink, and the page names the license and the attribution at its foot.

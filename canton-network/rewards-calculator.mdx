@@ -9,7 +9,7 @@ The **Rewards calculator**, in the **Network** menu at [cctools.network/calculat
 
 - **Featured app** - for your app, type the marked transactions a day, the marker weight per transaction, the traffic per transaction in bytes and your hosting cost, and choose how many markers all other apps create. You get the estimated app rewards (the reward per marked transaction, the rate per CC of coupon, your share of the day's markers and the net a day after traffic and hosting), and **Fee vs reward** for one marked transaction: the network fee, the marker weight, the app reward and the weight to fee ratio the FA Overage Policy watches. If your own node buys the traffic, tick the box and the estimate adds the validator reward on it.
 - **Validator** - for your node, type the traffic it buys in MB a day and your hosting cost, and choose how much traffic all other nodes buy. **What your node gets back** shows the reward back on the CC it burns for traffic, the net cost a MB and the liveness reward.
-- **CC holder** - for any amount of CC, **What holding gets from the protocol** shows its value, its share of the supply and how the supply moved. The protocol pays holders nothing: new CC goes to featured apps, validators and super validators for the work they do on the network, so the protocol reward for holding is 0 CC. The page also explains the holding fee, which is never taken from a balance, and the locks some roles require, which pay nothing for holding.
+- **CC holder** - for any amount of CC, **What holding gets from the protocol** shows its value, its share of the supply and how the supply moved. Every round's issuance goes to featured apps, super validators, validators that buy traffic and the Development Fund, or stays unclaimed; none of it goes to holders, so the protocol reward for holding is 0 CC. The page also explains the holding fee, which is never taken from a balance, and the locks some roles require, which pay nothing for holding.
 
 ## Prices and inputs
 
@@ -21,4 +21,4 @@ App rewards are estimated from activity markers, while the latest read of the ne
 
 ## What it leaves out
 
-Each role ends with **What this estimate leaves out**: the rate moves every round, featured status takes a vote of the super validators and a lock under CIP-0116, rewards arrive as coupons that have to be minted in time, and more. The results are estimates, not a forecast and not advice. The page's link keeps your inputs, so you can share a scenario.
+The featured app and validator roles end with **What this estimate leaves out**, and the holder role with **What these figures leave out**. For an app, the rate moves every round, featured status takes a vote of the super validators and a lock under CIP-0116, rewards arrive as coupons that have to be minted in time, and more. The results are estimates, not a forecast and not advice. The page's link keeps your inputs, so you can share a scenario.

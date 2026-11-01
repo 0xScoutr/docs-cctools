@@ -24,8 +24,8 @@ Canton Coin 在每一轮按照一个随时间递减的时间表发行。一天�
 
 - **Issuance and app rewards** - 最近 30 个 UTC 日
 - **Fees and rounds** - 转账费、创建费、持有费以及每轮的时长
-- **CC burned by UTC day** - 每日记录尚未包含销毁量，因此在记录开始统计之前，该区块显示 Loop Data 的销毁数据序列，并注明来源和时间
-- **Super validators** - 每个成员的奖励权重、权重占比以及最近一次价格投票
+- **CC burned** - 每日记录尚未包含销毁量，因此在记录开始统计之前，该区块显示 Loop Data 在 24 小时、7 天和 30 天内的销毁数据，并附有每日柱状图以及来源和时间
+- **Super validators** - 每个成员的奖励权重、权重占比以及加入时的轮次，表格下方注明一项提案所需的票数
 - **Featured apps** 和 **Governance** - 当天的 featured app rights，以及各项提案及其通过率
 - **Data freshness** - 页面上每个数据集的更新程度
 
@@ -39,5 +39,9 @@ Canton Coin 在每一轮按照一个随时间递减的时间表发行。一天�
 - `days/YYYY-MM-DD.json` - 每天一个文件
 - `gaps.csv` - 未被记录的数值及其原因
 - `datapackage.json` - 说明这些文件包含什么
+- `values.csv` - 每个数值及其日期、状态、读取来源的 Scan 主机和时间
+- `revisions.csv` - 数值成为最终值之后的每一次修改
+- `methodology.json` - 每个数值的读取方法
+- `status.json` - 最新的最终日和临时日
 
 一天标题旁边的 **Cite** 按钮会生成带有该日永久链接的引用，页面底部注明了许可证和署名要求。

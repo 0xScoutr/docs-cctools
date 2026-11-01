@@ -14,22 +14,22 @@ Los **Key figures** de un día son:
 - **Super validators** y el **Voting threshold**
 - **Featured app rights** y **Validator licenses**
 - **Supply**, **Net supply change** e **Issuance**
-- **Reference price**, el precio de CC que votan los súper validadores
+- **Reference price**, el precio de CC que votan los supervalidadores
 
 Un día cierra a las 00:00 UTC. Sus valores son provisionales hasta que el día se asienta, luego finales, y un valor final solo cambia mediante una revisión registrada. Un valor que no se registró queda vacío, nunca en cero, y su motivo aparece junto a su día. La página propia de cada día muestra sus huecos y revisiones.
 
-Canton Coin se emite en cada ronda según un calendario que disminuye con el tiempo. La emisión de un día es lo que programaron sus rondas, y el reparto entre recompensas de apps, de validadores y de súper validadores se lee de cada ronda, nunca se escribe a mano.
+Canton Coin se emite en cada ronda según un calendario que disminuye con el tiempo. La emisión de un día es lo que programaron sus rondas, y el reparto entre recompensas de apps, de validadores y de supervalidadores se lee de cada ronda, nunca se escribe a mano.
 
 ## El resto de la página
 
 - **Issuance and app rewards** - los últimos 30 días UTC
 - **Fees and rounds** - la comisión de transferencia, la de creación, la de tenencia y la duración de la ronda
-- **CC burned by UTC day** - el burn todavía no está en el registro diario, así que, hasta que el registro lo mida, este bloque muestra la serie de burn de Loop Data, con su fuente y su hora
-- **Super validators** - el peso de recompensa de cada miembro, su parte del peso y su último voto de precio
+- **CC burned** - el burn todavía no está en el registro diario, así que, hasta que el registro lo mida, este bloque muestra la serie de burn de Loop Data en 24 horas, 7 días y 30 días, con barras diarias, y su fuente y su hora
+- **Super validators** - el peso de recompensa de cada miembro, su parte del peso y la ronda en que se unió, con los votos que necesita una propuesta debajo de la tabla
 - **Featured apps** y **Governance** - los featured app rights del día y las propuestas con su tasa de aprobación
 - **Data freshness** - qué tan actual está cada conjunto de datos de la página
 
-Las comisiones, los súper validadores y las propuestas vienen del estado de gobernanza que CCTools lee cada hora, cada bloque con su propia fuente y hora.
+Las comisiones, los supervalidadores y las propuestas vienen del estado de gobernanza que CCTools lee cada hora, cada bloque con su propia fuente y hora.
 
 ## Descargar y citar
 
@@ -39,5 +39,9 @@ El registro de la página, los archivos abiertos y la API son las mismas cifras.
 - `days/AAAA-MM-DD.json` - un archivo por día
 - `gaps.csv` - los valores que no se registraron, con sus motivos
 - `datapackage.json` - lo que contienen los archivos
+- `values.csv` - cada valor con su día, su estado, el host de Scan del que se leyó y su hora
+- `revisions.csv` - cada cambio de un valor después de quedar final
+- `methodology.json` - cómo se lee cada valor
+- `status.json` - los días finales y provisionales más recientes
 
 El botón **Cite**, junto al título de un día, da una cita con el enlace permanente del día, y la página indica la licencia y la atribución al pie.

@@ -24,8 +24,8 @@ O Canton Coin é emitido a cada rodada, num cronograma que diminui com o tempo. 
 
 - **Issuance and app rewards** - os últimos 30 dias UTC
 - **Fees and rounds** - a taxa de transferência, a taxa de criação, a taxa de holding e a duração da rodada
-- **CC burned by UTC day** - o burn ainda não está no registro diário, então, até o registro medi-lo, este bloco mostra a série de burn da Loop Data, com fonte e horário
-- **Super validators** - o peso de recompensa de cada membro, a participação no peso e o último voto de preço
+- **CC burned** - o burn ainda não está no registro diário, então, até o registro medi-lo, este bloco mostra a série de burn da Loop Data em 24 horas, 7 dias e 30 dias, com barras diárias, além da fonte e do horário
+- **Super validators** - o peso de recompensa de cada membro, a participação no peso e a rodada em que entrou, com os votos de que uma proposta precisa abaixo da tabela
 - **Featured apps** e **Governance** - os featured app rights do dia e as propostas com a taxa de aprovação
 - **Data freshness** - quão atual está cada conjunto de dados da página
 
@@ -39,5 +39,9 @@ O registro da página, os arquivos abertos e a API trazem os mesmos números. Os
 - `days/AAAA-MM-DD.json` - um arquivo por dia
 - `gaps.csv` - os valores que não foram registrados, com os motivos
 - `datapackage.json` - o que os arquivos contêm
+- `values.csv` - cada valor com o seu dia, o seu status, o host do Scan de onde foi lido e o seu horário
+- `revisions.csv` - toda mudança num valor depois de ele ficar final
+- `methodology.json` - como cada valor é lido
+- `status.json` - os dias finais e provisórios mais recentes
 
 O botão **Cite**, ao lado do título de um dia, gera uma citação com o link permanente do dia, e a página informa a licença e a atribuição no rodapé.
