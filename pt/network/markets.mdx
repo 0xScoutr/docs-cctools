@@ -1,188 +1,46 @@
 ---
-title: Central de Mercados
-description: Explore pools de DeFi da Canton, RWA, stablecoins, tokens, e como adquirir Canton Coin em exchanges, on-ramps, bridges e wallets.
+title: "Mercados"
+description: "As sete páginas de Markets: DeFi, ativos tokenizados, tokens, stablecoins, bridges, carteiras e custódia, e onde conseguir Canton Coin."
 ---
 
-A Markets é a sua central completa para explorar o ecossistema da Canton. Alterne entre sete abas para descobrir oportunidades de DeFi ao vivo, ativos tokenizados, tokens com dados de preço, e como adquirir Canton Coin (CC).
+**Markets**, na barra superior, reúne sete páginas, cada uma com as suas fontes: [cctools.network/markets](https://cctools.network/markets) abre em DeFi. As tabelas têm busca, filtros com uma contagem em cada opção e, quando ajuda, um controle **Sort by**, além de uma linha que diz quantas linhas aparecem. **Open** abre o local ou o emissor numa nova aba, e o nome de um projeto abre a sua página no diretório.
 
-## Pools de DeFi
+Os selos de status mostram **Live** ou **Planned**; **Curated**, com a data, marca uma lista que a CCTools mantém à mão; **Lagging** marca uma fonte atrasada. Cada página termina com **About this page**, que informa as fontes e com que frequência são lidas, e um link para a trilha do Learn correspondente.
 
-Pools de liquidez ao vivo dos protocolos DEX nativos da Canton: Tradecraft, Send, Cantex, OneSwap e Silvana.
+## DeFi
 
-**O que você vê**
-- Par do pool (ex.: CC/USDT) e nome do protocolo
-- Valor Total Bloqueado (TVL) do protocolo
-- Volume de 14 dias
-- Taxa Percentual Anual (APR) ou faixa de APY (ao vivo do Tradecraft/Send, fixa para os demais até que suas APIs entrem no ar)
+**Value locked in Canton DeFi** é o total do próprio DefiLlama para a chain Canton, com a variação de 7 dias e um gráfico de 90 dias. Abaixo dele:
 
-**Filtros**
-- **Protocolo**: Restrinja a Tradecraft, Cantex, OneSwap ou Send. Padrão: todos.
-- **Busca**: Digite o nome de um par de pool ou o slug de um protocolo.
+- **Protocols** - o TVL de cada protocolo, a variação de 7 dias, a participação no total, a categoria e a fonte, agrupados pelo que o DefiLlama conta: contados no total, bridges, deixados de fora pelo DefiLlama, e protocolos fora do DefiLlama que a CCTools lê por conta própria
+- **Lending rates on Alpend** - APY de oferta e de empréstimo, valor ofertado, valor emprestado e a parte emprestada, de um feed que a CCTools lê a cada 5 minutos
+- **Pools** - as pools da Tradecraft, da Pool Party (Send) e da OneSwap, agrupadas por local, já que cada um mede taxas e volume do seu jeito, com TVL, volume por dia, taxa e APR de taxas. Filtre por local e pelo tamanho da pool (a partir de US$ 1.000 por padrão). A CCTools ainda não lê a lista de pools da Cantex, então o TVL da Cantex é o do DefiLlama, em Protocols
 
-**Opções de ordenação**
-- Maior APR (padrão)
-- Maior TVL
-- Maior volume de 14 dias
+## Ativos tokenizados
 
-Todos os dados dos pools são atualizados ao vivo pelos endpoints do Tradecraft e do Send (cache de 5 minutos). Clique na linha do pool para ver a página do ecossistema do protocolo, ou toque em Abrir para depositar diretamente na interface daquele protocolo.
-
-## RWA (Ativos do Mundo Real)
-
-Ativos do mundo real tokenizados na Canton: commodities, BTC, índices e mais. Os mercados de livro de ofertas da Temple aparecem aqui como o local canônico de RWA.
-
-**O que você vê**
-- Emissor do ativo e nome do projeto
-- Categoria: Commodities, BTC, Índice
-- Descrição de cobertura (ex.: "Barras de ouro, armazenamento físico")
-- Status: Ao vivo ou Em preparação (em breve)
-
-**Filtros**
-- **Categoria**: Commodities, BTC, Índice, ou todos
-- **Busca**: Digite o nome de um emissor ou ativo
-
-**Opções de ordenação**
-- Ao vivo primeiro (padrão, ativos em preparação ficam esmaecidos)
-- Nome A-Z
-
-Cada emissor de RWA mostra um botão Abrir para negociar na Temple, ou Detalhes para ler o perfil completo do projeto.
-
-## Stablecoins
-
-Stablecoins ao vivo ou atreladas na Canton, divididas nas seções Ao vivo e Em breve.
-
-**O que você vê**
-- Nome da stablecoin, ticker e emissor
-- Tipo: Lastreada em fiat, Geradora de rendimento, Lastreada em cripto, MMF
-- Alvo de paridade (ex.: USD, EUR)
-- Status: Ao vivo ou Em breve
-
-**Filtros**
-- **Tipo**: Lastreada em fiat, Geradora de rendimento, Lastreada em cripto, MMF
-- **Busca**: Nome, ticker ou emissor
-
-**Opções de ordenação**
-- Nome A-Z (padrão)
-- Por tipo
-- Multichain primeiro
-
-As stablecoins multichain são marcadas para você saber quais são nativas da Canton e quais vieram via bridge de outras chains.
+- **Issued on the network** (curada) - cada token, quanto está depositado na Temple e nas pools da Tradecraft, e o que ele representa
+- **Issuers** - a categoria de cada emissor, o que dá para fazer com ele e o que os dados públicos mostram, agrupados em exposição ao preço sem um token do ativo, ativo na Canton mas privado por design, anunciado sem nada público ainda, e listado
 
 ## Tokens
 
-Projetos do ecossistema da Canton com um token, combinados de duas fontes:
-- Projetos do ecossistema da Canton no banco de dados (projetos reais com páginas de perfil)
-- Dados de mercado ao vivo do CoinGecko (preço, capitalização de mercado, variação em 24h)
+- **Tokens on the network** - preço, variação de 24 horas, valor de mercado, oferta na Canton e detentores, com filtro por tipo. A oferta é lida a cada 15 minutos, e os preços do CoinGecko a cada 5 minutos
+- **Tokens of Canton projects, issued on other chains** - o projeto, a chain, o contrato (com botão de copiar), preço, variação de 24 horas e valor de mercado, com filtro por chain
 
-**O que você vê**
-- Nome do token e ticker
-- Projeto (emissor)
-- Endereço do contrato inteligente (copiável, ou vazio para entradas apenas do CoinGecko ainda não indexadas localmente)
-- Preço atual
-- Capitalização de mercado (com selo de raridade: Comum, Incomum, Raro, Épico, Lendário)
-- Variação de preço em 24 horas (verde para alta, cinza esmaecido para baixa)
+## Stablecoins
 
-**Filtros**
-- **Chain**: Canton, Base, BSC, Ethereum, ou todas
-- **Busca**: Nome do token, nome do projeto ou ticker
-
-**Opções de ordenação**
-- Maior capitalização de mercado (padrão)
-- Maior preço
-- Maior variação em 24h
-- Nome A-Z
-
-Clique na linha de um token para ver seu perfil do ecossistema ou site. Os dados são atualizados do CoinGecko em tempo real; tokens que estão no banco de dados mas ainda não no CoinGecko mostram o preço vazio.
-
-## Obter CC
-
-Como adquirir Canton Coin (CC). Encontre a rota que funciona melhor para a sua região, tipo de exchange e preferência de KYC.
-
-**O que você vê**
-- Preço do CC e variação em 24h (cartão de destaque no topo)
-- Capitalização de mercado e volume de negociação em 24h
-- Todos os locais classificados por volume de negociação de CC
-
-**Para cada local**
-- Tipo: DEX ou CEX
-- Taxa de maker (se listada)
-- Exigência de KYC: Nenhuma (escudo verde), Opcional (âmbar) ou Obrigatória (cinza)
-- Preço do CC ao vivo naquele local
-- Volume de CC em 24h
-
-**Filtros**
-- **País**: Qualquer lugar, EUA, UE, Reino Unido, Brasil, Vietnã, Indonésia, Nigéria
-- **Tipo**: Todos os locais, apenas DEX, apenas CEX
-- **KYC**: Qualquer nível ou Nenhum / Opcional
-- **Busca**: Nome do local
-
-**Opções de ordenação**
-- Maior volume em 24h (padrão, apenas CEX)
-- Menores taxas de maker
-- Sem KYC primeiro
-- Mais pares com fiat
-
-Locais CEX sem volume de CC ao vivo ficam ocultos (sem ruído). Rotas DEX sempre aparecem, independentemente do volume. Clique em Abrir para negociar naquele local, ou Detalhes para ver o perfil completo da exchange. Um aviso na parte inferior explica que as rotas de bridge para a Canton a partir de outras chains estarão disponíveis em breve.
+A oferta de cada stablecoin na Canton, o tipo, a paridade, os locais na Canton e o status, agrupados em bridged para a Canton, emitidas na Canton, e anunciadas mas ainda não ativas. Filtre por tipo e ordene pela oferta.
 
 ## Bridges
 
-Rotas entre chains para a Canton. Quais ativos entram via bridge, de quais chains de origem, por meio de quais protocolos.
+O valor de cada rota na Canton agora, a direção, a atestação e o status, com as rotas que não são bridges listadas à parte. Filtre pela direção (para a Canton, saindo da Canton ou nos dois sentidos) e pela rede.
 
-**O que você vê**
-- Nome do bridge e protocolo
-- Rota: Do Bitcoin, Ethereum, Base ou Multichain para a Canton
-- Ativo transferido via bridge (ex.: BTC, ETH, USDC)
-- Tipo ou padrão de atestação (ex.: "Cliente leve", "MPC")
-- Status: Ao vivo ou Em breve
+## Carteiras e custódia
 
-**Filtros**
-- **Rota**: Todas, Do Bitcoin, Do Ethereum, Do Base, Multichain
-- **Busca**: Nome do bridge ou do ativo
+Um catálogo curado em quatro níveis: **Wallets**, **Hardware wallets**, **Custody for institutions** e **OTC desks**. Cada linha mostra as plataformas, o tipo de custódia (autocustódia ou custodial) e se pede KYC, e você pode filtrar por custódia e por KYC.
 
-**Opções de ordenação**
-- Ao vivo primeiro (padrão, bridges em preparação ficam esmaecidos)
-- Nome A-Z
+## Get CC
 
-Clique em Abrir para acessar a interface do bridge, ou Detalhes para o perfil do ecossistema do protocolo do bridge.
-
-## Wallets
-
-Wallets de autocustódia, wallets de hardware e soluções institucionais/OTC. Organizadas em três níveis: Varejo, Hardware (cold storage) e Institucional e OTC (custódia + formadores de mercado).
-
-**O que você vê**
-- Nome da wallet
-- Plataformas: Navegador, Web, Mobile, Hardware, Custodial ou Múltipla
-- Tipo de custódia: Autocustódia ou Custodial
-- Exigência de KYC: Nenhuma (verde) ou Obrigatória (cinza)
-
-**Filtros**
-- **Custódia**: Todas, Apenas autocustódia, Apenas custodial
-- **KYC**: Qualquer nível ou Sem KYC
-- **Busca**: Nome da wallet
-
-Sem opções de ordenação (ordenadas por nível: varejo, hardware, depois institucional/OTC). Clique em Abrir para acessar a wallet, ou Detalhes para sua página do ecossistema.
-
-## Filtros e Busca
-
-Cada aba inclui uma barra de filtros no topo.
-
-**A busca** corresponde a pares de pools, nomes de protocolos, nomes de emissores, nomes de ativos, tickers de tokens, nomes de projetos e nomes de locais, dependendo da aba.
-
-**Redefina os filtros** clicando no botão do estado vazio se a sua busca não retornar resultados.
-
-**Desktop vs. Mobile**: No desktop, todos os filtros e controles de ordenação aparecem em uma única barra horizontal. No mobile, a busca aparece primeiro; filtros e ordenação ficam empilhados em uma grade de 2 colunas abaixo.
-
-## Dados ao Vivo
-
-A maioria dos dados é atualizada ao vivo:
-- **Pools de DeFi**: o volume/APR do Tradecraft e do Send é atualizado via API (cache de 5 minutos)
-- **Tokens**: preço, capitalização de mercado e variação em 24h do CoinGecko (em tempo real)
-- **Obter CC**: cartão de destaque do preço do CC e preços por local do endpoint de tickers do CoinGecko (ao vivo)
-- **RWA, Stablecoins, Bridges, Wallets**: listas estáticas curadas atualizadas manualmente
-
-## Tour de Primeiro Uso
-
-Na sua primeira visita à Markets (ou se você limpar o localStorage), um tour com coachmarks destaca a faixa de abas, a barra de filtros e a tabela de pools. Ele aparece uma vez por usuário e pode ser dispensado.
-
-## Missão de Onboarding
-
-Ver a aba DeFi da Markets pela primeira vez enquanto está logado registra a conclusão da missão de onboarding "view_markets".
+- **Canton Coin today** - o preço, a variação de 24 horas, o valor de mercado, o volume de 24 horas e o reference price, a mediana dos votos dos super validadores
+- **Convert CC** - a um preço ao vivo ou ao seu, na sua moeda, e depois para a [calculadora](/pt/canton-network/rewards-calculator)
+- **Exchanges that list CC** (curada) - a participação de cada exchange no volume de CC, o volume de CC em 24 horas, o preço, o tipo (CEX, DEX ou livro de ofertas na Canton) e o KYC, atualizados a cada 5 minutos. Filtre por tipo de local e por KYC, e ordene por volume ou preço. O KYC é um retrato curado: confira os termos de cada local antes de depositar
+- **On Canton itself** - as pools CC/USDCx na Canton, com a Temple e a Cantex ao lado
+- **Already hold assets on another chain?** - links para as rotas de bridge
