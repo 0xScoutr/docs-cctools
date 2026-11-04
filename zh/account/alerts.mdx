@@ -1,0 +1,102 @@
+---
+title: "提醒"
+description: "CCTools 可以发给你的所有提醒、每种提醒送达的位置（铃铛、推送、电子邮件和 Telegram）、一开始默认开启的内容，以及如何更改或停止提醒。"
+---
+
+## 在哪里找到 Alerts
+
+**Alerts** 位于 [cctools.network/profile/alerts](https://cctools.network/profile/alerts)，用于设置你收到的所有提醒以及它们的送达位置。你可以从 Profile 的 **Alerts** 标签页、账户菜单中的 **Alerts**、**Settings > Plan and preferences** 中的 **Open alerts**，或铃铛顶部的 **Choose your alerts** 打开它。每项选择在你更改时都会立即保存。
+
+**Your latest alerts** 列出你最近的五条提醒，与铃铛中保存的一致。
+
+## 提醒送达何处
+
+提醒通过四个渠道送达：
+
+- **Bell**（铃铛）- 在 CCTools 中，任何设备上都可见。始终开启：你保留的每条提醒都会送达这里，每周摘要除外
+- **Push** - 在当前设备上，你点击 **Turn on** 且浏览器允许后开启。在 iPhone 上，请先把 CCTools 添加到主屏幕。**Turn off** 会在该设备上关闭推送
+- **Email** - 发送到你账户的邮箱地址，在你开启后生效。如果没有 CCTools 可以发送的地址，请在 **Settings** 中设置一个
+- **Telegram** - **Connect** 会生成一个一次性链接，有效期 15 分钟，指向 Telegram 上的 CCTools 机器人，也就是你可以用来登录的同一个机器人。点击 **Open the bot**，并在那里点击 **Start** 完成连接。**Disconnect** 会断开连接，在聊天中发送 `/stop` 也会断开
+
+渠道下方有一张表，列出每种提醒（**Your activity**、**Projects you follow**、**Topics** 和 **Portfolio**），并为 **Push**、**Email** 和 **Telegram** 各提供一个勾选框。勾选每种提醒要使用的渠道；铃铛始终会收到。
+
+每个渠道都有每日上限：
+
+- **Push** - 每天最多 3 条，其中最多 1 条来自关注的项目和主题。新闻从不推送
+- **Email** - 每天最多 3 封提醒邮件，其余的会在第二天早上合并成一封邮件。每封提醒邮件都有一个链接，无需登录，一键即可关闭该类邮件
+- **Telegram** - 每天最多 10 条
+
+## 你的动态
+
+一开始就在铃铛中开启，每项都有自己的开关：
+
+- **Your campaigns** - 你中奖了、领奖提醒，以及你还有任务未完成的活动即将结束。属于你的兑换码只会显示在铃铛中
+- **Your edits and listings** - 版主接受或拒绝了你的编辑或项目收录。该决定本来就会送达铃铛和推送，并像以前一样附有版主的邮件；此提醒会额外通过 Telegram 发送
+
+## 你关注的项目
+
+在项目页面上 **Vote** 旁边点击 **Follow**，即可把该项目加入你的提醒。你关注的每个项目都有自己的选项：
+
+- **News** - 关于该项目的头条新闻
+- **Featured app rights** - 该项目获得或失去 featured app right
+- **Votes** - 提到该项目的治理投票开启，以及投票结果
+- **Campaigns** - 该项目在 CCTools 上发起活动
+
+新关注的项目默认勾选 News、Featured app rights 和 Votes，不勾选 Campaigns。没有关联 Canton party 的项目没有可关注的权利或投票。在 Alerts 页面上，**For every project you follow** 可以一次为你关注的所有项目开启或关闭每一类提醒；项目自己的选项也必须开启。你最多可以关注 50 个项目，**Unfollow** 会停止某个项目的提醒。
+
+你关注的内容是私密的：任何人都看不到，也不会被计数。
+
+## 主题
+
+在 Alerts 页面上关注一个主题，即可在铃铛中收到它：
+
+- **Daily record** - 某一天的记录成为最终版本时，附带其数据
+- **Governance votes** - 每一次开启的投票，以及其结果
+- **New projects** - 每周一：本周加入目录的项目
+- **DeFi** - 每周一：新的 DeFi 和 DEX 项目
+- **Tokenized assets** - 每周一：新的代币化资产和 RWA 项目
+- **Validators** - 每周一：根据记录统计的本周验证者许可证变化
+- **CC price** - CoinGecko 的市场价格越过你设定的价位（高于或低于，以 USD 计），或在 24 小时内的变动超过你设定的幅度。未设定价位时，默认为 24 小时内变动 10%
+- **New campaigns** - 每天最多一次：在 CCTools 上开始的活动
+
+如果你同时关注了 **Governance votes** 和某次投票提到的项目，你只会收到该项目的提醒。
+
+## Portfolio 提醒
+
+Portfolio 提醒仅供 Pro 会员使用。它们最多监控 5 个你在 [Get Verified](/zh/account/verified) 中签名过的 Canton 钱包，每小时检查一次。你可以为每个钱包设置：
+
+- **CC in or out over** 一个 CC 数量
+- **Balance** 低于或高于一个 CC 数额
+
+你没有签名的钱包会显示 **Not signed**。**Remove** 会移除某个钱包的提醒。
+
+## 每周摘要
+
+每周摘要在每周一 UTC 时间 09:00 发出，通过电子邮件或 Telegram 发送，从不出现在铃铛中，也不推送。它包含本周的记录、加入目录的项目、治理投票以及 Canton DeFi 锁定价值。勾选通过邮件接收摘要并不会开启提醒邮件。
+
+## 一开始默认开启的内容
+
+- 铃铛中的 **Your activity**：你的活动，以及你的编辑和项目收录
+- 在你勾选之前，所有类型的推送、邮件和 Telegram 都关闭，邮件也处于关闭状态
+- 没有关注任何项目或主题，每周摘要关闭
+
+## 在当前设备上推送
+
+你第一次登录访问时，如果浏览器可以显示通知，会弹出一个窗口询问 **Turn on alerts on this device?** **Turn on** 会请求浏览器授权。**Later** 会在第二天再次询问。**No** 会永久停止询问：之后只能从 Alerts 页面开启推送。在你回答 No 之前，铃铛也会提供在当前设备上开启提醒的选项。
+
+## 关闭提醒
+
+Alerts 页面上的每项选择都可以随时更改：取消勾选某个渠道或某类提醒、取消关注某个项目或主题、移除一条 Portfolio 规则、在某台设备上关闭推送，或断开 Telegram。铃铛始终显示你保留的提醒。
+
+铃铛中还会有 CCTools 的其他通知，例如公告。Alerts 页面不会更改这些通知。
+
+## 隐私
+
+- CCTools 会保存你的提醒选择；你关注的项目和主题（它们是私密的，从不向任何人展示或计数）；你的 Portfolio 规则；你对推送弹窗的回答；以及每条提醒的标题、内容和链接，以及它是否通过铃铛、推送、电子邮件或 Telegram 送达你。每条提醒的记录会在你的账户存在期间一直保留，以便铃铛显示它，并统计每日上限
+- 推送通过你浏览器的推送服务发送（根据浏览器不同，为 Google、Apple、Microsoft 或 Mozilla）。CCTools 会保存每台设备的推送地址，直到你在该设备上关闭推送、浏览器终止该地址，或向它的投递持续失败
+- 提醒邮件通过 Resend 发送到你账户的邮箱地址
+- Telegram 消息只会发送到你通过账户中的链接发起的聊天。CCTools 会保存该聊天的 id 和你的 Telegram 用户名
+- CCTools 只统计总数、从不按个人统计每类提醒在铃铛中被阅读的次数，以便减少发送大家不读的提醒类型
+- 任何合作伙伴都不能购买提醒或推送
+
+每条提醒的记录以及你对推送弹窗的回答无法编辑；删除你的账户会删除所有这些数据。请参阅[隐私政策](https://cctools.network/privacy)。

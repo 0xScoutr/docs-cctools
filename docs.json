@@ -418,6 +418,38 @@
     {
       "source": "/zh/academy/reading-upvoting-posts",
       "destination": "/zh/academy/academy-overview"
+    },
+    {
+      "source": "/account/notifications",
+      "destination": "/account/alerts"
+    },
+    {
+      "source": "/es/account/notifications",
+      "destination": "/es/account/alerts"
+    },
+    {
+      "source": "/pt/account/notifications",
+      "destination": "/pt/account/alerts"
+    },
+    {
+      "source": "/zh/account/notifications",
+      "destination": "/zh/account/alerts"
+    },
+    {
+      "source": "/news/new-content-notifications",
+      "destination": "/account/alerts"
+    },
+    {
+      "source": "/es/news/new-content-notifications",
+      "destination": "/es/account/alerts"
+    },
+    {
+      "source": "/pt/news/new-content-notifications",
+      "destination": "/pt/account/alerts"
+    },
+    {
+      "source": "/zh/news/new-content-notifications",
+      "destination": "/zh/account/alerts"
     }
   ],
   "navigation": {
@@ -473,8 +505,7 @@
                 "icon": "newspaper",
                 "pages": [
                   "news/news-overview",
-                  "news/news-search-filter",
-                  "news/new-content-notifications"
+                  "news/news-search-filter"
                 ]
               },
               {
@@ -487,7 +518,7 @@
                   "earn/xp-system",
                   "account/activity-and-connections",
                   "account/security",
-                  "account/notifications",
+                  "account/alerts",
                   "account/pro-subscription"
                 ]
               },
@@ -611,8 +642,7 @@
                 "icon": "newspaper",
                 "pages": [
                   "es/news/news-overview",
-                  "es/news/news-search-filter",
-                  "es/news/new-content-notifications"
+                  "es/news/news-search-filter"
                 ]
               },
               {
@@ -625,7 +655,7 @@
                   "es/earn/xp-system",
                   "es/account/activity-and-connections",
                   "es/account/security",
-                  "es/account/notifications",
+                  "es/account/alerts",
                   "es/account/pro-subscription"
                 ]
               },
@@ -749,8 +779,7 @@
                 "icon": "newspaper",
                 "pages": [
                   "pt/news/news-overview",
-                  "pt/news/news-search-filter",
-                  "pt/news/new-content-notifications"
+                  "pt/news/news-search-filter"
                 ]
               },
               {
@@ -763,7 +792,7 @@
                   "pt/earn/xp-system",
                   "pt/account/activity-and-connections",
                   "pt/account/security",
-                  "pt/account/notifications",
+                  "pt/account/alerts",
                   "pt/account/pro-subscription"
                 ]
               },
@@ -887,8 +916,7 @@
                 "icon": "newspaper",
                 "pages": [
                   "zh/news/news-overview",
-                  "zh/news/news-search-filter",
-                  "zh/news/new-content-notifications"
+                  "zh/news/news-search-filter"
                 ]
               },
               {
@@ -901,7 +929,7 @@
                   "zh/earn/xp-system",
                   "zh/account/activity-and-connections",
                   "zh/account/security",
-                  "zh/account/notifications",
+                  "zh/account/alerts",
                   "zh/account/pro-subscription"
                 ]
               },
