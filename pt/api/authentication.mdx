@@ -40,7 +40,7 @@ requisições. Ele é devolvido em toda resposta como `meta.tier`.
 | Plano | Limite de requisições | Quem pode ter |
 |---|---|---|
 | **Evaluation** | 60 requisições por minuto, 1.000 chamadas por dia | Uma chave que nossa equipe emite sob pedido, somente para testes. |
-| **Pro** | 60 requisições por minuto, 1.000 chamadas por dia | Incluído no [CCTools Pro](https://cctools.network/pro), para uso pessoal. Concedido na hora, e vale enquanto o seu Pro durar. |
+| **Pro** | 60 requisições por minuto, 1.000 chamadas por dia | Incluído no [CCTools Pro](https://cctools.network/pro), pago uma única vez em Canton Coin, para uso pessoal. Fica ativo assim que o Pro fica, e vale enquanto o Pro durar. |
 | **Data Starter** | 120 requisições por minuto, 20.000 chamadas por dia | Comprado em Canton Coin, mensal ou anual. Uso comercial, com atribuição. |
 | **Data Team** | 600 requisições por minuto, sem limite diário | Comprado em Canton Coin, mensal ou anual. Uso comercial, com atribuição. |
 | **Validator** | Sem limite por chave, sem limite diário | Um party ID de validador da Canton. Cada envio é revisado por uma pessoa, normalmente em até um dia útil. Vigência de 12 meses, gratuito. |
@@ -72,11 +72,11 @@ crie uma chave nova.
 
 ## Como obter um plano
 
-Abra [/profile/api](https://cctools.network/profile/api). O painel de planos
-mostra o que a sua conta pode contratar, e **New key** fica desativado até ela ter
-um plano.
+Abra [/profile/api](https://cctools.network/profile/api). Com um plano, a página
+mostra **Your plan**, o uso dele e as suas **Keys**; sem nenhum, **Choose a plan**
+lista os planos que você pode contratar.
 
-- **Pro**: com o [CCTools Pro](https://cctools.network/pro), o painel de planos mostra o Pro como o seu plano. Aperte **Set up keys** uma vez (uma conta que teve uma chave Free ou de avaliação vê **Upgrade to Pro tier** no lugar) e depois **New key**.
+- **Pro**: com o [CCTools Pro](https://cctools.network/pro) ativo, **Your plan** mostra o Pro, incluído no seu Pro, e você aperta **New key**. Quando as suas chaves ainda não seguem o seu Pro, por exemplo depois de você estendê-lo, o card **Keys** diz até quando o seu Pro vale e oferece **Update keys**, que passa as chaves para ele.
 - **Evaluation**: para testar a API antes de comprar, peça uma chave de avaliação à nossa equipe. Uma conta que nunca teve um plano faz o pedido nessa página; qualquer outra conta [fala conosco](https://cctools.network/contact). Nossa equipe a emite sob pedido, somente para testes; quanto tempo ela dura está em [Planos e limites](/pt/api/plans).
 - **Data Starter e Data Team**: **Buy Data Starter** ou **Buy Data Team** e pague em Canton Coin, por um mês ou por um ano. Você aceita os [termos da API](https://cctools.network/terms/api) ao pagar. Os pagamentos dos planos Data não são reembolsados, exceto quando a lei exigir. Um plano não se renova sozinho: o acesso termina no fim do período, a menos que você renove. Um plano Data comprado enquanto o mesmo plano, ou um maior, está em curso começa quando esse termina. Um plano Data menor em curso fica em pausa enquanto um maior está em curso e continua depois dele.
 - **Validator**: envie um party ID na mesma página.
@@ -97,7 +97,7 @@ até a cobertura desse plano acabar. Se você tem mais chaves do que o plano
 permite, ficam as usadas mais recentemente e as demais terminam. Quando você
 renova o Pro ou compra um plano Data, suas chaves
 existentes assumem a nova cobertura, então não há chave nova a criar: depois de
-renovar o Pro, aperte **Extend access** em [/profile/api](https://cctools.network/profile/api)
+estender o Pro, aperte **Update keys** em [/profile/api](https://cctools.network/profile/api)
 e suas chaves são estendidas na mesma medida. Apertá-lo nunca rebaixa nada: um
 plano Validator ou Enterprise concedido à sua conta permanece. Quando não resta
 nenhum plano, suas chaves respondem `401` com o código `plan_ended` e um

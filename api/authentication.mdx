@@ -41,7 +41,7 @@ echoed on every response as `meta.tier`.
 | Plan | Rate limit | Who can have it |
 |---|---|---|
 | **Evaluation** | 60 requests per minute, 1,000 calls per day | A key our team issues on request, for testing only. |
-| **Pro** | 60 requests per minute, 1,000 calls per day | Included with [CCTools Pro](https://cctools.network/pro), for personal use. Granted instantly, and runs for as long as your Pro does. |
+| **Pro** | 60 requests per minute, 1,000 calls per day | Included with [CCTools Pro](https://cctools.network/pro), paid once in Canton Coin, for personal use. Active as soon as Pro is, and runs for as long as Pro does. |
 | **Data Starter** | 120 requests per minute, 20,000 calls per day | Bought in Canton Coin, monthly or annual. Commercial use, with attribution. |
 | **Data Team** | 600 requests per minute, no daily cap | Bought in Canton Coin, monthly or annual. Commercial use, with attribution. |
 | **Validator** | No per-key limit, no daily cap | A Canton validator party ID. Every submission is reviewed by a person, usually within one business day. 12-month term, free. |
@@ -72,10 +72,11 @@ create a new key.
 
 ## Getting a plan
 
-Open [/profile/api](https://cctools.network/profile/api). The plan panel shows
-what your account can take, and **New key** stays off until it holds a plan.
+Open [/profile/api](https://cctools.network/profile/api). With a plan, the page shows
+**Your plan**, its usage and your **Keys**; with none, **Choose a plan** lists the
+plans you can take.
 
-- **Pro**: with [CCTools Pro](https://cctools.network/pro), the plan panel shows Pro as your plan. Press **Set up keys** once (an account that had a Free or an evaluation key sees **Upgrade to Pro tier** instead), then **New key**.
+- **Pro**: with [CCTools Pro](https://cctools.network/pro) active, **Your plan** shows Pro, included with your Pro, and you press **New key**. When your keys do not follow your Pro yet, for example after you extend it, the **Keys** card says until when your Pro runs and offers **Update keys**, which moves them onto it.
 - **Evaluation**: to test the API before you buy, ask our team for an evaluation key. An account that has never held a plan applies on that page; any other account [contacts us](https://cctools.network/contact). Our team issues it on request, for testing only; how long it lasts is in [Plans and limits](/api/plans).
 - **Data Starter and Data Team**: **Buy Data Starter** or **Buy Data Team** and pay in Canton Coin, for a month or a year. You accept the [API terms](https://cctools.network/terms/api) at checkout. Data plan payments are not refunded, except where the law requires it. A plan does not renew by itself: access ends at the end of the period unless you renew. A Data plan bought while the same or a larger Data plan runs starts when that one ends. A smaller Data plan that is running pauses while a larger one runs and resumes after it.
 - **Validator**: submit a party ID on the same page.
@@ -95,7 +96,7 @@ you make takes the limits of the plan your account holds, and it runs until that
 plan's coverage ends. If you hold more keys than the plan allows, the most
 recently used stay and the others end. When you
 renew Pro or buy a Data plan, your existing keys take the new
-coverage, so there is no new key to make: after renewing Pro, press **Extend access**
+coverage, so there is no new key to make: after extending Pro, press **Update keys**
 on [/profile/api](https://cctools.network/profile/api) and your keys are
 extended to match. Pressing it never lowers anything: a Validator or Enterprise
 plan granted to your account stays. When no plan is left, your keys answer `401`
