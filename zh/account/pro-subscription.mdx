@@ -1,6 +1,6 @@
 ---
 title: "CCTools Pro"
-description: "Pro 增加了什么、用 Canton Coin 支付多少，以及退款如何运作。"
+description: "Pro 增加了什么、如何用 Canton Coin 付款、如何延长，以及退款如何运作。"
 ---
 
 ## 什么是 CCTools Pro？
@@ -14,18 +14,42 @@ CCTools Pro 是一个付费方案，为你的投资组合和账户解锁更多�
 
 Pro 还包含公共 API 的 Pro 方案，供个人使用。其限制以及与 Pro 分开销售的 Data 方案，请参阅 [API 方案](/zh/api/plans)。
 
-## 如何付款
+## 方案与价格
 
-前往 [cctools.network/pro](https://cctools.network/pro) 的 **Pro** 页面，登录后选择方案时长：
+前往 [cctools.network/pro](https://cctools.network/pro) 的 **Pro** 页面，登录后在 **Plan length** 中选择时长：
 
 - **30 days**：4.99 美元
-- **1 year**：49.99 美元，相比每 30 天付款一次约省 2 个月
+- **1 year**：49.99 美元，折合每月 4.17 美元，相比每 30 天付款一次约省 2 个月
 
-Pro 以 Canton Coin 一次性付款，按当前 CC 价格计算，从你已连接的 Canton 钱包支付。付款会在链上与该钱包进行核验。两种时长都不会自动续费：再次付款即可延长，新的周期从当前周期结束时开始。
+两种时长都以 Canton Coin 一次性付款，且都不会续费。价格下方，页面会按 CoinGecko 列出的成交量最高的 CC 价格，显示该时长大约需要多少 CC。只有当该价格不超过 30 分钟时才会显示这个数字；否则页面会说明，数量在你打开付款时确定。你实际支付的数量，始终按你打开付款那一刻的 CC 价格确定。
+
+## 如何付款
+
+**Pay with CC** 会打开 **Pay with Canton Coin**：
+
+1. 数量按你打开付款时的 CC 价格锁定 15 分钟。倒计时会显示剩余时间，你也可以复制该数量。时间用完后，**Refresh** 会锁定一个新的数量。
+2. 从你已关联的任意 Canton 钱包，向 **Send to** 下的地址发送恰好这个数量。付款界面会列出 **Your linked Canton wallets**。如果还没有关联任何钱包，请先通过 **Connect a Canton wallet** 关联一个，这样付款才能与你的账户对应。
+3. 点击 **I've sent it**。
+
+付款会在链上与你已关联的钱包进行核验。在锁定后 2 小时内发送的付款仍会与该锁定对应：如果你发送的是之前一次锁定的数量，点击 **I've sent it**，它依然有效。
+
+## 付款核验期间
+
+点击 **I've sent it** 后，CCTools 会每隔几秒检查一次链上记录，最长 2 分钟，按钮显示 **Looking for your payment**。**Stop checking** 会停止检查，付款界面保持打开。
+
+- 找到付款后，会显示 **You're Pro**，并说明你的 30 天或一年 Pro 已生效。**Continue** 会重新加载页面。
+- 如果 2 分钟内没有匹配，会提示尚未检测到你的付款，**Try again** 会再次检查。
+- 如果无法连接链上索引器，会如实提示：你已发送的付款是安全的，索引器恢复后 Pro 会自动解锁。
+
+关闭标签页也没关系：每 15 分钟运行一次的检查会找到这笔付款，一旦看到付款，Pro 就会开通。
+
+## 你的 Pro 与延长
+
+Pro 生效后，Pro 页面会显示 **Your Pro**：你的方案（Canton Coin 付款会注明有效期至哪一天）、你已支付的 Pro 月数，以及你的钱包和 API 密钥相对于 Pro 限额的数量。**Settings** 中的 **Plan and preferences** 会显示你的方案，并附有指向 Pro 页面的链接，所有方案变更都在 Pro 页面完成。
+
+Canton Coin 付款不会自动续费。要延长，请在 **Your Pro** 的 **Extend by** 中选择 30 days 或 1 year，然后点击 **Renew or extend with CC**，它会打开同样的付款界面。新的 CC 付款会把其天数加到当前周期的末尾。
 
 Pro 不再通过银行卡销售。如果你仍有之前的银行卡订阅，Pro 页面会先显示该订阅，你可以在其账单门户中管理或取消。若要改用 Canton Coin，请先在那里取消，待该周期结束后再在 Pro 页面用 CC 付款。
-
-**Settings** 中的 **Plan and preferences** 会显示你的方案，并附有指向 Pro 页面的链接，所有方案变更都在 Pro 页面完成。
 
 ## 退款
 

@@ -1,6 +1,6 @@
 ---
 title: "CCTools Pro"
-description: "Qué añade Pro, cuánto cuesta en Canton Coin y cómo funciona el reembolso."
+description: "Qué añade Pro, cómo pagarlo en Canton Coin, cómo extenderlo y cómo funciona el reembolso."
 ---
 
 ## ¿Qué es CCTools Pro?
@@ -14,18 +14,42 @@ CCTools Pro es un plan de pago que desbloquea más de tu cartera y de tu cuenta:
 
 Pro también incluye el plan Pro de la API pública, para uso personal. Consulta [Planes de la API](/es/api/plans) para ver sus límites y los planes Data, que se venden aparte de Pro.
 
-## Cómo pagar
+## Planes y precios
 
-Ve a la página **Pro** en [cctools.network/pro](https://cctools.network/pro), inicia sesión y elige la duración del plan:
+Ve a la página **Pro** en [cctools.network/pro](https://cctools.network/pro), inicia sesión y elige la duración en **Plan length**:
 
 - **30 days** por US$4,99
-- **1 year** por US$49,99, unos 2 meses gratis frente a pagar cada 30 días
+- **1 year** por US$49,99, US$4,17 al mes, unos 2 meses gratis frente a pagar cada 30 días
 
-Pro se paga una sola vez en Canton Coin, al precio actual de CC, desde una billetera Canton que hayas conectado. El pago se verifica on-chain contra esa billetera. Ninguna de las dos duraciones se renueva: paga de nuevo para extenderla, y el nuevo período empieza cuando termina el actual.
+Las dos se pagan una sola vez en Canton Coin y nunca se renuevan. Bajo el precio, la página muestra cuánto CC cuesta esa duración, aproximadamente, al precio de CC de mayor volumen que lista CoinGecko. Solo muestra esa cifra mientras el precio tiene como mucho 30 minutos; si no, dice que la cantidad se fija cuando abres el pago. La cantidad que pagas siempre se fija al precio de CC del momento en que abres el pago.
+
+## Cómo pagar
+
+**Pay with CC** abre **Pay with Canton Coin**:
+
+1. La cantidad queda fija durante 15 minutos, al precio de CC del momento en que abriste el pago. Una cuenta atrás muestra el tiempo que queda, y puedes copiar la cantidad. Cuando se acaba el tiempo, **Refresh** fija una cantidad nueva.
+2. Envía exactamente esa cantidad a la dirección de **Send to**, desde cualquier billetera Canton que hayas vinculado. El pago lista **Your linked Canton wallets**. Si no tienes ninguna vinculada, **Connect a Canton wallet** vincula una primero, para que el pago pueda asociarse a tu cuenta.
+3. Pulsa **I've sent it**.
+
+El pago se verifica on-chain contra tus billeteras vinculadas. Un pago enviado dentro de las 2 horas siguientes a su bloqueo todavía le corresponde: si enviaste la cantidad de un bloqueo anterior, pulsa **I've sent it** y todavía cuenta.
+
+## Mientras se comprueba el pago
+
+Después de **I've sent it**, CCTools revisa la chain cada pocos segundos durante hasta 2 minutos, y el botón muestra **Looking for your payment**. **Stop checking** detiene la revisión y mantiene el pago abierto.
+
+- Cuando encuentra el pago, muestra **You're Pro** y que tus 30 días o tu año de Pro están activos. **Continue** recarga la página.
+- Cuando pasan los 2 minutos sin coincidencia, dice que tu pago todavía no se ha detectado, y **Try again** vuelve a revisar.
+- Cuando no se puede contactar con el indexador de la chain, lo dice: un pago que ya enviaste está a salvo, y Pro se desbloquea cuando el indexador vuelve.
+
+Cerrar la pestaña es seguro: una revisión que se ejecuta cada 15 minutos encuentra el pago, y Pro se activa cuando el pago se ve.
+
+## Tu Pro y cómo extenderlo
+
+Con Pro activo, la página Pro muestra **Your Pro**: tu plan, con el día hasta el que vale un pago en Canton Coin, los meses de Pro que pagaste, y tus billeteras y claves de API frente a los límites de Pro. En **Settings**, tu plan aparece en **Plan and preferences**, con un enlace a la página Pro, donde se hace cualquier cambio de plan.
+
+Un pago en Canton Coin nunca se renueva solo. Para extenderlo, elige 30 days o 1 year en **Extend by**, dentro de **Your Pro**, y pulsa **Renew or extend with CC**, que abre el mismo pago. Un nuevo pago en CC suma sus días al final del período actual.
 
 Pro no se vende con tarjeta. Si todavía tienes una suscripción con tarjeta de antes, la página Pro la muestra primero, y la gestionas o cancelas en su portal de facturación. Para pasar a Canton Coin, cancélala allí y paga en CC en la página Pro cuando termine su período.
-
-En **Settings**, tu plan aparece en **Plan and preferences**, con un enlace a la página Pro, donde se hace cualquier cambio de plan.
 
 ## Reembolsos
 

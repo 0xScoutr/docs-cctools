@@ -1,6 +1,6 @@
 ---
 title: "CCTools Pro"
-description: "What Pro adds, what it costs in Canton Coin, and how the refund works."
+description: "What Pro adds, how you pay for it in Canton Coin, how you extend it, and how the refund works."
 ---
 
 ## What is CCTools Pro?
@@ -14,18 +14,42 @@ CCTools Pro is a paid plan that unlocks more of your portfolio and your account:
 
 Pro also carries the Pro plan of the public API, for personal use. See [API plans](/api/plans) for its limits and for the Data plans, which are sold apart from Pro.
 
-## How to pay
+## Plans and prices
 
-Go to the **Pro** page at [cctools.network/pro](https://cctools.network/pro), sign in and pick a plan length:
+Go to the **Pro** page at [cctools.network/pro](https://cctools.network/pro), sign in and pick a **Plan length**:
 
 - **30 days** for $4.99
-- **1 year** for $49.99, about 2 months free against paying every 30 days
+- **1 year** for $49.99, $4.17 a month, about 2 months free against paying every 30 days
 
-Pro is paid once in Canton Coin, at the current CC price, from a Canton wallet you have connected. The payment is verified on-chain against that wallet. Neither length renews: pay again to extend, and the new period starts when the current one ends.
+Both are paid once in Canton Coin and never renew. Under the price, the page shows about how much CC that length costs, at the highest-volume CC price CoinGecko lists. It shows the figure only while that price is at most 30 minutes old; otherwise it says the amount is set when you open the payment. The amount you pay is always set at the CC price of the moment you open the payment.
+
+## How to pay
+
+**Pay with CC** opens **Pay with Canton Coin**:
+
+1. The amount is fixed for 15 minutes, at the CC price when you opened the payment. A countdown shows the time left, and you can copy the amount. When the time runs out, **Refresh** locks a new amount.
+2. Send exactly that amount to the address under **Send to**, from any Canton wallet you linked. The payment lists **Your linked Canton wallets**. With none linked, **Connect a Canton wallet** links one first, so the payment can be matched to your account.
+3. Press **I've sent it**.
+
+The payment is verified on-chain against your linked wallets. A payment sent within 2 hours of its lock still matches it: if you sent the amount of an earlier lock, press **I've sent it** and it still counts.
+
+## While the payment is checked
+
+After **I've sent it**, CCTools checks the chain every few seconds for up to 2 minutes, and the button reads **Looking for your payment**. **Stop checking** stops it and keeps the payment open.
+
+- When the payment is found, it says **You're Pro** and that your 30 days or year of Pro is active. **Continue** reloads the page.
+- When the 2 minutes pass with no match, it says your payment has not been detected yet, and **Try again** checks again.
+- When the chain indexer cannot be reached, it says so: a payment you already sent is safe, and Pro unlocks once the indexer is back.
+
+Closing the tab is safe: a check that runs every 15 minutes picks up the payment, and Pro turns on when the payment is seen.
+
+## Your Pro and extending it
+
+With Pro active, the Pro page shows **Your Pro**: your plan, with the day a Canton Coin payment runs through, the months of Pro you paid for, and your wallets and API keys against Pro's limits. **Settings** shows your plan under **Plan and preferences**, with a link to the Pro page, where every change of plan happens.
+
+A Canton Coin payment never renews by itself. To extend it, pick 30 days or 1 year under **Extend by** in **Your Pro** and press **Renew or extend with CC**, which opens the same payment. A new CC payment adds its days to the end of the current period.
 
 Pro is not sold by card. If you still have a card subscription from before, the Pro page shows it first, and you manage or cancel it in its billing portal. To move to Canton Coin, cancel it there, then pay in CC on the Pro page once its period ends.
-
-**Settings** shows your plan under **Plan and preferences**, with a link to the Pro page, where every change of plan happens.
 
 ## Refunds
 
