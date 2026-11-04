@@ -453,6 +453,7 @@
                 "icon": "globe",
                 "pages": [
                   "ecosystem/browsing-projects",
+                  "ecosystem/project-analytics",
                   "ecosystem/tracker",
                   "ecosystem/compare",
                   "ecosystem/canton-map",
@@ -590,6 +591,7 @@
                 "icon": "globe",
                 "pages": [
                   "es/ecosystem/browsing-projects",
+                  "es/ecosystem/project-analytics",
                   "es/ecosystem/tracker",
                   "es/ecosystem/compare",
                   "es/ecosystem/canton-map",
@@ -727,6 +729,7 @@
                 "icon": "globe",
                 "pages": [
                   "pt/ecosystem/browsing-projects",
+                  "pt/ecosystem/project-analytics",
                   "pt/ecosystem/tracker",
                   "pt/ecosystem/compare",
                   "pt/ecosystem/canton-map",
@@ -864,6 +867,7 @@
                 "icon": "globe",
                 "pages": [
                   "zh/ecosystem/browsing-projects",
+                  "zh/ecosystem/project-analytics",
                   "zh/ecosystem/tracker",
                   "zh/ecosystem/compare",
                   "zh/ecosystem/canton-map",

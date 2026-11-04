@@ -1,0 +1,39 @@
+---
+title: "Project analytics"
+description: "How people find a project on CCTools: profile views, voters and link clicks by UTC day, against the period before, with a CSV of the days."
+---
+
+## Opening a project's analytics
+
+Every project page has **Analytics** in its header, beside **Compare**. It opens `cctools.network/ecosystem/` followed by the project and `/analytics`, which anyone can read, signed in or not.
+
+The page shows how people find the project on CCTools. Everything is counted on CCTools' own pages, by UTC day: nothing is read from the network or from other sites, and no person is listed.
+
+## The range
+
+Pick **7 days**, **30 days** or **All**. The page opens on 30 days.
+
+Each range counts whole UTC days that end yesterday. Today is not over, so the charts draw it apart, lighter, as **Today so far**, and it counts in no figure and no comparison. **All** starts on the day the project was listed, or on its first day with a view, a vote or a click if that came earlier.
+
+## The figures
+
+- **Profile views** - one view per signed-in person every 5 minutes, and per visitor every 15 minutes signed out
+- **Voters** - the people who voted for the project in those days, each counted once, banned accounts left out
+- **Link clicks** - clicks on the project's own links on its CCTools profile (website, X, docs, GitHub, Telegram and Discord), once per visitor and link an hour
+
+On 7 and 30 days, each figure is compared with the same number of whole days just before them. A project listed during those earlier days reads **No earlier period yet**. On **All**, each figure says the day it counts from.
+
+On 30 days, **Voters** can differ by up to a day's votes from the 30-day voters on the project's page, which count back 30 days from now. A project with more votes in the range than the page reads at once shows **Not counted yet** for Voters, never a cut count.
+
+## The charts
+
+- **Profile views per day**
+- **Clicks by destination** - where the link clicks went
+- **From other CCTools pages** - the visits to the profile from campaign pages and Earn listings, once per visitor an hour
+- **Voters per day** - the people who voted each day
+
+When nothing was counted in the range, the page says so in place of the charts. When the counts cannot be read, it says **These analytics could not be read** and shows no figure, never a zero.
+
+## The CSV
+
+**Download CSV** gives the range's days, one row per UTC day, oldest first, with the columns `day`, `profile_views` and `voters`. Today is not in it. The button stays off while the range holds nothing.

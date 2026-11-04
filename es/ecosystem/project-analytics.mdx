@@ -1,0 +1,39 @@
+---
+title: "Analíticas del proyecto"
+description: "Cómo encuentra la gente un proyecto en CCTools: vistas del perfil, votantes y clics en enlaces por día UTC, frente al período anterior, con un CSV de los días."
+---
+
+## Abrir las analíticas de un proyecto
+
+Cada página de proyecto tiene **Analytics** en su cabecera, junto a **Compare**. Abre `cctools.network/ecosystem/` seguido del proyecto y de `/analytics`, que cualquiera puede leer, con o sin sesión iniciada.
+
+La página muestra cómo encuentra la gente el proyecto en CCTools. Todo se cuenta en las propias páginas de CCTools, por día UTC: no se lee nada de la red ni de otros sitios, y no se lista a ninguna persona.
+
+## El período
+
+Elige **7 days**, **30 days** o **All**. La página se abre en 30 días.
+
+Cada período cuenta días UTC completos que terminan ayer. El día de hoy no ha terminado, así que los gráficos lo dibujan aparte, más claro, como **Today so far**, y no entra en ninguna cifra ni en ninguna comparación. **All** empieza el día en que el proyecto entró al directorio, o en su primer día con una vista, un voto o un clic si fue antes.
+
+## Las cifras
+
+- **Profile views** - una vista por persona con sesión iniciada cada 5 minutos, y por visitante cada 15 minutos sin sesión
+- **Voters** - las personas que votaron por el proyecto en esos días, cada una contada una vez, sin las cuentas baneadas
+- **Link clicks** - clics en los enlaces propios del proyecto en su perfil de CCTools (sitio web, X, docs, GitHub, Telegram y Discord), una vez por visitante y enlace cada hora
+
+En 7 y 30 días, cada cifra se compara con el mismo número de días completos justo antes. Un proyecto que entró al directorio durante esos días anteriores muestra **No earlier period yet**. En **All**, cada cifra dice el día desde el que cuenta.
+
+En 30 días, **Voters** puede diferir hasta en un día de votos de los votantes de 30 días de la página del proyecto, que cuentan 30 días hacia atrás desde ahora. Un proyecto con más votos en el período de los que la página lee de una vez muestra **Not counted yet** en Voters, nunca un recuento recortado.
+
+## Los gráficos
+
+- **Profile views per day**
+- **Clicks by destination** - adónde fueron los clics en los enlaces
+- **From other CCTools pages** - las visitas al perfil desde páginas de campaña y listados de Earn, una vez por visitante cada hora
+- **Voters per day** - las personas que votaron cada día
+
+Cuando no se contó nada en el período, la página lo dice en lugar de los gráficos. Cuando los recuentos no se pueden leer, muestra **These analytics could not be read** y ninguna cifra, nunca un cero.
+
+## El CSV
+
+**Download CSV** descarga los días del período, una fila por día UTC, del más antiguo al más reciente, con las columnas `day`, `profile_views` y `voters`. El día de hoy no está incluido. El botón queda desactivado mientras el período no tiene nada.
