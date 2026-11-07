@@ -7,24 +7,27 @@ description: "Verified 在 CCTools 上的含义、如何获得，以及它在哪
 
 Verified 向活动和访客表明一个账户背后是真实的人。它只有是或否，从来不是分数。
 
-Verified 表示你的账户已为其关联的某个 Canton 钱包签名，并且该钱包有使用痕迹：至少持有 1 CC、首笔转账距今 30 天或更久，或通过了 CCTools Discord 验证。在 CCTools 完成向签名钱包的过渡之前，它当前的验证同样有效（活动页面称之为 earlier check）。该验证需要一个已连接的 Canton 钱包，并且你的账户还需具备足够的其他信号，例如已确认的邮箱、两步登录、头像、已关联的社交账户、账户时长以及持续的活跃度。
+获得 Verified 有两种方式：
+
+- **已签名的钱包** - 你的账户已为其关联的某个 Canton 钱包签名，并且该钱包有使用痕迹：至少持有 1 CC、首笔 CC 转账距今 30 天或更久，或通过了 CCTools Discord 验证
+- **CCTools 的账户检查（account check）** - 一个已连接的 Canton 钱包，并且你的账户还需具备足够的其他信号，例如已确认的邮箱、两步登录、头像、已关联的社交账户、账户时长以及持续的活跃度。它每 4 小时运行一次
 
 ## 获取 Verified
 
 在 [cctools.network/profile/verify](https://cctools.network/profile/verify) 打开 **Get Verified**，也可以通过你 Profile 上的 **Verified** 卡片，或活动页面上的 **Get Verified** 进入。页面只会显示你当前可以进行的下一步：
 
-- **Get Verified with CCTools' current check** - 在钱包签名尚未开启时，Verified 来自 CCTools 当前的验证。**Open the current check** 会显示你已具备的条件和仍缺少的条件。
-- **Connect your wallet**（第 1 步，共 2 步）- 钱包签名开启后，连接一个 Canton 钱包，或选择一个你已关联的钱包，并在其中签署一条消息。签名不会转移任何资产，也不收取费用。
-- **One more step**（第 2 步，共 2 步）- 已签名的钱包需要有使用痕迹：在其中持有至少 1 CC，或通过 CCTools Discord 验证。首笔 CC 转账距今 30 天或更久的钱包同样有效。钱包满足条件后，点击 **Check again**。
-- **You're Verified** - 页面会说明是通过哪种方式证明的。
+- **Connect your wallet**（第 1 步，共 2 步）- 连接一个 Canton 钱包，或选择一个你已关联的钱包，并在其中签署一条消息。签名不会转移任何资产，也不收取费用
+- **Wallet signed**（第 2 步，共 2 步）- 已签名的钱包需要有使用痕迹：在其中持有至少 1 CC，或通过 CCTools Discord 验证。首笔 CC 转账距今 30 天或更久的钱包同样有效。满足条件后，点击 **Check again**
+- **You're Verified** - 页面会说明你为何是 Verified、如何保持，以及它目前在哪些地方有用
 
-一个钱包只能用于一个账户。
-
-如果你的 **Verified** 卡片显示 **Verified until** 加一个日期，说明你的 Verified 来自之前的验证：请在该日期前为一个钱包签名以保留它。如果一个账户的钱包全部由无法签名的应用托管，该账户会保留之前的验证。
+一个钱包的密钥只能用于一个 CCTools 账户。2026 年 10 月 25 日之前关联的钱包无需签名也计入账户检查，所以请保持关联。要求你发送 CC 才能获得 Verified 的网站都是骗局。
 
 ## 在哪些地方有用
 
-有些活动要求 Verified 才能领取兑换码或在抽奖中获奖，每个活动页面都会说明其规则。标有 "earlier check" 的抽奖计算的是 CCTools 之前的验证，而不是钱包签名。请参阅 [获奖者如何产生](/zh/campaigns/how-winners-are-chosen)。
+- **抽奖** - 标有 **Verified to win** 的抽奖只在 Verified 账户中选出获奖者，每个活动页面都会说明其规则。标有 **account check** 的抽奖只计算 CCTools 的账户检查：仅有签名无法通过。**Open the account check** 会显示你已具备的条件和仍缺少的条件
+- **排名** - 只列出 Verified 账户，并读取账户检查。参阅 [排名](/zh/campaigns/how-campaigns-work#排名)
+
+请参阅 [获奖者如何产生](/zh/campaigns/how-winners-are-chosen)。
 
 ## 谁能看到
 

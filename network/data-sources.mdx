@@ -10,7 +10,7 @@ CCTools brings together several different classes of data so that everything you
 The main categories we draw from are:
 
 - **On-chain indexers** - Services that read and index the Canton Network ledger so we can surface validator data, transactions, burns/mints, featured apps, and wallet balances without each user having to run their own node.
-- **Price oracles** - Market-data providers that supply CC token price, market cap, 24h volume, and circulating supply.
+- **Price oracles** - Market-data providers that supply the CC price, market cap, 24h volume, and circulating supply.
 - **TVL & DeFi aggregators** - Sources that track total value locked, liquidity, and protocol-level metrics across Canton DeFi apps.
 - **Social & community APIs** - Public APIs used for engagement signals and campaign task verification (for example, confirming an X follow or retweet).
 
@@ -18,7 +18,7 @@ We intentionally describe these by category. The exact mix of providers behind e
 
 ## Price Data
 
-CC token price, market cap, 24h volume, and circulating supply come from established market-data providers (price oracles). Where more than one source is available, we cross-check them to reduce the impact of any single feed being delayed or off.
+The CC price, market cap, 24h volume, and circulating supply come from established market-data providers (price oracles). Where more than one source is available, we cross-check them to reduce the impact of any single feed being delayed or off.
 
 Price data is refreshed frequently - on the order of every few minutes - so the numbers you see stay close to live market conditions.
 
@@ -36,7 +36,7 @@ Each block on a page names its source and when it was read. See [The Daily Recor
 
 Wallet balances and rewards are fetched from the Canton Network via on-chain indexers. When you add a wallet, CCTools queries your holdings to display:
 
-- Token balances
+- Balances
 - Rewards history
 - Transfer records
 
@@ -48,6 +48,5 @@ Different surfaces update on different schedules, tuned to how fast each kind of
 
 - **Prices** - refreshed every few minutes
 - **News feed** - ingestion runs every 10 minutes, with the Google News queries throttled to roughly hourly
-- **New-content scan (new projects, opportunities, campaigns, posts, learn paths)** - every 30 minutes
 
 If a number ever looks momentarily out of date, a refresh shortly after will usually pick up the latest values.

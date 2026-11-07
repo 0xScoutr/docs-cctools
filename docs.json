@@ -325,19 +325,19 @@
     },
     {
       "source": "/earn/leaderboard",
-      "destination": "/earn/xp-system"
+      "destination": "/campaigns/how-campaigns-work"
     },
     {
       "source": "/es/earn/leaderboard",
-      "destination": "/es/earn/xp-system"
+      "destination": "/es/campaigns/how-campaigns-work"
     },
     {
       "source": "/pt/earn/leaderboard",
-      "destination": "/pt/earn/xp-system"
+      "destination": "/pt/campaigns/how-campaigns-work"
     },
     {
       "source": "/zh/earn/leaderboard",
-      "destination": "/zh/earn/xp-system"
+      "destination": "/zh/campaigns/how-campaigns-work"
     },
     {
       "source": "/earn/badges",

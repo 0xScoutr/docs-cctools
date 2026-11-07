@@ -1,15 +1,17 @@
 ---
 title: "Como os ganhadores são escolhidos"
-description: "Como as recompensas das campanhas são distribuídas entre sorteio, ordem de chegada e ganhadores por posição, e o prazo para resgate."
+description: "Como as recompensas das campanhas chegam aos membros: sorteio, ordem de chegada ou ganhadores por posição, e o prazo para resgate."
 ---
 
-## Três formas de distribuir recompensas
+## Três formas de entregar recompensas
 
-Quando uma campanha tem um pool de recompensas limitado (por exemplo, um número fixo de códigos, alocações ou prêmios do parceiro), o CCTools distribui essas recompensas usando **três mecânicas**. A CCTools ajusta a mecânica ao pool junto com o parceiro:
+Quando uma campanha tem um número limitado de recompensas (por exemplo, um número fixo de códigos ou prêmios do parceiro), a CCTools as entrega de uma de **três formas**, escolhida junto com o parceiro:
 
-- **Sorteio** - Todos que completam todas as tarefas obrigatórias entram em um sorteio aleatório. Os ganhadores são escolhidos aleatoriamente desse pool após o fim da campanha. Concluir as tarefas mais cedo não dá nenhuma vantagem sobre concluí-las mais tarde - toda inscrição válida tem a mesma chance.
-- **Por ordem de chegada (FCFS)** - A recompensa vai para os primeiros participantes a concluir todas as tarefas obrigatórias, na ordem de conclusão, até o pool acabar. Aqui a velocidade importa: terminar cedo garante sua vaga.
-- **Ganhadores por posição** - Os prêmios ficam ligados a posições, e não a um pool: o primeiro lugar leva um prêmio, o segundo leva outro, e assim por diante. Os ganhadores são ordenados pelo critério que a campanha anuncia antes de começar (por exemplo, a qualidade de um post que você enviou), então não é um sorteio aleatório nem uma corrida contra o relógio. Os prêmios por posição ficam em um nível próprio, então uma mesma campanha pode ter um conjunto por posição e um pool de sorteio ao mesmo tempo.
+- **Sorteio** - Todos que concluem todas as tarefas obrigatórias entram em um sorteio aleatório. Os ganhadores são escolhidos aleatoriamente após o fim da campanha. Concluir as tarefas mais cedo não dá nenhuma vantagem: toda inscrição válida tem a mesma chance.
+- **Por ordem de chegada** - A recompensa vai para os primeiros membros a concluir todas as tarefas obrigatórias, em ordem, até não restar nenhuma. Aqui a velocidade importa: terminar cedo garante sua vaga.
+- **Ganhadores por posição** - Os prêmios ficam ligados a posições: o primeiro lugar leva um prêmio, o segundo leva outro, e assim por diante. Os ganhadores são ordenados pelo critério que a campanha anuncia antes de começar (por exemplo, a qualidade de um post que você enviou), então não é um sorteio aleatório nem uma corrida. Uma mesma campanha pode ter ganhadores por posição e um sorteio ao mesmo tempo.
+
+O ranking de XP na página de uma campanha é outra coisa: não tem nenhum prêmio e não escolhe ganhadores. Veja [O ranking](/pt/campaigns/how-campaigns-work#o-ranking).
 
 A forma como o prêmio chega até você também varia. Algumas campanhas entregam um **código de resgate** que você reivindica na página da campanha, e outras são **externas**, ou seja, seu nome entra na lista pública de ganhadores e o parceiro entrega o prêmio fora da plataforma (um pagamento on-chain, por exemplo).
 
@@ -17,35 +19,35 @@ A página da campanha informa qual delas se aplica: um sorteio lista os prêmios
 
 ## Quem pode participar e ganhar
 
-O card **Before you start** de cada campanha, a tarefa zero, informa a regra dela e quando ela é verificada. As linhas da lista de campanhas mostram a mesma regra de forma curta:
+Cada página de campanha informa a sua regra e quando ela é verificada. Uma regra verificada quando você entra vem primeiro, num card **Before you start**. Uma regra verificada quando o sorteio acontece fica em **Complete your entry**, a última linha das tarefas. As linhas da lista de campanhas mostram a mesma regra de forma curta:
 
 - **Level N+** - para entrar é preciso ter nível N ou mais na CCTools, verificado quando você entra
 - **Level N+ or Verified** - qualquer um dos dois permite entrar
 - **Verified to join** - para entrar é preciso ter uma conta Verified
 - **Verified to win** - qualquer pessoa pode entrar e concluir as tarefas, mas só contas Verified podem ganhar, verificado quando o sorteio acontece
-- **Verified to win: earlier check** - só contas Verified pela verificação anterior da CCTools, a que não exige assinatura de carteira, podem ganhar este sorteio. Uma carteira assinada sozinha não conta
+- **Verified to win: account check** - só contas Verified pela verificação de conta da CCTools (account check) podem ganhar este sorteio. Uma carteira assinada sozinha não passa nela
 - **Highest check to win** - só contas que atendem à verificação mais alta da CCTools quando o sorteio acontece podem ganhar
 
 Uma campanha sem regra deixa qualquer conta logada entrar. Um sorteio também pode dividir os prêmios em faixas por nível: o seu nível ao entrar define a sua faixa, e dentro de uma faixa toda participação válida tem as mesmas chances. Veja [Como ficar Verified](/pt/account/verified) para saber o que o Verified exige.
 
-Passadas essas regras, a seleção é aleatória (sorteio), por ordem de conclusão (FCFS) ou por posição no critério anunciado pela campanha. Nunca pela quantidade de XP que você tem.
+Passadas essas regras, a seleção é aleatória (sorteio), por ordem de conclusão (ordem de chegada) ou por posição no critério anunciado pela campanha (ganhadores por posição). Nunca pela quantidade de XP que você tem.
 
 ## Como funciona o sorteio
 
-Para campanhas de **sorteio**, o sorteio acontece **depois que o prazo da campanha termina**, nunca antes. O processo é:
+O sorteio acontece **depois que o prazo da campanha termina**, nunca antes. O processo é:
 
-1. Reunimos o pool de todos que concluíram todas as tarefas obrigatórias
-2. Os ganhadores são sorteados **aleatoriamente** desse pool
-3. Para prêmios de maior valor, verificações básicas de integridade são aplicadas primeiro - por exemplo, removendo grupos de contas que compartilham o mesmo endereço de IP ou conjuntos de tarefas concluídas todas dentro dos mesmos poucos segundos (um sinal de automação e não de uma pessoa real)
+1. Reunimos todos que concluíram todas as tarefas obrigatórias e atendem à regra da campanha
+2. Os ganhadores são sorteados **aleatoriamente** entre eles
+3. Para prêmios de maior valor, verificações básicas de integridade são aplicadas primeiro: por exemplo, removendo grupos de contas que compartilham o mesmo endereço de IP ou conjuntos de tarefas concluídas todas dentro dos mesmos poucos segundos (um sinal de automação e não de uma pessoa real)
 
 O objetivo é simples: participantes reais têm uma chance justa e aleatória, e abusos óbvios não tomam o lugar deles.
 
 ## Resgatando sua recompensa e o prazo de 7 dias
 
-Depois que os ganhadores são selecionados, eles são notificados por **dois canais**: um anúncio público (por exemplo, no X) e uma mensagem direta quando aplicável. Se uma recompensa exigir informações suas para ser entregue (como uma carteira/party ID para um prêmio on-chain), pediremos que você as forneça.
+Depois que os ganhadores são selecionados, eles são notificados por **dois canais**: um anúncio público (por exemplo, no X) e uma mensagem direta quando aplicável. Se uma recompensa precisar de informações suas (como um party ID para um prêmio on-chain), pediremos que você as forneça.
 
-Os ganhadores têm um **prazo de 7 dias** a partir do anúncio para responder e resgatar. Esse prazo é **final e se aplica igualmente a todos**. Se um ganhador não responder em 7 dias, sua vaga não resgatada retorna ao pool conforme descrito nos termos originais da campanha.
+Os ganhadores têm um **prazo de 7 dias** a partir do anúncio para responder e resgatar. Esse prazo é **final e se aplica igualmente a todos**. Se um ganhador não responder em 7 dias, o prêmio segue o que dizem os termos da campanha.
 
-Por que o prazo é rígido? Porque os ganhadores que respondem no prazo merecem segurança, e um prazo consistente é a única forma justa de tratar todos da mesma maneira. A notificação por dois canais torna razoável esperar que cada um acompanhe o anúncio. Planeje verificar dentro da semana se você concluiu uma campanha que espera ganhar.
+Por que o prazo é rígido? Os ganhadores que respondem no prazo merecem segurança, e um único prazo para todos é a única forma justa de tratar as pessoas da mesma maneira. Se você concluiu uma campanha que espera ganhar, volte para conferir dentro da semana.
 
 Um prêmio que você ganhou e ainda não resgatou aparece como a primeira linha de **Your record** no seu Profile. O resgate em si continua na página da campanha.

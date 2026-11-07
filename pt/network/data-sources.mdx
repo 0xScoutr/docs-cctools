@@ -10,7 +10,7 @@ O CCTools reúne várias classes diferentes de dados para que tudo o que você v
 As principais categorias das quais extraímos dados são:
 
 - **Indexadores on-chain** - Serviços que leem e indexam o ledger da Canton Network para que possamos exibir dados de validadores, transações, queimas/emissões, featured apps e saldos de carteiras sem que cada usuário precise rodar o próprio nó.
-- **Oráculos de preço** - Provedores de dados de mercado que fornecem o preço do token CC, o market cap, o volume de 24h e o suprimento circulante.
+- **Oráculos de preço** - Provedores de dados de mercado que fornecem o preço da CC, o market cap, o volume de 24h e o suprimento circulante.
 - **Agregadores de TVL e DeFi** - Fontes que acompanham o valor total bloqueado, a liquidez e métricas a nível de protocolo nos apps de DeFi da Canton.
 - **APIs sociais e de comunidade** - APIs públicas usadas para sinais de engajamento e verificação de tarefas de campanhas (por exemplo, confirmar um follow ou um retweet no X).
 
@@ -18,7 +18,7 @@ Nós as descrevemos propositalmente por categoria. A combinação exata de prove
 
 ## Dados de preço
 
-O preço do token CC, o market cap, o volume de 24h e o suprimento circulante vêm de provedores de dados de mercado consolidados (oráculos de preço). Quando há mais de uma fonte disponível, fazemos a verificação cruzada entre elas para reduzir o impacto de uma fonte específica estar atrasada ou fora.
+O preço da CC, o market cap, o volume de 24h e o suprimento circulante vêm de provedores de dados de mercado consolidados (oráculos de preço). Quando há mais de uma fonte disponível, fazemos a verificação cruzada entre elas para reduzir o impacto de uma fonte específica estar atrasada ou fora.
 
 Os dados de preço são atualizados com frequência - na ordem de cada poucos minutos - para que os números que você vê fiquem próximos das condições de mercado ao vivo.
 
@@ -36,7 +36,7 @@ Cada bloco de uma página informa a sua fonte e quando foi lido. Veja [O registr
 
 Os saldos de carteiras e as recompensas são obtidos da Canton Network por meio de indexadores on-chain. Quando você adiciona uma carteira, o CCTools consulta seus ativos para exibir:
 
-- Saldos de tokens
+- Saldos
 - Histórico de recompensas
 - Registros de transferências
 
@@ -48,6 +48,5 @@ Diferentes superfícies são atualizadas em horários diferentes, ajustados à r
 
 - **Preços** - atualizados a cada poucos minutos
 - **Feed de notícias** - a ingestão roda a cada 10 minutos, com as consultas ao Google News limitadas a aproximadamente uma vez por hora
-- **Varredura de conteúdo novo (novos projetos, oportunidades, campanhas, publicações, trilhas de aprendizado)** - a cada 30 minutos
 
 Se algum número parecer momentaneamente desatualizado, uma atualização logo depois normalmente vai capturar os valores mais recentes.

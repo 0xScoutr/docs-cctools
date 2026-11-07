@@ -1,15 +1,17 @@
 ---
 title: "Cómo se eligen los ganadores"
-description: "Cómo se distribuyen las recompensas entre sorteo, orden de llegada y ganadores por posición, y el plazo para reclamar."
+description: "Cómo llegan las recompensas de las campañas a los miembros: sorteo, orden de llegada o ganadores por posición, y el plazo para reclamar."
 ---
 
-## Tres formas de distribuir las recompensas
+## Tres formas de entregar las recompensas
 
-Cuando una campaña tiene un fondo de recompensas limitado (por ejemplo, un número fijo de códigos, asignaciones o premios del socio), CCTools distribuye esas recompensas mediante **tres mecanismos**. CCTools ajusta el mecanismo al fondo junto con el socio:
+Cuando una campaña tiene un número limitado de recompensas (por ejemplo, un número fijo de códigos o premios del socio), CCTools las entrega de una de **tres formas**, elegida junto con el socio:
 
-- **Sorteo** - Todos los que completan todas las tareas obligatorias entran en un sorteo aleatorio. Los ganadores se eligen al azar de ese grupo una vez finalizada la campaña. Hacer las tareas antes no da ninguna ventaja sobre hacerlas después: cada participación válida tiene las mismas probabilidades.
-- **Por orden de llegada (FCFS)** - La recompensa va para los primeros participantes que terminan todas las tareas obligatorias, por orden de finalización, hasta que se agota el fondo. Aquí la rapidez importa: terminar pronto asegura tu lugar.
-- **Ganadores por posición** - Los premios se asocian a posiciones y no a un fondo común: el primer puesto se lleva un premio, el segundo otro, y así sucesivamente. Los ganadores se ordenan según el criterio que la campaña anuncia de antemano (por ejemplo, la calidad de una publicación que enviaste), así que no es un sorteo aleatorio ni una carrera por terminar. Los premios por posición se configuran en su propio nivel, así que una misma campaña puede tener un conjunto por posición y un fondo de sorteo a la vez.
+- **Sorteo** - Todos los que completan todas las tareas obligatorias entran en un sorteo aleatorio. Los ganadores se eligen al azar una vez finalizada la campaña. Hacer las tareas antes no da ninguna ventaja: cada participación válida tiene las mismas probabilidades.
+- **Por orden de llegada** - La recompensa va para los primeros miembros que terminan todas las tareas obligatorias, por orden, hasta que no quede ninguna. Aquí la rapidez importa: terminar pronto asegura tu lugar.
+- **Ganadores por posición** - Los premios se asocian a posiciones: el primer puesto se lleva un premio, el segundo otro, y así sucesivamente. Los ganadores se ordenan según el criterio que la campaña anuncia de antemano (por ejemplo, la calidad de una publicación que enviaste), así que no es un sorteo aleatorio ni una carrera. Una misma campaña puede tener ganadores por posición y un sorteo a la vez.
+
+La clasificación de XP en una página de campaña es otra cosa: no lleva ningún premio ni elige ganadores. Consulta [La clasificación](/es/campaigns/how-campaigns-work#la-clasificación).
 
 La forma en que el premio llega hasta ti también varía. Algunas campañas entregan un **código de canje** que reclamas en la página de la campaña, y otras son **externas**: tu nombre entra en la lista pública de ganadores y el socio entrega el premio fuera de la plataforma (un pago on-chain, por ejemplo).
 
@@ -17,35 +19,35 @@ La página de la campaña indica cuál se aplica: un sorteo lista sus premios y 
 
 ## Quién puede participar y ganar
 
-La tarjeta **Before you start** de cada campaña, la tarea cero, indica su regla y cuándo se comprueba. Las filas de la lista de campañas muestran la misma regla de forma abreviada:
+Cada página de campaña indica su regla y cuándo se comprueba. Una regla que se comprueba al unirte aparece primero, en una tarjeta **Before you start**. Una regla que se comprueba cuando se hace el sorteo está en **Complete your entry**, la última fila de las tareas. Las filas de la lista de campañas muestran la misma regla de forma abreviada:
 
 - **Level N+** - para unirte se pide nivel N o superior en CCTools, comprobado al unirte
 - **Level N+ or Verified** - cualquiera de los dos te deja unirte
 - **Verified to join** - para unirte se pide una cuenta Verified
 - **Verified to win** - cualquiera puede unirse y completar las tareas, pero solo las cuentas Verified pueden ganar, comprobado cuando se hace el sorteo
-- **Verified to win: earlier check** - solo las cuentas Verified por la verificación anterior de CCTools, la que no necesita firma de billetera, pueden ganar este sorteo. Una billetera firmada por sí sola no cuenta
+- **Verified to win: account check** - solo las cuentas Verified por la verificación de cuenta de CCTools (account check) pueden ganar este sorteo. Una billetera firmada por sí sola no la pasa
 - **Highest check to win** - solo las cuentas que cumplen la verificación más alta de CCTools cuando se hace el sorteo pueden ganar
 
 Una campaña sin regla deja unirse a cualquier cuenta con la sesión iniciada. Un sorteo también puede dividir sus premios en tramos según el nivel: tu nivel al unirte fija tu tramo, y dentro de un tramo cada participación válida tiene las mismas probabilidades. Consulta [Cómo obtener Verified](/es/account/verified) para saber qué pide Verified.
 
-Superadas esas reglas, la selección es aleatoria (sorteo), por orden de finalización (FCFS) o por posición según el criterio anunciado por la campaña. Nunca por la cantidad de XP que tienes.
+Superadas esas reglas, la selección es aleatoria (sorteo), por orden de finalización (orden de llegada) o por posición según el criterio anunciado por la campaña (ganadores por posición). Nunca por la cantidad de XP que tienes.
 
 ## Cómo funciona el sorteo
 
-En las campañas de **sorteo**, el sorteo ocurre **después de que vence el plazo de la campaña**, nunca antes. El proceso es:
+El sorteo ocurre **después de que vence el plazo de la campaña**, nunca antes. El proceso es:
 
-1. Tomamos el grupo de todos los que completaron todas las tareas obligatorias
-2. Los ganadores se eligen **al azar** de ese grupo
+1. Tomamos a todos los que completaron todas las tareas obligatorias y cumplen la regla de la campaña
+2. Los ganadores se eligen **al azar** entre ellos
 3. Para los premios de mayor valor, primero se aplican comprobaciones básicas de integridad: por ejemplo, filtrar grupos de cuentas que comparten una misma dirección IP o conjuntos de tareas completadas todas dentro de los mismos pocos segundos (una señal de automatización y no de una persona real)
 
 El objetivo es simple: los participantes reales tienen una oportunidad justa y aleatoria, y el abuso evidente no les quita el lugar.
 
 ## Reclamar tu recompensa y el plazo de 7 días
 
-Una vez seleccionados los ganadores, se les notifica a través de **dos canales**: un anuncio público (por ejemplo, en X) y un mensaje directo cuando corresponda. Si una recompensa requiere información tuya para entregarla (como una cartera/party ID para un premio on-chain), se te pedirá que la proporciones.
+Una vez seleccionados los ganadores, se les notifica a través de **dos canales**: un anuncio público (por ejemplo, en X) y un mensaje directo cuando corresponda. Si una recompensa necesita información tuya (como un party ID para un premio on-chain), se te pedirá.
 
-Los ganadores tienen un **plazo de 7 días** desde el anuncio para responder y reclamar. Este plazo es **definitivo y se aplica por igual a todos**. Si un ganador no responde dentro de los 7 días, su lugar no reclamado regresa al grupo según lo descrito en los términos originales de la campaña.
+Los ganadores tienen un **plazo de 7 días** desde el anuncio para responder y reclamar. Este plazo es **definitivo y se aplica por igual a todos**. Si un ganador no responde dentro de los 7 días, el premio se trata como indican los términos de la campaña.
 
-¿Por qué el plazo es firme? Porque los ganadores que responden a tiempo merecen certeza, y un plazo consistente es la única forma justa de tratar a todos por igual. La notificación por dos canales hace razonable esperar que cada uno esté atento al anuncio. Si completaste una campaña que esperas ganar, planea volver a revisar dentro de la semana.
+¿Por qué el plazo es firme? Los ganadores que responden a tiempo merecen certeza, y un mismo plazo para todos es la única forma justa de tratar a las personas por igual. Si completaste una campaña que esperas ganar, vuelve a revisar dentro de la semana.
 
 Un premio que ganaste y todavía no reclamaste aparece como la primera fila de **Your record** en tu Profile. El reclamo en sí sigue en la página de la campaña.
