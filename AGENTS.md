@@ -26,6 +26,7 @@
 - Rankings of members exist only inside Campaigns: the season ranking and a campaign's own ranking, XP only, Verified accounts only, with no prize. Never describe a prize, a reward or money attached to a rank
 - "Featured App rewards", never "staking rewards"
 - XP opens access and exclusive activities. It is not a prize and it is not money. Never promise how long XP lasts
+- A campaign badge is the signed claim of a completed campaign: no transaction, no fee. Never call it an NFT or a token, and never describe an airdrop
 
 ## Style preferences
 
