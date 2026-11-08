@@ -23,7 +23,7 @@
 - "Canton Network" (never "Canton blockchain"), "Canton Coin" / "CC"
 - "wallet picker" for the Canton connect modal; "Manage wallets" for the management panel
 - "Verified" (capitalized), a yes or no and never a score, for the check that a real person is behind an account. The old "Human Score" name is retired: do not bring it back
-- Rankings of members exist only inside Campaigns: the season ranking and a campaign's own ranking, XP only, Verified accounts only, with no prize. Never describe a prize, a reward or money attached to a rank
+- On cctools.network pages, rankings of members exist only inside Campaigns: the season ranking and a campaign's own ranking, XP only, Verified accounts only, with no prize. The Discord bot's /rank leaderboard, the public API's leaderboard endpoints and the rank in a public profile's data are separate and stay as documented. Never describe a prize, a reward or money attached to a rank
 - "Featured App rewards", never "staking rewards"
 - XP opens access and exclusive activities. It is not a prize and it is not money. Never promise how long XP lasts
 - A campaign badge is the signed claim of a completed campaign: no transaction, no fee. Never call it an NFT or a token, and never describe an airdrop
