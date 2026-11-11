@@ -3,7 +3,7 @@
    background/text/font at runtime and derives soft, rounded surfaces from them,
    so it matches the docs in both dark and light mode instead of guessing hexes.
    No AI-slop tells (no sparkle, no glow, no gradient, no pulse). Brand mark =
-   the CCTools gear-C. Answers strictly from the docs. Reusable in the app. */
+   the CCTools v3 icon, the anteater on lime. Answers strictly from the docs. Reusable in the app. */
 (function () {
   "use strict";
   if (window.__cctoolsAI) return;
@@ -73,7 +73,7 @@
 
   var CSS = [
     "#ccai,#ccai *{box-sizing:border-box}",
-    "#ccai{font-family:var(--font);--r:16px;--rs:12px}",
+    "#ccai{font-family:var(--font);--r:12px;--rs:8px}",
 
     "#ccai-fab{position:fixed;right:22px;bottom:22px;z-index:2147483000;display:flex;align-items:center;gap:8px;",
     "padding:8px 14px 8px 9px;border:1px solid var(--line3);border-radius:8px;cursor:pointer;",
@@ -102,10 +102,9 @@
     ".ccai-row{display:flex;animation:ccai-in .2s ease both}",
     "@keyframes ccai-in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}",
     ".ccai-row.u{justify-content:flex-end}",
-    ".ccai-u-b{max-width:84%;background:var(--cta);color:var(--oncta);font-size:13.5px;line-height:1.5;padding:9px 13px;border-radius:14px 14px 4px 14px;font-weight:550}",
+    ".ccai-u-b{max-width:84%;background:var(--cta);color:var(--oncta);font-size:13.5px;line-height:1.5;padding:9px 13px;border-radius:12px 12px 4px 12px;font-weight:550}",
     ".ccai-a{max-width:100%;color:var(--t1);font-size:13.5px;line-height:1.62}",
-    ".ccai-body.typing::after{content:'';display:inline-block;width:2px;height:1em;background:var(--accent);margin-left:2px;vertical-align:text-bottom;animation:ccai-cur .9s steps(1) infinite}",
-    "@keyframes ccai-cur{50%{opacity:0}}",
+    ".ccai-body.typing::after{content:'';display:inline-block;width:2px;height:1em;background:var(--accent);margin-left:2px;vertical-align:text-bottom;opacity:.7}",
     ".ccai-a>.lbl{display:flex;align-items:center;gap:6px;color:var(--t2);font-size:11px;font-weight:600;margin-bottom:7px}",
     ".ccai-a>.lbl img{width:15px;height:15px;border-radius:4px}",
     ".ccai-a p{margin:0 0 9px}.ccai-a p:last-child{margin-bottom:0}",
@@ -117,19 +116,18 @@
     ".ccai-a ul li:before{content:'';position:absolute;left:4px;top:8px;width:5px;height:5px;border-radius:50%;background:var(--accent)}",
     ".ccai-a ol li:before{counter-increment:ci;content:counter(ci) '.';position:absolute;left:0;top:0;color:var(--accent);font-weight:600;font-size:12.5px}",
     ".ccai-a .cct-code{background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:1px 5px;font-family:\"Fragment Mono\",ui-monospace,Menlo,Consolas,monospace;font-size:12px}",
-    ".ccai-a .cct-pre{background:var(--soft);border:1px solid var(--bd);border-radius:10px;padding:11px 12px;overflow-x:auto;margin:0 0 9px}",
+    ".ccai-a .cct-pre{background:var(--soft);border:1px solid var(--bd);border-radius:8px;padding:11px 12px;overflow-x:auto;margin:0 0 9px}",
     ".ccai-a .cct-pre code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;white-space:pre}",
     ".ccai-src{margin-top:13px;display:flex;flex-direction:column;gap:6px}",
     ".ccai-src .lbl{color:var(--t2);font-size:11px;font-weight:600;margin-bottom:1px}",
     ".ccai-src a{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--t2);background:var(--card);",
-    "border:1px solid var(--bd);border-radius:10px;padding:8px 11px;text-decoration:none;transition:.14s}",
+    "border:1px solid var(--bd);border-radius:8px;padding:8px 11px;text-decoration:none;transition:.14s}",
     ".ccai-src a:hover{background:var(--cardh);border-color:var(--bdh);color:var(--t1)}",
     ".ccai-src a svg{width:15px;height:15px;color:var(--accent);flex:none}.ccai-src a span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}",
 
     ".ccai-think{display:flex;gap:5px;align-items:center;height:18px}",
-    ".ccai-think i{width:6px;height:6px;border-radius:50%;background:var(--t2);animation:ccai-b 1.2s ease-in-out infinite}",
-    ".ccai-think i:nth-child(2){animation-delay:.15s}.ccai-think i:nth-child(3){animation-delay:.3s}",
-    "@keyframes ccai-b{0%,70%,100%{opacity:.3}35%{opacity:1}}",
+    ".ccai-think i{width:6px;height:6px;border-radius:50%;background:var(--t2);opacity:.35}",
+    ".ccai-think i:nth-child(2){opacity:.6}.ccai-think i:nth-child(3){opacity:.9}",
 
     ".ccai-empty{margin:auto 0;display:flex;flex-direction:column;gap:6px;padding:4px 2px}",
     ".ccai-empty img{width:34px;height:34px;border-radius:9px;margin-bottom:8px}",
@@ -142,15 +140,16 @@
     ".ccai-chip span{flex:1}.ccai-chip svg{width:15px;height:15px;color:var(--accent);flex:none}",
 
     "#ccai-foot{padding:13px 14px}",
-    "#ccai-form{display:flex;align-items:flex-end;gap:8px;background:var(--soft);border:1px solid var(--bd);border-radius:14px;padding:7px 7px 7px 13px;transition:border-color .16s}",
+    "#ccai-form{display:flex;align-items:flex-end;gap:8px;background:var(--soft);border:1px solid var(--bd);border-radius:8px;padding:7px 7px 7px 13px;transition:border-color .16s}",
     "#ccai-form:focus-within{border-color:var(--bdh)}",
     "#ccai-in{flex:1;background:none;border:none;outline:none;color:var(--t1);font-size:13.5px;font-family:inherit;resize:none;max-height:94px;line-height:1.5;padding:5px 0}",
     "#ccai-in::placeholder{color:var(--t2)}",
-    "#ccai-send{flex:none;width:34px;height:34px;border-radius:11px;border:none;background:var(--cta);color:var(--oncta);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.14s}",
+    "#ccai-send{flex:none;width:34px;height:34px;border-radius:8px;border:none;background:var(--cta);color:var(--oncta);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.14s}",
     "#ccai-send svg{width:18px;height:18px}#ccai-send:disabled{opacity:.4;cursor:default}#ccai-send:not(:disabled):hover{transform:translateY(-1px)}",
     "#ccai-dis{text-align:center;color:var(--t2);font-size:10.5px;margin-top:9px;opacity:.85}",
 
     "@media (max-width:520px){#ccai-panel{right:8px;left:8px;bottom:8px;width:auto;height:calc(100vh - 16px);max-height:none}#ccai-fab{right:14px;bottom:14px}}",
+    "@media (prefers-reduced-motion:reduce){#ccai,#ccai *{animation:none!important;transition:none!important}}",
   ].join("");
 
   function E(t, a, h) { var e = document.createElement(t); if (a) for (var k in a) e.setAttribute(k, a[k]); if (h != null) e.innerHTML = h; return e; }
@@ -246,7 +245,7 @@
     var w = E("div", { class: "ccai-empty" },
       '<img src="' + MARK + '" alt="">' +
       "<h4>Ask Synchro</h4>" +
-      "<p>Your CCTools docs guide. Wallets, XP, campaigns, the ecosystem, and more.</p>");
+      "<p>Your CCTools docs guide. The daily record, the API, your wallets and every part of the site.</p>");
     var sg = E("div", { class: "ccai-sg" });
     SUGGESTIONS.forEach(function (q) {
       var c = E("button", { class: "ccai-chip", type: "button" }, "<span>" + esc(q) + "</span>" + I_ARR);

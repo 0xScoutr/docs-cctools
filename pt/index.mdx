@@ -46,17 +46,11 @@ mode: "custom"
     <p className="cc-kicker">Comece aqui</p>
     <h2 className="cc-h2">O registro, a API e de onde vêm os dados</h2>
   </div>
-  <CardGroup cols={3}>
-    <Card title="O registro diário" icon="calendar-days" href="/pt/network/network-stats">
-      O registro diário aberto da Canton Network: o que um dia contém, de onde vem e como baixá-lo e citá-lo.
-    </Card>
-    <Card title="API pública" icon="plug" href="/pt/api/overview">
-      Leia dados da Canton Network a partir do seu próprio código, com chaves e planos.
-    </Card>
-    <Card title="Fontes de dados e APIs" icon="database" href="/pt/network/data-sources">
-      De onde o CCTools obtém seus dados, as categorias de provedores por trás disso e com que frequência cada superfície é atualizada.
-    </Card>
-  </CardGroup>
+  <ul className="cc-index cc-index-start">
+    <li><a href="/pt/network/network-stats"><span className="cc-index-icon"><Icon icon="calendar-days" size={20} /></span><span className="cc-index-title">O registro diário</span><span className="cc-index-desc">O registro diário aberto da Canton Network: o que um dia contém, de onde vem e como baixá-lo e citá-lo.</span></a></li>
+    <li><a href="/pt/api/overview"><span className="cc-index-icon"><Icon icon="plug" size={20} /></span><span className="cc-index-title">API pública</span><span className="cc-index-desc">Leia dados da Canton Network a partir do seu próprio código, com chaves e planos.</span></a></li>
+    <li><a href="/pt/network/data-sources"><span className="cc-index-icon"><Icon icon="database" size={20} /></span><span className="cc-index-title">Fontes de dados e APIs</span><span className="cc-index-desc">De onde o CCTools obtém seus dados, as categorias de provedores por trás disso e com que frequência cada superfície é atualizada.</span></a></li>
+  </ul>
 </section>
 
 <section className="cc-section cc-dev">
@@ -72,13 +66,13 @@ curl https://api.cctools.network/api/v1/public/status
 ```
 
 </div>
-  <ul className="cc-dev-links">
-    <li><a href="/pt/api/quickstart"><span className="cc-dev-link-title">Início rápido</span><span className="cc-dev-link-desc">Do zero à sua primeira chamada na API do CCTools em dois minutos.</span></a></li>
-    <li><a href="/pt/api/authentication"><span className="cc-dev-link-title">Autenticação e limites de requisições</span><span className="cc-dev-link-desc">Chaves de API, planos, limites de requisições e tratamento de erros da API pública do CCTools.</span></a></li>
-    <li><a href="/pt/api/plans"><span className="cc-dev-link-title">Planos e limites</span><span className="cc-dev-link-desc">Os planos da API pública do CCTools, com seus limites e preços.</span></a></li>
-    <li><a href="/pt/api/endpoints"><span className="cc-dev-link-title">Referência de endpoints</span><span className="cc-dev-link-desc">Todos os endpoints da API pública do CCTools, com um exemplo pronto para copiar.</span></a></li>
-    <li><a href="/pt/api/x402"><span className="cc-dev-link-title">Pague por chamada com x402</span><span className="cc-dev-link-desc">Chame a rota paga do CCTools com um pagamento x402 na Canton, em CC, USDCx ou cETH: sem chave de API e sem conta.</span></a></li>
-    <li><a href="https://cctools.network/api-docs"><span className="cc-dev-link-title">Teste ao vivo</span><span className="cc-dev-link-desc">Rode qualquer endpoint com a sua própria chave direto no navegador.</span></a></li>
+  <ul className="cc-index cc-index-dev">
+    <li><a href="/pt/api/quickstart"><span className="cc-index-title">Início rápido</span><span className="cc-index-desc">Do zero à sua primeira chamada na API do CCTools em dois minutos.</span></a></li>
+    <li><a href="/pt/api/authentication"><span className="cc-index-title">Autenticação e limites de requisições</span><span className="cc-index-desc">Chaves de API, planos, limites de requisições e tratamento de erros da API pública do CCTools.</span></a></li>
+    <li><a href="/pt/api/plans"><span className="cc-index-title">Planos e limites</span><span className="cc-index-desc">Os planos da API pública do CCTools, com seus limites e preços.</span></a></li>
+    <li><a href="/pt/api/endpoints"><span className="cc-index-title">Referência de endpoints</span><span className="cc-index-desc">Todos os endpoints da API pública do CCTools, com um exemplo pronto para copiar.</span></a></li>
+    <li><a href="/pt/api/x402"><span className="cc-index-title">Pague por chamada com x402</span><span className="cc-index-desc">Chame a rota paga do CCTools com um pagamento x402 na Canton, em CC, USDCx ou cETH: sem chave de API e sem conta.</span></a></li>
+    <li><a href="https://cctools.network/api-docs"><span className="cc-index-title">Teste ao vivo</span><span className="cc-index-desc">Rode qualquer endpoint com a sua própria chave direto no navegador.</span></a></li>
   </ul>
 </section>
 
@@ -87,44 +81,20 @@ curl https://api.cctools.network/api/v1/public/status
     <p className="cc-kicker">Guias</p>
     <h2 className="cc-h2">Cada parte do cctools.network, explicada</h2>
   </div>
-  <CardGroup cols={3}>
-    <Card title="Começando" icon="book-open" href="/pt/getting-started/what-is-cctools">
-      Novo na CCTools? O que ela é, como criar uma conta e como o site está organizado.
-    </Card>
-    <Card title="Ecossistema" icon="globe" href="/pt/ecosystem/browsing-projects">
-      O diretório de projetos Canton mapeados pela CCTools, o mapa e a comparação lado a lado.
-    </Card>
-    <Card title="Mercados" icon="chart-candlestick" href="/pt/network/markets">
-      As sete páginas de Markets: DeFi, ativos tokenizados, tokens, stablecoins, bridges, carteiras e custódia, e onde conseguir Canton Coin.
-    </Card>
-    <Card title="Rede Canton" icon="box" href="/pt/canton-network/what-is-canton">
-      A rede, o Canton Coin, os validadores e a governança.
-    </Card>
-    <Card title="Portfólio" icon="wallet" href="/pt/portfolio/adding-wallets">
-      As suas carteiras em Canton, EVM e Solana numa só visão, com os saldos delas e as suas recompensas e transferências de CC.
-    </Card>
-    <Card title="Biblioteca" icon="graduation-cap" href="/pt/academy/academy-overview">
-      Artigos sobre como a rede funciona e lições curtas com quiz.
-    </Card>
-    <Card title="Notícias" icon="newspaper" href="/pt/news/news-overview">
-      Todas as matérias sobre a Canton que o índice de notícias reúne, cada uma abrindo na sua fonte.
-    </Card>
-    <Card title="Configurações de Conta" icon="settings" href="/pt/account/profile-settings">
-      O seu perfil, Verified, XP e nível, configurações, alertas e Pro.
-    </Card>
-    <Card title="Campanhas" icon="megaphone" href="/pt/campaigns/how-campaigns-work">
-      Campanhas de projetos da Canton Network: as tarefas, as recompensas e quem pode ganhar.
-    </Card>
-    <Card title="Comunidade" icon="users" href="/pt/community/community-rules">
-      Regras da comunidade, como contribuir e perguntas frequentes.
-    </Card>
-    <Card title="Solução de problemas" icon="life-buoy" href="/pt/troubleshooting/login-issues">
-      Problemas comuns e como resolvê-los. Não encontrou a resposta? Fale com o suporte.
-    </Card>
-    <Card title="Status do Serviço" icon="activity" href="/pt/community/service-status">
-      Monitoramento em tempo real de disponibilidade e desempenho da API pública do CCTools.
-    </Card>
-  </CardGroup>
+  <ul className="cc-index cc-index-guides">
+    <li><a href="/pt/getting-started/what-is-cctools"><span className="cc-index-icon"><Icon icon="book-open" size={20} /></span><span className="cc-index-title">Começando</span><span className="cc-index-desc">Novo na CCTools? O que ela é, como criar uma conta e como o site está organizado.</span></a></li>
+    <li><a href="/pt/ecosystem/browsing-projects"><span className="cc-index-icon"><Icon icon="globe" size={20} /></span><span className="cc-index-title">Ecossistema</span><span className="cc-index-desc">O diretório de projetos Canton mapeados pela CCTools, o mapa e a comparação lado a lado.</span></a></li>
+    <li><a href="/pt/network/markets"><span className="cc-index-icon"><Icon icon="chart-candlestick" size={20} /></span><span className="cc-index-title">Mercados</span><span className="cc-index-desc">As sete páginas de Markets: DeFi, ativos tokenizados, tokens, stablecoins, bridges, carteiras e custódia, e onde conseguir Canton Coin.</span></a></li>
+    <li><a href="/pt/canton-network/what-is-canton"><span className="cc-index-icon"><Icon icon="box" size={20} /></span><span className="cc-index-title">Rede Canton</span><span className="cc-index-desc">A rede, o Canton Coin, os validadores e a governança.</span></a></li>
+    <li><a href="/pt/portfolio/adding-wallets"><span className="cc-index-icon"><Icon icon="wallet" size={20} /></span><span className="cc-index-title">Portfólio</span><span className="cc-index-desc">As suas carteiras em Canton, EVM e Solana numa só visão, com os saldos delas e as suas recompensas e transferências de CC.</span></a></li>
+    <li><a href="/pt/academy/academy-overview"><span className="cc-index-icon"><Icon icon="graduation-cap" size={20} /></span><span className="cc-index-title">Biblioteca</span><span className="cc-index-desc">Artigos sobre como a rede funciona e lições curtas com quiz.</span></a></li>
+    <li><a href="/pt/news/news-overview"><span className="cc-index-icon"><Icon icon="newspaper" size={20} /></span><span className="cc-index-title">Notícias</span><span className="cc-index-desc">Todas as matérias sobre a Canton que o índice de notícias reúne, cada uma abrindo na sua fonte.</span></a></li>
+    <li><a href="/pt/account/profile-settings"><span className="cc-index-icon"><Icon icon="settings" size={20} /></span><span className="cc-index-title">Configurações de Conta</span><span className="cc-index-desc">O seu perfil, Verified, XP e nível, configurações, alertas e Pro.</span></a></li>
+    <li><a href="/pt/campaigns/how-campaigns-work"><span className="cc-index-icon"><Icon icon="megaphone" size={20} /></span><span className="cc-index-title">Campanhas</span><span className="cc-index-desc">Campanhas de projetos da Canton Network: as tarefas, as recompensas e quem pode ganhar.</span></a></li>
+    <li><a href="/pt/community/community-rules"><span className="cc-index-icon"><Icon icon="users" size={20} /></span><span className="cc-index-title">Comunidade</span><span className="cc-index-desc">Regras da comunidade, como contribuir e perguntas frequentes.</span></a></li>
+    <li><a href="/pt/troubleshooting/login-issues"><span className="cc-index-icon"><Icon icon="life-buoy" size={20} /></span><span className="cc-index-title">Solução de problemas</span><span className="cc-index-desc">Problemas comuns e como resolvê-los. Não encontrou a resposta? Fale com o suporte.</span></a></li>
+    <li><a href="/pt/community/service-status"><span className="cc-index-icon"><Icon icon="activity" size={20} /></span><span className="cc-index-title">Status do Serviço</span><span className="cc-index-desc">Monitoramento em tempo real de disponibilidade e desempenho da API pública do CCTools.</span></a></li>
+  </ul>
 </section>
 
 <p className="cc-legal">Canton is a registered trademark of Digital Asset (Switzerland) GmbH. Digital Asset is not affiliated with, and has not sponsored or endorsed, CCTools.</p>

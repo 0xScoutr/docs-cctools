@@ -551,11 +551,13 @@ summary:focus-visible,
 
 /* ---------- Home (index.mdx and its pt, es, zh twins, mode: custom) ---------- */
 
+/* Same container as Mintlify's top bar (max-w-8xl, 20px plus 16px inside),
+   so the logo and the headline share one left edge at every width. */
 .cc-home {
   box-sizing: border-box;
-  max-width: 1264px;
+  max-width: 1472px;
   margin: 0 auto;
-  padding: 56px 32px 96px;
+  padding: 56px 36px 96px;
   color: var(--cc-ink);
 }
 
@@ -569,7 +571,7 @@ summary:focus-visible,
   display: grid;
   grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   gap: 56px;
-  align-items: center;
+  align-items: end;
   padding-bottom: 56px;
   border-bottom: 1px solid var(--cc-line);
 }
@@ -766,39 +768,6 @@ summary:focus-visible,
   color: var(--cc-ink);
 }
 
-.cc-home .card-group {
-  row-gap: 16px !important;
-}
-
-.cc-home .card {
-  height: 100%;
-  margin: 0 !important;
-}
-
-/* Guide cards: icon beside the title, so twelve sections read as an index. */
-.cc-guides .card [data-component-part="card-content-container"] {
-  display: grid;
-  grid-template-columns: 24px minmax(0, 1fr);
-  column-gap: 14px;
-  align-items: start;
-  padding: 18px 20px;
-}
-
-.cc-guides .card [data-component-part="card-icon"] {
-  grid-row: 1 / span 2;
-  margin-top: 1px;
-}
-
-.cc-guides .card [data-component-part="card-title"] {
-  margin-top: 0 !important;
-}
-
-.cc-guides .card [data-component-part="card-content"] {
-  margin-top: 4px;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
 .cc-dev-text {
   margin: 0;
   font-size: 16px;
@@ -818,45 +787,61 @@ summary:focus-visible,
   margin: 16px 0 0;
 }
 
-/* Six links in one box, two columns, rows ruled like a table. */
-.cc-dev-links {
+/* The ruled index: one 12px box whose 1px gaps are the rules, so every row
+   of links ends at the same line in every locale (no card with a hole). */
+.cc-index {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin: 16px 0 0;
+  gap: 1px;
+  margin: 0;
   padding: 0;
   list-style: none;
+  background: var(--cc-line);
   border: 1px solid var(--cc-line);
   border-radius: 12px;
-  background: var(--cc-surface);
   overflow: hidden;
 }
 
-.cc-dev-links li {
+.cc-index li {
+  display: flex;
   margin: 0;
-  border-top: 1px solid var(--cc-line);
+  padding: 0;
+  background: var(--cc-surface);
 }
 
-.cc-dev-links li:nth-child(-n + 2) {
-  border-top: 0;
-}
-
-.cc-dev-links li:nth-child(2n) {
-  border-left: 1px solid var(--cc-line);
-}
-
-.cc-home .cc-dev-links a {
+.cc-home .cc-index a {
   display: block;
-  height: 100%;
-  padding: 16px 20px;
+  flex: 1;
+  padding: 18px 20px;
+  color: inherit;
   text-decoration: none;
   transition: background-color 150ms ease-out;
 }
 
-.cc-home .cc-dev-links a:hover {
+.cc-home .cc-index a:hover {
   background: var(--cc-surface-2);
 }
 
-.cc-dev-link-title {
+/* Inside the clipped box the ring sits inside the cell (spec 4.8). */
+.cc-home .cc-index a:focus-visible {
+  outline-offset: -2px !important;
+  border-radius: 0;
+}
+
+.cc-index-icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  color: var(--cc-ink);
+}
+
+.cc-index-icon svg {
+  display: block;
+  width: 20px !important;
+  height: 20px !important;
+  background-color: var(--cc-ink) !important;
+}
+
+.cc-index-title {
   display: block;
   font-size: 15px;
   line-height: 1.35;
@@ -864,12 +849,57 @@ summary:focus-visible,
   color: var(--cc-ink);
 }
 
-.cc-dev-link-desc {
+.cc-index-desc {
   display: block;
-  margin-top: 2px;
+  margin-top: 4px;
   font-size: 14px;
-  line-height: 1.45;
+  line-height: 1.5;
   color: var(--cc-ink-3);
+}
+
+/* Start here: three wide cells, the icon over the title. */
+.cc-index-start {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cc-home .cc-index-start a {
+  padding: 24px;
+}
+
+.cc-index-start .cc-index-icon {
+  margin-bottom: 16px;
+}
+
+.cc-index-start .cc-index-title {
+  font-size: 17px;
+}
+
+.cc-index-start .cc-index-desc {
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* Developers: six links in two columns, under the command. */
+.cc-index-dev {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 16px;
+}
+
+/* Guides: twelve sections, the icon beside the title. */
+.cc-index-guides {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cc-home .cc-index-guides a {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  column-gap: 14px;
+  align-content: start;
+}
+
+.cc-index-guides .cc-index-icon {
+  grid-row: 1 / span 2;
+  margin-top: 1px;
 }
 
 .cc-legal {
@@ -881,14 +911,28 @@ summary:focus-visible,
   color: var(--cc-ink-3);
 }
 
+@media (max-width: 1179px) {
+  .cc-display {
+    font-size: 54px;
+  }
+}
+
 @media (max-width: 1023px) {
+  .cc-home {
+    padding: 40px 16px 72px;
+  }
+
   .cc-hero {
     grid-template-columns: minmax(0, 1fr);
     gap: 32px;
   }
 
-  .cc-display {
-    font-size: 54px;
+  .cc-index-start {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cc-index-guides {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -927,16 +971,14 @@ summary:focus-visible,
     font-size: 26px;
   }
 
-  .cc-dev-links {
+  .cc-index-dev,
+  .cc-index-guides {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .cc-dev-links li:nth-child(2) {
-    border-top: 1px solid var(--cc-line);
-  }
-
-  .cc-dev-links li:nth-child(2n) {
-    border-left: 0;
+  .cc-home .cc-index a,
+  .cc-home .cc-index-start a {
+    padding: 16px;
   }
 
   .cc-legal {
@@ -946,7 +988,7 @@ summary:focus-visible,
 
 @media (prefers-reduced-motion: reduce) {
   .cc-home a.cc-btn,
-  .cc-home .cc-dev-links a {
+  .cc-home .cc-index a {
     transition: none;
   }
 }
@@ -954,6 +996,13 @@ summary:focus-visible,
 /* Chinese headlines: no negative tracking on CJK glyphs. */
 .cc-home:lang(zh) :is(.cc-display, .cc-h2) {
   letter-spacing: 0;
+}
+
+/* Break the Chinese headline at its punctuation, not inside a word such as
+   逐日; overflow-wrap still breaks a line that would not fit. */
+.cc-home:lang(zh) .cc-display {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 .cc-home:lang(zh) .cc-kicker {
@@ -964,4 +1013,28 @@ summary:focus-visible,
 .accordion {
   border-radius: 12px !important;
   border-color: var(--cc-line) !important;
+}
+
+/* Endpoint tables: a path breaks after a slash, never inside a segment. */
+.mdx-content table td code {
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+
+.mdx-content table td:first-child:has(> code) {
+  min-width: 14rem !important;
+}
+
+/* The theme switch in the top bar: an 8px control, not a pill (spec 4.7). */
+[data-component-name="theme-toggle"],
+[data-component-name="theme-toggle"] button {
+  border-radius: 8px !important;
+}
+
+/* The endpoint reference is four-column tables of whole paths: below 1536px
+   it gives the table of contents' width to the tables (all four locales). */
+@media (min-width: 1280px) and (max-width: 1535px) {
+  html[data-current-path$="api/endpoints"] #table-of-contents-layout {
+    display: none !important;
+  }
 }
