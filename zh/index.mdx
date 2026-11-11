@@ -1,47 +1,132 @@
 ---
 title: "CCTools 文档"
 description: "CCTools 文档。CCTools 是 Canton Network 的公共记录：开放的每日记录、公共 API、项目目录、市场、治理和投资组合工具。"
+sidebarTitle: "首页"
+mode: "custom"
 ---
 
-CCTools 是 Canton Network 的公共记录：一份可下载、可引用的开放每日网络记录，一个收录其项目的目录，它的市场与治理，以及追踪你自己钱包的工具。本文档介绍网站的各个部分以及公共 API。
+<div className="cc-home" lang="zh-Hans">
 
-<CardGroup cols={2}>
-  <Card title="入门" icon="book-open" href="/zh/getting-started/what-is-cctools">
-    初次使用 CCTools？了解它是什么、如何创建账户以及网站的布局。
-  </Card>
-  <Card title="网络与数据" icon="chart-column" href="/zh/network/network-stats">
-    网络的各项数据、它们的来源以及读取频率。
-  </Card>
-  <Card title="生态系统" icon="globe" href="/zh/ecosystem/browsing-projects">
-    CCTools 收录的 Canton 项目目录、地图以及并排比较。
-  </Card>
-  <Card title="投资组合" icon="wallet" href="/zh/portfolio/adding-wallets">
-    在一个视图中查看你在 Canton、EVM 和 Solana 上的钱包及其余额，以及你的 CC 奖励和转账。
-  </Card>
-  <Card title="公共 API" icon="plug" href="/zh/api/overview">
-    使用密钥和方案，在你自己的代码中读取 Canton Network 数据。
-  </Card>
-  <Card title="资料库" icon="graduation-cap" href="/zh/academy/academy-overview">
-    关于网络如何运作的文章，以及附带测验的简短课程。
-  </Card>
-  <Card title="活动" icon="megaphone" href="/zh/campaigns/how-campaigns-work">
-    来自 Canton Network 项目的活动：任务、奖励以及谁可以获奖。
-  </Card>
-  <Card title="账户与设置" icon="settings" href="/zh/account/profile-settings">
-    你的个人资料、Verified、XP 与等级、设置、提醒和 Pro。
-  </Card>
-  <Card title="Canton 网络" icon="box" href="/zh/canton-network/what-is-canton">
-    网络本身、Canton Coin、验证者和治理。
-  </Card>
-  <Card title="新闻" icon="newspaper" href="/zh/news/news-overview">
-    新闻索引收录的每一篇关于 Canton 的报道，每篇都在其来源处打开。
-  </Card>
-  <Card title="社区" icon="users" href="/zh/community/community-rules">
-    社区规则、如何贡献以及常见问题。
-  </Card>
-  <Card title="故障排除" icon="life-buoy" href="/zh/troubleshooting/login-issues">
-    常见问题及解决方法。找不到答案？请联系支持。
-  </Card>
-</CardGroup>
+<section className="cc-hero">
+  <div className="cc-hero-copy">
+    <p className="cc-eyebrow">CCTools 文档</p>
+    <h1 className="cc-display">Canton Network，逐日记录在案。</h1>
+    <p className="cc-lede">CCTools 保存 Canton 网络状态的公共记录：每个 UTC 日一行，数据来自 Canton Scan，可下载、可引用。本文档介绍这份记录、公共 API 以及 cctools.network 的各个部分。</p>
+    <div className="cc-actions">
+      <a className="cc-btn cc-btn-primary" href="/zh/network/network-stats">了解每日记录</a>
+      <a className="cc-btn cc-btn-secondary" href="/zh/api/quickstart">完成第一次 API 调用</a>
+    </div>
+  </div>
+  <div className="cc-record" role="group" aria-label="每日记录中每一天包含的内容">
+    <div className="cc-record-top">
+      <span className="cc-chip">Daily record</span>
+      <span className="cc-record-cadence">每个 UTC 日一行</span>
+    </div>
+    <p className="cc-record-label">每一天包含什么</p>
+    <ul className="cc-record-fields">
+      <li>Super validators</li>
+      <li>Voting threshold</li>
+      <li>Featured app rights</li>
+      <li>Validator licenses</li>
+      <li>Supply</li>
+      <li>Net supply change</li>
+      <li>Issuance</li>
+      <li>Reference price</li>
+    </ul>
+    <p className="cc-record-note">在当天数据稳定之前为临时值，之后成为最终值。最终值只能通过有记录的修订来更改。</p>
+    <div className="cc-record-file">
+      <code>/api/open/network-record/v1/daily.csv</code>
+      <span>无需密钥</span>
+    </div>
+  </div>
+</section>
 
-Canton is a registered trademark of Digital Asset (Switzerland) GmbH. Digital Asset is not affiliated with, and has not sponsored or endorsed, CCTools.
+<section className="cc-section">
+  <div className="cc-section-head">
+    <p className="cc-kicker">从这里开始</p>
+    <h2 className="cc-h2">记录、API 与数据来源</h2>
+  </div>
+  <CardGroup cols={3}>
+    <Card title="每日记录" icon="calendar-days" href="/zh/network/network-stats">
+      Canton Network 的开放每日记录：每天包含什么、数据从何而来，以及如何下载和引用。
+    </Card>
+    <Card title="公共 API" icon="plug" href="/zh/api/overview">
+      使用密钥和方案，在你自己的代码中读取 Canton Network 数据。
+    </Card>
+    <Card title="数据来源与 API" icon="database" href="/zh/network/data-sources">
+      CCTools 从哪里获取数据、背后的提供方类别，以及每个界面的刷新频率。
+    </Card>
+  </CardGroup>
+</section>
+
+<section className="cc-section cc-dev">
+  <div className="cc-section-head">
+    <p className="cc-kicker">开发者</p>
+    <h2 className="cc-h2">用你自己的代码读取网络数据</h2>
+  </div>
+  <p className="cc-dev-text">需要密钥的 endpoint 位于 <code>/api/v1/public/</code> 下，通过 <code>X-API-Key</code> 请求头传入你的密钥。状态 endpoint 无需密钥，因此下面的命令可以直接运行：</p>
+<div className="cc-dev-code">
+
+```bash
+curl https://api.cctools.network/api/v1/public/status
+```
+
+</div>
+  <ul className="cc-dev-links">
+    <li><a href="/zh/api/quickstart"><span className="cc-dev-link-title">快速开始</span><span className="cc-dev-link-desc">两分钟内从零完成你的第一次 CCTools API 调用。</span></a></li>
+    <li><a href="/zh/api/authentication"><span className="cc-dev-link-title">认证与速率限制</span><span className="cc-dev-link-desc">CCTools 公共 API 的 API 密钥、套餐、速率限制与错误处理。</span></a></li>
+    <li><a href="/zh/api/plans"><span className="cc-dev-link-title">套餐与限制</span><span className="cc-dev-link-desc">CCTools 公共 API 的套餐、限制与价格。</span></a></li>
+    <li><a href="/zh/api/endpoints"><span className="cc-dev-link-title">Endpoint 参考</span><span className="cc-dev-link-desc">CCTools 公共 API 的全部 endpoint，附可直接复制的示例。</span></a></li>
+    <li><a href="/zh/api/x402"><span className="cc-dev-link-title">通过 x402 按次付费</span><span className="cc-dev-link-desc">用 Canton 上的 x402 支付调用 CCTools 的付费路由，可用 CC、USDCx 或 cETH 支付：无需 API 密钥，也无需账户。</span></a></li>
+    <li><a href="https://cctools.network/api-docs"><span className="cc-dev-link-title">在线试用</span><span className="cc-dev-link-desc">在浏览器中用你自己的密钥调用任意 endpoint。</span></a></li>
+  </ul>
+</section>
+
+<section className="cc-section cc-guides">
+  <div className="cc-section-head">
+    <p className="cc-kicker">指南</p>
+    <h2 className="cc-h2">cctools.network 各部分说明</h2>
+  </div>
+  <CardGroup cols={3}>
+    <Card title="入门" icon="book-open" href="/zh/getting-started/what-is-cctools">
+      初次使用 CCTools？了解它是什么、如何创建账户以及网站的布局。
+    </Card>
+    <Card title="生态系统" icon="globe" href="/zh/ecosystem/browsing-projects">
+      CCTools 收录的 Canton 项目目录、地图以及并排比较。
+    </Card>
+    <Card title="市场" icon="chart-candlestick" href="/zh/network/markets">
+      Markets 的七个页面：DeFi、代币化资产、代币、稳定币、跨链桥、钱包与托管，以及获取 Canton Coin 的途径。
+    </Card>
+    <Card title="Canton 网络" icon="box" href="/zh/canton-network/what-is-canton">
+      网络本身、Canton Coin、验证者和治理。
+    </Card>
+    <Card title="投资组合" icon="wallet" href="/zh/portfolio/adding-wallets">
+      在一个视图中查看你在 Canton、EVM 和 Solana 上的钱包及其余额，以及你的 CC 奖励和转账。
+    </Card>
+    <Card title="资料库" icon="graduation-cap" href="/zh/academy/academy-overview">
+      关于网络如何运作的文章，以及附带测验的简短课程。
+    </Card>
+    <Card title="新闻" icon="newspaper" href="/zh/news/news-overview">
+      新闻索引收录的每一篇关于 Canton 的报道，每篇都在其来源处打开。
+    </Card>
+    <Card title="账户与设置" icon="settings" href="/zh/account/profile-settings">
+      你的个人资料、Verified、XP 与等级、设置、提醒和 Pro。
+    </Card>
+    <Card title="活动" icon="megaphone" href="/zh/campaigns/how-campaigns-work">
+      来自 Canton Network 项目的活动：任务、奖励以及谁可以获奖。
+    </Card>
+    <Card title="社区" icon="users" href="/zh/community/community-rules">
+      社区规则、如何贡献以及常见问题。
+    </Card>
+    <Card title="故障排除" icon="life-buoy" href="/zh/troubleshooting/login-issues">
+      常见问题及解决方法。找不到答案？请联系支持。
+    </Card>
+    <Card title="服务状态" icon="activity" href="/zh/community/service-status">
+      CCTools 公共 API 的实时正常运行时间和性能监控。
+    </Card>
+  </CardGroup>
+</section>
+
+<p className="cc-legal">Canton is a registered trademark of Digital Asset (Switzerland) GmbH. Digital Asset is not affiliated with, and has not sponsored or endorsed, CCTools.</p>
+
+</div>

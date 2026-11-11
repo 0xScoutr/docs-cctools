@@ -1,22 +1,45 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "almond",
+  "theme": "aspen",
   "name": "CCTools",
   "description": "CCTools documentation: the public record of the Canton Network, with the open daily record, the public API, the project directory, markets, governance and portfolio tools.",
   "colors": {
-    "primary": "#4d7c0f",
-    "light": "#e6ff6a",
-    "dark": "#4d7c0f"
+    "primary": "#121612",
+    "light": "#EEF1EA",
+    "dark": "#697066"
   },
   "appearance": {
-    "default": "dark"
+    "default": "system"
+  },
+  "background": {
+    "color": {
+      "light": "#F4F5F1",
+      "dark": "#0B0E0B"
+    }
+  },
+  "fonts": {
+    "heading": {
+      "family": "Instrument Sans",
+      "source": "/fonts/instrument-sans-latin.woff2",
+      "format": "woff2",
+      "weight": 600
+    },
+    "body": {
+      "family": "Instrument Sans",
+      "source": "/fonts/instrument-sans-latin.woff2",
+      "format": "woff2",
+      "weight": 400
+    }
   },
   "favicon": "/favicon.png",
   "icons": {
     "library": "lucide"
   },
   "styling": {
-    "eyebrows": "breadcrumbs"
+    "eyebrows": "breadcrumbs",
+    "codeblocks": {
+      "theme": "css-variables"
+    }
   },
   "contextual": {
     "options": [
@@ -466,9 +489,19 @@
                 "group": "Getting Started",
                 "icon": "book-open",
                 "pages": [
+                  "index",
                   "getting-started/what-is-cctools",
                   "getting-started/create-account",
                   "getting-started/navigating-the-platform"
+                ]
+              },
+              {
+                "group": "Network & Data",
+                "icon": "chart-column",
+                "pages": [
+                  "network/network-stats",
+                  "network/markets",
+                  "network/data-sources"
                 ]
               },
               {
@@ -542,15 +575,6 @@
                 ]
               },
               {
-                "group": "Network & Data",
-                "icon": "chart-column",
-                "pages": [
-                  "network/network-stats",
-                  "network/markets",
-                  "network/data-sources"
-                ]
-              },
-              {
                 "group": "Community",
                 "icon": "users",
                 "pages": [
@@ -603,9 +627,19 @@
                 "group": "Empezando",
                 "icon": "book-open",
                 "pages": [
+                  "es/index",
                   "es/getting-started/what-is-cctools",
                   "es/getting-started/create-account",
                   "es/getting-started/navigating-the-platform"
+                ]
+              },
+              {
+                "group": "Red y datos",
+                "icon": "chart-column",
+                "pages": [
+                  "es/network/network-stats",
+                  "es/network/markets",
+                  "es/network/data-sources"
                 ]
               },
               {
@@ -679,15 +713,6 @@
                 ]
               },
               {
-                "group": "Red y datos",
-                "icon": "chart-column",
-                "pages": [
-                  "es/network/network-stats",
-                  "es/network/markets",
-                  "es/network/data-sources"
-                ]
-              },
-              {
                 "group": "Comunidad",
                 "icon": "users",
                 "pages": [
@@ -740,9 +765,19 @@
                 "group": "Começando",
                 "icon": "book-open",
                 "pages": [
+                  "pt/index",
                   "pt/getting-started/what-is-cctools",
                   "pt/getting-started/create-account",
                   "pt/getting-started/navigating-the-platform"
+                ]
+              },
+              {
+                "group": "Rede e dados",
+                "icon": "chart-column",
+                "pages": [
+                  "pt/network/network-stats",
+                  "pt/network/markets",
+                  "pt/network/data-sources"
                 ]
               },
               {
@@ -816,15 +851,6 @@
                 ]
               },
               {
-                "group": "Rede e dados",
-                "icon": "chart-column",
-                "pages": [
-                  "pt/network/network-stats",
-                  "pt/network/markets",
-                  "pt/network/data-sources"
-                ]
-              },
-              {
                 "group": "Comunidade",
                 "icon": "users",
                 "pages": [
@@ -877,9 +903,19 @@
                 "group": "入门",
                 "icon": "book-open",
                 "pages": [
+                  "zh/index",
                   "zh/getting-started/what-is-cctools",
                   "zh/getting-started/create-account",
                   "zh/getting-started/navigating-the-platform"
+                ]
+              },
+              {
+                "group": "网络与数据",
+                "icon": "chart-column",
+                "pages": [
+                  "zh/network/network-stats",
+                  "zh/network/markets",
+                  "zh/network/data-sources"
                 ]
               },
               {
@@ -953,15 +989,6 @@
                 ]
               },
               {
-                "group": "网络与数据",
-                "icon": "chart-column",
-                "pages": [
-                  "zh/network/network-stats",
-                  "zh/network/markets",
-                  "zh/network/data-sources"
-                ]
-              },
-              {
                 "group": "社区",
                 "icon": "users",
                 "pages": [
@@ -1006,8 +1033,9 @@
     ]
   },
   "logo": {
-    "light": "/logo/cctools.png",
-    "dark": "/logo/cctools.png"
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg",
+    "href": "/"
   },
   "navbar": {
     "primary": {
@@ -1027,13 +1055,13 @@
     "metatags": {
       "og:type": "website",
       "og:site_name": "CCTools Docs",
-      "og:image": "https://docs.cctools.network/images/og.png",
+      "og:image": "https://docs.cctools.network/images/og.png?v=3",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:alt": "CCTools documentation for the Canton Network",
       "twitter:card": "summary_large_image",
       "twitter:site": "@cantontools",
-      "twitter:image": "https://docs.cctools.network/images/og.png"
+      "twitter:image": "https://docs.cctools.network/images/og.png?v=3"
     },
     "organization": {
       "name": "CCTools",

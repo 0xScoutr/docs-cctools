@@ -1,171 +1,967 @@
-:root {
-  --default-border-color: var(--gray-200);
+/* CCTools v3 look for docs.cctools.network.
+   Source of the values: the approved v3 brand package (docs/design/mockups/
+   2026-09-25-logo/final/tokens/tokens.css), the same block cctools2/frontend
+   ships as V3 BRAND. Ink is the brand on light and paper on dark; lime is a
+   highlighter or a signal only (the current-section mark on dark, the record
+   chip, the focus ring on dark), never text on a light surface and never a
+   pill; neutrals are green-tinted. Instrument Sans for text, Fragment Mono
+   for code only. Cards 12px, controls 8px, chips 6px. */
+
+/* ---------- Fonts (self-hosted, OFL; same files as cctools.network) ---------- */
+
+@font-face {
+  font-family: "Instrument Sans";
+  font-style: normal;
+  font-weight: 400 700;
+  font-stretch: 75% 100%;
+  font-display: swap;
+  src: url("/fonts/instrument-sans-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-.dark {
-  --default-border-color: var(--gray-800);
+@font-face {
+  font-family: "Instrument Sans";
+  font-style: normal;
+  font-weight: 400 700;
+  font-stretch: 75% 100%;
+  font-display: swap;
+  src: url("/fonts/instrument-sans-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
-#sidebar .nav-dropdown-trigger {
-  border: none !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  padding-left: 0.375rem;
-}
-
-#sidebar .nav-dropdown-trigger:hover {
-  background-color: rgb(0 0 0 / 0.04) !important;
-}
-
-.dark #sidebar .nav-dropdown-trigger:hover {
-  background-color: rgb(255 255 255 / 0.06) !important;
-}
-
-#sidebar .nav-dropdown-trigger .nav-dropdown-item-icon {
-  border: none !important;
-  background: transparent !important;
-  height: auto !important;
-  width: auto !important;
-  padding: 0 !important;
-}
-
-.nav-dropdown-content {
-}
-
-.nav-dropdown-content .nav-dropdown-item {
-}
-
-.nav-dropdown-content .nav-dropdown-item-icon {
-  border: none !important;
-  background: transparent !important;
-  height: auto !important;
-  width: auto !important;
-  padding: 0 !important;
-}
-
-.nav-dropdown-content .nav-dropdown-item-description {
-  display: none !important;
-}
-
-#sidebar .nav-anchor span {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-}
-
-body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] {
-  color: rgb(var(--primary)) !important;
-  font-weight: 600 !important;
-}
-
-body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] span {
-  color: inherit !important;
-}
-
-body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] svg {
-  background-color: rgb(var(--primary)) !important;
-}
-
-.dark body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] {
-  color: rgb(var(--primary-light)/var(--tw-text-opacity,1)) !important;
-}
-
-.dark body:has([data-product-guide-index]) #sidebar a.nav-anchor[href='/'] svg {
-  background-color: rgb(var(--primary-light)/var(--tw-text-opacity,1)) !important;
-}
-
-:is(#content-area[data-current-path='/'], [data-current-path='/'] #content-area):has([data-product-guide-index]) {
-  background: transparent !important;
-  padding: 0 !important;
-}
-
-:is(#content-area[data-current-path='/'], [data-current-path='/'] #content-area):has([data-product-guide-index]) > div:first-child {
-  background: transparent !important;
-  padding-right: 0 !important;
-  padding-bottom: 0 !important;
-  padding-left: 0 !important;
-}
-
-[data-product-guide-index] a:not(.product-guide-feature-card) {
-  background-color: #fafafa !important;
-}
-
-.dark [data-product-guide-index] a:not(.product-guide-feature-card) {
-  background-color: #09090b !important;
-}
-
-.product-guide-feature-card {
-  grid-column: 1 / -1;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-  min-height: 260px;
-  background: url('/images/sample-feature-light.png') center / cover no-repeat !important;
-  border: none !important;
-  box-shadow: none !important;
-  color: white !important;
-  .dark & {
-    background-image: url('/images/sample-feature-dark.png') !important;
-  }
-}
-
-.product-guide-feature-card > div {
-  display: flex !important;
-  flex: 1;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-}
-
-.product-guide-feature-card :is(h2, h3, p, span, svg) {
-  color: white !important;
-}
-
-.product-guide-feature-card :is(svg, [class*='icon']) {
-  background-color: white !important;
-  width: 2em !important;
-  height: 2em !important;
-  margin-top: 2px;
-}
-
-.product-guide-feature-card-title {
-  font-size: 1.2em;
-  font-weight: 500;
-}
-
-.product-guide-feature-card :is(h2, h3, p, span, svg).product-guide-feature-card-description {
-  font-size: 1.05em;
+@font-face {
+  font-family: "Fragment Mono";
+  font-style: normal;
   font-weight: 400;
-  color: rgb(var(--gray-50) / 62.5%) !important;
-  .dark & {
-    color: rgb(var(--gray-50) / 50%) !important;
+  font-display: swap;
+  src: url("/fonts/fragment-mono-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Fragment Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/fragment-mono-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ---------- Tokens ---------- */
+
+:root {
+  --cc-bg: #f4f5f1;
+  --cc-surface: #ffffff;
+  --cc-surface-2: #f8f9f6;
+  --cc-surface-3: #eceee8;
+  --cc-line: #e2e5dd;
+  --cc-line-2: #eceee8;
+  --cc-line-3: #d3d7cd;
+  --cc-ink: #121612;
+  --cc-ink-2: #454b44;
+  --cc-ink-3: #5f665d;
+  --cc-brand: #121612;
+  --cc-brand-hover: #2a3029;
+  --cc-on-brand: #ffffff;
+  --cc-on-brand-2: #b6bcb1;
+  --cc-focus: #121612;
+  --cc-lime: #d4f542;
+  --cc-lime-tint: #f1fac8;
+  --cc-on-lime: #121612;
+  --cc-nav-mark: #121612;
+  --cc-pos: #0b7a53;
+  --cc-pos-bg: #e7f5ee;
+  --cc-warn: #9a5b00;
+  --cc-warn-bg: #fdf3e1;
+  --cc-neg: #c0362c;
+  --cc-neg-bg: #fbeae8;
+  --cc-shadow-float: 0 1px 2px rgba(18, 22, 18, 0.05), 0 14px 32px -10px rgba(18, 22, 18, 0.18);
+  --cc-font-code: "Fragment Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* The code block: a dark island on light pages, lime keys (v3 --code-*). */
+  --cc-code-bg: #121612;
+  --cc-code-line: #2a3029;
+  --cc-code-ink: #eef1ea;
+  --cc-code-key: #d4f542;
+  --cc-code-dim: #8b9287;
+  --cc-code-soft: #b6bcb1;
+
+  /* Mintlify's gray scale, re-cut from the v3 green-tinted neutrals
+     (RGB channels, as Mintlify reads them). */
+  --gray-50: 248 249 246;
+  --gray-100: 236 238 232;
+  --gray-200: 226 229 221;
+  --gray-300: 211 215 205;
+  --gray-400: 139 146 135;
+  --gray-500: 105 112 102;
+  --gray-600: 95 102 93;
+  --gray-700: 69 75 68;
+  --gray-800: 38 45 37;
+  --gray-900: 26 32 26;
+  --gray-950: 18 22 18;
+}
+
+html.dark {
+  --cc-bg: #0b0e0b;
+  --cc-surface: #141914;
+  --cc-surface-2: #1a201a;
+  --cc-surface-3: #1f251e;
+  --cc-line: #262d25;
+  --cc-line-2: #1f251e;
+  --cc-line-3: #333b32;
+  --cc-ink: #eef1ea;
+  --cc-ink-2: #b6bcb1;
+  --cc-ink-3: #8b9287;
+  --cc-brand: #eef1ea;
+  --cc-brand-hover: #ffffff;
+  --cc-on-brand: #121612;
+  --cc-on-brand-2: #4f564e;
+  --cc-focus: #d4f542;
+  --cc-lime-tint: #2f381a;
+  --cc-nav-mark: #d4f542;
+  --cc-pos: #4cc38a;
+  --cc-pos-bg: #15291f;
+  --cc-warn: #e0a54a;
+  --cc-warn-bg: #2e2412;
+  --cc-neg: #ff7b72;
+  --cc-neg-bg: #33191a;
+  --cc-shadow-float: 0 1px 2px rgba(0, 0, 0, 0.5), 0 14px 32px -10px rgba(0, 0, 0, 0.7);
+
+  /* A darker well on dark pages. */
+  --cc-code-bg: #0b0e0b;
+  --cc-code-line: #333b32;
+  --cc-code-ink: #eef1ea;
+  --cc-code-dim: #8b9287;
+}
+
+/* Syntax colors for the css-variables code theme (docs.json styling.codeblocks):
+   restrained, paper text, lime keys and commands, dim punctuation. */
+:root {
+  --mint-background: var(--cc-code-bg);
+  --mint-foreground: var(--cc-code-ink);
+  --mint-token-keyword: var(--cc-code-key);
+  --mint-token-function: var(--cc-code-key);
+  --mint-token-constant: var(--cc-code-ink);
+  --mint-token-parameter: var(--cc-code-ink);
+  --mint-token-string: var(--cc-code-soft);
+  --mint-token-string-expression: var(--cc-code-soft);
+  --mint-token-comment: var(--cc-code-dim);
+  --mint-token-punctuation: var(--cc-code-dim);
+  --mint-token-link: var(--cc-code-key);
+  --mint-token-inserted: var(--cc-code-key);
+  --mint-token-deleted: #ff7b72;
+  --mint-token-changed: var(--cc-code-soft);
+}
+
+/* ---------- Base type ---------- */
+
+html {
+  font-variant-numeric: tabular-nums;
+}
+
+body {
+  font-family: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+code,
+kbd,
+pre,
+samp,
+.code-block,
+.code-block * {
+  font-family: var(--cc-font-code) !important;
+  font-weight: 400 !important;
+}
+
+/* Running text: v3 body measure, a touch tighter than the prose default. */
+.mdx-content :is(p, li) {
+  line-height: 1.65;
+}
+
+#page-title {
+  font-size: 32px;
+  line-height: 1.15;
+  letter-spacing: -0.024em;
+  font-weight: 600;
+  color: var(--cc-ink);
+}
+
+@media (max-width: 640px) {
+  #page-title {
+    font-size: 26px;
   }
 }
 
-img.nav-logo {
-  max-width: 40px;
-  height: auto;
+.mdx-content :is(h2, h3, h4):not([data-component-part]) {
+  color: var(--cc-ink);
+  font-weight: 600;
 }
 
-/* CCTools brand CTA: lime fill + dark text (Mintlify defaults button text to white,
-   which is unreadable on lime). Scoped to the navbar link only. */
-#navbar a[href^="https://cctools.network"],
-#topbar a[href^="https://cctools.network"],
-header a[href^="https://cctools.network"] {
-  background: #e6ff6a !important;
-  border-color: #e6ff6a !important;
+.mdx-content h2:not([data-component-part]) {
+  font-size: 22px;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
 }
-#navbar a[href^="https://cctools.network"],
-#navbar a[href^="https://cctools.network"] *,
-#topbar a[href^="https://cctools.network"],
-#topbar a[href^="https://cctools.network"] *,
-header a[href^="https://cctools.network"],
-header a[href^="https://cctools.network"] * {
-  color: #0c0e14 !important;
+
+.mdx-content h3:not([data-component-part]) {
+  font-size: 17px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
 }
-#navbar a[href^="https://cctools.network"]:hover,
-#topbar a[href^="https://cctools.network"]:hover,
-header a[href^="https://cctools.network"]:hover {
-  background: #d4f050 !important;
+
+/* Prose colors: ink headings and bold, ink-2 body, ink links with an
+   underline (never lime text). */
+html:not(.dark) .prose {
+  --tw-prose-body: #454b44;
+  --tw-prose-headings: #121612;
+  --tw-prose-lead: #454b44;
+  --tw-prose-links: #121612;
+  --tw-prose-bold: #121612;
+  --tw-prose-counters: #5f665d;
+  --tw-prose-bullets: #8b9287;
+  --tw-prose-hr: #e2e5dd;
+  --tw-prose-quotes: #121612;
+  --tw-prose-quote-borders: #d3d7cd;
+  --tw-prose-captions: #5f665d;
+  --tw-prose-code: #121612;
+  --tw-prose-th-borders: #d3d7cd;
+  --tw-prose-td-borders: #e2e5dd;
+}
+
+html.dark .prose {
+  --tw-prose-body: #b6bcb1;
+  --tw-prose-headings: #eef1ea;
+  --tw-prose-lead: #b6bcb1;
+  --tw-prose-links: #eef1ea;
+  --tw-prose-bold: #eef1ea;
+  --tw-prose-counters: #8b9287;
+  --tw-prose-bullets: #697066;
+  --tw-prose-hr: #262d25;
+  --tw-prose-quotes: #eef1ea;
+  --tw-prose-quote-borders: #333b32;
+  --tw-prose-captions: #8b9287;
+  --tw-prose-code: #eef1ea;
+  --tw-prose-th-borders: #333b32;
+  --tw-prose-td-borders: #262d25;
+}
+
+.mdx-content a.link,
+.prose a:not(.card):not([class*="card"]) {
+  color: var(--cc-ink);
+  border-bottom: 0;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--cc-ink-3);
+  text-underline-offset: 3px;
+}
+
+.mdx-content a.link:hover,
+.prose a:not(.card):not([class*="card"]):hover {
+  text-decoration-color: var(--cc-ink);
+  text-decoration-thickness: 2px;
+}
+
+/* Breadcrumb eyebrow above the title. */
+.breadcrumb-item {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--cc-ink-3);
+}
+
+/* Focus: ink on light, lime on dark (v3 spec 4.8). */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--cc-focus) !important;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: var(--cc-lime-tint);
+  color: var(--cc-ink);
+}
+
+/* ---------- Top bar ---------- */
+
+#navbar .bg-background-light {
+  background-color: var(--cc-surface) !important;
+}
+
+#navbar .border-b {
+  border-color: var(--cc-line) !important;
+}
+
+#search-bar-entry {
+  border-radius: 8px !important;
+  background: var(--cc-surface-2) !important;
+  box-shadow: none !important;
+  border: 1px solid var(--cc-line-3);
+  color: var(--cc-ink-3) !important;
+}
+
+#search-bar-entry:hover {
+  border-color: var(--cc-ink-3);
+}
+
+/* Primary button: ink on light, paper on dark; 8px, never a pill, never lime. */
+#topbar-cta-button a > span:first-child {
+  background: var(--cc-brand) !important;
+  border-radius: 8px !important;
+}
+
+#topbar-cta-button a:hover > span:first-child {
+  background: var(--cc-brand-hover) !important;
+  opacity: 1 !important;
+}
+
+#topbar-cta-button a :is(span, svg) {
+  color: var(--cc-on-brand) !important;
+}
+
+#navbar .navbar-link {
+  color: var(--cc-ink-2);
+}
+
+#navbar .navbar-link:hover {
+  color: var(--cc-ink);
+}
+
+/* Tabs: the current-section mark is ink on light, lime on dark. */
+.nav-tabs-item {
+  color: var(--cc-ink-2) !important;
+}
+
+.nav-tabs-item:hover {
+  color: var(--cc-ink) !important;
+}
+
+.nav-tabs-item > div.bg-primary {
+  height: 2px;
+  background: var(--cc-nav-mark) !important;
+}
+
+.nav-tabs-item:has(> div.bg-primary) {
+  color: var(--cc-ink) !important;
+}
+
+/* ---------- Sidebar ---------- */
+
+#sidebar-content {
+  border-color: var(--cc-line) !important;
+}
+
+.sidebar-group-header {
+  color: var(--cc-ink) !important;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+#sidebar-content a {
+  border-radius: 8px !important;
+}
+
+/* The page you are on: ink text on the soft lime highlighter. */
+#sidebar-content a[aria-current="page"] {
+  background: var(--cc-lime-tint) !important;
+  color: var(--cc-ink) !important;
+}
+
+#sidebar-content a[aria-current="page"] svg {
+  background-color: var(--cc-ink) !important;
+}
+
+/* On this page: the active entry gets the section mark. */
+.toc-item a[data-active="true"] {
+  color: var(--cc-ink) !important;
+  font-weight: 500;
+}
+
+/* ---------- Components ---------- */
+
+.card {
+  border-radius: 12px !important;
+  background: var(--cc-surface) !important;
+  border-color: var(--cc-line) !important;
+  box-shadow: none !important;
+}
+
+.card:hover {
+  border-color: var(--cc-ink-3) !important;
+}
+
+.card [data-component-part="card-title"] {
+  color: var(--cc-ink);
+  font-weight: 600;
+}
+
+.card [data-component-part="card-content"] {
+  color: var(--cc-ink-3);
+}
+
+.card [data-component-part="card-icon"] svg {
+  background-color: var(--cc-ink) !important;
+}
+
+/* Callouts on the v3 tones: neutral note, warn for warnings, pos for tips. */
+.callout {
+  border-radius: 12px !important;
+}
+
+.callout[data-callout-type="note"],
+.callout[data-callout-type="info"] {
+  background: var(--cc-surface) !important;
+  border-color: var(--cc-line) !important;
+}
+
+.callout[data-callout-type="note"] :is([data-component-part="callout-content"], svg),
+.callout[data-callout-type="info"] :is([data-component-part="callout-content"], svg) {
+  color: var(--cc-ink-2) !important;
+}
+
+.callout[data-callout-type="warning"] {
+  background: var(--cc-warn-bg) !important;
+  border-color: color-mix(in srgb, var(--cc-warn) 28%, transparent) !important;
+}
+
+.callout[data-callout-type="warning"] :is([data-component-part="callout-content"], svg) {
+  color: var(--cc-ink) !important;
+}
+
+.callout[data-callout-type="warning"] [data-component-part="callout-icon"] svg {
+  color: var(--cc-warn) !important;
+}
+
+.callout[data-callout-type="tip"],
+.callout[data-callout-type="check"] {
+  background: var(--cc-pos-bg) !important;
+  border-color: color-mix(in srgb, var(--cc-pos) 28%, transparent) !important;
+}
+
+.callout[data-callout-type="tip"] :is([data-component-part="callout-content"], svg),
+.callout[data-callout-type="check"] :is([data-component-part="callout-content"], svg) {
+  color: var(--cc-ink) !important;
+}
+
+.callout[data-callout-type="tip"] [data-component-part="callout-icon"] svg,
+.callout[data-callout-type="check"] [data-component-part="callout-icon"] svg {
+  color: var(--cc-pos) !important;
+}
+
+/* Code blocks: the dark island with a hairline, 12px. */
+.code-block {
+  border-radius: 12px !important;
+  background: var(--cc-code-bg) !important;
+  box-shadow: inset 0 0 0 1px var(--cc-code-line) !important;
+  overflow: hidden;
+}
+
+.code-block [data-component-part="code-block-root"] {
+  background-color: var(--cc-code-bg) !important;
+}
+
+/* Inline code: sunken chip, 6px. */
+.prose :not(pre) > code {
+  background: var(--cc-surface-3) !important;
+  color: var(--cc-ink) !important;
+  border: 0 !important;
+  border-radius: 6px;
+  font-size: 0.86em;
+  padding: 0.12em 0.4em;
+}
+
+/* Tables: dense, tabular figures, small caps-free headers. */
+.mdx-content table {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.mdx-content table th {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cc-ink-3);
+  letter-spacing: 0.01em;
+}
+
+.mdx-content table td {
+  color: var(--cc-ink-2);
+}
+
+/* Mintlify gives every cell 150px minimum, which pushed four-column tables
+   past the text column; let narrow columns shrink instead. */
+.mdx-content table :is(td, th) {
+  min-width: 96px !important;
+}
+
+/* Method chips: 6px, never pills. */
+.method-pill,
+.method-nav-pill,
+[data-badge] {
+  border-radius: 6px !important;
+}
+
+#pagination a {
+  border-radius: 12px !important;
+  border-color: var(--cc-line) !important;
+  background: var(--cc-surface);
+}
+
+#pagination a:hover {
+  border-color: var(--cc-ink-3) !important;
+}
+
+#page-context-menu-button,
+#page-context-menu button {
+  background: var(--cc-surface) !important;
+  border-color: var(--cc-line-3) !important;
+}
+
+#page-context-menu-button {
+  border-radius: 8px 0 0 8px !important;
+}
+
+#page-context-menu > button:last-child {
+  border-radius: 0 8px 8px 0 !important;
+}
+
+#footer {
+  border-color: var(--cc-line) !important;
+}
+
+/* A wider text column on desktop: Mintlify's 88px left gutter and 19rem
+   table of contents left about 470px for text at 1280px, which squeezed the
+   endpoint tables. */
+@media (min-width: 1024px) {
+  #content-container {
+    padding-left: 2.5rem !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  #table-of-contents-layout {
+    width: 16rem !important;
+    padding-left: 1.5rem !important;
+  }
+
+  #table-of-contents {
+    width: 14.5rem !important;
+  }
+}
+
+/* ---------- Home (index.mdx and its pt, es, zh twins, mode: custom) ---------- */
+
+.cc-home {
+  box-sizing: border-box;
+  max-width: 1264px;
+  margin: 0 auto;
+  padding: 56px 32px 96px;
+  color: var(--cc-ink);
+}
+
+.cc-home *,
+.cc-home *::before,
+.cc-home *::after {
+  box-sizing: border-box;
+}
+
+.cc-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 56px;
+  align-items: center;
+  padding-bottom: 56px;
+  border-bottom: 1px solid var(--cc-line);
+}
+
+.cc-eyebrow {
+  margin: 0 0 16px;
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 600;
+  color: var(--cc-ink);
+}
+
+.cc-display {
+  margin: 0;
+  font-size: 66px;
+  line-height: 1.01;
+  letter-spacing: -0.034em;
+  font-weight: 600;
+  color: var(--cc-ink);
+  text-wrap: balance;
+}
+
+.cc-lede {
+  margin: 24px 0 0;
+  max-width: 600px;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--cc-ink-2);
+}
+
+.cc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.cc-home a.cc-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color 150ms ease-out, border-color 150ms ease-out;
+}
+
+.cc-home a.cc-btn-primary {
+  background: var(--cc-brand);
+  color: var(--cc-on-brand);
+}
+
+.cc-home a.cc-btn-primary:hover {
+  background: var(--cc-brand-hover);
+}
+
+.cc-home a.cc-btn-secondary {
+  background: var(--cc-surface);
+  border-color: var(--cc-line-3);
+  color: var(--cc-ink);
+}
+
+.cc-home a.cc-btn-secondary:hover {
+  border-color: var(--cc-ink-3);
+}
+
+/* The record card: the brand fill (ink on light, paper on dark), the one
+   lime highlighter on the page. */
+.cc-record {
+  background: var(--cc-brand);
+  color: var(--cc-on-brand);
+  border-radius: 16px;
+  padding: 24px 24px 20px;
+}
+
+.cc-record-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cc-chip {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--cc-lime);
+  color: var(--cc-on-lime);
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+.cc-record-cadence {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--cc-on-brand-2);
+  text-align: right;
+}
+
+.cc-record-label {
+  margin: 22px 0 4px;
+  font-size: 12px;
+  line-height: 1.45;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cc-on-brand-2);
+}
+
+.cc-record-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cc-record-fields li {
+  margin: 0;
+  padding: 10px 0;
+  border-top: 1px solid color-mix(in srgb, var(--cc-on-brand) 16%, transparent);
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 500;
+  color: var(--cc-on-brand);
+}
+
+.cc-record-note {
+  margin: 14px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--cc-on-brand-2);
+}
+
+.cc-record-file {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--cc-on-brand) 8%, transparent);
+}
+
+.cc-home .cc-record-file code {
+  min-width: 0;
+  padding: 0;
+  background: none !important;
+  color: var(--cc-on-brand) !important;
+  font-size: 12.5px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.cc-record-file span {
+  flex: none;
+  font-size: 12px;
+  line-height: 1.45;
+  font-weight: 600;
+  color: var(--cc-on-brand-2);
+}
+
+.cc-section {
+  padding-top: 84px;
+}
+
+.cc-section-head {
+  margin-bottom: 20px;
+}
+
+.cc-kicker {
+  margin: 0 0 6px;
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cc-ink-3);
+}
+
+.cc-h2 {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.14;
+  letter-spacing: -0.024em;
+  font-weight: 600;
+  color: var(--cc-ink);
+}
+
+.cc-home .card-group {
+  row-gap: 16px !important;
+}
+
+.cc-home .card {
+  height: 100%;
+  margin: 0 !important;
+}
+
+/* Guide cards: icon beside the title, so twelve sections read as an index. */
+.cc-guides .card [data-component-part="card-content-container"] {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  column-gap: 14px;
+  align-items: start;
+  padding: 18px 20px;
+}
+
+.cc-guides .card [data-component-part="card-icon"] {
+  grid-row: 1 / span 2;
+  margin-top: 1px;
+}
+
+.cc-guides .card [data-component-part="card-title"] {
+  margin-top: 0 !important;
+}
+
+.cc-guides .card [data-component-part="card-content"] {
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.cc-dev-text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--cc-ink-2);
+}
+
+.cc-home .cc-dev-text code {
+  padding: 0.12em 0.4em;
+  border-radius: 6px;
+  background: var(--cc-surface-3);
+  color: var(--cc-ink);
+  font-size: 0.86em;
+}
+
+.cc-dev-code .code-block {
+  margin: 16px 0 0;
+}
+
+/* Six links in one box, two columns, rows ruled like a table. */
+.cc-dev-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--cc-line);
+  border-radius: 12px;
+  background: var(--cc-surface);
+  overflow: hidden;
+}
+
+.cc-dev-links li {
+  margin: 0;
+  border-top: 1px solid var(--cc-line);
+}
+
+.cc-dev-links li:nth-child(-n + 2) {
+  border-top: 0;
+}
+
+.cc-dev-links li:nth-child(2n) {
+  border-left: 1px solid var(--cc-line);
+}
+
+.cc-home .cc-dev-links a {
+  display: block;
+  height: 100%;
+  padding: 16px 20px;
+  text-decoration: none;
+  transition: background-color 150ms ease-out;
+}
+
+.cc-home .cc-dev-links a:hover {
+  background: var(--cc-surface-2);
+}
+
+.cc-dev-link-title {
+  display: block;
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--cc-ink);
+}
+
+.cc-dev-link-desc {
+  display: block;
+  margin-top: 2px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--cc-ink-3);
+}
+
+.cc-legal {
+  margin: 84px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--cc-line);
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--cc-ink-3);
+}
+
+@media (max-width: 1023px) {
+  .cc-hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .cc-display {
+    font-size: 54px;
+  }
+}
+
+@media (max-width: 640px) {
+  .cc-home {
+    padding: 32px 16px 56px;
+  }
+
+  .cc-hero {
+    padding-bottom: 40px;
+  }
+
+  .cc-display {
+    font-size: 40px;
+    letter-spacing: -0.03em;
+  }
+
+  .cc-lede {
+    font-size: 16px;
+  }
+
+  .cc-record {
+    border-radius: 14px;
+    padding: 20px 16px 16px;
+  }
+
+  .cc-record-fields li {
+    font-size: 14px;
+  }
+
+  .cc-section {
+    padding-top: 56px;
+  }
+
+  .cc-h2 {
+    font-size: 26px;
+  }
+
+  .cc-dev-links {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cc-dev-links li:nth-child(2) {
+    border-top: 1px solid var(--cc-line);
+  }
+
+  .cc-dev-links li:nth-child(2n) {
+    border-left: 0;
+  }
+
+  .cc-legal {
+    margin-top: 56px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-home a.cc-btn,
+  .cc-home .cc-dev-links a {
+    transition: none;
+  }
+}
+
+/* Chinese headlines: no negative tracking on CJK glyphs. */
+.cc-home:lang(zh) :is(.cc-display, .cc-h2) {
+  letter-spacing: 0;
+}
+
+.cc-home:lang(zh) .cc-kicker {
+  letter-spacing: 0.02em;
+}
+
+.accordion-group,
+.accordion {
+  border-radius: 12px !important;
+  border-color: var(--cc-line) !important;
 }

@@ -1,47 +1,132 @@
 ---
 title: "CCTools Documentation"
 description: "Documentation for CCTools, the public record of the Canton Network: the open daily record, the public API, the project directory, markets, governance and portfolio tools."
+sidebarTitle: "Home"
+mode: "custom"
 ---
 
-CCTools is the public record of the Canton Network: an open daily record of the network to download and cite, a directory of its projects, its markets and governance, and tools to track your own wallets. These docs explain each part of the site and the public API.
+<div className="cc-home" lang="en">
 
-<CardGroup cols={2}>
-  <Card title="Getting Started" icon="book-open" href="/getting-started/what-is-cctools">
-    New to CCTools? What it is, how to create an account and how the site is laid out.
-  </Card>
-  <Card title="Network & Data" icon="chart-column" href="/network/network-stats">
-    The network's figures, where they come from and how often they are read.
-  </Card>
-  <Card title="Ecosystem" icon="globe" href="/ecosystem/browsing-projects">
-    The directory of Canton projects mapped by CCTools, the map and side-by-side comparison.
-  </Card>
-  <Card title="Portfolio" icon="wallet" href="/portfolio/adding-wallets">
-    Your wallets on Canton, EVM and Solana in one view, with their balances and your CC rewards and transfers.
-  </Card>
-  <Card title="Public API" icon="plug" href="/api/overview">
-    Read Canton Network data from your own code, with keys and plans.
-  </Card>
-  <Card title="Library" icon="graduation-cap" href="/academy/academy-overview">
-    Articles on how the network works, and short lessons with a quiz.
-  </Card>
-  <Card title="Campaigns" icon="megaphone" href="/campaigns/how-campaigns-work">
-    Campaigns from Canton Network projects: their tasks, their rewards and who can win.
-  </Card>
-  <Card title="Account & Settings" icon="settings" href="/account/profile-settings">
-    Your profile, Verified, XP and level, settings, alerts and Pro.
-  </Card>
-  <Card title="Canton Network" icon="box" href="/canton-network/what-is-canton">
-    The network, Canton Coin, validators and governance.
-  </Card>
-  <Card title="News" icon="newspaper" href="/news/news-overview">
-    Every story about Canton the news index holds, each opening at its source.
-  </Card>
-  <Card title="Community" icon="users" href="/community/community-rules">
-    Community rules, how to contribute, and frequently asked questions.
-  </Card>
-  <Card title="Troubleshooting" icon="life-buoy" href="/troubleshooting/login-issues">
-    Common issues and how to fix them. Can't find your answer? Contact support.
-  </Card>
-</CardGroup>
+<section className="cc-hero">
+  <div className="cc-hero-copy">
+    <p className="cc-eyebrow">CCTools documentation</p>
+    <h1 className="cc-display">The Canton Network, on the record.</h1>
+    <p className="cc-lede">CCTools keeps the public record of Canton network state: one row per UTC day, derived from Canton Scan, open to download and cite. These docs explain the record, the public API and every part of cctools.network.</p>
+    <div className="cc-actions">
+      <a className="cc-btn cc-btn-primary" href="/network/network-stats">Read about the record</a>
+      <a className="cc-btn cc-btn-secondary" href="/api/quickstart">Make your first API call</a>
+    </div>
+  </div>
+  <div className="cc-record" role="group" aria-label="What a day of the daily record holds">
+    <div className="cc-record-top">
+      <span className="cc-chip">Daily record</span>
+      <span className="cc-record-cadence">One row per UTC day</span>
+    </div>
+    <p className="cc-record-label">What a day holds</p>
+    <ul className="cc-record-fields">
+      <li>Super validators</li>
+      <li>Voting threshold</li>
+      <li>Featured app rights</li>
+      <li>Validator licenses</li>
+      <li>Supply</li>
+      <li>Net supply change</li>
+      <li>Issuance</li>
+      <li>Reference price</li>
+    </ul>
+    <p className="cc-record-note">Provisional until the day settles, then final. A final value changes only through a logged revision.</p>
+    <div className="cc-record-file">
+      <code>/api/open/network-record/v1/daily.csv</code>
+      <span>No key</span>
+    </div>
+  </div>
+</section>
 
-Canton is a registered trademark of Digital Asset (Switzerland) GmbH. Digital Asset is not affiliated with, and has not sponsored or endorsed, CCTools.
+<section className="cc-section">
+  <div className="cc-section-head">
+    <p className="cc-kicker">Start here</p>
+    <h2 className="cc-h2">The record, the API and where the data comes from</h2>
+  </div>
+  <CardGroup cols={3}>
+    <Card title="The Daily Record" icon="calendar-days" href="/network/network-stats">
+      The open daily record of the Canton Network: what a day holds, where it comes from, and how to download and cite it.
+    </Card>
+    <Card title="Public API" icon="plug" href="/api/overview">
+      Read Canton Network data from your own code, with keys and plans.
+    </Card>
+    <Card title="Data Sources & APIs" icon="database" href="/network/data-sources">
+      Where CCTools gets its data, the categories of providers behind it, and how often each surface is refreshed.
+    </Card>
+  </CardGroup>
+</section>
+
+<section className="cc-section cc-dev">
+  <div className="cc-section-head">
+    <p className="cc-kicker">For developers</p>
+    <h2 className="cc-h2">Read the network from your own code</h2>
+  </div>
+  <p className="cc-dev-text">Keyed endpoints live under <code>/api/v1/public/</code> and take your key in the <code>X-API-Key</code> header. The status endpoint answers without one, so this works as is:</p>
+<div className="cc-dev-code">
+
+```bash
+curl https://api.cctools.network/api/v1/public/status
+```
+
+</div>
+  <ul className="cc-dev-links">
+    <li><a href="/api/quickstart"><span className="cc-dev-link-title">Quickstart</span><span className="cc-dev-link-desc">From zero to your first CCTools API call in two minutes.</span></a></li>
+    <li><a href="/api/authentication"><span className="cc-dev-link-title">Authentication & rate limits</span><span className="cc-dev-link-desc">API keys, plans, rate limits, and error handling for the CCTools Public API.</span></a></li>
+    <li><a href="/api/plans"><span className="cc-dev-link-title">Plans and limits</span><span className="cc-dev-link-desc">The plans of the CCTools Public API, with their limits and prices.</span></a></li>
+    <li><a href="/api/endpoints"><span className="cc-dev-link-title">Endpoint reference</span><span className="cc-dev-link-desc">Every endpoint on the CCTools Public API, with a copy-paste example.</span></a></li>
+    <li><a href="/api/x402"><span className="cc-dev-link-title">Pay per call with x402</span><span className="cc-dev-link-desc">Call the paid CCTools route with a Canton x402 payment in CC, USDCx or cETH: no API key and no account.</span></a></li>
+    <li><a href="https://cctools.network/api-docs"><span className="cc-dev-link-title">Try it live</span><span className="cc-dev-link-desc">Run any endpoint against your own key in the browser.</span></a></li>
+  </ul>
+</section>
+
+<section className="cc-section cc-guides">
+  <div className="cc-section-head">
+    <p className="cc-kicker">Guides</p>
+    <h2 className="cc-h2">Every part of cctools.network, explained</h2>
+  </div>
+  <CardGroup cols={3}>
+    <Card title="Getting Started" icon="book-open" href="/getting-started/what-is-cctools">
+      New to CCTools? What it is, how to create an account and how the site is laid out.
+    </Card>
+    <Card title="Ecosystem" icon="globe" href="/ecosystem/browsing-projects">
+      The directory of Canton projects mapped by CCTools, the map and side-by-side comparison.
+    </Card>
+    <Card title="Markets" icon="chart-candlestick" href="/network/markets">
+      The seven Markets pages: DeFi, tokenized assets, tokens, stablecoins, bridges, wallets and custody, and where to get Canton Coin.
+    </Card>
+    <Card title="Canton Network" icon="box" href="/canton-network/what-is-canton">
+      The network, Canton Coin, validators and governance.
+    </Card>
+    <Card title="Portfolio" icon="wallet" href="/portfolio/adding-wallets">
+      Your wallets on Canton, EVM and Solana in one view, with their balances and your CC rewards and transfers.
+    </Card>
+    <Card title="Library" icon="graduation-cap" href="/academy/academy-overview">
+      Articles on how the network works, and short lessons with a quiz.
+    </Card>
+    <Card title="News" icon="newspaper" href="/news/news-overview">
+      Every story about Canton the news index holds, each opening at its source.
+    </Card>
+    <Card title="Account & Settings" icon="settings" href="/account/profile-settings">
+      Your profile, Verified, XP and level, settings, alerts and Pro.
+    </Card>
+    <Card title="Campaigns" icon="megaphone" href="/campaigns/how-campaigns-work">
+      Campaigns from Canton Network projects: their tasks, their rewards and who can win.
+    </Card>
+    <Card title="Community" icon="users" href="/community/community-rules">
+      Community rules, how to contribute, and frequently asked questions.
+    </Card>
+    <Card title="Troubleshooting" icon="life-buoy" href="/troubleshooting/login-issues">
+      Common issues and how to fix them. Can't find your answer? Contact support.
+    </Card>
+    <Card title="Service Status" icon="activity" href="/community/service-status">
+      Real-time uptime and performance monitoring for the CCTools public API.
+    </Card>
+  </CardGroup>
+</section>
+
+<p className="cc-legal">Canton is a registered trademark of Digital Asset (Switzerland) GmbH. Digital Asset is not affiliated with, and has not sponsored or endorsed, CCTools.</p>
+
+</div>

@@ -11,12 +11,12 @@
 
   // Local `mint dev` against a local backend: swap to http://localhost:3002/...
   var ENDPOINT = "https://api.cctools.network/api/ai/docs-chat";
-  var MARK = "/logo/cctools.png"; // CCTools gear-C brand mark
+  var MARK = "/logo/cctools.png"; // CCTools v3 icon (the anteater on lime)
 
   var SUGGESTIONS = [
+    "How do I download the daily record?",
+    "How do I get an API key?",
     "How do I add a wallet?",
-    "How does the XP system work?",
-    "How are campaign winners chosen?",
   ];
 
   var history = [];
@@ -46,10 +46,11 @@
     var dark = isDark();
     var bgRead = rgb(document.body, "backgroundColor");
     if (!opaque(bgRead)) bgRead = rgb(document.documentElement, "backgroundColor");
-    var bg = opaque(bgRead) ? bgRead : (dark ? "#0b0d12" : "#ffffff");
-    var text = rgb(document.body, "color") || (dark ? "#e6e8ec" : "#1c1e26");
+    var bg = opaque(bgRead) ? bgRead : (dark ? "#0b0e0b" : "#f4f5f1");
+    var text = rgb(document.body, "color") || (dark ? "#eef1ea" : "#121612");
     var font = rgb(document.body, "fontFamily") || "inherit";
-    var o = dark ? "255,255,255" : "17,20,28";
+    // v3 green-tinted neutrals: overlays are paper on dark and ink on light.
+    var o = dark ? "238,241,234" : "18,22,18";
     return {
       "--bg": bg,
       "--soft": "rgba(" + o + ",.035)",
@@ -58,10 +59,13 @@
       "--bd": "rgba(" + o + ",.10)",
       "--bdh": "rgba(" + o + ",.18)",
       "--t1": text,
-      "--t2": dark ? "rgba(255,255,255,.6)" : "rgba(17,20,28,.62)",
-      "--accent": dark ? "#e6ff6a" : "#4d7c0f",
-      "--cta": "#e6ff6a",
-      "--oncta": "#0a0c10",
+      "--t2": dark ? "#b6bcb1" : "#5f665d",
+      // v3: the brand is ink on light and paper on dark; lime never paints text or buttons.
+      "--accent": dark ? "#eef1ea" : "#121612",
+      "--cta": dark ? "#eef1ea" : "#121612",
+      "--oncta": dark ? "#121612" : "#ffffff",
+      "--surface": dark ? "#141914" : "#ffffff",
+      "--line3": dark ? "#333b32" : "#d3d7cd",
       "--font": font,
       "--shadow": dark ? "0 1px 2px rgba(0,0,0,.5),0 18px 48px rgba(0,0,0,.5)" : "0 1px 2px rgba(0,0,0,.08),0 18px 48px rgba(0,0,0,.16)",
     };
@@ -72,10 +76,10 @@
     "#ccai{font-family:var(--font);--r:16px;--rs:12px}",
 
     "#ccai-fab{position:fixed;right:22px;bottom:22px;z-index:2147483000;display:flex;align-items:center;gap:8px;",
-    "padding:9px 15px 9px 10px;border:1px solid var(--bd);border-radius:100px;cursor:pointer;",
-    "background:var(--soft);color:var(--t1);font-size:13.5px;font-weight:600;letter-spacing:-.01em;box-shadow:var(--shadow);",
-    "backdrop-filter:blur(8px);transition:background .16s,border-color .16s,transform .16s}",
-    "#ccai-fab:hover{background:var(--cardh);border-color:var(--bdh);transform:translateY(-1px)}",
+    "padding:8px 14px 8px 9px;border:1px solid var(--line3);border-radius:8px;cursor:pointer;",
+    "background:var(--surface);color:var(--t1);font-size:13.5px;font-weight:600;letter-spacing:-.01em;box-shadow:var(--shadow);",
+    "transition:border-color .15s ease-out}",
+    "#ccai-fab:hover{border-color:var(--t2)}",
     "#ccai-fab img{width:22px;height:22px;border-radius:6px;display:block}",
     "#ccai-fab.hide{display:none}",
 
@@ -112,7 +116,7 @@
     ".ccai-a ol{counter-reset:ci}.ccai-a li{position:relative;padding-left:19px;margin:4px 0}",
     ".ccai-a ul li:before{content:'';position:absolute;left:4px;top:8px;width:5px;height:5px;border-radius:50%;background:var(--accent)}",
     ".ccai-a ol li:before{counter-increment:ci;content:counter(ci) '.';position:absolute;left:0;top:0;color:var(--accent);font-weight:600;font-size:12.5px}",
-    ".ccai-a .cct-code{background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:1px 5px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}",
+    ".ccai-a .cct-code{background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:1px 5px;font-family:\"Fragment Mono\",ui-monospace,Menlo,Consolas,monospace;font-size:12px}",
     ".ccai-a .cct-pre{background:var(--soft);border:1px solid var(--bd);border-radius:10px;padding:11px 12px;overflow-x:auto;margin:0 0 9px}",
     ".ccai-a .cct-pre code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;white-space:pre}",
     ".ccai-src{margin-top:13px;display:flex;flex-direction:column;gap:6px}",
