@@ -1015,19 +1015,21 @@ summary:focus-visible,
   border-color: var(--cc-line) !important;
 }
 
-/* Endpoint tables: a path breaks after a slash, never inside a segment. */
+/* Endpoint tables: a path in the first column stays on one line (no break
+   inside a segment, nor at a hyphen such as featured-apps); code in the other
+   columns may still wrap. */
 .mdx-content table td code {
   overflow-wrap: normal !important;
   word-break: normal !important;
 }
 
-.mdx-content table td:first-child:has(> code) {
-  min-width: 14rem !important;
+.mdx-content table td:first-child > code {
+  white-space: nowrap;
 }
 
-/* The theme switch in the top bar: an 8px control, not a pill (spec 4.7). */
-[data-component-name="theme-toggle"],
-[data-component-name="theme-toggle"] button {
+/* The theme menu in the top bar: an 8px control, not a pill (spec 4.7). */
+[data-component-name="theme-preference-menu"],
+[data-component-name="theme-preference-menu"] :is(button, [role="button"]) {
   border-radius: 8px !important;
 }
 
