@@ -39,7 +39,7 @@ curl -H "X-API-Key: cck_your_key_here" \
 | 套餐 | 速率限制 | 谁可以获得 |
 |---|---|---|
 | **Evaluation** | 每分钟 60 次请求，每天 1,000 次调用 | 由我们团队按申请签发的密钥，仅供测试。 |
-| **Pro** | 每分钟 60 次请求，每天 1,000 次调用 | 包含在 [CCTools Pro](https://cctools.network/pro) 订阅中，供个人使用。即时授予，并在订阅有效期内持续有效。 |
+| **Pro** | 每分钟 60 次请求，每天 1,000 次调用 | 包含在 [CCTools Pro](https://cctools.network/pro) 中，供个人使用。即时授予，并在你的 Pro 有效期内持续有效。 |
 | **Data Starter** | 每分钟 120 次请求，每天 20,000 次调用 | 用 Canton Coin 购买，按月或按年。商业使用，需署名。 |
 | **Data Team** | 每分钟 600 次请求，无每日上限 | 用 Canton Coin 购买，按月或按年。商业使用，需署名。 |
 | **Validator** | 无按密钥限制，无每日上限 | 一个 Canton 验证者 party ID。每份提交都由人工审核，通常在一个工作日内完成。有效期 12 个月，免费。 |
@@ -70,7 +70,7 @@ Free 套餐已经结束。用它创建的密钥会返回 `401`，代码为 `tier
 打开 [/profile/api](https://cctools.network/profile/api)。套餐面板会显示你的账户可以选择什么，
 在账户拥有套餐之前，**New key** 保持不可用。
 
-- **Pro**：拥有 [CCTools Pro](https://cctools.network/pro) 订阅时，套餐面板会把 Pro 显示为你的套餐。点击一次 **Set up keys**（曾持有 Free 或评估密钥的账户会看到 **Upgrade to Pro tier**），然后点击 **New key**。
+- **Pro**：拥有 [CCTools Pro](https://cctools.network/pro) 时，套餐面板会把 Pro 显示为你的套餐。点击一次 **Set up keys**（曾持有 Free 或评估密钥的账户会看到 **Upgrade to Pro tier**），然后点击 **New key**。
 - **Evaluation**：想在购买前测试 API，请向我们团队申请评估密钥。从未持有过套餐的账户在该页面提交申请；其他账户请[联系我们](https://cctools.network/contact)。评估密钥由我们团队按申请签发，仅供测试；有效期见[套餐与限制](/zh/api/plans)。
 - **Data Starter 和 Data Team**：**Buy Data Starter** 或 **Buy Data Team**，用 Canton Coin 支付，按月或按年。付款时你需要接受 [API 条款](https://cctools.network/terms/api)。Data 套餐的付款不予退款，法律要求退款的情形除外。套餐不会自动续订：除非你续订，访问权限在周期结束时终止。在相同或更大的 Data 套餐生效期间购买的 Data 套餐，在该套餐结束时开始。正在运行的较小 Data 套餐会在较大的 Data 套餐运行期间暂停，并在其结束后继续。
 - **Validator**：在同一页面提交 party ID。
