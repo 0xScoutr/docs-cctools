@@ -9,7 +9,7 @@ icon: "list"
     (the spec the tree builds: see the header of that script; without --spec it reads the live API)
     Source of truth: cctools2/backend/src/lib/api/openapi-spec.ts */}
 
-All 51 endpoints live under `https://api.cctools.network`, return the
+All 48 endpoints live under `https://api.cctools.network`, return the
 standard `{ data, pagination, meta }` envelope, and require the `X-API-Key`
 header. The one exception is `/api/v1/public/status`, which needs no key and
 answers with its payload directly.
@@ -81,9 +81,6 @@ Canton network data: validators, Super Validators, Featured Apps, governance, CC
 | `GET /api/v1/public/assets` | Canton assets | Personal use | Issuers' CIP-56 asset registries, read by CCTools; the CC supply is from Canton Network Scan |
 | `GET /api/v1/public/assets/{slug}` | Canton asset detail | Personal use | Issuers' CIP-56 asset registries, read by CCTools; the CC supply is from Canton Network Scan |
 | `GET /api/v1/public/cips` | CIP reference corpus | Personal use | Canton Improvement Proposals, a static reference corpus kept by CCTools |
-| `GET /api/v1/public/dev-fund/grants` | Development Fund grants | Personal use | CCTools Dev Fund tracker, read from the Canton Foundation's canton-dev-fund repository on GitHub; the report figures are the Foundation's first report |
-| `GET /api/v1/public/dev-fund/milestones` | Development Fund milestones | Personal use | CCTools Dev Fund tracker, read from the Canton Foundation's canton-dev-fund repository on GitHub; the report figures are the Foundation's first report |
-| `GET /api/v1/public/dev-fund/proposals` | Development Fund proposals | Personal use | CCTools Dev Fund tracker, read from the Canton Foundation's canton-dev-fund repository on GitHub; the report figures are the Foundation's first report |
 | `GET /api/v1/public/featured-apps` | Featured App registry | Data plans | Canton Network Scan, read through api.cantonnodes.com. Reward totals are frozen at the last round the provider aggregated, the round each response gives in rewards_as_of_round, closed at rewards_as_of. |
 | `GET /api/v1/public/featured-apps/{slug}` | Featured App detail | Data plans | Canton Network Scan, read through api.cantonnodes.com. Reward totals are frozen at the last round the provider aggregated, the round each response gives in rewards_as_of_round, closed at rewards_as_of. |
 | `GET /api/v1/public/governance` | Governance proposals | Personal use | Loop Data (formerly Lighthouse) indexer data, cached by CCTools for the proposals; Canton Network Scan for the Super Validators, their count, weights and price votes, the vote threshold and each Super Validator's vote on the open proposals; the CCTools directory for the projects behind requesters, targets and Super Validators |
