@@ -4,9 +4,12 @@
 
 - This is the public documentation for CCTools (cctools.network), the public record of the Canton Network: the open daily record, the public API, the project directory, markets, governance and portfolio tools
 - Pages are MDX files with YAML frontmatter; four locales: English at the root, plus `pt/`, `es/`, `zh/` mirrors
-- Configuration lives in `docs.json`
-- Run `mint dev` to preview locally
-- Run `mint broken-links` to check links
+- Configuration lives in `docs.json`: the menu (tabs, groups, page order per locale), the redirects, the header button, the share card and the footer links
+- The site is built by `site/` (Fumadocs on Next.js, a static export for Cloudflare Pages). It reads the MDX files where they are and `docs.json`; pages never move into `site/`
+- Preview: `pnpm --dir site install` once, then `pnpm --dir site dev` (port 3720)
+- Build and check: `pnpm --dir site build`, then `pnpm --dir site check` (components and icons have shims, every URL Mintlify served still answers, no broken internal link in any locale)
+- A page needs both its file and its path in `docs.json`, or the build stops; a new MDX component or icon name needs its shim in `site/components/mdx.tsx` or `site/components/icon.tsx`
+- Until Mintlify is retired, `mint dev` and `mint broken-links` still work on the same files (`site/` is in `.mintignore`)
 
 ## Hard rules for any automated edit (workflows, agent, review passes)
 

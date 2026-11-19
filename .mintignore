@@ -5,3 +5,6 @@
 # Draft content
 drafts/
 *.draft.mdx
+
+# The Fumadocs site (Next.js) that builds these pages: never Mintlify content
+site/
