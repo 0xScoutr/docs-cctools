@@ -78,8 +78,8 @@ Canton network data: validators, Super Validators, Featured Apps, governance, CC
 
 | Endpoint | Description | Use | Source |
 |---|---|---|---|
-| `GET /api/v1/public/assets` | Canton assets | Personal use | Issuers' CIP-56 asset registries, read by CCTools; the CC supply is from Canton Network Scan |
-| `GET /api/v1/public/assets/{slug}` | Canton asset detail | Personal use | Issuers' CIP-56 asset registries, read by CCTools; the CC supply is from Canton Network Scan |
+| `GET /api/v1/public/assets` | Canton assets | Personal use | Supply from the issuers' CIP-56 asset registries, read by CCTools; the CC supply is from Canton Network Scan. Price from the CCTools token market, made from the Canton venues' public market data |
+| `GET /api/v1/public/assets/{slug}` | Canton asset detail | Personal use | Supply from the issuers' CIP-56 asset registries, read by CCTools; the CC supply is from Canton Network Scan. Price from the CCTools token market, made from the Canton venues' public market data |
 | `GET /api/v1/public/cips` | CIP reference corpus | Personal use | Canton Improvement Proposals, read by CCTools from canton-foundation/cips on GitHub |
 | `GET /api/v1/public/featured-apps` | Featured App registry | Data plans | Canton Network Scan, read through api.cantonnodes.com. Reward totals are frozen at the last round the provider aggregated, the round each response gives in rewards_as_of_round, closed at rewards_as_of. |
 | `GET /api/v1/public/featured-apps/{slug}` | Featured App detail | Data plans | Canton Network Scan, read through api.cantonnodes.com. Reward totals are frozen at the last round the provider aggregated, the round each response gives in rewards_as_of_round, closed at rewards_as_of. |
