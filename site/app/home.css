@@ -1,0 +1,465 @@
+/* ---------- Home (index.mdx and its pt, es, zh twins, mode: custom) ----------
+   Carried over from the approved look's style.css as it was, apart from the
+   two Mintlify hooks (its code block class and its mask icons). The container
+   matches the top bar (1472px, 36px inside), so the logo and the headline
+   share one left edge at every width. */
+.cc-home {
+  box-sizing: border-box;
+  max-width: 1472px;
+  margin: 0 auto;
+  padding: 56px 36px 96px;
+  color: var(--cc-ink);
+}
+
+.cc-home *,
+.cc-home *::before,
+.cc-home *::after {
+  box-sizing: border-box;
+}
+
+.cc-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 56px;
+  align-items: end;
+  padding-bottom: 56px;
+  border-bottom: 1px solid var(--cc-line);
+}
+
+.cc-eyebrow {
+  margin: 0 0 16px;
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 600;
+  color: var(--cc-ink);
+}
+
+.cc-display {
+  margin: 0;
+  font-size: 66px;
+  line-height: 1.01;
+  letter-spacing: -0.034em;
+  font-weight: 600;
+  color: var(--cc-ink);
+  text-wrap: balance;
+}
+
+.cc-lede {
+  margin: 24px 0 0;
+  max-width: 600px;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--cc-ink-2);
+}
+
+.cc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.cc-home a.cc-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color 150ms ease-out, border-color 150ms ease-out;
+}
+
+.cc-home a.cc-btn-primary {
+  background: var(--cc-brand);
+  color: var(--cc-on-brand);
+}
+
+.cc-home a.cc-btn-primary:hover {
+  background: var(--cc-brand-hover);
+}
+
+.cc-home a.cc-btn-secondary {
+  background: var(--cc-surface);
+  border-color: var(--cc-line-3);
+  color: var(--cc-ink);
+}
+
+.cc-home a.cc-btn-secondary:hover {
+  border-color: var(--cc-ink-3);
+}
+
+/* The record card: the brand fill (ink on light, paper on dark), the one
+   lime highlighter on the page. */
+.cc-record {
+  background: var(--cc-brand);
+  color: var(--cc-on-brand);
+  border-radius: 16px;
+  padding: 24px 24px 20px;
+}
+
+.cc-record-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cc-chip {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--cc-lime);
+  color: var(--cc-on-lime);
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+.cc-record-cadence {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--cc-on-brand-2);
+  text-align: right;
+}
+
+.cc-record-label {
+  margin: 22px 0 4px;
+  font-size: 12px;
+  line-height: 1.45;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cc-on-brand-2);
+}
+
+.cc-record-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cc-record-fields li {
+  margin: 0;
+  padding: 10px 0;
+  border-top: 1px solid color-mix(in srgb, var(--cc-on-brand) 16%, transparent);
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 500;
+  color: var(--cc-on-brand);
+}
+
+.cc-record-note {
+  margin: 14px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--cc-on-brand-2);
+}
+
+.cc-record-file {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--cc-on-brand) 8%, transparent);
+}
+
+.cc-home .cc-record-file code {
+  min-width: 0;
+  padding: 0;
+  background: none !important;
+  color: var(--cc-on-brand) !important;
+  font-size: 12.5px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.cc-record-file span {
+  flex: none;
+  font-size: 12px;
+  line-height: 1.45;
+  font-weight: 600;
+  color: var(--cc-on-brand-2);
+}
+
+.cc-section {
+  padding-top: 84px;
+}
+
+.cc-section-head {
+  margin-bottom: 20px;
+}
+
+.cc-kicker {
+  margin: 0 0 6px;
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cc-ink-3);
+}
+
+/* 22px: what the approved renders show (Mintlify's ".mdx-content h2" rule,
+   22px, outranked the 32px this block asked for, and that is the look the
+   owner approved). */
+.cc-h2 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+  color: var(--cc-ink);
+}
+
+.cc-dev-text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--cc-ink-2);
+}
+
+.cc-home .cc-dev-text code {
+  padding: 0.12em 0.4em;
+  border-radius: 6px;
+  background: var(--cc-surface-3);
+  color: var(--cc-ink);
+  font-size: 0.86em;
+}
+
+.cc-dev-code .cc-code {
+  margin: 16px 0 0;
+}
+
+/* The ruled index: one 12px box whose 1px gaps are the rules, so every row
+   of links ends at the same line in every locale (no card with a hole). */
+.cc-index {
+  display: grid;
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--cc-line);
+  border: 1px solid var(--cc-line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.cc-index li {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  background: var(--cc-surface);
+}
+
+.cc-home .cc-index a {
+  display: block;
+  flex: 1;
+  padding: 18px 20px;
+  color: inherit;
+  text-decoration: none;
+  transition: background-color 150ms ease-out;
+}
+
+.cc-home .cc-index a:hover {
+  background: var(--cc-surface-2);
+}
+
+/* Inside the clipped box the ring sits inside the cell (spec 4.8). */
+.cc-home .cc-index a:focus-visible {
+  outline-offset: -2px !important;
+  border-radius: 0;
+}
+
+.cc-index-icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  color: var(--cc-ink);
+}
+
+.cc-index-icon svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.cc-index-title {
+  display: block;
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--cc-ink);
+}
+
+.cc-index-desc {
+  display: block;
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--cc-ink-3);
+}
+
+/* Start here: three wide cells, the icon over the title. */
+.cc-index-start {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cc-home .cc-index-start a {
+  padding: 24px;
+}
+
+.cc-index-start .cc-index-icon {
+  margin-bottom: 11px;
+}
+
+.cc-index-start .cc-index-title {
+  font-size: 17px;
+}
+
+.cc-index-start .cc-index-desc {
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* Developers: six links in two columns, under the command. */
+.cc-index-dev {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 16px;
+}
+
+/* Guides: twelve sections, the icon beside the title. */
+.cc-index-guides {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cc-home .cc-index-guides a {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  column-gap: 14px;
+  align-content: start;
+}
+
+.cc-index-guides .cc-index-icon {
+  grid-row: 1 / span 2;
+  margin-top: 1px;
+}
+
+.cc-legal {
+  margin: 84px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--cc-line);
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--cc-ink-3);
+}
+
+@media (max-width: 1179px) {
+  .cc-display {
+    font-size: 54px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .cc-home {
+    padding: 40px 16px 72px;
+  }
+
+  .cc-hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .cc-index-start {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cc-index-guides {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .cc-home {
+    padding: 32px 16px 56px;
+  }
+
+  .cc-hero {
+    padding-bottom: 40px;
+  }
+
+  .cc-display {
+    font-size: 40px;
+    letter-spacing: -0.03em;
+  }
+
+  .cc-lede {
+    font-size: 16px;
+  }
+
+  .cc-record {
+    border-radius: 14px;
+    padding: 20px 16px 16px;
+  }
+
+  .cc-record-fields li {
+    font-size: 14px;
+  }
+
+  .cc-section {
+    padding-top: 56px;
+  }
+
+  .cc-index-dev,
+  .cc-index-guides {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cc-home .cc-index a,
+  .cc-home .cc-index-start a {
+    padding: 16px;
+  }
+
+  .cc-legal {
+    margin-top: 56px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-home a.cc-btn,
+  .cc-home .cc-index a {
+    transition: none;
+  }
+}
+
+/* Chinese headlines: no negative tracking on CJK glyphs. */
+.cc-home:lang(zh) :is(.cc-display, .cc-h2) {
+  letter-spacing: 0;
+}
+
+/* Break the Chinese headline at its punctuation, not inside a word such as
+   逐日; overflow-wrap still breaks a line that would not fit. */
+.cc-home:lang(zh) .cc-display {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.cc-home:lang(zh) .cc-kicker {
+  letter-spacing: 0.02em;
+}
+
+/* Mintlify's ".mdx-content :is(p, li) { line-height: 1.65 }" outranked the
+   line heights above for every paragraph of the home, and the approved
+   renders show 1.65: keep that. */
+.cc-home :is(p.cc-eyebrow, p.cc-lede, p.cc-record-label, p.cc-record-note, p.cc-kicker, p.cc-dev-text, p.cc-legal) {
+  line-height: 1.65;
+}

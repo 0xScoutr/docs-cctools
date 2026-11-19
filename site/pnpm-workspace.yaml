@@ -1,0 +1,5 @@
+# pnpm 11 stops an install that meets an unapproved build script. esbuild's
+# only script checks its binary, which pnpm already installs as the
+# @esbuild/<platform> package, so it stays off (the build never needed it).
+allowBuilds:
+  esbuild: false

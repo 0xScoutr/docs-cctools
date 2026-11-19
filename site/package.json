@@ -1,0 +1,39 @@
+{
+  "name": "cctools-docs-site",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.15.1",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "prebuild": "node scripts/sync-assets.mjs",
+    "build": "next build && node scripts/postbuild.mjs",
+    "predev": "node scripts/sync-assets.mjs",
+    "dev": "next dev --port 3720",
+    "postinstall": "fumadocs-mdx",
+    "typecheck": "fumadocs-mdx && tsc --noEmit",
+    "serve": "node scripts/serve-out.mjs",
+    "check:urls": "node scripts/check-urls.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "check": "node scripts/check-components.mjs && node scripts/check-urls.mjs && node scripts/check-links.mjs"
+  },
+  "dependencies": {
+    "fumadocs-core": "16.19.4",
+    "fumadocs-mdx": "15.6.3",
+    "fumadocs-ui": "16.19.4",
+    "lucide-react": "1.75.0",
+    "next": "16.4.6",
+    "react": "19.2.9",
+    "react-dom": "19.2.9",
+    "shiki": "4.6.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/mdx": "2.0.14",
+    "@types/node": "22.20.5",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7",
+    "typescript": "5.9.3"
+  }
+}
