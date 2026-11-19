@@ -1209,19 +1209,23 @@ a.cc-card:hover {
   margin: 0 0 8px;
 }
 
-/* Steps. */
-.cc-steps {
+/* Steps (an ol inside the prose: these selectors outrank the prose list rules). */
+.cc-prose ol.cc-steps {
   margin: 0 0 24px;
   padding: 0;
   list-style: none;
   counter-reset: cc-step;
 }
 
-.cc-step {
+.cc-prose ol.cc-steps > li.cc-step {
   position: relative;
   margin: 0;
   padding: 0 0 20px 44px;
   counter-increment: cc-step;
+}
+
+.cc-prose ol.cc-steps > li.cc-step::marker {
+  content: none;
 }
 
 .cc-step::before {
@@ -1252,7 +1256,7 @@ a.cc-card:hover {
   background: var(--cc-line-3);
 }
 
-.cc-step:last-child {
+.cc-prose ol.cc-steps > li.cc-step:last-child {
   padding-bottom: 0;
 }
 
