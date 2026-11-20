@@ -8,8 +8,9 @@
 - The site is built by `site/` (Fumadocs on Next.js, a static export for Cloudflare Pages). It reads the MDX files where they are and `docs.json`; pages never move into `site/`
 - Preview: `pnpm --dir site install` once, then `pnpm --dir site dev` (port 3720)
 - Build and check: `pnpm --dir site build`, then `pnpm --dir site check` (components and icons have shims, every URL Mintlify served still answers, no broken internal link in any locale)
-- A page needs both its file and its path in `docs.json`, or the build stops; a new MDX component or icon name needs its shim in `site/components/mdx.tsx` or `site/components/icon.tsx`
+- A page needs both its file and its path in `docs.json`, or the build stops; a new MDX component needs its shim in `site/components/mdx.tsx` and its Markdown in `site/scripts/mdx-to-md.mjs`, and a new icon name its entry in `site/components/icon.tsx`
 - Until Mintlify is retired, `mint dev` and `mint broken-links` still work on the same files (`site/` is in `.mintignore`)
+- Hosting: Cloudflare Pages, project root directory `site`, build command `pnpm build`, output directory `out`, production branch `main`, environment variables `NODE_VERSION=22` and `PNPM_VERSION=11.15.1` (`site/.node-version` says 22 too). The build writes `_redirects` (from `docs.json`, plus `/mcp` to the CCTools MCP server) and `_headers` into `out`
 
 ## Hard rules for any automated edit (workflows, agent, review passes)
 
