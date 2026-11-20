@@ -1,28 +1,46 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Check, ChevronDown, Copy, FileText } from 'lucide-react';
+import { Check, ChevronDown, Copy, FileText, Plug } from 'lucide-react';
+import { MCP_ENDPOINT } from '@/lib/i18n';
 import { useUi } from './ui-context';
 import { useDismiss } from './use-dismiss';
 
 /**
- * "Copy page" and its menu, as Mintlify's contextual menu had them (copy and
- * view). The Markdown is the page's own .md file, written at build next to
- * the page (scripts/postbuild.mjs), at the URL Mintlify used: <page>.md.
+ * "Copy page" and its menu, as Mintlify's contextual menu had them: copy and
+ * view the page as Markdown (its own .md file, written at build next to the
+ * page by scripts/postbuild.mjs, at the URL Mintlify used: <page>.md), and the
+ * MCP server. Mintlify's "mcp" and "add-mcp" offered its own server at /mcp,
+ * which searched these docs; that address now redirects to the CCTools MCP
+ * server, whose search_docs tool does the same search beside the data tools,
+ * so the menu copies that server's address.
  */
 export function PageActions({ markdownUrl, className }: { markdownUrl: string; className?: string }) {
   const t = useUi();
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [copiedMcp, setCopiedMcp] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const close = useCallback(() => setOpen(false), []);
   useDismiss(ref, open, close);
 
   useEffect(() => {
-    if (!copied) return;
-    const id = window.setTimeout(() => setCopied(false), 1600);
+    if (!copied && !copiedMcp) return;
+    const id = window.setTimeout(() => {
+      setCopied(false);
+      setCopiedMcp(false);
+    }, 1600);
     return () => window.clearTimeout(id);
-  }, [copied]);
+  }, [copied, copiedMcp]);
+
+  async function copyMcp() {
+    try {
+      await navigator.clipboard.writeText(MCP_ENDPOINT);
+      setCopiedMcp(true);
+    } catch {
+      setCopiedMcp(false);
+    }
+  }
 
   async function copy() {
     close();
@@ -72,6 +90,15 @@ export function PageActions({ markdownUrl, className }: { markdownUrl: string; c
                 <small>{t.viewMarkdownHint}</small>
               </span>
             </a>
+          </li>
+          <li role="none">
+            <button type="button" role="menuitem" className="cc-menu-item" onClick={copyMcp}>
+              {copiedMcp ? <Check aria-hidden="true" strokeWidth={1.75} /> : <Plug aria-hidden="true" strokeWidth={1.75} />}
+              <span className="cc-menu-item-text">
+                {copiedMcp ? t.copied : t.copyMcp}
+                <small>{t.copyMcpHint}</small>
+              </span>
+            </button>
           </li>
         </ul>
       ) : null}

@@ -1,4 +1,7 @@
 export const locales = ['en', 'es', 'pt', 'zh'] as const;
+
+/** The CCTools MCP server: the data tools and search_docs, the docs search Mintlify's /mcp offered. */
+export const MCP_ENDPOINT = 'https://api.cctools.network/api/mcp';
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = 'en';
 
@@ -56,6 +59,8 @@ interface UiStrings {
   copyPageHint: string;
   viewMarkdown: string;
   viewMarkdownHint: string;
+  copyMcp: string;
+  copyMcpHint: string;
   moreActions: string;
   previous: string;
   next: string;
@@ -92,6 +97,8 @@ export const ui: Record<Locale, UiStrings> = {
     copyPageHint: 'Copy this page as Markdown for LLMs',
     viewMarkdown: 'View as Markdown',
     viewMarkdownHint: 'View this page as plain text',
+    copyMcp: 'Copy MCP server',
+    copyMcpHint: 'The CCTools MCP server: these docs and the data',
     moreActions: 'More actions',
     previous: 'Previous',
     next: 'Next',
@@ -125,6 +132,8 @@ export const ui: Record<Locale, UiStrings> = {
     copyPageHint: 'Copia esta página en Markdown para LLMs',
     viewMarkdown: 'Ver como Markdown',
     viewMarkdownHint: 'Ver esta página como texto plano',
+    copyMcp: 'Copiar servidor MCP',
+    copyMcpHint: 'El servidor MCP de CCTools: esta documentación y los datos',
     moreActions: 'Más acciones',
     previous: 'Anterior',
     next: 'Siguiente',
@@ -158,6 +167,8 @@ export const ui: Record<Locale, UiStrings> = {
     copyPageHint: 'Copie esta página em Markdown para LLMs',
     viewMarkdown: 'Ver como Markdown',
     viewMarkdownHint: 'Veja esta página como texto simples',
+    copyMcp: 'Copiar servidor MCP',
+    copyMcpHint: 'O servidor MCP da CCTools: esta documentação e os dados',
     moreActions: 'Mais ações',
     previous: 'Anterior',
     next: 'Próximo',
@@ -191,6 +202,8 @@ export const ui: Record<Locale, UiStrings> = {
     copyPageHint: '将本页复制为 Markdown，供 LLM 使用',
     viewMarkdown: '以 Markdown 查看',
     viewMarkdownHint: '以纯文本查看本页',
+    copyMcp: '复制 MCP 服务器',
+    copyMcpHint: 'CCTools 的 MCP 服务器：本文档和数据',
     moreActions: '更多操作',
     previous: '上一页',
     next: '下一页',
