@@ -49,9 +49,10 @@ requisições. Ele é devolvido em toda resposta como `meta.tier`.
 <Warning>
 Sem limite por chave não é o mesmo que sem limite. Toda requisição para
 `/api/`, em qualquer plano, inclusive o Validator, também conta para um teto de
-**600 requisições por minuto por endereço IP**. Violações sustentadas escalam
-para um bloqueio temporário do IP, então recue diante de um `429` em vez de
-repetir na hora. Planeja um backfill que precise de mais? Fale conosco antes.
+**600 requisições por minuto por endereço IP**. Ir muito além dele, várias
+vezes o teto em um minuto, escala para um bloqueio temporário do IP, então
+recue diante de um `429` em vez de repetir na hora. Planeja um backfill que
+precise de mais? Fale conosco antes.
 </Warning>
 
 Os limites são contados de formas diferentes. O limite por minuto é por chave e
@@ -108,11 +109,14 @@ encerrada é estendida pela nossa equipe, então [fale conosco](https://cctools.
 
 Dois limites contam as suas chamadas.
 
-O **limite por minuto** é contado por chave, por endpoint, por minuto, **por processo**. A
-API roda como um cluster multiprocesso em que cada processo mantém o próprio
-contador, então um cliente que espalha requisições por muitas conexões pode
-ultrapassar o número informado antes que algo o barre. Trate o número como a
-taxa sustentada para a qual projetar, não como um teto a ser testado.
+O **limite por minuto** é contado por chave e endpoint a cada minuto, por todos
+os processos da API juntos, então o número da tabela é o que você recebe, como
+quer que espalhe as requisições pelas conexões. (Se essa contagem compartilhada
+ficar indisponível, cada processo conta por conta própria até ela voltar.) O
+teto de 600 requisições por minuto por endereço IP é contado do mesmo jeito: uma
+vez por IP, em toda a API. Webhooks que nossos provedores nos enviam não são
+chamadas da API e são contados à parte. Trate o limite por minuto como a taxa
+sustentada para a qual projetar, não como um teto a ser testado.
 
 Quando você de fato ultrapassa, recebe `429` com um cabeçalho `Retry-After: 60`:
 
