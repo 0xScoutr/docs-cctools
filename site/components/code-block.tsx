@@ -31,15 +31,17 @@ export function CodeBlock({ children, className, style, ...rest }: ComponentProp
       <pre ref={ref} className={className} style={style} {...rest}>
         {children}
       </pre>
-      <button
-        type="button"
-        className="cc-icon-btn cc-code-copy"
-        onClick={copy}
-        aria-label={copied ? t.copiedCode : t.copyCode}
-        title={copied ? t.copiedCode : t.copyCode}
-      >
-        {copied ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}
-      </button>
+      <div className="cc-code-actions">
+        <button
+          type="button"
+          className="cc-icon-btn cc-code-copy"
+          onClick={copy}
+          aria-label={copied ? t.copiedCode : t.copyCode}
+          title={copied ? t.copiedCode : t.copyCode}
+        >
+          {copied ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}
+        </button>
+      </div>
     </div>
   );
 }
