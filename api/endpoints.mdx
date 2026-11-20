@@ -43,9 +43,10 @@ indistinguishable from a slug that does not exist.
 <Warning>
 **There is a per-IP ceiling on top of your key's limit.** Every request to
 `/api/`, on every tier including Validator, counts against 600 requests per
-minute per IP address. Sustained breaches escalate to a temporary IP block, so
-back off when you see a `429` instead of retrying immediately. If you need a
-higher ceiling for a backfill, ask before you run it.
+minute per IP address. Going far past it, several times the ceiling within one
+minute, escalates to a temporary IP block, so back off when you see a `429`
+instead of retrying immediately. If you need a higher ceiling for a backfill,
+ask before you run it.
 </Warning>
 
 <Note>
