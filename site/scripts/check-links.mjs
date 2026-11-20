@@ -37,6 +37,8 @@ function follow(pathname) {
     const r = resolvePath(current);
     if (r.location) {
       current = r.location;
+      // A link that leaves the site through a redirect is an external link: not fetched.
+      if (/^https?:\/\//.test(current)) return { status: 200, file: 'offsite' };
       continue;
     }
     return r;

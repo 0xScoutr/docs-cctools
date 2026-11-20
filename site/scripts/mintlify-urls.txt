@@ -2,6 +2,10 @@
 # Built on 19/11/2026 from docs-cctools origin/main 5765e8a (every page file, the docs.json navigation and redirects, which Mintlify
 # serves today) and from this tree's docs.json (the v3 navigation and redirects). A "/:slug*" redirect is checked with sample paths.
 # scripts/check-urls.mjs reads it; it also checks <page>.md for every page of this tree and the files Mintlify served (llms.txt and so on).
+# Added 19/11/2026 from what Mintlify answers (not in the repo): the home pages as Markdown at their file path and at
+# their URL, /.well-known/llms.txt, and its MCP at /mcp and /.well-known/mcp.json (now our MCP server, see scripts/lib.mjs).
+# Not carried over, checked as 404 by check-urls.mjs: /AGENTS (this repository's agent instructions, which Mintlify
+# published as a page by accident) and /skill.md (text Mintlify wrote for its own MCP).
 /academy/academy-overview
 /academy/reading-upvoting-posts
 /academy/writing-posts
@@ -306,3 +310,13 @@
 /zh/account/verified
 /zh/account/alerts
 /en/getting-started/what-is-cctools
+/index.md
+/es.md
+/pt.md
+/zh.md
+/es/index.md
+/pt/index.md
+/zh/index.md
+/.well-known/llms.txt
+/mcp
+/.well-known/mcp.json

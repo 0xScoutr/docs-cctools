@@ -8,6 +8,8 @@ export const SITE = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 export const ROOT = resolve(SITE, '..');
 export const OUT = join(SITE, 'out');
 export const ORIGIN = 'https://docs.cctools.network';
+/** The CCTools MCP server: the data tools and search_docs, the search Mintlify's /mcp offered. */
+export const MCP_ENDPOINT = 'https://api.cctools.network/api/mcp';
 export const LOCALES = ['en', 'es', 'pt', 'zh'];
 export const HTML_LANG = { en: 'en', es: 'es', pt: 'pt-BR', zh: 'zh-CN' };
 
@@ -65,6 +67,15 @@ export function pagesRedirects() {
     const to = destination.replace(/\/:[A-Za-z]+\*$/, '/:splat');
     return { from, to, status: permanent === false ? 302 : 301 };
   });
+}
+
+/**
+ * The site's own redirects, after docs.json's. /mcp was Mintlify's MCP server, which searched these docs; ours
+ * answers the same search with search_docs. 308 keeps the method and the body, so an MCP client's POST arrives as
+ * it was sent.
+ */
+export function extraRedirects() {
+  return [{ from: '/mcp', to: MCP_ENDPOINT, status: 308 }];
 }
 
 /** Resolve a path against the redirect rules: the target, or undefined. */

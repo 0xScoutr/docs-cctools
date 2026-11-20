@@ -1,11 +1,13 @@
 // Every URL docs.cctools.network answers today must answer on the new site:
 // each line of mintlify-urls.txt (the pages and redirects Mintlify serves),
 // every page of this tree and its .md twin, and the files Mintlify served
-// beside them. A redirect counts when its chain ends on a page (200).
+// beside them. A redirect counts when its chain ends on a page (200), or on
+// the one address off this site it may lead to (our MCP server, for /mcp).
+// The two URLs left behind on purpose must answer 404.
 // Runs on out/ with the Cloudflare Pages rules of serve-out.mjs; no server.
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { OUT, ROOT, navPages, readPage } from './lib.mjs';
+import { MCP_ENDPOINT, OUT, ROOT, navPages, readPage } from './lib.mjs';
 import { resolvePath } from './serve-out.mjs';
 
 const baseline = readFileSync(join(import.meta.dirname, 'mintlify-urls.txt'), 'utf8')
@@ -15,10 +17,16 @@ const baseline = readFileSync(join(import.meta.dirname, 'mintlify-urls.txt'), 'u
 
 const pages = navPages();
 const pageUrls = pages.map((p) => p.url);
-const markdownUrls = pages.filter((p) => readPage(p.path).data.mode !== 'custom').map((p) => `${p.url}.md`);
+const markdownUrls = pages.map((p) => (p.url === '/' ? '/index.md' : `${p.url}.md`));
+/** Off this site, only these may end a redirect chain. */
+const OFFSITE = new Set([MCP_ENDPOINT]);
+/** Mintlify answered these and the new site lets them go (mintlify-urls.txt says why). */
+const RETIRED = ['/AGENTS', '/skill.md'];
 const files = [
   '/llms.txt',
   '/llms-full.txt',
+  '/.well-known/llms.txt',
+  '/.well-known/mcp.json',
   '/sitemap.xml',
   '/robots.txt',
   '/favicon.png',
@@ -44,6 +52,7 @@ function follow(url) {
     if (r.location) {
       current = r.location;
       chain.push(`${r.status} ${current}`);
+      if (/^https?:\/\//.test(current)) return { status: OFFSITE.has(current) ? 200 : 'offsite', chain, offsite: current };
       continue;
     }
     return { status: r.status, chain, file: r.file };
@@ -75,6 +84,14 @@ for (const [name, urls] of groups) {
   summary.push(`${name}: ${urls.length} URLs, ${direct} pages, ${redirected} redirects to a page, ${urls.length - direct - redirected} failing`);
 }
 
+for (const url of RETIRED) {
+  const r = resolvePath(url);
+  if (r.status !== 404) {
+    failures++;
+    console.log(`FAIL ${url} -> ${r.status} (retired on purpose, expected 404)`);
+  }
+}
+
 // A missing URL answers 404 with the nearest 404 page (es/... gets es/404.html).
 for (const [url, expected] of [
   ['/no-such-page', '404.html'],
@@ -90,5 +107,6 @@ for (const [url, expected] of [
 }
 
 for (const line of summary) console.log(line);
+console.log(`Retired on purpose, answering 404: ${RETIRED.join(', ')}`);
 console.log(failures ? `\n${failures} failing` : '\nAll URLs answer.');
 process.exit(failures ? 1 : 0);

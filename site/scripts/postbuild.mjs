@@ -1,16 +1,30 @@
 // After `next build` has exported the pages to out/, write what Mintlify used
 // to serve beside them, at the same URLs:
-//   _redirects        docs.json redirects, as Cloudflare Pages rules
+//   _redirects        docs.json redirects, as Cloudflare Pages rules, then /mcp
 //   _headers          cache and type headers for Cloudflare Pages
-//   <page>.md         each page as Markdown ("Copy page", "View as Markdown")
-//   llms.txt          the index of the English pages
+//   <page>.md         each page as plain Markdown ("Copy page", "View as Markdown"),
+//                     the home pages too (index.md; es/index.md and es.md; ...)
+//   llms.txt          the index of the English pages, also at /.well-known/llms.txt
 //   llms-full.txt     every English page in full, "# Title" then "Source: <url>",
 //                     the layout the cctools2 docs chat parses (docs-retrieval.ts)
+//   .well-known/mcp.json  the MCP server that took over from Mintlify's: ours
 //   sitemap.xml, robots.txt
 // and set <html lang> in the Spanish, Portuguese and Chinese HTML files.
 import { copyFileSync, existsSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join, relative, sep } from 'node:path';
-import { HTML_LANG, LOCALES, ORIGIN, OUT, docsJson, navPages, pagesRedirects, readPage } from './lib.mjs';
+import {
+  HTML_LANG,
+  LOCALES,
+  MCP_ENDPOINT,
+  ORIGIN,
+  OUT,
+  docsJson,
+  extraRedirects,
+  navPages,
+  pagesRedirects,
+  readPage,
+} from './lib.mjs';
+import { createConverter } from './mdx-to-md.mjs';
 
 if (!existsSync(OUT)) throw new Error('out/ is missing: run next build first');
 
@@ -54,8 +68,8 @@ function flattenSegments(dir) {
 }
 const flattened = flattenSegments(OUT);
 
-// 1. Redirects.
-const rules = pagesRedirects();
+// 1. Redirects: docs.json's, then the site's own (/mcp, see lib.mjs).
+const rules = [...pagesRedirects(), ...extraRedirects()];
 write('_redirects', `${rules.map((r) => `${r.from} ${r.to} ${r.status}`).join('\n')}\n`);
 
 // 2. Headers.
@@ -70,6 +84,11 @@ write(
     '  Content-Type: text/plain; charset=utf-8',
     '/llms-full.txt',
     '  Content-Type: text/plain; charset=utf-8',
+    '/.well-known/llms.txt',
+    '  Content-Type: text/plain; charset=utf-8',
+    '/.well-known/mcp.json',
+    '  Content-Type: application/json; charset=utf-8',
+    '  Access-Control-Allow-Origin: *',
     '/*',
     '  X-Content-Type-Options: nosniff',
     '  Referrer-Policy: strict-origin-when-cross-origin',
@@ -77,14 +96,32 @@ write(
   ].join('\n'),
 );
 
-// 3. One Markdown file per page, beside its HTML.
+// 3. One Markdown file per page, beside its HTML: the MDX as plain Markdown
+// (no MDX comment, import or component tag; Mintlify's had none either). A
+// home page is written at its file path and at its URL, as Mintlify served
+// both: index.md; es/index.md and es.md; pt/index.md and pt.md; ...
+const converters = Object.fromEntries(LOCALES.map((l) => [l, createConverter({ locale: l })]));
+const markdownBody = (page) => converters[page.locale](readPage(page.path).body);
+
+/** Outside code, an MDX tag or comment left in the Markdown is a conversion that failed: stop the build. */
+function assertPlainMarkdown(name, markdown) {
+  const prose = markdown.replace(/```[\s\S]*?```/g, '').replace(/`[^`\n]*`/g, '');
+  const left = prose.match(/<\/?[A-Z][A-Za-z]*[\s/>]|\{\/\*/);
+  if (left) throw new Error(`${name}: MDX left in the Markdown near "${prose.slice(Math.max(0, left.index - 40), left.index + 40)}"`);
+}
+
 let markdownCount = 0;
 for (const page of pages) {
-  if (isHome(page)) continue;
-  const { data, body } = readPage(page.path);
+  const { data } = readPage(page.path);
   const head = `# ${data.title}\n\n${data.description ? `> ${data.description}\n\n` : ''}`;
-  write(`${page.path}.md`, `${head}${body.trimEnd()}\n`);
-  markdownCount++;
+  const markdown = `${head}${markdownBody(page)}\n`;
+  assertPlainMarkdown(page.path, markdown);
+  const targets = new Set([`${page.path}.md`]);
+  if (page.url !== '/' && page.url.slice(1) !== page.path) targets.add(`${page.url.slice(1)}.md`);
+  for (const target of targets) {
+    write(target, markdown);
+    markdownCount++;
+  }
 }
 
 // 4. llms.txt and llms-full.txt: the English pages, in menu order (as
@@ -107,14 +144,37 @@ const llms = [
   '',
 ].join('\n');
 write('llms.txt', llms);
+write('.well-known/llms.txt', llms);
 
 const full = english
   .map((p) => {
-    const { data, body } = readPage(p.path);
-    return `# ${data.title}\nSource: ${ORIGIN}${p.url}\n\n${body.trimEnd()}\n`;
+    const { data } = readPage(p.path);
+    return `# ${data.title}\nSource: ${ORIGIN}${p.url}\n\n${markdownBody(p)}\n`;
   })
   .join('\n\n');
+assertPlainMarkdown('llms-full.txt', full);
 write('llms-full.txt', `${full}\n`);
+
+// 4b. The MCP server. Mintlify served one at /mcp that searched these docs;
+// ours, at api.cctools.network, has the same search (search_docs) beside the
+// CCTools data tools, so /mcp redirects there and this card describes it.
+write(
+  '.well-known/mcp.json',
+  `${JSON.stringify(
+    {
+      name: 'cctools',
+      title: 'CCTools',
+      description:
+        'Read-only MCP server of CCTools, the public record of the Canton Network: a search of this documentation (search_docs) and the CCTools data tools (projects, campaigns, network figures, governance, news, CIPs). No key and no account.',
+      url: MCP_ENDPOINT,
+      transport: { type: 'streamable-http', url: MCP_ENDPOINT },
+      authentication: { required: false },
+      documentation: `${ORIGIN}/api/overview`,
+    },
+    null,
+    2,
+  )}\n`,
+);
 
 // 5. Sitemap, with each page's other languages, and robots.txt.
 const byBare = new Map();
