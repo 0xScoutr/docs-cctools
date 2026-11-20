@@ -1028,9 +1028,12 @@ html.dark .cc-logo .cc-logo-dark {
   top: 0;
   right: 0;
   display: flex;
-  align-items: center;
-  height: 50px;
-  padding: 0 10px 0 28px;
+  align-items: flex-start;
+  /* One line: 13px of padding and the 24px first line, so a second line is
+     never covered; the 30px button keeps its place, 10px down. */
+  height: 37px;
+  padding: 10px 10px 0 28px;
+  box-sizing: border-box;
   border-top-right-radius: 11px;
   background: linear-gradient(to right, transparent, var(--cc-code-bg) 22px);
 }
