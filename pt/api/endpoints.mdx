@@ -46,7 +46,7 @@ existe.
 **Existe um teto por IP além do limite da sua chave.** Toda requisição a
 `/api/`, em todos os tiers incluindo o Validator, conta contra um teto de 600
 requisições por minuto por endereço IP. Ir muito além dele, várias vezes o teto
-em um minuto, escala para um bloqueio temporário do IP, então recue quando vir
+em um minuto, pode levar a um bloqueio temporário do IP, então recue quando vir
 um `429` em vez de tentar de novo na hora. Se você precisa de um teto maior para uma carga histórica, avise
 antes de rodar.
 </Warning>

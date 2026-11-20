@@ -50,7 +50,7 @@ Se refleja en cada respuesta como `meta.tier`.
 Sin límite por clave no es lo mismo que sin límite. Cada solicitud a `/api/`,
 en todos los planes incluido Validator, también cuenta contra un techo de **600
 solicitudes por minuto por dirección IP**. Pasarte mucho de él, varias veces el
-techo en un minuto, escala a un bloqueo temporal de la IP, así que espera tras
+techo en un minuto, puede llevar a un bloqueo temporal de la IP, así que espera tras
 un `429` en lugar de reintentar de inmediato. ¿Planeas un backfill que necesite
 más que eso? Consúltanos antes.
 </Warning>

@@ -47,7 +47,7 @@ un slug que no existe.
 **Hay un tope por IP además del límite de tu clave.** Cada solicitud a
 `/api/`, en todos los tiers incluido Validator, cuenta contra un tope de 600
 solicitudes por minuto por dirección IP. Pasarte mucho de él, varias veces el
-tope en un minuto, escala a un bloqueo temporal de la IP, así que retrocede
+tope en un minuto, puede llevar a un bloqueo temporal de la IP, así que retrocede
 cuando veas un `429` en lugar de reintentar de inmediato. Si necesitas un tope mayor para una carga histórica,
 avísanos antes de ejecutarla.
 </Warning>

@@ -51,7 +51,7 @@ echoed on every response as `meta.tier`.
 No per-key limit is not the same as no limit. Every request to `/api/`, on
 every plan including Validator, also counts against a ceiling of **600
 requests per minute per IP address**. Going far past it, several times the
-ceiling within one minute, escalates to a temporary block on the IP, so back
+ceiling within one minute, can lead to a temporary block on the IP, so back
 off on a `429` rather than retrying at once. Planning a backfill that needs
 more than that? Ask us first.
 </Warning>

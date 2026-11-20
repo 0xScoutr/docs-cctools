@@ -50,7 +50,7 @@ requisições. Ele é devolvido em toda resposta como `meta.tier`.
 Sem limite por chave não é o mesmo que sem limite. Toda requisição para
 `/api/`, em qualquer plano, inclusive o Validator, também conta para um teto de
 **600 requisições por minuto por endereço IP**. Ir muito além dele, várias
-vezes o teto em um minuto, escala para um bloqueio temporário do IP, então
+vezes o teto em um minuto, pode levar a um bloqueio temporário do IP, então
 recue diante de um `429` em vez de repetir na hora. Planeja um backfill que
 precise de mais? Fale conosco antes.
 </Warning>

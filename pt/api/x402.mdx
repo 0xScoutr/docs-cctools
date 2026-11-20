@@ -151,7 +151,7 @@ const { data } = await res.json();
 | `402`, primeira chamada | Nenhum pagamento anexado. A lista de preços está no header `PAYMENT-REQUIRED`. |
 | `402`, com pagamento | Recusado, com o motivo: a entrada não corresponde ao preço, o facilitador considerou a transferência inválida ou ela não foi liquidada. |
 | `400` | O header `PAYMENT-SIGNATURE` não é JSON em base64. |
-| `429` | Mais de 600 requisições por minuto de um mesmo IP em toda a API, recusadas antes de a rota rodar, então nenhum pagamento é pedido nem liquidado. `Retry-After: 60`. Um IP que vai muito além dele, várias vezes o teto em um minuto, fica bloqueado por um tempo (`403`). |
+| `429` | Mais de 600 requisições por minuto de um mesmo IP em toda a API, recusadas antes de a rota rodar, então nenhum pagamento é pedido nem liquidado. `Retry-After: 60`. Um IP que chega a várias vezes esse teto em um minuto fica bloqueado por um tempo (`403`). |
 | `502` | O facilitador não respondeu ao conferir ou liquidar, ou a fonte de dados não respondeu depois que o pagamento foi liquidado. Confira sua carteira antes de pagar de novo. |
 | `503` | Os dados não estão disponíveis ou a última leitura bem-sucedida tem mais de 30 minutos (`Retry-After: 60`), ou a configuração de pagamento está indisponível (após uma falha na configuração, `Retry-After` informa os segundos até a próxima tentativa). Nenhum pagamento é pedido nem liquidado. |
 | `200` | Pago e entregue, com um recibo `PAYMENT-RESPONSE`. |
