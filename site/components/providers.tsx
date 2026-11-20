@@ -1,9 +1,10 @@
 'use client';
 
-import { type ReactNode, useEffect } from 'react';
+import type { ReactNode } from 'react';
 import { RootProvider } from 'fumadocs-ui/provider/next';
 import { defaultLocale, type Locale, localeNames, locales, ui } from '@/lib/i18n';
 import CCSearchDialog from './search-dialog';
+import { SynchroDock } from './synchro-dock';
 import { UiProvider } from './ui-context';
 
 /**
@@ -30,22 +31,8 @@ export function Providers({ locale, children }: { locale: Locale; children: Reac
     >
       <UiProvider locale={locale}>
         {children}
-        <SynchroBubble />
+        <SynchroDock />
       </UiProvider>
     </RootProvider>
   );
-}
-
-/** The "Ask Synchro" bubble (it was assistant.js on Mintlify), mounted once. */
-function SynchroBubble() {
-  useEffect(() => {
-    let cancelled = false;
-    import('./synchro-widget').then(({ mountSynchro }) => {
-      if (!cancelled) mountSynchro();
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-  return null;
 }

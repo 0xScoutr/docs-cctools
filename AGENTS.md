@@ -9,6 +9,7 @@
 - Preview: `pnpm --dir site install` once, then `pnpm --dir site dev` (port 3720)
 - Build and check: `pnpm --dir site build`, then `pnpm --dir site check` (components and icons have shims, every URL Mintlify served still answers, no broken internal link in any locale)
 - A page needs both its file and its path in `docs.json`, or the build stops; a new MDX component needs its shim in `site/components/mdx.tsx` and its Markdown in `site/scripts/mdx-to-md.mjs`, and a new icon name its entry in `site/components/icon.tsx`
+- Synchro on the docs is the site's own assistant, not a docs bot: `site/components/synchro-dock.tsx` loads `https://cctools.network/synchro-dock.js` (built in the cctools2 repo), which shows the site's Synchro in a frame. The docs hold no chat code and call no API; the button, the chat and the answers change in cctools2 only. `NEXT_PUBLIC_SYNCHRO_ORIGIN` points a local build at a local site
 - Until Mintlify is retired, `mint dev` and `mint broken-links` still work on the same files (`site/` is in `.mintignore`)
 - Hosting: Cloudflare Pages, project root directory `site`, build command `pnpm build`, output directory `out`, production branch `main`, environment variables `NODE_VERSION=22` and `PNPM_VERSION=11.15.1` (`site/.node-version` says 22 too). The build writes `_redirects` (from `docs.json`, plus `/mcp` to the CCTools MCP server) and `_headers` into `out`
 

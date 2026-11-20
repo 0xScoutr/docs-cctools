@@ -1668,9 +1668,10 @@ a.cc-card:hover {
   }
 }
 
-/* The drawer (mobile menu); the Synchro bubble steps aside while it is open. */
-body.cc-drawer-open #ccai-fab {
-  display: none !important;
+/* The drawer (mobile menu); Synchro's frame (components/synchro-dock.tsx) steps aside while it is open. */
+body.cc-drawer-open iframe[data-synchro-frame] {
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 .cc-drawer-backdrop {
