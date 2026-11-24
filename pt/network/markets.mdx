@@ -1,11 +1,39 @@
 ---
 title: "Mercados"
-description: "As sete páginas de Markets: DeFi, ativos tokenizados, tokens, stablecoins, bridges, carteiras e custódia, e onde conseguir Canton Coin."
+description: "A visão geral de Markets, medo e ganância, os tokens e as suas páginas, o launchpad, pares e locais, e as páginas de setor: DeFi, ativos tokenizados, stablecoins, bridges, carteiras e custódia."
 ---
 
-**Markets**, na barra superior, reúne sete páginas, cada uma com as suas fontes: [cctools.network/markets](https://cctools.network/markets) abre em DeFi. As tabelas têm busca, filtros com uma contagem em cada opção e, quando ajuda, um controle **Sort by**, além de uma linha que diz quantas linhas aparecem. **Open** abre o local ou o emissor numa nova aba, e o nome de um projeto abre a sua página no diretório.
+**Markets**, na barra superior, abre a visão geral em [cctools.network/markets](https://cctools.network/markets). A sua linha de abas traz **Prices** (Tokens, Launchpad, Pairs e Venues) e **Sectors** (DeFi, Tokenized assets, Stablecoins, Bridges e Wallets and custody). As tabelas têm busca e filtros, e o endereço da página guarda as suas escolhas. O nome de um projeto abre a sua página no diretório.
 
-Os selos de status mostram **Live** ou **Planned**; **Curated**, com a data, marca uma lista que a CCTools mantém à mão; **Lagging** marca uma fonte atrasada. Cada página termina com **About this page**, que informa as fontes e com que frequência são lidas, e um link para a trilha do Learn correspondente.
+Os selos de status mostram **Live** ou **Planned**; **Curated**, com a data, marca uma lista que a CCTools mantém à mão; **Lagging** marca uma fonte atrasada; **Not reviewed** marca um token que a CCTools não revisou. Cada página termina com **About this page**, que informa as fontes e com que frequência são lidas.
+
+## Visão geral
+
+**Canton markets today** reúne os mercados de tokens numa só página: o preço e a variação da oferta do CC, o valor de mercado, o volume, a liquidez e os mercados por local, depois medo e ganância, os maiores movimentos em 24 horas, os tokens mais líquidos, os lançamentos, os locais, os pares mais negociados, os tokens vistos pela primeira vez nos últimos 7 dias, e os setores.
+
+Altas e baixas precisam de US$ 1.000 de liquidez. Os lançamentos são sem permissão, não são revisados pela CCTools e ficam separados da tabela principal e dos seus totais.
+
+## Medo e ganância
+
+A leitura de **Fear and greed**, de 0 a 100 com a sua faixa, descreve o humor do mercado do CC na Canton em relação ao seu próprio passado, a partir de dados de mercado, de rede e de notícias. Não é um sinal de preço, uma previsão nem uma recomendação. A visão geral e a página inicial de cctools.network mostram a leitura com a de um dia, uma semana e um mês antes, e o componente que mais a moveu.
+
+**The reading and its method** abre [cctools.network/markets/fear-greed](https://cctools.network/markets/fear-greed): cada componente com o seu valor, a sua posição frente ao seu passado, o seu peso e os seus pontos, a leitura ao longo do tempo, e as matérias por trás do tom das notícias. A leitura de um dia é provisória e calculada de novo a cada hora até a última execução do dia guardá-la.
+
+## Tokens
+
+[Tokens](https://cctools.network/markets/tokens) ordena os tokens dos locais da Canton com o preço, a variação de 24 horas, o valor de mercado ou FDV, o volume, a liquidez e o **Liquidity score**, de 0 a 100. Filtre por tipo e local, mantenha **Priced only** ou **Known issuer only**, defina limites para um valor e escolha as colunas. Uma estrela adiciona um token aos seus favoritos.
+
+A página de um token mostra o gráfico de preço, onde ele é negociado (cada local com a sua diferença para o reference price, a sua profundidade dentro de 2% e o seu volume de 24 horas), a sua oferta ao longo do tempo e a sua **Ledger identity**: admin party, instrument id, casas decimais e registry. Quando outro token tem o mesmo símbolo, a página avisa: confira a admin party antes de confiar nele. **Favorite**, **Alert** e, quando o swap negocia o token, **Swap** ficam no topo, e um conversor transforma um valor em dólares americanos ou em outra moeda.
+
+**How do you see this token this week?** recebe um voto, **Up** ou **Down**, de membros Verified, uma vez por semana, de segunda a segunda em UTC. Um voto é final depois de dado. O card mostra a divisão desta semana e a da semana passada quando já têm votos.
+
+A página de um token de lançamento traz também **Token info**, os links e o resumo como um moderador os conferiu, e **Suggest info** para enviar o site, o X, o Telegram ou a equipe dele. Tokens de projetos da Canton emitidos em outras chains têm páginas próprias, com a chain e o contrato.
+
+## Launchpad, pares e locais
+
+- **[Launchpad](https://cctools.network/markets/launchpad)** - tokens lançados numa curva, ainda nela ou já graduados para a sua pool, com preço em CC e em dólares americanos pelo preço do CC da CCTools, e com a idade, o volume, os trades, o fluxo líquido e a graduação
+- **[Pairs](https://cctools.network/markets/pairs)** - todo mercado nos locais da Canton com o preço, o spread, a profundidade dentro de 2%, o volume, a taxa e o APR de taxas do último dia (não é uma previsão). A página de um par mostra o que paga uma compra ou uma venda de um dado tamanho, o livro de ofertas, o mesmo par em cada local e o seu histórico diário
+- **[Venues](https://cctools.network/markets/venues)** - os locais ordenados pelo volume de 24 horas. A página de um local diz o que ele publica (mercados, preços, volume, livros de ofertas ou reservas de pool) e lista os mercados dele
 
 ## DeFi
 
@@ -20,27 +48,16 @@ Os selos de status mostram **Live** ou **Planned**; **Curated**, com a data, mar
 - **Issued on the network** (curada) - cada token, quanto está depositado na Temple e nas pools da Tradecraft, e o que ele representa
 - **Issuers** - a categoria de cada emissor, o que dá para fazer com ele e o que os dados públicos mostram, agrupados em exposição ao preço sem um token do ativo, ativo na Canton mas privado por design, anunciado sem nada público ainda, e listado
 
-## Tokens
-
-- **Tokens on the network** - preço, variação de 24 horas, valor de mercado, oferta na Canton e detentores, com filtro por tipo. A oferta é lida a cada 15 minutos, e os preços do CoinGecko a cada 5 minutos
-- **Tokens of Canton projects, issued on other chains** - o projeto, a chain, o contrato (com botão de copiar), preço, variação de 24 horas e valor de mercado, com filtro por chain
-
 ## Stablecoins
 
 A oferta de cada stablecoin na Canton, o tipo, a paridade, os locais na Canton e o status, agrupados em bridged para a Canton, emitidas na Canton, e anunciadas mas ainda não ativas. Filtre por tipo e ordene pela oferta.
 
 ## Bridges
 
-O valor de cada rota na Canton agora, a direção, a atestação e o status, com as rotas que não são bridges listadas à parte. Filtre pela direção (para a Canton, saindo da Canton ou nos dois sentidos) e pela rede.
+O valor de cada rota na Canton agora, a direção, a atestação e o status, com as rotas que não são bridges listadas à parte. Filtre pela direção (para a Canton, saindo da Canton ou nos dois sentidos) e pela rede. Para mover USDC você mesmo, veja [Bridge](/pt/network/trade#bridge).
 
 ## Carteiras e custódia
 
 Um catálogo curado em quatro níveis: **Wallets**, **Hardware wallets**, **Custody for institutions** e **OTC desks**. Cada linha mostra as plataformas, o tipo de custódia (autocustódia ou custodial) e se pede KYC, e você pode filtrar por custódia e por KYC.
 
-## Get CC
-
-- **Canton Coin today** - o preço, a variação de 24 horas, o valor de mercado, o volume de 24 horas e o reference price, a mediana dos votos dos super validadores
-- **Convert CC** - a um preço ao vivo ou ao seu, na sua moeda, e depois para a [calculadora](/pt/canton-network/rewards-calculator)
-- **Exchanges that list CC** (curada) - a participação de cada exchange no volume de CC, o volume de CC em 24 horas, o preço, o tipo (CEX, DEX ou livro de ofertas na Canton) e o KYC, atualizados a cada 5 minutos. Filtre por tipo de local e por KYC, e ordene por volume ou preço. O KYC é um retrato curado: confira os termos de cada local antes de depositar
-- **On Canton itself** - as pools CC/USDCx na Canton, com a Temple e a Cantex ao lado
-- **Already hold assets on another chain?** - links para as rotas de bridge
+Get CC, o swap e a bridge estão em [Trade](/pt/network/trade).

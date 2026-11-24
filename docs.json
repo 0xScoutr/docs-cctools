@@ -501,6 +501,7 @@
                 "pages": [
                   "network/network-stats",
                   "network/markets",
+                  "network/trade",
                   "network/data-sources"
                 ]
               },
@@ -639,6 +640,7 @@
                 "pages": [
                   "es/network/network-stats",
                   "es/network/markets",
+                  "es/network/trade",
                   "es/network/data-sources"
                 ]
               },
@@ -777,6 +779,7 @@
                 "pages": [
                   "pt/network/network-stats",
                   "pt/network/markets",
+                  "pt/network/trade",
                   "pt/network/data-sources"
                 ]
               },
@@ -915,6 +918,7 @@
                 "pages": [
                   "zh/network/network-stats",
                   "zh/network/markets",
+                  "zh/network/trade",
                   "zh/network/data-sources"
                 ]
               },

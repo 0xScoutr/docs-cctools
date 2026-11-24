@@ -1,0 +1,46 @@
+---
+title: "Operar"
+description: "Intercambia tokens de Canton desde tu billetera Loop, mueve USDC entre Ethereum y Canton, y encuentra dónde conseguir Canton Coin."
+---
+
+**Trade**, en la barra superior, reúne **Swap**, **Bridge** y **Get CC**. El swap y el bridge funcionan desde tus propias billeteras: apruebas cada transferencia en tu billetera, y CCTools nunca guarda tus fondos, nunca firma y no es parte de la operación. Nada de esto es un consejo.
+
+## Swap
+
+[Swap](https://cctools.network/markets/swap) intercambia tokens de Canton desde tu billetera Loop. Necesitas una cuenta de CCTools, una billetera Loop vinculada a ella y una computadora: los swaps desde un teléfono llegan más adelante. La primera vez, aceptas los términos del swap, una sola vez.
+
+1. Elige el token que pagas y el token que recibes. Cada selector lista todos los tokens que negocia el swap, con tu saldo.
+2. Escribe una cantidad. **Routes available** lista la cotización de cada sitio abierto después de las comisiones que indica. **Best** marca la ruta con la que se puede contar para dar más, y va primero. Con más de una ruta abierta, eliges una; un sitio que aún no abre muestra **Coming soon**.
+3. Pulsa **Review swap**. Permanece desactivado hasta que Loop haya leído tu saldo y si tu billetera puede recibir el token que compras, y mientras la cantidad esté por debajo del mínimo o por encima de tu saldo.
+4. Revisa la transferencia en Loop y apruébala allí antes de que venza la cotización.
+
+**Your swaps** lista tus swaps y cómo terminó cada uno.
+
+En Cantex, tu billetera envía el token que pagas a la dirección de swap de Cantex, con un memo que nombra el token que quieres. Cantex ejecuta un swap en una sola transacción o no lo ejecuta, normalmente en segundos, y puede tardar hasta el plazo de la transferencia, 15 minutos después de que revisas el swap. Si Cantex no la acepta para entonces, queda bloqueada en tu billetera hasta que la retiras en Loop.
+
+Comisiones: Cantex cobra una comisión fija y una comisión porcentual, ambas indicadas en cada cotización, y comparte parte de su comisión con CCTools; la cotización es la misma con o sin el código de CCTools. La comisión de red es de Loop, y sale de tu Fee Balance en Loop. Una cotización no se reserva: el sitio ejecuta a su precio cuando acepta tu transferencia.
+
+CCTools guarda un registro privado de cada swap (los importes, la cotización y los ids de transacción, ninguno de tus party ids) para soporte. Las transferencias de CC son públicas en Scan.
+
+## Bridge
+
+[Bridge](https://cctools.network/markets/bridge) mueve USDC entre Ethereum y Canton a través del xReserve de Circle, desde tus propias billeteras. Mientras una ruta está cerrada, la página dice **Not available yet**.
+
+- **Into Canton** - solicita acceso al bridge una vez desde la tarjeta USDCx en Loop (el operador del bridge de Digital Asset suele aprobarlo en 1 día hábil), deposita USDC desde tu billetera Ethereum en Loop, y luego acuña el USDCx en Loop, en **Offers > Deposits**, cuando llegue
+- **Out of Canton** - escribe la cantidad y pulsa **Review withdrawal**. Loop prepara el burn, liberado a una dirección Ethereum vinculada a tu cuenta de CCTools; CCTools comprueba esa cantidad y esa dirección, y tú lo apruebas en Loop. Circle libera USDC en Ethereum, menos su comisión de retiro
+
+Circle no cobra comisión en los depósitos; el gas de Ethereum lo paga en ETH tu billetera Ethereum. En un retiro, la página muestra la cotización de Circle para la cantidad, que se fija de nuevo cuando se procesa el retiro. El retiro más pequeño que acepta Loop es de 5 USDCx. La comisión de red de Loop sale de tu Fee Balance. CCTools no cobra comisión y no guarda registro de tus transferencias por el bridge.
+
+Un depósito escribe tu party ID de Canton en Ethereum, donde queda público y vinculado a la dirección que lo envió. Un retiro pasa por el servidor de Loop, que recibe tu dirección Ethereum y la cantidad, y la liberación de Circle en Ethereum es pública.
+
+La página [Bridges](/es/network/markets#bridges) de Markets lista todas las rutas de entrada y salida de Canton.
+
+## Get CC
+
+[Get CC](https://cctools.network/markets/get-cc) muestra dónde conseguir Canton Coin:
+
+- **Canton Coin today** - el precio en los sitios de Canton, su variación de 24 horas, la capitalización, el volumen de 24 horas y el SV reference vote, la mediana de los votos de precio de los supervalidadores, con un enlace a la página de Canton Coin
+- **Convert CC** - a un precio en vivo o al tuyo, en tu moneda, y luego a la [calculadora](/es/canton-network/rewards-calculator)
+- **Exchanges that list CC** (curada) - la parte de cada exchange en el volumen de CC, el volumen de CC en 24 horas, el precio, el tipo y el KYC, abriendo en los diez mayores. Filtra por tipo de sitio y por KYC. El KYC es una foto curada: revisa las condiciones de cada sitio antes de depositar
+- **On Canton itself** - cada sitio de Canton donde se negocia CC, el más activo primero, con su volumen de 24 horas, su profundidad dentro del 2% y su par de CC más profundo
+- **Swap** y **Bridge** - un swap desde tu billetera Loop si ya tienes un token de Canton, y el bridge si vienes de otra chain

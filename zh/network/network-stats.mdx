@@ -1,11 +1,11 @@
 ---
 title: "每日记录"
-description: "Canton Network 的开放每日记录：每天包含什么、数据从何而来，以及如何下载和引用。"
+description: "Network overview 和 Canton Network 的开放每日记录：每天包含什么、周围的图表，以及如何下载和引用。"
 ---
 
 ## 什么是每日记录
 
-**Daily record** 是 **Network** 菜单中的第一项，地址为 [cctools.network/network](https://cctools.network/network)，它是 Canton 网络状态的公共记录：每个 UTC 日一行，数据来自 Canton Scan。页面打开时显示最新一天，日期字段可以在其自己的地址 `cctools.network/network/YYYY-MM-DD` 打开任意其他一天。
+**Network overview** 是 **Network** 菜单中的第一项，地址为 [cctools.network/network](https://cctools.network/network)，它打开的是每日记录：Canton 网络状态的公共记录，每个 UTC 日一行，数据来自 Canton Scan。页面打开时显示最新一天，日期字段可以在其自己的地址 `cctools.network/network/YYYY-MM-DD` 打开任意其他一天。
 
 ## 每一天包含什么
 
@@ -22,14 +22,27 @@ Canton Coin 在每一轮按照一个随时间递减的时间表发行。一天�
 
 ## 页面的其他部分
 
-- **Issuance and app rewards** - 最近 30 个 UTC 日
-- **Fees and rounds** - 转账费、创建费、持有费以及每轮的时长
-- **CC burned** - 每日记录尚未包含销毁量，因此在记录开始统计之前，该区块显示 Loop Data 在 24 小时、7 天和 30 天内的销毁数据，并附有每日柱状图以及来源和时间
-- **Super validators** - 每个成员的奖励权重、权重占比以及加入时的轮次，表格下方注明一项提案所需的票数
-- **Featured apps** 和 **Governance** - 当天的 featured app rights，以及各项提案及其通过率
-- **Data freshness** - 页面上每个数据集的更新程度
+- **The network since genesis** - 自网络首个快照以来按 UTC 日统计的数量
+- **Tiles** 链接到每个 Network 页面，然后是 **Network activity**，即每天的交易数和其中的 featured apps
+- **CC burned** - Loop Data 的销毁数据序列，在记录开始统计销毁量之前不在记录之内
+- **Burned and scheduled issuance** - 已销毁的 CC 占同期各日计划发行的 CC 的比例
+- **Next halving** - 最新一轮、下一级开始的轮次，以及一天现在和之后计划发行的量
+- **Issuance schedule** - 每个阶段的年限、首轮、每年计划发行的 CC 及其分配，没有最大供应量
+- **Scheduled issuance** - 每天的发行量按奖励部分拆分
+- **The last seven days** 和 **Every day of the record**，每天一个方块，每个方块都会打开对应的一天
+- **Fees and rounds** 和 **Super validators** - 来自 CCTools 每小时读取一次的治理状态
 
-费用、超级验证者和提案来自 CCTools 每小时读取一次的治理状态，每个区块都注明自己的来源和时间。
+带有 **24H**、**7D**、**30D**、**90D** 或 **All** 的图表可以切换其期间。只有数据覆盖的期间才会显示，页面地址会保存它，因此链接会打开同一视图。
+
+时间表和减半数据读取自网络的发行曲线和记录。它们说的是计划发行，绝不是已铸造：未领取的奖励不会被铸造。
+
+## 费用与轮次
+
+**Fees and rounds** 位于 [cctools.network/network/fees](https://cctools.network/network/fees)，显示使用网络的成本：每 MB 流量的价格、每个节点在每个窗口内获得的免费流量，以及每轮的时长。自 CIP-0078 起，转账和新建持仓都不收取 CC 费用。页面还按天绘制轮次图表。
+
+## 销毁与铸造
+
+**Burned and minted** 位于 [cctools.network/network/supply](https://cctools.network/network/supply)，按 UTC 日并列显示销毁的 CC 和铸造的 CC，以及两者之间的供应量净变化。铸造量按供应量净变化加上销毁的 CC 估算，仅限两项数据都有的日子。**Issuance by category** 显示各轮计划发行的量，这并不是已铸造的供应量。
 
 ## 下载与引用
 
@@ -45,3 +58,5 @@ Canton Coin 在每一轮按照一个随时间递减的时间表发行。一天�
 - `status.json` - 最新的最终日和临时日
 
 一天标题旁边的 **Cite** 按钮会生成带有该日永久链接的引用，页面底部注明了许可证和署名要求。
+
+每个区块的菜单在适用时提供 **Cite**、**Download CSV**、**API** 和 **Ask Synchro**。**Cite** 会给出以页面链接结尾的 **Plain** 引用，区块支持时还有 **BibTeX**。带有 AI 说明的区块默认打开 **Summary**：该说明和页面链接。

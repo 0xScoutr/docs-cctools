@@ -1,11 +1,11 @@
 ---
 title: "O registro diário"
-description: "O registro diário aberto da Canton Network: o que um dia contém, de onde vem e como baixá-lo e citá-lo."
+description: "O Network overview e o registro diário aberto da Canton Network: o que um dia contém, os gráficos ao redor dele e como baixá-lo e citá-lo."
 ---
 
 ## O que é o registro diário
 
-O **Daily record**, primeiro item do menu **Network** em [cctools.network/network](https://cctools.network/network), é o registro público do estado da rede Canton: uma linha por dia UTC, derivada do Canton Scan. A página abre no dia mais recente, e o campo de data abre qualquer outro dia no seu próprio endereço, `cctools.network/network/AAAA-MM-DD`.
+O **Network overview**, primeiro item do menu **Network** em [cctools.network/network](https://cctools.network/network), abre no registro diário: o registro público do estado da rede Canton, uma linha por dia UTC, derivada do Canton Scan. A página abre no dia mais recente, e o campo de data abre qualquer outro dia no seu próprio endereço, `cctools.network/network/AAAA-MM-DD`.
 
 ## O que um dia contém
 
@@ -22,14 +22,27 @@ O Canton Coin é emitido a cada rodada, num cronograma que diminui com o tempo. 
 
 ## O resto da página
 
-- **Issuance and app rewards** - os últimos 30 dias UTC
-- **Fees and rounds** - a taxa de transferência, a taxa de criação, a taxa de holding e a duração da rodada
-- **CC burned** - o burn ainda não está no registro diário, então, até o registro medi-lo, este bloco mostra a série de burn da Loop Data em 24 horas, 7 dias e 30 dias, com barras diárias, além da fonte e do horário
-- **Super validators** - o peso de recompensa de cada membro, a participação no peso e a rodada em que entrou, com os votos de que uma proposta precisa abaixo da tabela
-- **Featured apps** e **Governance** - os featured app rights do dia e as propostas com a taxa de aprovação
-- **Data freshness** - quão atual está cada conjunto de dados da página
+- **The network since genesis** - contagens por dia UTC desde o primeiro retrato da rede
+- **Tiles** para cada página de Network, depois **Network activity**, as transações por dia e os featured apps nelas
+- **CC burned** - a série de burn da Loop Data, fora do registro até o registro medir o burn
+- **Burned and scheduled issuance** - o CC queimado como parte do CC que os mesmos dias programaram
+- **Next halving** - a rodada mais recente, a rodada em que o próximo degrau começa, e o que um dia programa agora e depois dele
+- **Issuance schedule** - cada fase com os seus anos, a sua primeira rodada, o CC que ela programa por ano e a sua divisão, sem oferta máxima
+- **Scheduled issuance** - a emissão de cada dia dividida nas suas partes de recompensa
+- **The last seven days** e **Every day of the record**, um quadrado por dia, cada um abrindo o seu dia
+- **Fees and rounds** e **Super validators** - do estado de governança que a CCTools lê a cada hora
 
-As taxas, os super validadores e as propostas vêm do estado de governança que a CCTools lê a cada hora, cada bloco com a sua própria fonte e horário.
+Os gráficos com **24H**, **7D**, **30D**, **90D** ou **All** acima deles trocam o seu período. Um período só aparece onde os dados o cobrem, e o endereço da página o guarda, então um link abre a mesma visão.
+
+O cronograma e o halving são lidos da curva de emissão da rede e do registro. Eles falam em emissão programada, nunca em emissão cunhada: uma recompensa não reivindicada não é cunhada.
+
+## Taxas e rodadas
+
+**Fees and rounds**, em [cctools.network/network/fees](https://cctools.network/network/fees), mostra o que custa usar a rede: o preço do tráfego por MB, o tráfego gratuito que cada nó recebe em cada janela, e a duração da rodada. Desde a CIP-0078, uma transferência e um novo holding não têm taxa em CC. A página também traz um gráfico das rodadas por dia.
+
+## Queimado e cunhado
+
+**Burned and minted**, em [cctools.network/network/supply](https://cctools.network/network/supply), põe o CC queimado ao lado do CC cunhado por dia UTC, e a variação líquida da oferta entre os dois. O CC cunhado é estimado como a variação líquida da oferta mais o CC queimado, para os dias que têm os dois. **Issuance by category** mostra o que as rodadas programaram, que não é oferta cunhada.
 
 ## Baixar e citar
 
@@ -45,3 +58,5 @@ O registro da página, os arquivos abertos e a API trazem os mesmos números. Os
 - `status.json` - os dias finais e provisórios mais recentes
 
 O botão **Cite**, ao lado do título de um dia, gera uma citação com o link permanente do dia, e a página informa a licença e a atribuição no rodapé.
+
+O menu de cada bloco oferece **Cite**, **Download CSV**, **API** e **Ask Synchro**, onde se aplicam. **Cite** gera uma citação **Plain** que termina com o link da página, e **BibTeX** onde o bloco a tem. Um bloco com uma nota de IA abre em **Summary**: a nota e o link da página.

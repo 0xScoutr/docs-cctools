@@ -1,0 +1,46 @@
+---
+title: "Trade"
+description: "Swap Canton tokens from your Loop wallet, move USDC between Ethereum and Canton, and find where to get Canton Coin."
+---
+
+**Trade**, in the top bar, holds **Swap**, **Bridge** and **Get CC**. The swap and the bridge run from your own wallets: you approve every transfer in your wallet, and CCTools never holds your funds, never signs and is not a party to the trade. Nothing here is advice.
+
+## Swap
+
+[Swap](https://cctools.network/markets/swap) swaps Canton tokens from your Loop wallet. You need a CCTools account, a Loop wallet linked to it and a computer: swaps from a phone come later. The first time, you accept the swap terms once.
+
+1. Pick the token you pay and the token you receive. Each selector lists every token the swap trades, with your balance.
+2. Type an amount. **Routes available** lists each open venue's quote after the fees it states. **Best** marks the route that can be counted on to give the most and comes first. With more than one route open, you pick one; a venue still to open shows **Coming soon**.
+3. Press **Review swap**. It stays off until Loop has read your balance and whether your wallet can receive the token you buy, and while the amount is under the minimum or over your balance.
+4. Check the transfer in Loop and approve it there before the quote expires.
+
+**Your swaps** lists your swaps and how each one ended.
+
+On Cantex, your wallet sends the token you pay to Cantex's swap address with a memo naming the token you want. Cantex fills a swap in one transaction or not at all, usually within seconds, and can take until the transfer's deadline, 15 minutes after you review it. If Cantex does not take it by then, it stays locked in your wallet until you withdraw it in Loop.
+
+Fees: Cantex charges a fixed fee and a percentage fee, both stated in each quote, and shares part of its fee with CCTools; the quote is the same with or without CCTools' code. The network fee is Loop's, taken from your Fee Balance in Loop. A quote is not reserved: the venue fills at its price when it accepts your transfer.
+
+CCTools keeps a private record of each swap (the amounts, the quote and the transaction ids, none of your party ids) for support. CC transfers are public on Scan.
+
+## Bridge
+
+[Bridge](https://cctools.network/markets/bridge) moves USDC between Ethereum and Canton through Circle's xReserve, from your own wallets. While a route is closed, the page says **Not available yet**.
+
+- **Into Canton** - request bridge access once from the USDCx card in Loop (Digital Asset's bridge operator usually approves it within 1 business day), deposit USDC from your Ethereum wallet in Loop, then mint the USDCx in Loop under **Offers > Deposits** once it lands
+- **Out of Canton** - type the amount and press **Review withdrawal**. Loop prepares the burn, released to an Ethereum address linked to your CCTools account; CCTools checks that amount and that address, and you approve it in Loop. Circle releases USDC on Ethereum, less its withdrawal fee
+
+Circle takes no fee on deposits; the Ethereum gas is paid in ETH by your Ethereum wallet. On a withdrawal, the page shows Circle's quote for the amount, which is set again when the withdrawal is processed. The smallest withdrawal Loop takes is 5 USDCx. Loop's network fee comes from your Fee Balance. CCTools takes no fee and keeps no record of your bridge transfers.
+
+A deposit writes your Canton party ID on Ethereum, where it stays public and linked to the address that sent it. A withdrawal goes through Loop's server, which receives your Ethereum address and the amount, and Circle's release on Ethereum is public.
+
+The [Bridges](/network/markets#bridges) page in Markets lists every route into and out of Canton.
+
+## Get CC
+
+[Get CC](https://cctools.network/markets/get-cc) shows where to get Canton Coin:
+
+- **Canton Coin today** - the price on Canton's venues, its 24-hour change, the market cap, the 24-hour volume and the SV reference vote, the median of the super validators' price votes, with a link to Canton Coin's page
+- **Convert CC** - at a live price or your own, in your currency, then on to the [calculator](/canton-network/rewards-calculator)
+- **Exchanges that list CC** (curated) - each exchange's share of CC volume, CC volume over 24 hours, price, type and KYC, opening on the ten largest. Filter by venue type and by KYC. KYC is a curated snapshot: check each venue's terms before you deposit
+- **On Canton itself** - each Canton venue where CC trades, busiest first, with its 24-hour volume, its depth within 2% and its deepest CC pair
+- **Swap** and **Bridge** - a swap from your Loop wallet if you already hold a Canton token, and the bridge if you come from another chain

@@ -1,0 +1,46 @@
+---
+title: "交易"
+description: "用你的 Loop 钱包兑换 Canton 代币，在 Ethereum 和 Canton 之间转移 USDC，并找到获取 Canton Coin 的途径。"
+---
+
+顶部栏中的 **Trade** 包含 **Swap**、**Bridge** 和 **Get CC**。兑换和跨链桥都通过你自己的钱包进行：每一笔转账都由你在钱包中批准，CCTools 从不持有你的资金、从不签名，也不是这笔交易的当事方。这里的任何内容都不构成建议。
+
+## Swap
+
+[Swap](https://cctools.network/markets/swap) 可用你的 Loop 钱包兑换 Canton 代币。你需要一个 CCTools 账户、一个已关联到该账户的 Loop 钱包，以及一台电脑：手机上的兑换稍后推出。首次使用时，你需要接受一次兑换条款。
+
+1. 选择你支付的代币和你收到的代币。每个选择器都会列出兑换支持交易的所有代币，并显示你的余额。
+2. 输入数量。**Routes available** 会列出每个已开放场所在扣除其所述费用后的报价。**Best** 标出可以指望获得最多的路线，并排在最前。当开放的路线不止一条时，由你选择其中一条；尚未开放的场所显示 **Coming soon**。
+3. 点击 **Review swap**。在 Loop 读取你的余额以及你的钱包能否接收你购买的代币之前，以及数量低于最低限额或超过你的余额时，它都保持禁用。
+4. 在 Loop 中检查这笔转账，并在报价过期前在那里批准。
+
+**Your swaps** 会列出你的兑换以及每一笔的结果。
+
+在 Cantex 上，你的钱包会把你支付的代币发送到 Cantex 的兑换地址，并附带一条指明你想要的代币的 memo。Cantex 要么在一笔交易中完成兑换，要么完全不完成，通常在几秒内，最长可到转账的截止时间，即你确认兑换后的 15 分钟。如果 Cantex 到那时仍未接受这笔转账，它会一直锁定在你的钱包中，直到你在 Loop 中提取。
+
+费用：Cantex 收取固定费用和按比例费用，两者都在每个报价中注明，并与 CCTools 分享其部分费用；无论是否使用 CCTools 的代码，报价都相同。网络费用归 Loop，从你在 Loop 中的 Fee Balance 扣除。报价不会被预留：场所在接受你的转账时按其价格成交。
+
+CCTools 会为每一笔兑换保留一份私密记录（金额、报价和交易 id，不含你的任何 party id），用于支持。CC 转账在 Scan 上是公开的。
+
+## Bridge
+
+[Bridge](https://cctools.network/markets/bridge) 通过 Circle 的 xReserve，用你自己的钱包在 Ethereum 和 Canton 之间转移 USDC。当某条路线关闭时，页面会显示 **Not available yet**。
+
+- **Into Canton** - 在 Loop 的 USDCx 卡片中申请一次跨链桥访问权限（Digital Asset 的跨链桥运营方通常会在 1 个工作日内批准），在 Loop 中从你的 Ethereum 钱包存入 USDC，到账后在 Loop 的 **Offers > Deposits** 下铸造 USDCx
+- **Out of Canton** - 输入数量并点击 **Review withdrawal**。Loop 准备销毁操作，释放到与你的 CCTools 账户关联的 Ethereum 地址；CCTools 会检查该数量和该地址，由你在 Loop 中批准。Circle 在 Ethereum 上释放 USDC，并扣除其提现费用
+
+Circle 对存款不收费用；Ethereum 的 gas 由你的 Ethereum 钱包用 ETH 支付。提现时，页面会显示 Circle 对该数量的报价，该报价会在提现处理时重新确定。Loop 接受的最小提现额为 5 USDCx。Loop 的网络费用从你的 Fee Balance 中扣除。CCTools 不收取费用，也不保留你的跨链桥转账记录。
+
+存款会把你的 Canton party ID 写入 Ethereum，在那里它保持公开，并与发送它的地址关联。提现会经过 Loop 的服务器，该服务器会收到你的 Ethereum 地址和数量，而 Circle 在 Ethereum 上的释放是公开的。
+
+Markets 中的 [Bridges](/zh/network/markets#跨链桥) 页面列出了进出 Canton 的所有路线。
+
+## Get CC
+
+[Get CC](https://cctools.network/markets/get-cc) 显示获取 Canton Coin 的途径：
+
+- **Canton Coin today** - Canton 各场所上的价格、24 小时变化、市值、24 小时交易量以及 SV reference vote，即超级验证者价格投票的中位数，并附有指向 Canton Coin 页面的链接
+- **Convert CC** - 按实时价格或你自己的价格，以你的货币换算，然后可进入 [计算器](/zh/canton-network/rewards-calculator)
+- **Exchanges that list CC**（人工维护）- 每家交易所在 CC 交易量中的占比、24 小时 CC 交易量、价格、类型和 KYC，默认展示最大的十家。可以按场所类型和 KYC 筛选。KYC 信息是人工整理的快照：存入资金前请查看各场所的条款
+- **On Canton itself** - CC 在 Canton 上交易的每个场所，最活跃的排在最前，并显示其 24 小时交易量、2% 以内的深度和最深的 CC 交易对
+- **Swap** 和 **Bridge** - 如果你已持有 Canton 代币，可从你的 Loop 钱包兑换；如果你来自其他链，可使用跨链桥

@@ -1,11 +1,39 @@
 ---
 title: "Markets"
-description: "The seven Markets pages: DeFi, tokenized assets, tokens, stablecoins, bridges, wallets and custody, and where to get Canton Coin."
+description: "The Markets overview, fear and greed, tokens and their pages, the launchpad, pairs and venues, and the sector pages: DeFi, tokenized assets, stablecoins, bridges, wallets and custody."
 ---
 
-**Markets**, in the top bar, holds seven pages, each with its own sources: [cctools.network/markets](https://cctools.network/markets) opens DeFi. Tables have a search, filters with a count on each option and, where it helps, a **Sort by** control, with a line that says how many rows show. **Open** opens the venue or issuer in a new tab, and a project's name opens its directory page.
+**Markets**, in the top bar, opens the overview at [cctools.network/markets](https://cctools.network/markets). Its tab row holds **Prices** (Tokens, Launchpad, Pairs and Venues) and **Sectors** (DeFi, Tokenized assets, Stablecoins, Bridges, and Wallets and custody). Tables have a search and filters, and the page address keeps your choices. A project's name opens its directory page.
 
-Status chips read **Live** or **Planned**; **Curated**, with its date, marks a list CCTools keeps by hand; **Lagging** marks a source that is late. Each page ends with **About this page**, which names its sources and how often they are read, and a link to its Learn path.
+Status chips read **Live** or **Planned**; **Curated**, with its date, marks a list CCTools keeps by hand; **Lagging** marks a source that is late; **Not reviewed** marks a token CCTools has not reviewed. Each page ends with **About this page**, which names its sources and how often they are read.
+
+## Overview
+
+**Canton markets today** puts the token markets on one page: CC's price and supply change, market cap, volume, liquidity and markets by venue, then fear and greed, the movers over 24 hours, the most liquid tokens, launches, venues, the most traded pairs, the tokens first seen in the last 7 days, and the sectors.
+
+Gainers and losers need $1,000 of liquidity. Launches are permissionless, not reviewed by CCTools, and kept apart from the main board and its totals.
+
+## Fear and greed
+
+The **Fear and greed** reading, from 0 to 100 with its band, describes CC's market mood on Canton against its own past, from market, network and news data. It is not a price signal, a forecast or advice. The overview and the cctools.network home show it with the reading a day, a week and a month before, and the component that moved it most.
+
+**The reading and its method** opens [cctools.network/markets/fear-greed](https://cctools.network/markets/fear-greed): each component with its value, its rank against its past, its weight and its points, the reading over time, and the stories behind the news tone. A day's reading is provisional and computed again each hour until the day's last run stores it.
+
+## Tokens
+
+[Tokens](https://cctools.network/markets/tokens) ranks the tokens on Canton's venues with their price, 24-hour change, market cap or FDV, volume, liquidity and **Liquidity score**, from 0 to 100. Filter by kind and venue, keep **Priced only** or **Known issuer only**, set bounds on a figure, and pick the columns. A star adds a token to your favorites.
+
+A token's page shows its price chart, where it trades (each venue with its gap from the reference price, its depth within 2% and its 24-hour volume), its supply over time and its **Ledger identity**: admin party, instrument id, decimals and registry. When another token carries the same symbol, the page says so: check the admin party before you rely on it. **Favorite**, **Alert** and, when the swap trades the token, **Swap** sit at the top, and a converter turns an amount into US dollars or another currency.
+
+**How do you see this token this week?** takes one vote, **Up** or **Down**, from Verified members, once a week, Monday to Monday in UTC. A vote is final once cast. The card shows this week's split and last week's once they have votes.
+
+A launch token's page adds **Token info**, its links and summary as a moderator checked them, and **Suggest info** to send its site, X, Telegram or team. Tokens of Canton projects issued on other chains have pages of their own, with the chain and the contract.
+
+## Launchpad, pairs and venues
+
+- **[Launchpad](https://cctools.network/markets/launchpad)** - tokens launched on a curve, still on it or graduated to their pool, priced in CC and in US dollars at CCTools' CC price, with their age, volume, trades, net flow and graduation
+- **[Pairs](https://cctools.network/markets/pairs)** - every market on Canton's venues with its price, spread, depth within 2%, volume, fee and the last day's fee APR (not a forecast). A pair's page shows what a buy or a sell of a given size pays, the book, the same pair on every venue and its daily history
+- **[Venues](https://cctools.network/markets/venues)** - the venues ranked by 24-hour volume. A venue's page says what it publishes (markets, prices, volume, order books or pool reserves) and lists its markets
 
 ## DeFi
 
@@ -20,27 +48,16 @@ Status chips read **Live** or **Planned**; **Curated**, with its date, marks a l
 - **Issued on the network** (curated) - each token, how much is deposited on Temple and held in Tradecraft pools, and what it represents
 - **Issuers** - each issuer's category, what you can do with it and what public data shows, grouped into price exposure without a token of the asset, live on Canton but private by design, announced with nothing public yet, and listed
 
-## Tokens
-
-- **Tokens on the network** - price, 24-hour change, market cap, supply on Canton and holders, filtered by kind. Supply is read every 15 minutes and CoinGecko prices every 5 minutes
-- **Tokens of Canton projects, issued on other chains** - the project, the chain, the contract (with a copy button), price, 24-hour change and market cap, filtered by chain
-
 ## Stablecoins
 
 Each stablecoin's supply on Canton, type, peg, Canton venues and status, grouped into bridged to Canton, issued on Canton, and announced but not live. Filter by type and sort by supply.
 
 ## Bridges
 
-Each route's amount on Canton now, direction, attestation and status, with routes that are not bridges listed apart. Filter by direction (into Canton, out of Canton or both ways) and by network.
+Each route's amount on Canton now, direction, attestation and status, with routes that are not bridges listed apart. Filter by direction (into Canton, out of Canton or both ways) and by network. To move USDC yourself, see [Bridge](/network/trade#bridge).
 
 ## Wallets and custody
 
 A curated catalog in four tiers: **Wallets**, **Hardware wallets**, **Custody for institutions** and **OTC desks**. Each row shows its platforms, its custody (self-custody or custodial) and whether it asks for KYC, and you can filter by custody and by KYC.
 
-## Get CC
-
-- **Canton Coin today** - the price, its 24-hour change, the market cap, the 24-hour volume and the reference price, the super validators' median vote
-- **Convert CC** - at a live price or your own, in your currency, then on to the [calculator](/canton-network/rewards-calculator)
-- **Exchanges that list CC** (curated) - each exchange's share of CC volume, CC volume over 24 hours, price, type (CEX, DEX or Canton order book) and KYC, refreshed every 5 minutes. Filter by venue type and by KYC, and sort by volume or price. KYC is a curated snapshot: check each venue's terms before you deposit
-- **On Canton itself** - the CC/USDCx pools on Canton, with Temple and Cantex beside them
-- **Already hold assets on another chain?** - links to the bridge routes
+Get CC, the swap and the bridge are in [Trade](/network/trade).

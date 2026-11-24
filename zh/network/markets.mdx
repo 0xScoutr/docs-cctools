@@ -1,11 +1,39 @@
 ---
 title: "市场"
-description: "Markets 的七个页面：DeFi、代币化资产、代币、稳定币、跨链桥、钱包与托管，以及获取 Canton Coin 的途径。"
+description: "Markets 概览、恐惧与贪婪、代币及其页面、launchpad、交易对与场所，以及各领域页面：DeFi、代币化资产、稳定币、跨链桥、钱包与托管。"
 ---
 
-顶部栏中的 **Markets** 包含七个页面，每个页面都有自己的数据来源：[cctools.network/markets](https://cctools.network/markets) 会打开 DeFi。表格提供搜索、每个选项都带计数的筛选器，以及在需要时提供的 **Sort by** 控件，并有一行说明当前显示多少行。**Open** 会在新标签页中打开交易场所或发行方，项目名称则会打开其目录页面。
+顶部栏中的 **Markets** 会打开概览页 [cctools.network/markets](https://cctools.network/markets)。它的标签页行包含 **Prices**（Tokens、Launchpad、Pairs 和 Venues）和 **Sectors**（DeFi、Tokenized assets、Stablecoins、Bridges，以及 Wallets and custody）。表格提供搜索和筛选器，页面地址会保存你的选择。项目名称会打开其目录页面。
 
-状态标签显示 **Live** 或 **Planned**；带日期的 **Curated** 表示由 CCTools 手动维护的列表；**Lagging** 表示某个数据源已延迟。每个页面末尾都有 **About this page**，说明其数据来源和读取频率，并附有对应 Learn 路径的链接。
+状态标签显示 **Live** 或 **Planned**；带日期的 **Curated** 表示由 CCTools 手动维护的列表；**Lagging** 表示某个数据源已延迟；**Not reviewed** 表示 CCTools 尚未审核的代币。每个页面末尾都有 **About this page**，说明其数据来源和读取频率。
+
+## 概览
+
+**Canton markets today** 把代币市场集中在一个页面上：CC 的价格和供应量变化、市值、交易量、流动性以及按场所划分的市场，然后是恐惧与贪婪、24 小时内波动最大的代币、流动性最高的代币、新发行、场所、交易最活跃的交易对、最近 7 天首次出现的代币，以及各领域。
+
+涨幅榜和跌幅榜需要 1,000 美元的流动性。新发行的代币无需许可、未经 CCTools 审核，并与主表及其总计分开列出。
+
+## 恐惧与贪婪
+
+**Fear and greed** 读数范围为 0 到 100 并附有对应区间，依据市场、网络和新闻数据，对照 CC 自身的历史来描述 Canton 上 CC 的市场情绪。它不是价格信号、预测或建议。概览页和 cctools.network 首页会同时显示它，以及一天前、一周前和一个月前的读数，还有对它影响最大的分项。
+
+**The reading and its method** 会打开 [cctools.network/markets/fear-greed](https://cctools.network/markets/fear-greed)：每个分项的数值、相对其自身历史的排位、权重和得分，读数随时间的变化，以及新闻基调背后的报道。某一天的读数是临时的，每小时重新计算一次，直到当天最后一次运行将其保存。
+
+## 代币
+
+[Tokens](https://cctools.network/markets/tokens) 列出 Canton 各场所上的代币，显示价格、24 小时变化、市值或 FDV、交易量、流动性以及 0 到 100 的 **Liquidity score**。可以按类型和场所筛选，只保留 **Priced only** 或 **Known issuer only**，为某项数值设定范围，并选择显示的列。星标可把代币加入你的收藏。
+
+代币页面显示其价格图表、交易场所（每个场所的价格与 reference price 的差距、2% 以内的深度及 24 小时交易量）、其供应量随时间的变化，以及 **Ledger identity**：admin party、instrument id、小数位数和 registry。当另一个代币使用相同的符号时，页面会提示：依赖它之前请先核对 admin party。**Favorite**、**Alert**，以及在兑换支持该代币交易时的 **Swap**，位于页面顶部，换算器可以把一个数量换算成美元或其他货币。
+
+**How do you see this token this week?** 每周一次接受 Verified 成员的一票，**Up** 或 **Down**，按 UTC 从周一到周一计算。投票一旦提交即为最终。当这一周和上一周已有票数时，卡片会显示这一周和上一周的分布。
+
+发行代币的页面还会增加 **Token info**，即版主核对过的链接和简介，以及用于提交其网站、X、Telegram 或团队信息的 **Suggest info**。其他链上发行的 Canton 项目代币有各自的页面，显示链和合约。
+
+## Launchpad、交易对与场所
+
+- **[Launchpad](https://cctools.network/markets/launchpad)** - 在曲线上发行的代币，仍在曲线上或已毕业进入其资金池，以 CC 和美元计价（按 CCTools 的 CC 价格），并显示其存续时间、交易量、成交笔数、净流量和毕业情况
+- **[Pairs](https://cctools.network/markets/pairs)** - Canton 各场所上的每个市场，显示其价格、价差、2% 以内的深度、交易量、费率以及最近一天的费用 APR（不是预测）。交易对页面显示给定规模的买入或卖出要付出多少、订单簿、各场所上的同一交易对及其每日历史
+- **[Venues](https://cctools.network/markets/venues)** - 按 24 小时交易量排名的场所。场所页面说明它发布什么（市场、价格、交易量、订单簿或资金池储备），并列出其市场
 
 ## DeFi
 
@@ -20,27 +48,16 @@ description: "Markets 的七个页面：DeFi、代币化资产、代币、稳定
 - **Issued on the network**（人工维护）- 每个代币在 Temple 上的存入量、在 Tradecraft 资金池中的数量，以及它代表的资产
 - **Issuers** - 每个发行方的类别、你可以用它做什么以及公开数据显示了什么，分为：仅有价格敞口而没有该资产的代币、已在 Canton 上线但按设计保持私密、已宣布但尚无公开信息，以及已上架
 
-## 代币
-
-- **Tokens on the network** - 价格、24 小时变化、市值、在 Canton 上的供应量和持有者，可按类型筛选。供应量每 15 分钟读取一次，CoinGecko 价格每 5 分钟读取一次
-- **Tokens of Canton projects, issued on other chains** - 项目、链、合约（附复制按钮）、价格、24 小时变化和市值，可按链筛选
-
 ## 稳定币
 
 每种稳定币在 Canton 上的供应量、类型、锚定对象、在 Canton 上的交易场所和状态，分为：桥接到 Canton 的、在 Canton 上发行的，以及已宣布但尚未上线的。可以按类型筛选，并按供应量排序。
 
 ## 跨链桥
 
-每条路线当前在 Canton 上的数量、方向、证明方式和状态，不属于跨链桥的路线单独列出。可以按方向（进入 Canton、离开 Canton 或双向）和网络筛选。
+每条路线当前在 Canton 上的数量、方向、证明方式和状态，不属于跨链桥的路线单独列出。可以按方向（进入 Canton、离开 Canton 或双向）和网络筛选。要自行转移 USDC，请参阅 [Bridge](/zh/network/trade#bridge)。
 
 ## 钱包与托管
 
 一个人工维护的目录，分为四个层级：**Wallets**、**Hardware wallets**、**Custody for institutions** 和 **OTC desks**。每一行显示其平台、托管方式（自托管或托管式）以及是否要求 KYC，你可以按托管方式和 KYC 筛选。
 
-## Get CC
-
-- **Canton Coin today** - 价格、24 小时变化、市值、24 小时交易量以及 reference price，即超级验证者投票的中位数
-- **Convert CC** - 按实时价格或你自己的价格，以你的货币换算，然后可进入 [计算器](/zh/canton-network/rewards-calculator)
-- **Exchanges that list CC**（人工维护）- 每家交易所在 CC 交易量中的占比、24 小时 CC 交易量、价格、类型（CEX、DEX 或 Canton 订单簿）以及 KYC，每 5 分钟刷新一次。可以按场所类型和 KYC 筛选，并按交易量或价格排序。KYC 信息是人工整理的快照：存入资金前请查看各场所的条款
-- **On Canton itself** - Canton 上的 CC/USDCx 资金池，并列出 Temple 和 Cantex
-- **Already hold assets on another chain?** - 指向跨链桥路线的链接
+Get CC、兑换和跨链桥都在 [Trade](/zh/network/trade) 中。

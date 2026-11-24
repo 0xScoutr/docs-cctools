@@ -1,11 +1,11 @@
 ---
 title: "The Daily Record"
-description: "The open daily record of the Canton Network: what a day holds, where it comes from, and how to download and cite it."
+description: "The Network overview and the open daily record of the Canton Network: what a day holds, the charts around it, and how to download and cite it."
 ---
 
 ## What the daily record is
 
-The **Daily record**, first in the **Network** menu at [cctools.network/network](https://cctools.network/network), is the public record of Canton network state: one row per UTC day, derived from Canton Scan. The page opens on the latest day, and its date field opens any other day at its own address, `cctools.network/network/YYYY-MM-DD`.
+The **Network overview**, first in the **Network** menu at [cctools.network/network](https://cctools.network/network), opens on the daily record: the public record of Canton network state, one row per UTC day, derived from Canton Scan. The page opens on the latest day, and its date field opens any other day at its own address, `cctools.network/network/YYYY-MM-DD`.
 
 ## What a day holds
 
@@ -22,14 +22,27 @@ Canton Coin is issued every round on a schedule that steps down over time. The i
 
 ## The rest of the page
 
-- **Issuance and app rewards** - the last 30 UTC days
-- **Fees and rounds** - the transfer fee, the create fee, the holding fee and the round length
-- **CC burned** - burn is not in the daily record yet, so until the record measures it this block shows Loop Data's burn series over 24 hours, 7 days and 30 days, with daily bars, and its source and time
-- **Super validators** - each member's reward weight, its share of the weight and the round it joined, with the votes a proposal needs under the table
-- **Featured apps** and **Governance** - the day's featured app rights, and the proposals with their approval rate
-- **Data freshness** - how current each dataset on the page is
+- **The network since genesis** - counts by UTC day since the network's first snapshot
+- **Tiles** into every Network page, then **Network activity**, the transactions a day and the featured apps in them
+- **CC burned** - Loop Data's burn series, outside the record until the record measures burn
+- **Burned and scheduled issuance** - the CC burned as a share of the CC the same days scheduled
+- **Next halving** - the latest round, the round the next step starts at, and what a day schedules now and after it
+- **Issuance schedule** - each phase with its years, its first round, the CC it schedules a year and its split, with no maximum supply
+- **Scheduled issuance** - each day's issuance split into its reward parts
+- **The last seven days** and **Every day of the record**, one square per day, each opening its day
+- **Fees and rounds** and **Super validators** - from the governance state CCTools reads every hour
 
-The fees, the super validators and the proposals come from the governance state CCTools reads every hour, each block with its own source and time.
+Charts with **24H**, **7D**, **30D**, **90D** or **All** above them switch their period. A period shows only where the data covers it, and the page address keeps it, so a link opens the same view.
+
+The schedule and the halving are read from the network's issuance curve and the record. They say scheduled, never minted: an unclaimed reward is not minted.
+
+## Fees and rounds
+
+**Fees and rounds**, at [cctools.network/network/fees](https://cctools.network/network/fees), shows what using the network costs: the traffic price a MB, the free traffic each node gets in each window, and the round length. Since CIP-0078 a transfer and a new holding carry no CC fee. The page also charts the rounds by day.
+
+## Burned and minted
+
+**Burned and minted**, at [cctools.network/network/supply](https://cctools.network/network/supply), sets the CC burned beside the CC minted by UTC day, and the net change in supply between them. Minted is estimated as the net change in supply plus the CC burned, for the days that hold both. **Issuance by category** shows what the rounds scheduled, which is not minted supply.
 
 ## Download and cite
 
@@ -45,3 +58,5 @@ The record on the page, the open files and the API are the same numbers. The fil
 - `status.json` - the latest final and provisional days
 
 The **Cite** button beside a day's title gives a citation with the day's permalink, and the page names the license and the attribution at its foot.
+
+Each block's menu offers **Cite**, **Download CSV**, **API** and **Ask Synchro**, where they apply. **Cite** gives a **Plain** citation that ends with the page's link, and **BibTeX** where the block has it. A block with an AI note opens on **Summary**: the note and the page's link.
