@@ -11,7 +11,7 @@ description: "Intercambia tokens de Canton desde tu billetera Loop, mueve USDC e
 
 1. Elige el token que pagas y el token que recibes. Cada selector lista todos los tokens que negocia el swap, con tu saldo.
 2. Escribe una cantidad. **Routes available** lista la cotización de cada sitio abierto después de las comisiones que indica. **Best** marca la ruta con la que se puede contar para dar más, y va primero. Con más de una ruta abierta, eliges una; un sitio que aún no abre muestra **Coming soon**.
-3. Pulsa **Review swap**. Permanece desactivado hasta que Loop haya leído tu saldo y si tu billetera puede recibir el token que compras, y mientras la cantidad esté por debajo del mínimo o por encima de tu saldo.
+3. Pulsa **Review swap**.
 4. Revisa la transferencia en Loop y apruébala allí antes de que venza la cotización.
 
 **Your swaps** lista tus swaps y cómo terminó cada uno.
@@ -26,7 +26,7 @@ CCTools guarda un registro privado de cada swap (los importes, la cotización y 
 
 [Bridge](https://cctools.network/markets/bridge) mueve USDC entre Ethereum y Canton a través del xReserve de Circle, desde tus propias billeteras. Mientras una ruta está cerrada, la página dice **Not available yet**.
 
-- **Into Canton** - solicita acceso al bridge una vez desde la tarjeta USDCx en Loop (el operador del bridge de Digital Asset suele aprobarlo en 1 día hábil), deposita USDC desde tu billetera Ethereum en Loop, y luego acuña el USDCx en Loop, en **Offers > Deposits**, cuando llegue
+- **Into Canton** - solicita acceso al bridge una vez desde la tarjeta USDCx en Loop (el operador del bridge de Digital Asset suele aprobarlo en un plazo de 1 día hábil), deposita USDC desde tu billetera Ethereum en Loop, y luego acuña el USDCx en Loop, en **Offers > Deposits**, cuando llegue
 - **Out of Canton** - escribe la cantidad y pulsa **Review withdrawal**. Loop prepara el burn, liberado a una dirección Ethereum vinculada a tu cuenta de CCTools; CCTools comprueba esa cantidad y esa dirección, y tú lo apruebas en Loop. Circle libera USDC en Ethereum, menos su comisión de retiro
 
 Circle no cobra comisión en los depósitos; el gas de Ethereum lo paga en ETH tu billetera Ethereum. En un retiro, la página muestra la cotización de Circle para la cantidad, que se fija de nuevo cuando se procesa el retiro. El retiro más pequeño que acepta Loop es de 5 USDCx. La comisión de red de Loop sale de tu Fee Balance. CCTools no cobra comisión y no guarda registro de tus transferencias por el bridge.
