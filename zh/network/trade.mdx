@@ -24,12 +24,12 @@ CCTools 会为每一笔兑换保留一份私密记录（金额、报价和交易
 
 ## Bridge
 
-[Bridge](https://cctools.network/markets/bridge) 通过 Circle 的 xReserve，用你自己的钱包在 Ethereum 和 Canton 之间转移 USDC。当某条路线关闭时，页面会显示 **Not available yet**。
+[Bridge](https://cctools.network/markets/bridge) 通过 Circle 的 xReserve，用你自己的钱包在 Ethereum 和 Canton 之间转移 USDC，需在电脑上操作。首次使用时，你需要接受一次条款第 11 节；它会显示在表单的位置。
 
 - **Into Canton** - 在 Loop 的 USDCx 卡片中申请一次跨链桥访问权限（Digital Asset 的跨链桥运营方通常会在 1 个工作日内批准），在 Loop 中从你的 Ethereum 钱包存入 USDC，到账后在 Loop 的 **Offers > Deposits** 下铸造 USDCx
 - **Out of Canton** - 输入数量并点击 **Review withdrawal**。Loop 准备销毁操作，释放到与你的 CCTools 账户关联的 Ethereum 地址；CCTools 会检查该数量和该地址，由你在 Loop 中批准。Circle 在 Ethereum 上释放 USDC，并扣除其提现费用
 
-Circle 对存款不收费用；Ethereum 的 gas 由你的 Ethereum 钱包用 ETH 支付。提现时，页面会显示 Circle 对该数量的报价，该报价会在提现处理时重新确定。Loop 接受的最小提现额为 5 USDCx。Loop 的网络费用从你的 Fee Balance 中扣除。CCTools 不收取费用，也不保留你的跨链桥转账记录。
+Circle 对存款不收费用；Ethereum 的 gas 由你的 Ethereum 钱包用 ETH 支付。提现时，页面会显示 Circle 对该数量的报价，该报价会在提现处理时重新确定。Loop 接受的最小提现额为 5 USDCx。Loop 的网络费用从你的 Fee Balance 中扣除。CCTools 对这些转账不收取费用，也不保留其记录。
 
 存款会把你的 Canton party ID 写入 Ethereum，在那里它保持公开，并与发送它的地址关联。提现会经过 Loop 的服务器，该服务器会收到你的 Ethereum 地址和数量，而 Circle 在 Ethereum 上的释放是公开的。
 

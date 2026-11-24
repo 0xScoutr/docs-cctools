@@ -24,12 +24,12 @@ A CCTools guarda um registro privado de cada swap (os valores, a cotação e os 
 
 ## Bridge
 
-A [Bridge](https://cctools.network/markets/bridge) move USDC entre Ethereum e Canton pelo xReserve da Circle, a partir das suas próprias carteiras. Enquanto uma rota está fechada, a página diz **Not available yet**.
+A [Bridge](https://cctools.network/markets/bridge) move USDC entre Ethereum e Canton pelo xReserve da Circle, a partir das suas próprias carteiras e num computador. Na primeira vez, você aceita a seção 11 dos Termos, uma única vez; ela aparece no lugar do formulário.
 
 - **Into Canton** - peça acesso à bridge uma vez pelo card USDCx na Loop (o operador da bridge da Digital Asset em geral aprova em até 1 dia útil), deposite USDC da sua carteira Ethereum pela Loop, e depois cunhe o USDCx na Loop, em **Offers > Deposits**, quando ele chegar
 - **Out of Canton** - digite o valor e clique em **Review withdrawal**. A Loop prepara o burn, liberado para um endereço Ethereum vinculado à sua conta da CCTools; a CCTools confere esse valor e esse endereço, e você aprova na Loop. A Circle libera USDC na Ethereum, menos a sua taxa de saque
 
-A Circle não cobra taxa em depósitos; o gas da Ethereum é pago em ETH pela sua carteira Ethereum. Num saque, a página mostra a cotação da Circle para o valor, que é definida de novo quando o saque é processado. O menor saque que a Loop aceita é 5 USDCx. A taxa de rede da Loop sai do seu Fee Balance. A CCTools não cobra taxa e não guarda registro das suas transferências pela bridge.
+A Circle não cobra taxa em depósitos; o gas da Ethereum é pago em ETH pela sua carteira Ethereum. Num saque, a página mostra a cotação da Circle para o valor, que é definida de novo quando o saque é processado. O menor saque que a Loop aceita é 5 USDCx. A taxa de rede da Loop sai do seu Fee Balance. A CCTools não cobra taxa nessas transferências e não guarda registro delas.
 
 Um depósito grava o seu party ID da Canton na Ethereum, onde ele fica público e ligado ao endereço que o enviou. Um saque passa pelo servidor da Loop, que recebe o seu endereço Ethereum e o valor, e a liberação da Circle na Ethereum é pública.
 

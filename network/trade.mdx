@@ -24,12 +24,12 @@ CCTools keeps a private record of each swap (the amounts, the quote and the tran
 
 ## Bridge
 
-[Bridge](https://cctools.network/markets/bridge) moves USDC between Ethereum and Canton through Circle's xReserve, from your own wallets. While a route is closed, the page says **Not available yet**.
+[Bridge](https://cctools.network/markets/bridge) moves USDC between Ethereum and Canton through Circle's xReserve, from your own wallets and on a computer. The first time, you accept section 11 of the Terms once; it shows in place of the form.
 
 - **Into Canton** - request bridge access once from the USDCx card in Loop (Digital Asset's bridge operator usually approves it within 1 business day), deposit USDC from your Ethereum wallet in Loop, then mint the USDCx in Loop under **Offers > Deposits** once it lands
 - **Out of Canton** - type the amount and press **Review withdrawal**. Loop prepares the burn, released to an Ethereum address linked to your CCTools account; CCTools checks that amount and that address, and you approve it in Loop. Circle releases USDC on Ethereum, less its withdrawal fee
 
-Circle takes no fee on deposits; the Ethereum gas is paid in ETH by your Ethereum wallet. On a withdrawal, the page shows Circle's quote for the amount, which is set again when the withdrawal is processed. The smallest withdrawal Loop takes is 5 USDCx. Loop's network fee comes from your Fee Balance. CCTools takes no fee and keeps no record of your bridge transfers.
+Circle takes no fee on deposits; the Ethereum gas is paid in ETH by your Ethereum wallet. On a withdrawal, the page shows Circle's quote for the amount, which is set again when the withdrawal is processed. The smallest withdrawal Loop takes is 5 USDCx. Loop's network fee comes from your Fee Balance. CCTools takes no fee on these transfers and keeps no record of them.
 
 A deposit writes your Canton party ID on Ethereum, where it stays public and linked to the address that sent it. A withdrawal goes through Loop's server, which receives your Ethereum address and the amount, and Circle's release on Ethereum is public.
 

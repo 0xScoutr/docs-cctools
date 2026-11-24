@@ -24,12 +24,12 @@ CCTools guarda un registro privado de cada swap (los importes, la cotización y 
 
 ## Bridge
 
-[Bridge](https://cctools.network/markets/bridge) mueve USDC entre Ethereum y Canton a través del xReserve de Circle, desde tus propias billeteras. Mientras una ruta está cerrada, la página dice **Not available yet**.
+[Bridge](https://cctools.network/markets/bridge) mueve USDC entre Ethereum y Canton a través del xReserve de Circle, desde tus propias billeteras y en una computadora. La primera vez, aceptas una sola vez la sección 11 de los Términos; aparece en lugar del formulario.
 
 - **Into Canton** - solicita acceso al bridge una vez desde la tarjeta USDCx en Loop (el operador del bridge de Digital Asset suele aprobarlo en un plazo de 1 día hábil), deposita USDC desde tu billetera Ethereum en Loop, y luego acuña el USDCx en Loop, en **Offers > Deposits**, cuando llegue
 - **Out of Canton** - escribe la cantidad y pulsa **Review withdrawal**. Loop prepara el burn, liberado a una dirección Ethereum vinculada a tu cuenta de CCTools; CCTools comprueba esa cantidad y esa dirección, y tú lo apruebas en Loop. Circle libera USDC en Ethereum, menos su comisión de retiro
 
-Circle no cobra comisión en los depósitos; el gas de Ethereum lo paga en ETH tu billetera Ethereum. En un retiro, la página muestra la cotización de Circle para la cantidad, que se fija de nuevo cuando se procesa el retiro. El retiro más pequeño que acepta Loop es de 5 USDCx. La comisión de red de Loop sale de tu Fee Balance. CCTools no cobra comisión y no guarda registro de tus transferencias por el bridge.
+Circle no cobra comisión en los depósitos; el gas de Ethereum lo paga en ETH tu billetera Ethereum. En un retiro, la página muestra la cotización de Circle para la cantidad, que se fija de nuevo cuando se procesa el retiro. El retiro más pequeño que acepta Loop es de 5 USDCx. La comisión de red de Loop sale de tu Fee Balance. CCTools no cobra comisión en estas transferencias y no guarda registro de ellas.
 
 Un depósito escribe tu party ID de Canton en Ethereum, donde queda público y vinculado a la dirección que lo envió. Un retiro pasa por el servidor de Loop, que recibe tu dirección Ethereum y la cantidad, y la liberación de Circle en Ethereum es pública.
 
