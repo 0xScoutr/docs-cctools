@@ -1,7 +1,7 @@
 // Copies the static files Mintlify served from the repository root (fonts,
 // logos, the share card, the favicons) into site/public, so the new site
 // serves them at the same URLs, plus brand/ (the files of the brand assets
-// page) and the ZIP of those files. The root copies stay the source of truth
+// page) and the ZIPs of those files. The root copies stay the source of truth
 // (docs.json still points at them); site/public is generated and ignored.
 import { cpSync, existsSync, mkdirSync, rmSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
@@ -24,5 +24,5 @@ for (const entry of entries) {
     filter: (src) => !src.endsWith('.DS_Store'),
   });
 }
-const kitFiles = writeBrandKit(join(root, 'brand'), join(pub, 'brand'));
-console.log(`[sync-assets] copied ${entries.join(', ')} into site/public, and zipped ${kitFiles} brand files`);
+const zipped = writeBrandKit(join(root, 'brand'), join(pub, 'brand'));
+console.log(`[sync-assets] copied ${entries.join(', ')} into site/public, and zipped ${zipped.kit} brand files and ${zipped.mascot} mascot poses`);

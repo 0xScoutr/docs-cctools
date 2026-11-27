@@ -1,8 +1,11 @@
-// Builds the brand kit ZIP (site/public/brand/cctools-brand-kit.zip) from the
-// files in brand/ at every build, so the download never drifts from the files
-// the brand assets page links one by one. Each cctools-* file goes into the
-// folder its name starts with, beside a short README. Plain ZIP (deflate),
-// no dependency.
+// Builds the two ZIPs of the brand assets page at every build, so a download
+// never drifts from the files the page links one by one:
+//   site/public/brand/cctools-brand-kit.zip    the cctools-* files of brand/,
+//     each in the folder its name starts with, beside a short README
+//   site/public/brand/mascot/cctools-mascot.zip  the cctools-mascot-* poses of
+//     brand/mascot/ (brand/mascot/preview/ holds the page's small previews,
+//     made from these poses, and stays out of the ZIP)
+// Plain ZIP (deflate), no dependency.
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { deflateRawSync } from 'node:zlib';
@@ -25,6 +28,18 @@ const README = [
   'avatar/    square and circle-safe, for X, Telegram and Discord',
   '',
   'Write the name as CCTools. X: @cantontools. Site: cctools.network.',
+  '',
+].join('\r\n');
+
+const MASCOT_README = [
+  'CCTools mascot: transparent PNG, 1254 px',
+  '',
+  'Rules (also at https://docs.cctools.network/community/brand-assets#mascot):',
+  '- Use the images as they are: no flipping, redrawing, editing or recoloring.',
+  "- Don't generate new images of the character with AI.",
+  '- No money, rockets, moons or charts shooting up.',
+  '- Never in Canton Foundation or Digital Asset material.',
+  '- Send us the art before you post it.',
   '',
 ].join('\r\n');
 
@@ -93,7 +108,22 @@ function zip(entries) {
   return Buffer.concat([...locals, ...centrals, end]);
 }
 
-/** Writes cctools-brand-kit.zip into `outDir` from the cctools-* files of `brandDir`; returns the file count. */
+/** Writes cctools-mascot.zip into `outDir` from the cctools-mascot-* poses of `mascotDir`; returns the pose count. */
+function writeMascotKit(mascotDir, outDir) {
+  const files = readdirSync(mascotDir)
+    .filter((f) => f.startsWith('cctools-mascot-') && f.endsWith('.png'))
+    .sort();
+  if (files.length === 0) throw new Error('brand/mascot: no cctools-mascot-*.png pose to zip');
+  const entries = [{ name: 'cctools-mascot/README.txt', data: Buffer.from(MASCOT_README, 'utf8') }];
+  for (const file of files) entries.push({ name: `cctools-mascot/${file}`, data: readFileSync(join(mascotDir, file)) });
+  writeFileSync(join(outDir, 'cctools-mascot.zip'), zip(entries));
+  return files.length;
+}
+
+/**
+ * Writes cctools-brand-kit.zip into `outDir` from the cctools-* files of `brandDir`, and cctools-mascot.zip into
+ * `outDir`/mascot from `brandDir`/mascot; returns both file counts.
+ */
 export function writeBrandKit(brandDir, outDir) {
   const files = readdirSync(brandDir)
     .filter((f) => f.startsWith('cctools-') && /\.(svg|png)$/.test(f))
@@ -105,5 +135,6 @@ export function writeBrandKit(brandDir, outDir) {
     entries.push({ name: `cctools-brand-kit/${folder[1]}/${file}`, data: readFileSync(join(brandDir, file)) });
   }
   writeFileSync(join(outDir, 'cctools-brand-kit.zip'), zip(entries));
-  return files.length;
+  const mascot = writeMascotKit(join(brandDir, 'mascot'), join(outDir, 'mascot'));
+  return { kit: files.length, mascot };
 }
