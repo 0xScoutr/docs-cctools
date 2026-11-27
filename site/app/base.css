@@ -1515,6 +1515,280 @@ a.cc-card:hover {
   background: var(--cc-brand-hover);
 }
 
+/* ---------- Brand assets page (community/brand-assets) ---------- */
+
+.cc-brand-download {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  margin: 0 0 8px;
+}
+
+.cc-brand-download span {
+  color: var(--cc-ink-3);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* A button, not a prose link. */
+.cc-prose a.cc-btn-plain:not(.cc-card):not(.cc-heading-anchor) {
+  color: var(--cc-ink);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cc-prose a.cc-btn-plain.is-primary:not(.cc-card):not(.cc-heading-anchor) {
+  color: var(--cc-on-brand);
+}
+
+.cc-brand-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0 0 24px;
+}
+
+/* Tiles and type cards are columns, so their download chips line up along a row. */
+.cc-brand-tile {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid var(--cc-line);
+  border-radius: 12px;
+  background: var(--cc-surface);
+  overflow: hidden;
+}
+
+/* The artwork sits on the background it is made for, in both themes. */
+.cc-brand-art {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  height: 132px;
+  padding: 0 24px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--cc-line);
+}
+
+.cc-brand-art.is-tall {
+  height: 176px;
+}
+
+.cc-brand-art.is-light {
+  background: #f4f5f1;
+}
+
+.cc-brand-art.is-dark {
+  background: #0b0e0b;
+}
+
+.cc-brand-art.is-color {
+  background: #5f665d;
+}
+
+.cc-brand-art img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: 44px;
+}
+
+.cc-brand-art.is-tall img {
+  height: 112px;
+}
+
+.cc-brand-art.is-wordmark img {
+  height: 30px;
+}
+
+.cc-brand-art.is-avatar img {
+  border-radius: 50%;
+}
+
+.cc-prose .cc-brand-name {
+  margin: 0;
+  color: var(--cc-ink);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.cc-prose .cc-brand-tile .cc-brand-name {
+  margin: 14px 16px 0;
+}
+
+.cc-prose .cc-brand-files {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 0;
+}
+
+.cc-prose .cc-brand-tile .cc-brand-files {
+  margin: auto 16px 16px;
+  padding-top: 10px;
+}
+
+.cc-prose .cc-brand-files a:not(.cc-card):not(.cc-heading-anchor) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  border: 1px solid var(--cc-line-3);
+  border-radius: 6px;
+  background: var(--cc-surface);
+  color: var(--cc-ink);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  transition: border-color 150ms ease-out;
+}
+
+.cc-prose .cc-brand-files a:not(.cc-card):not(.cc-heading-anchor):hover {
+  border-color: var(--cc-ink-3);
+}
+
+.cc-prose ul.cc-brand-swatches {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 20px;
+  padding: 0;
+}
+
+.cc-prose ul.cc-brand-swatches > li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+  padding: 8px 8px 12px;
+  border: 1px solid var(--cc-line);
+  border-radius: 12px;
+  background: var(--cc-surface);
+  line-height: 1.4;
+}
+
+.cc-prose ul.cc-brand-swatches > li::before {
+  content: none;
+}
+
+/* A hairline keeps the page and surface colors visible on a card of the same color. */
+.cc-brand-swatch {
+  display: block;
+  align-self: stretch;
+  height: 64px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px rgba(127, 127, 127, 0.28);
+}
+
+/* On a dark card, the dark swatches need a brighter edge to read as colors. */
+html.dark .cc-brand-swatch {
+  box-shadow: inset 0 0 0 1px rgba(238, 241, 234, 0.22);
+}
+
+.cc-brand-swatch-name {
+  padding: 0 4px;
+  color: var(--cc-ink);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cc-prose ul.cc-brand-swatches code {
+  padding: 0 4px;
+  background: none;
+  color: var(--cc-ink-3);
+  font-size: 13px;
+}
+
+.cc-brand-type {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0 0 20px;
+}
+
+.cc-brand-type-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid var(--cc-line);
+  border-radius: 12px;
+  background: var(--cc-surface);
+}
+
+.cc-prose .cc-brand-type-sample {
+  margin: 0 0 14px;
+  color: var(--cc-ink);
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.cc-prose .cc-brand-type-sample.is-mono {
+  font-family: var(--cc-font-code);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.cc-prose .cc-brand-type-use {
+  margin: 4px 0 0;
+  color: var(--cc-ink-3);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.cc-prose .cc-brand-type-card .cc-brand-files {
+  margin-top: auto;
+  padding-top: 14px;
+}
+
+/* Clear space: half the icon's height (the lockup's height) on every side. */
+.cc-brand-space {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 20px;
+  padding: 40px 24px;
+  border: 1px solid var(--cc-line);
+  border-radius: 12px;
+  background: #f4f5f1;
+}
+
+.cc-brand-space-zone {
+  padding: 28px;
+  outline: 1px dashed #5f665d;
+  background: repeating-linear-gradient(-45deg, rgba(95, 102, 93, 0.24) 0 1px, transparent 1px 7px);
+}
+
+.cc-brand-space-zone img {
+  display: block;
+  width: auto;
+  height: 56px;
+  background: #f4f5f1;
+}
+
+/* Card text is 14px: the prose bullet sits on its first line. */
+.cc-prose .cc-brand-rules ul > li::before {
+  top: 8px;
+}
+
+@media (max-width: 640px) {
+  .cc-brand-grid,
+  .cc-brand-type {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cc-prose ul.cc-brand-swatches {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 /* ---------- Search dialog (Fumadocs), on the v3 tokens ---------- */
 
 [role="dialog"].cc-search-dialog,

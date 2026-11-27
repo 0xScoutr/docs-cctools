@@ -583,7 +583,8 @@
                   "community/contribute",
                   "community/discord",
                   "community/faq",
-                  "community/service-status"
+                  "community/service-status",
+                  "community/brand-assets"
                 ]
               },
               {
@@ -722,7 +723,8 @@
                   "es/community/contribute",
                   "es/community/discord",
                   "es/community/faq",
-                  "es/community/service-status"
+                  "es/community/service-status",
+                  "es/community/brand-assets"
                 ]
               },
               {
@@ -861,7 +863,8 @@
                   "pt/community/contribute",
                   "pt/community/discord",
                   "pt/community/faq",
-                  "pt/community/service-status"
+                  "pt/community/service-status",
+                  "pt/community/brand-assets"
                 ]
               },
               {
@@ -1000,7 +1003,8 @@
                   "zh/community/contribute",
                   "zh/community/discord",
                   "zh/community/faq",
-                  "zh/community/service-status"
+                  "zh/community/service-status",
+                  "zh/community/brand-assets"
                 ]
               },
               {

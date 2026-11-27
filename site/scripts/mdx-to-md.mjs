@@ -203,6 +203,8 @@ export function createConverter({ locale }) {
         return [{ type: 'emphasis', children: phrasing(children) }];
       case 'br':
         return [{ type: 'break' }];
+      case 'img':
+        return [{ type: 'image', url: absolute(attr(node, 'src') ?? ''), alt: attr(node, 'alt') ?? '' }];
       default:
         throw new Error(`mdx-to-md: no Markdown for <${name}>; add it to site/scripts/mdx-to-md.mjs`);
     }
